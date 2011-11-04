@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 class Protocol
 
   @requiredMethod: (n,tramp) -> method: n, required: true, tramp: tramp

@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 class CATransaction extends NSObject
 
   # Creating and Committing Transactions

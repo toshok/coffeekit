@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 class CAScrollLayer extends CALayer
 
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))

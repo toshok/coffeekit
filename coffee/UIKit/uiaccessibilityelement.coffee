@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 #console.log "UIAccessibilityElement"
 class UIAccessibilityElement extends foundation.NSObject
 

@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 class NSView extends foundation.NSResponder
   constructor: (handle) ->
     super (if handle then handle else objc.allocInstance (@.constructor.name))

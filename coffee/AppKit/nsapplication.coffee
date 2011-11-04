@@ -1,3 +1,5 @@
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
 class NSApplication extends foundation.NSResponder
   constructor: (handle) ->
     console.log "in NSApplication.ctor"
