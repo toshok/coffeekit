@@ -2,7 +2,7 @@
 class UIActionSheet extends UIView
 
   # Creating Action Sheets
-  initWithTitle: objc.invokeSelector "initWithTitle:delegate:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:";
+  init: objc.invokeSelector "initWithTitle:delegate:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:";
 
   # Setting Properties
   ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIActionSheetDelegate)
@@ -11,9 +11,9 @@ class UIActionSheet extends UIView
   ck.addProperty @::, "property"
 
   # Configuring Buttons
-  addButtonWithTitle: objc.invokeSelector "addButtonWithTitle:"
+  addButton: objc.invokeSelector "addButtonWithTitle:"
   ck.addProperty @::, "numberOfButtons"
-  buttonTitleAtIndex: objc.invokeSelector "buttonTitleAtIndex:"
+  buttonTitle: objc.invokeSelector "buttonTitleAtIndex:"
   ck.addProperty @::, "cancelButtonIndex"
   ck.addProperty @::, "destructiveButtonIndex"
   ck.addProperty @::, "firstOtherButtonIndex"
@@ -23,8 +23,8 @@ class UIActionSheet extends UIView
   showFromTabBar: objc.invokeSelector "showFromTabBar:"
   showFromToolbar: objc.invokeSelector "showFromToolbar:"
   showInView: objc.invokeSelector "showInView:"
-  showFromBarButtonItemAnimated: objc.invokeSelector "showFromBarButtonItem:animated:"
-  showFromRect:inViewAnimated: objc.invokeSelector "showFromRect:inView:animated:"
+  showFromBarButtonItem: objc.invokeSelector "showFromBarButtonItem:animated:"
+  showFromRect: objc.invokeSelector "showFromRect:inView:animated:"
 
   # Dismissing the Action Sheet
   dismissWithClickedButtonIndexAnimated: objc.invokeSelector "dismissWithClickedButtonIndex:animated:"
