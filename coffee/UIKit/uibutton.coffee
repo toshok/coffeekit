@@ -5,17 +5,17 @@ class UIButton extends UIControl
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
   # Creating Buttons
-  @buttonWithType: objc.invokeSelector ("buttonWithType:")
+  @buttonWithType: objc.invokeSelector "buttonWithType:"
 
   # Configuring Button Title
   ck.addProperty @::, "titleLabel"
   ck.addProperty @::, "reversesTitleShadowWhenHighlighted"
-  setTitle: objc.invokeSelector ("setTitle:forState:")
-  getTitle: objc.invokeSelector ("titleForState:")
+  setTitle: objc.invokeSelector "setTitle:forState:"
+  getTitle: objc.invokeSelector "titleForState:"
   setTitleColor: objc.invokeSelector("setTitleColor:forState:").makeUIAppearance()
   getTitleColor: objc.invokeSelector("titleColorForState:").makeUIAppearance()
-  setTitleShadowColor: objc.invokeSelector ("setTitleShadowColor:forState:")
-  getTitleShadowColor: objc.invokeSelector ("titleShadowColorForState:")
+  setTitleShadowColor: objc.invokeSelector "setTitleShadowColor:forState:"
+  getTitleShadowColor: objc.invokeSelector "titleShadowColorForState:"
 
   ck.addProperty @::, "font" # Deprecated in iOS 3.0
   ck.addProperty @::, "lineBreakMode" # Deprecated in iOS 3.0
@@ -25,10 +25,10 @@ class UIButton extends UIControl
   ck.addProperty @::, "adjustsImageWhenHighlighted"
   ck.addProperty @::, "adjustsImageWhenDisabled"
   ck.addProperty @::, "showsTouchWhenHighlighted"
-  setBackgroundImage: objc.invokeSelector ("setBackgroundImage:forState:")
-  getBbackgroundImage: objc.invokeSelector ("backgroundImageForState:")
-  setImage: objc.invokeSelector ("setImage:forState:")
-  getImage: objc.invokeSelector ("imageForState:")
+  setBackgroundImage: objc.invokeSelector "setBackgroundImage:forState:"
+  getBbackgroundImage: objc.invokeSelector "backgroundImageForState:"
+  setImage: objc.invokeSelector "setImage:forState:"
+  getImage: objc.invokeSelector "imageForState:"
   ck.addProperty(@::, "tintColor").makeUIAppearance()
 
   # Configuring Edge Insets
@@ -46,10 +46,10 @@ class UIButton extends UIControl
   ck.addProperty @::, "imageView"
 
   # Getting Dimensions
-  backgroundRectForBounds: objc.invokeSelector ("backgroundRectForBounds:")
-  contentRectForBounds: objc.invokeSelector ("contentRectForBounds:")
-  titleRectForContentRect: objc.invokeSelector ("titleRectForContentRect:")
-  imageRectForContentRect: objc.invokeSelector ("imageRectForContentRect:")
+  backgroundRectForBounds: objc.invokeSelector "backgroundRectForBounds:"
+  contentRectForBounds: objc.invokeSelector "contentRectForBounds:"
+  titleRectForContentRect: objc.invokeSelector "titleRectForContentRect:"
+  imageRectForContentRect: objc.invokeSelector "imageRectForContentRect:"
 
   @::__defineSetter__ "clicked", (v) ->
                                      @proxy = new UIControlProxy v

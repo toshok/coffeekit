@@ -2,9 +2,9 @@
 class UIPrintInfo extends foundation.NSObject
 
   # Creating a UIPrintInfo Object
-  @printInfo: objc.invokeSelector ("printInfo")
-  @printInfoWithDictionary: objc.invokeSelector ("printInfoWithDictionary:")
-  dictionaryRepresentation: objc.invokeSelector ("dictionaryRepresentation")
+  @printInfo: objc.invokeSelector "printInfo"
+  @printInfoWithDictionary: objc.invokeSelector "printInfoWithDictionary:"
+  dictionaryRepresentation: objc.invokeSelector "dictionaryRepresentation"
 
   # Getting and Setting Print-Job Attributes
   ck.addProperty @::, "duplex"

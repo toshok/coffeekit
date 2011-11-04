@@ -17,7 +17,7 @@ class UIScreen extends foundation.NSObject
   ck.addProperty @::, "currentMode"
 
   # Getting a Display Link
-  displayLink: objc.invokeSelector ("displayLinkWithTarget:selector:")
+  displayLink: objc.invokeSelector "displayLinkWithTarget:selector:"
 
   # Setting a Display’s Brightness
   ck.addProperty @::, "brightness"

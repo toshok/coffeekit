@@ -2,7 +2,7 @@
 class UIDevice extends foundation.NSObject
 
   # Getting the Shared Device Instance
-  @currentDevice: objc.invokeSelector ("currentDevice")
+  @currentDevice: objc.invokeSelector "currentDevice"
 
   # Determining the Available Features
   ck.addProperty @::, "multitaskingSupported"
@@ -19,8 +19,8 @@ class UIDevice extends foundation.NSObject
   # Getting the Device Orientation
   ck.addProperty @::, "orientation"
   ck.addProperty @::, "generatesDeviceOrientationNotifications"
-  beginGeneratingDeviceOrientationNotifications: objc.invokeSelector ("beginGeneratingDeviceOrientationNotifications")
-  endGeneratingDeviceOrientationNotifications: objc.invokeSelector ("endGeneratingDeviceOrientationNotifications")
+  beginGeneratingDeviceOrientationNotifications: objc.invokeSelector "beginGeneratingDeviceOrientationNotifications"
+  endGeneratingDeviceOrientationNotifications: objc.invokeSelector "endGeneratingDeviceOrientationNotifications"
 
   # Getting the Device Battery State
   ck.addProperty @::, "batteryLevel"
@@ -32,7 +32,7 @@ class UIDevice extends foundation.NSObject
   ck.addProperty @::, "proximityState"
 
   # Playing Input Clicks
-  playInputClick: objc.invokeSelector ("playInputClick")
+  playInputClick: objc.invokeSelector "playInputClick"
 
 new ck.RegisterAttribute UIDevice, "UIDevice"
 exports.UIDevice = UIDevice

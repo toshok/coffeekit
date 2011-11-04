@@ -32,15 +32,15 @@ class UITextField extends UIControl
   ck.addProperty @::, "delegate"
 
   # Drawing and Positioning Overrides
-  textRect: objc.invokeSelector ("textRectForBounds:")
-  drawTextInRect: objc.invokeSelector ("drawTextInRect:")
-  placeholderRect: objc.invokeSelector ("placeholderRectForBounds:")
-  drawPlaceholderInRect: objc.invokeSelector ("drawPlaceholderInRect:")
-  borderRect: objc.invokeSelector ("borderRectForBounds:")
-  editingRect: objc.invokeSelector ("editingRectForBounds:")
-  clearButtonRect: objc.invokeSelector ("clearButtonRectForBounds:")
-  leftViewRect: objc.invokeSelector ("leftViewRectForBounds:")
-  rightViewRect: objc.invokeSelector ("rightViewRectForBounds:")
+  textRect: objc.invokeSelector "textRectForBounds:"
+  drawTextInRect: objc.invokeSelector "drawTextInRect:"
+  placeholderRect: objc.invokeSelector "placeholderRectForBounds:"
+  drawPlaceholderInRect: objc.invokeSelector "drawPlaceholderInRect:"
+  borderRect: objc.invokeSelector "borderRectForBounds:"
+  editingRect: objc.invokeSelector "editingRectForBounds:"
+  clearButtonRect: objc.invokeSelector "clearButtonRectForBounds:"
+  leftViewRect: objc.invokeSelector "leftViewRectForBounds:"
+  rightViewRect: objc.invokeSelector "rightViewRectForBounds:"
 
   # Replacing the System Input Views
   ck.addProperty @::, "inputView"

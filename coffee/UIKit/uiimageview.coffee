@@ -2,8 +2,8 @@
 class UIImageView extends UIView
 
   # Initializing a UIImageView Object
-  initWithImage: objc.invokeSelector ("initWithImage:")
-  initWithImageAndHighlightedImage: objc.invokeSelector ("initWithImage:highlightedImage:")
+  initWithImage: objc.invokeSelector "initWithImage:"
+  initWithImageAndHighlightedImage: objc.invokeSelector "initWithImage:highlightedImage:"
 
   # Image Data
   ck.addProperty @::, "image"
@@ -14,9 +14,9 @@ class UIImageView extends UIView
   ck.addProperty @::, "highlightedAnimationImages"
   ck.addProperty @::, "animationDuration"
   ck.addProperty @::, "animationRepeatCount"
-  startAnimating: objc.invokeSelector ("startAnimating")
-  stopAnimating: objc.invokeSelector ("stopAnimating")
-  isAnimating: objc.invokeSelector ("isAnimating")
+  startAnimating: objc.invokeSelector "startAnimating"
+  stopAnimating: objc.invokeSelector "stopAnimating"
+  isAnimating: objc.invokeSelector "isAnimating"
 
   # Setting and Getting Attributes
   ck.addProperty @::, "userInteractionEnabled"

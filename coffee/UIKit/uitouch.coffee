@@ -2,8 +2,8 @@
 class UITouch extends foundation.NSObject
 
   # Getting the Location of Touches
-  locationInView: objc.invokeSelector ("locationInView:")
-  previousLocationInView: objc.invokeSelector ("previousLocationInView:")
+  locationInView: objc.invokeSelector "locationInView:"
+  previousLocationInView: objc.invokeSelector "previousLocationInView:"
   ck.addProperty @::, "view"
   ck.addProperty @::, "window"
 

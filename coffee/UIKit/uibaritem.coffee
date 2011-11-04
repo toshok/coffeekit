@@ -14,8 +14,8 @@ class UIBarItem extends UIView
   ck.addProperty @::, "tag"
 
   # Customizing Appearance
-  setTitleTextAttributes: objc.invokeSelector ("setTitleTextAttributes:forState:")
-  getTitleTextAttributes: objc.invokeSelector ("titleTextAttributesForState:")
+  setTitleTextAttributes: objc.invokeSelector "setTitleTextAttributes:forState:"
+  getTitleTextAttributes: objc.invokeSelector "titleTextAttributesForState:"
 
 
 new ck.RegisterAttribute UIBarItem, "UIBarItem"

@@ -24,8 +24,8 @@ class UILabel extends UIView
   ck.addProperty @::, "shadowOffset"
 
   # Drawing and Positioning Overrides
-  textRect: objc.invokeSelector ("textRectForBounds:limitedToNumberOfLines:")
-  drawTextInRect: objc.invokeSelector ("drawTextInRect:")
+  textRect: objc.invokeSelector "textRectForBounds:limitedToNumberOfLines:"
+  drawTextInRect: objc.invokeSelector "drawTextInRect:"
 
   # Setting and Getting Attributes
   ck.addProperty @::, "userInteractionEnabled"

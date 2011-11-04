@@ -9,8 +9,8 @@ class NSWindow extends foundation.NSResponder
   ck.addProperty @::, "title"
   ck.addProperty @::, "contentView"
 
-  makeKeyAndOrderFront: objc.invokeSelector ("makeKeyAndOrderFront:")
-  initWithCoder: objc.invokeSelector ("initWithCoder:")
+  makeKeyAndOrderFront: objc.invokeSelector "makeKeyAndOrderFront:"
+  initWithCoder: objc.invokeSelector "initWithCoder:"
   setFrame: objc.invokeSelector "setFrame:display:"
 
 new ck.RegisterAttribute NSWindow, "NSWindow"

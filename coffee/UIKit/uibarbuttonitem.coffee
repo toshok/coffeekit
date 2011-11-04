@@ -5,11 +5,11 @@ class UIBarButtonItem extends UIBarItem
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
   # Initializing an Item
-  initWithCustomView: objc.invokeSelector ("initWithCustomView:")
-  initWithBarButtonSystemItem: objc.invokeSelector ("initWithBarButtonSystemItem:target:action:")
-  initWithImage: objc.invokeSelector ("initWithImage:style:target:action:")
-  initWithTitle: objc.invokeSelector ("initWithTitle:style:target:action:")
-  initWithImageAndLandscape: objc.invokeSelector ("initWithImage:landscapeImagePhone:style:target:action:")
+  initWithCustomView: objc.invokeSelector "initWithCustomView:"
+  initWithBarButtonSystemItem: objc.invokeSelector "initWithBarButtonSystemItem:target:action:"
+  initWithImage: objc.invokeSelector "initWithImage:style:target:action:"
+  initWithTitle: objc.invokeSelector "initWithTitle:style:target:action:"
+  initWithImageAndLandscape: objc.invokeSelector "initWithImage:landscapeImagePhone:style:target:action:"
 
   # Getting and Setting Properties
   ck.addProperty @::, "target"

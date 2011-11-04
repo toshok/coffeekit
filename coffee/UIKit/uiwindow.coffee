@@ -14,19 +14,19 @@ class UIWindow extends UIView
 
   # Making Windows Key
   ck.addProperty @::, "keyWindow"
-  makeKeyAndVisible: objc.invokeSelector ("makeKeyAndVisible")
-  becomeKeyWindow: objc.invokeSelector ("becomeKeyWindow")
-  makeKeyWindow: objc.invokeSelector ("makeKeyWindow")
-  resignKeyWindow: objc.invokeSelector ("resignKeyWindow")
+  makeKeyAndVisible: objc.invokeSelector "makeKeyAndVisible"
+  becomeKeyWindow: objc.invokeSelector "becomeKeyWindow"
+  makeKeyWindow: objc.invokeSelector "makeKeyWindow"
+  resignKeyWindow: objc.invokeSelector "resignKeyWindow"
 
   # Converting Coordinates
-  convertPointToWindow: objc.invokeSelector ("convertPoint:toWindow:")
-  convertPointFromWindow: objc.invokeSelector ("convertPoint:fromWindow:")
-  convertRectToWindow: objc.invokeSelector ("convertRect:toWindow:")
-  convertRectFromWindow: objc.invokeSelector ("convertRect:fromWindow:")
+  convertPointToWindow: objc.invokeSelector "convertPoint:toWindow:"
+  convertPointFromWindow: objc.invokeSelector "convertPoint:fromWindow:"
+  convertRectToWindow: objc.invokeSelector "convertRect:toWindow:"
+  convertRectFromWindow: objc.invokeSelector "convertRect:fromWindow:"
 
   # Sending Events
-  sendEvent: objc.invokeSelector ("sendEvent:")
+  sendEvent: objc.invokeSelector "sendEvent:"
 
 new ck.RegisterAttribute UIWindow, "UIWindow"
 exports.UIWindow = UIWindow

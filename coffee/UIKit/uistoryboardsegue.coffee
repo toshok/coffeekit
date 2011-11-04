@@ -2,7 +2,7 @@
 class UIStoryboardSegue extends foundation.NSObject
 
   # Initializing a Storyboard Segue
-  initWithIdentifier: objc.invokeSelector ("initWithIdentifier:source:destination:")
+  initWithIdentifier: objc.invokeSelector "initWithIdentifier:source:destination:"
 
   # Accessing the Segue Attributes
   ck.addProperty @::, "sourceViewController"
@@ -10,7 +10,7 @@ class UIStoryboardSegue extends foundation.NSObject
   ck.addProperty @::, "identifier"
 
   # Performing the Segue
-  perform: objc.invokeSelector ("perform")
+  perform: objc.invokeSelector "perform"
 
 new ck.RegisterAttribute UIStoryboardSegue, "UIStoryboardSegue"
 exports.UIStoryboardSegue = UIStoryboardSegue

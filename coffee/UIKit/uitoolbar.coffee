@@ -7,11 +7,11 @@ class UIToolbar extends UIView
 
   # Configuring Toolbar Items
   ck.addProperty @::, "items", { set: (v) -> setItems v, false }
-  setItems: objc.invokeSelector ("setItems:animated:")
+  setItems: objc.invokeSelector "setItems:animated:"
 
   # Customizing Appearance
-  backgroundImage: objc.invokeSelector ("backgroundImageForToolbarPosition:barMetrics:")
-  setBackgroundImage: objc.invokeSelector ("setBackgroundImage:forToolbarPosition:barMetrics:")
+  backgroundImage: objc.invokeSelector "backgroundImageForToolbarPosition:barMetrics:"
+  setBackgroundImage: objc.invokeSelector "setBackgroundImage:forToolbarPosition:barMetrics:"
   ck.addProperty @::, "tintColor"
 
 new ck.RegisterAttribute UIToolbar, "UIToolbar"

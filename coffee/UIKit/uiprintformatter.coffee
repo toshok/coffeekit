@@ -11,11 +11,11 @@ class UIPrintFormatter extends foundation.NSObject
   ck.addProperty @::, "pageCount"
 
   # Drawing the Content
-  drawInRectForPageAtIndex: objc.invokeSelector ("drawInRect:forPageAtIndex:")
-  rectForPageAtIndex: objc.invokeSelector ("rectForPageAtIndex:")
+  drawInRectForPageAtIndex: objc.invokeSelector "drawInRect:forPageAtIndex:"
+  rectForPageAtIndex: objc.invokeSelector "rectForPageAtIndex:"
 
   # Communicating with the Page Renderer
-  removeFromPrintPageRenderer: objc.invokeSelector ("removeFromPrintPageRenderer")
+  removeFromPrintPageRenderer: objc.invokeSelector "removeFromPrintPageRenderer"
   ck.addProperty @::, "printPageRenderer"
 
 new ck.RegisterAttribute UIPrintFormatter, "UIPrintFormatter"

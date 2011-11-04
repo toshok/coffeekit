@@ -5,19 +5,19 @@ class UIWebView extends UIView
   ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIWebViewDelegate)
 
   # Loading Content
-  loadData: objc.invokeSelector ("loadData:MIMEType:textEncodingName:baseURL:")
-  loadHTMLString: objc.invokeSelector ("loadHTMLString:baseURL:")
-  loadRequest: objc.invokeSelector ("loadRequest:")
+  loadData: objc.invokeSelector "loadData:MIMEType:textEncodingName:baseURL:"
+  loadHTMLString: objc.invokeSelector "loadHTMLString:baseURL:"
+  loadRequest: objc.invokeSelector "loadRequest:"
   ck.addProperty @::, "request"
   ck.addProperty @::, "loading"
-  stopLoading: objc.invokeSelector ("stopLoading")
-  reload: objc.invokeSelector ("reload")
+  stopLoading: objc.invokeSelector "stopLoading"
+  reload: objc.invokeSelector "reload"
 
   # Moving Back and Forward
   ck.addProperty @::, "canGoBack"
   ck.addProperty @::, "canGoForward"
-  goBack: objc.invokeSelector ("goBack")
-  goForward: objc.invokeSelector ("goForward")
+  goBack: objc.invokeSelector "goBack"
+  goForward: objc.invokeSelector "goForward"
 
   # Setting Web Content Properties
   ck.addProperty @::, "scalesPageToFit"
@@ -25,7 +25,7 @@ class UIWebView extends UIView
   ck.addProperty @::, "detectsPhoneNumbers" # Deprecated in iOS 3.0
 
   # Running JavaScript
-  stringByEvaluatingJavaScriptFromString: objc.invokeSelector ("stringByEvaluatingJavaScriptFromString:")
+  stringByEvaluatingJavaScriptFromString: objc.invokeSelector "stringByEvaluatingJavaScriptFromString:"
 
   # Detecting Types of Data
   ck.addProperty @::, "dataDetectorTypes"

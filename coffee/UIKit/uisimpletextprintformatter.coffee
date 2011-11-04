@@ -2,7 +2,7 @@
 class UISimpleTextPrintFormatter extends UIPrintFormatter
 
   # Creating a Simple-Text Print Formatter
-  initWithText: objc.invokeSelector ("initWithText:")
+  initWithText: objc.invokeSelector "initWithText:"
 
   # Getting and Setting the Text
   ck.addProperty @::, "text"

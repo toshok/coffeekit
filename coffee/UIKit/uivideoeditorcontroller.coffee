@@ -2,7 +2,7 @@
 class UIVideoEditorController extends UINavigationController
 
   # Determining Editing Availability
-  @canEditVideoAtPath: objc.invokeSelector ("canEditVideoAtPath:")
+  @canEditVideoAtPath: objc.invokeSelector "canEditVideoAtPath:"
 
   # Configuring the Editor
   ck.addProperty @::, "delegate"

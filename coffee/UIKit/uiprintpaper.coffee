@@ -6,7 +6,7 @@ class UIPrintPaper extends foundation.NSObject
   ck.addProperty @::, "printableRect"
 
   # Obtaining the Best Paper Size for Printing
-  @bestPaperForPageSize: objc.invokeSelector ("bestPaperForPageSize:withPapersFromArray:")
+  @bestPaperForPageSize: objc.invokeSelector "bestPaperForPageSize:withPapersFromArray:"
 
 new ck.RegisterAttribute UIPrintPaper, "UIPrintPaper"
 exports.UIPrintPaper = UIPrintPaper

@@ -2,26 +2,26 @@
 class UIImage extends foundation.NSObject
 
   # Cached Image Loading Routines
-  @imageNamed: objc.invokeSelector ("imageNamed:")
+  @imageNamed: objc.invokeSelector "imageNamed:"
 
   # Creating New Images
-  @imageWithContentsOfFile: objc.invokeSelector ("imageWithContentsOfFile:")
-  @imageWithData: objc.invokeSelector ("imageWithData:")
-  @imageWithCGImage: objc.invokeSelector ("imageWithCGImage:")
-  @imageWithCGImageScaleOrientation: objc.invokeSelector ("imageWithCGImage:scale:orientation:")
-  @imageWithCIImage: objc.invokeSelector ("imageWithCIImage:")
-  @animatedImageNamed: objc.invokeSelector ("animatedImageNamed:duration:")
-  @animatedImageWithImages: objc.invokeSelector ("animatedImageWithImages:duration:")
-  @animatedResizableImageNamed: objc.invokeSelector ("animatedResizableImageNamed:capInsets:duration:")
-  resizableImage: objc.invokeSelector ("resizableImageWithCapInsets:")
-  stretchableImage: objc.invokeSelector ("stretchableImageWithLeftCapWidth:topCapHeight:") # Deprecated in iOS 5.0
+  @imageWithContentsOfFile: objc.invokeSelector "imageWithContentsOfFile:"
+  @imageWithData: objc.invokeSelector "imageWithData:"
+  @imageWithCGImage: objc.invokeSelector "imageWithCGImage:"
+  @imageWithCGImageScaleOrientation: objc.invokeSelector "imageWithCGImage:scale:orientation:"
+  @imageWithCIImage: objc.invokeSelector "imageWithCIImage:"
+  @animatedImageNamed: objc.invokeSelector "animatedImageNamed:duration:"
+  @animatedImageWithImages: objc.invokeSelector "animatedImageWithImages:duration:"
+  @animatedResizableImageNamed: objc.invokeSelector "animatedResizableImageNamed:capInsets:duration:"
+  resizableImage: objc.invokeSelector "resizableImageWithCapInsets:"
+  stretchableImage: objc.invokeSelector "stretchableImageWithLeftCapWidth:topCapHeight:" # Deprecated in iOS 5.0
 
   # Initializing Images
-  initWithContentsOfFile: objc.invokeSelector ("initWithContentsOfFile:")
-  initWithData: objc.invokeSelector ("initWithData:")
-  initWithCGImage: objc.invokeSelector ("initWithCGImage:")
-  initWithCGImageScaleOrientation: objc.invokeSelector ("initWithCGImage:scale:orientation:")
-  initWithCIImage: objc.invokeSelector ("initWithCIImage:")
+  initWithContentsOfFile: objc.invokeSelector "initWithContentsOfFile:"
+  initWithData: objc.invokeSelector "initWithData:"
+  initWithCGImage: objc.invokeSelector "initWithCGImage:"
+  initWithCGImageScaleOrientation: objc.invokeSelector "initWithCGImage:scale:orientation:"
+  initWithCIImage: objc.invokeSelector "initWithCIImage:"
 
   # Image Attributes
   ck.addProperty @::, "imageOrientation"
@@ -36,11 +36,11 @@ class UIImage extends foundation.NSObject
   ck.addProperty @::, "topCapHeight" # Deprecated in iOS 5.0
 
   # Drawing Images
-  drawAtPoint: objc.invokeSelector ("drawAtPoint:")
-  drawAtPointWithBlend: objc.invokeSelector ("drawAtPoint:blendMode:alpha:")
-  drawInRect: objc.invokeSelector ("drawInRect:")
-  drawInRectWithBlend: objc.invokeSelector ("drawInRect:blendMode:alpha:")
-  drawAsPatternInRect: objc.invokeSelector ("drawAsPatternInRect:")
+  drawAtPoint: objc.invokeSelector "drawAtPoint:"
+  drawAtPointWithBlend: objc.invokeSelector "drawAtPoint:blendMode:alpha:"
+  drawInRect: objc.invokeSelector "drawInRect:"
+  drawInRectWithBlend: objc.invokeSelector "drawInRect:blendMode:alpha:"
+  drawAsPatternInRect: objc.invokeSelector "drawAsPatternInRect:"
 
 new ck.RegisterAttribute UIImage, "UIImage"
 exports.UIImage = UIImage

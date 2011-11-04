@@ -8,11 +8,11 @@ class UITextView extends UIScrollView
   ck.addProperty @::, "editable"
   ck.addProperty @::, "dataDetectorTypes"
   ck.addProperty @::, "textAlignment"
-  hasText: objc.invokeSelector ("hasText")
+  hasText: objc.invokeSelector "hasText"
 
   # Working with the Selection
   ck.addProperty @::, "selectedRange"
-  scrollRangeToVisible: objc.invokeSelector ("scrollRangeToVisible:")
+  scrollRangeToVisible: objc.invokeSelector "scrollRangeToVisible:"
 
   # Accessing the Delegate
   ck.addProperty @::, "delegate"

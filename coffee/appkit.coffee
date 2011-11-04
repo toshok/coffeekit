@@ -3,7 +3,7 @@ objc.requireFramework "AppKit"
 foundation = require "./foundation"
 ck = require "./coffeekit"
 
-exports.NSButtonType = {
+exports.NSButtonType = NSButtonType =
    MomentaryLightButton   : 0,
    PushOnPushOffButton    : 1,
    ToggleButton           : 2,
@@ -14,9 +14,9 @@ exports.NSButtonType = {
    MomentaryPushInButton  : 7,
    MomentaryPushButton    : 0,
    MomentaryLight         : 7
-}
 
-exports.NSBezelStyle = {
+
+exports.NSBezelStyle = NSBezelStyle = 
    RoundedBezelStyle           : 1,
    RegularSquareBezelStyle     : 2,
    ThickSquareBezelStyle       : 3,
@@ -33,5 +33,4 @@ exports.NSBezelStyle = {
    RoundedDisclosureBezelStyle : 14,
    InlineBezelStyle            : 15,
    SmallIconButtonBezelStyle   : 2
-}
 

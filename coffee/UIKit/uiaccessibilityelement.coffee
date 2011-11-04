@@ -2,7 +2,7 @@
 class UIAccessibilityElement extends foundation.NSObject
 
   # Creating an Accessibility Element
-  initWithAccessibilityContainer: objc.invokeSelector ("initWithAccessibilityContainer:")
+  initWithAccessibilityContainer: objc.invokeSelector "initWithAccessibilityContainer:"
 
   # Accessing the Containing View
   ck.addProperty @::, "accessibilityContainer"

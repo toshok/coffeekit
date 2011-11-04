@@ -2,7 +2,7 @@
 class UITableViewController extends UIViewController
 
   # Initializing the UITableViewController Object
-  initWithStyle: objc.invokeSelector ("initWithStyle:")
+  initWithStyle: objc.invokeSelector "initWithStyle:"
 
   # Getting the Table View
   ck.addProperty @::, "tableView"

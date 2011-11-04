@@ -2,7 +2,7 @@
 class UIScrollView extends UIView
 
   # Managing the Display of Content
-  setContentOffset: objc.invokeSelector ("setContentOffset:animated:")
+  setContentOffset: objc.invokeSelector "setContentOffset:animated:"
   ck.addProperty @::, "contentOffset", { set: (v) -> setContentOffset v, false }
   ck.addProperty @::, "contentSize"
   ck.addProperty @::, "contentInset"
@@ -11,13 +11,13 @@ class UIScrollView extends UIView
   ck.addProperty @::, "scrollEnabled"
   ck.addProperty @::, "directionalLockEnabled"
   ck.addProperty @::, "scrollsToTop"
-  scrollRectToVisible: objc.invokeSelector ("scrollRectToVisible:animated:")
+  scrollRectToVisible: objc.invokeSelector "scrollRectToVisible:animated:"
   ck.addProperty @::, "pagingEnabled"
   ck.addProperty @::, "bounces"
   ck.addProperty @::, "alwaysBounceVertical"
   ck.addProperty @::, "alwaysBounceHorizontal"
-  touchesShouldBegin: objc.invokeSelector ("touchesShouldBegin:withEvent:inContentView:")
-  touchesShouldCancelInContentView: objc.invokeSelector ("touchesShouldCancelInContentView:")
+  touchesShouldBegin: objc.invokeSelector "touchesShouldBegin:withEvent:inContentView:"
+  touchesShouldCancelInContentView: objc.invokeSelector "touchesShouldCancelInContentView:"
   ck.addProperty @::, "canCancelContentTouches"
   ck.addProperty @::, "delaysContentTouches"
   ck.addProperty @::, "decelerationRate"
@@ -30,14 +30,14 @@ class UIScrollView extends UIView
   ck.addProperty @::, "scrollIndicatorInsets"
   ck.addProperty @::, "showsHorizontalScrollIndicator"
   ck.addProperty @::, "showsVerticalScrollIndicator"
-  flashScrollIndicators: objc.invokeSelector ("flashScrollIndicators")
+  flashScrollIndicators: objc.invokeSelector "flashScrollIndicators"
 
   # Zooming and Panning
   ck.addProperty @::, "panGestureRecognizer"
   ck.addProperty @::, "pinchGestureRecognizer"
-  zoomToRect: objc.invokeSelector ("zoomToRect:animated:")
+  zoomToRect: objc.invokeSelector "zoomToRect:animated:"
   ck.addProperty @::, "zoomScale", { set: (v) -> setZoomScale v, false }
-  setZoomScale: objc.invokeSelector ("setZoomScale:animated:")
+  setZoomScale: objc.invokeSelector "setZoomScale:animated:"
   ck.addProperty @::, "maximumZoomScale"
   ck.addProperty @::, "minimumZoomScale"
   ck.addProperty @::, "zoomBouncing"

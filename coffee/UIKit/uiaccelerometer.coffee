@@ -2,7 +2,7 @@
 class UIAccelerometer extends foundation.NSObject
 
   # Getting the Shared Accelerometer Object
-  sharedAccelerometer: objc.invokeSelector ("sharedAccelerometer")
+  sharedAccelerometer: objc.invokeSelector "sharedAccelerometer"
 
   # Accessing the Accelerometer Properties
   ck.addProperty @::, "updateInterval"

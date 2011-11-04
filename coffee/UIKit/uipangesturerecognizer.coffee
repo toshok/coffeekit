@@ -8,9 +8,9 @@ class UIPanGestureRecognizer extends UIGestureRecognizer
   ck.addProperty @::, "minimumNumberOfTouches"
 
   # Tracking the Location and Velocity of the Gesture
-  translationInView: objc.invokeSelector ("translationInView:")
-  setTranslationInView: objc.invokeSelector ("setTranslation:inView:")
-  velocityInView: objc.invokeSelector ("velocityInView:")
+  translationInView: objc.invokeSelector "translationInView:"
+  setTranslationInView: objc.invokeSelector "setTranslation:inView:"
+  velocityInView: objc.invokeSelector "velocityInView:"
 
 
 new ck.RegisterAttribute UIPanGestureRecognizer, "UIPanGestureRecognizer"

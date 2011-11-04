@@ -6,13 +6,13 @@ class UITabBar extends UIView
 
   # Configuring Items
   ck.addProperty @::, "items", { set: (v) -> setItems v, false }
-  setItems: objc.invokeSelector ("setItems:animated:")
+  setItems: objc.invokeSelector "setItems:animated:"
   ck.addProperty @::, "selectedItem"
 
   # Customizing Tab Bars
-  beginCustomizingItems: objc.invokeSelector ("beginCustomizingItems:")
-  endCustomizing: objc.invokeSelector ("endCustomizingAnimated:")
-  isCustomizing: objc.invokeSelector ("isCustomizing")
+  beginCustomizingItems: objc.invokeSelector "beginCustomizingItems:"
+  endCustomizing: objc.invokeSelector "endCustomizingAnimated:"
+  isCustomizing: objc.invokeSelector "isCustomizing"
 
   # Customizing Appearance
   ck.addProperty @::, "backgroundImage"

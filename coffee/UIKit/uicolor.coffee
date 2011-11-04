@@ -4,21 +4,21 @@ class UIColor extends foundation.NSObject
   toString: -> "UIColor"
 
   # Creating a UIColor Object from Component Values
-  @colorWithWhite: objc.invokeSelector ("colorWithWhite:alpha:")
-  @colorWithHSBA: objc.invokeSelector ("colorWithHue:saturation:brightness:alpha:")
-  @colorWithRGBA: objc.invokeSelector ("colorWithRed:green:blue:alpha:")
-  @colorWithCGColor: objc.invokeSelector ("colorWithCGColor:")
-  @colorWithPatternImage: objc.invokeSelector ("colorWithPatternImage:")
-  @colorWithCIColor: objc.invokeSelector ("colorWithCIColor:")
-  @colorWithAlphaComponent: objc.invokeSelector ("colorWithAlphaComponent:")
+  @colorWithWhite: objc.invokeSelector "colorWithWhite:alpha:"
+  @colorWithHSBA: objc.invokeSelector "colorWithHue:saturation:brightness:alpha:"
+  @colorWithRGBA: objc.invokeSelector "colorWithRed:green:blue:alpha:"
+  @colorWithCGColor: objc.invokeSelector "colorWithCGColor:"
+  @colorWithPatternImage: objc.invokeSelector "colorWithPatternImage:"
+  @colorWithCIColor: objc.invokeSelector "colorWithCIColor:"
+  @colorWithAlphaComponent: objc.invokeSelector "colorWithAlphaComponent:"
 
   # Initializing a UIColor Object
-  initWithWhite: objc.invokeSelector ("initWithWhite:alpha:")
-  initWithHSBA: objc.invokeSelector ("initWithHue:saturation:brightness:alpha:")
-  initWithRGBA: objc.invokeSelector ("initWithRed:green:blue:alpha:")
-  initWithCGColor: objc.invokeSelector ("initWithCGColor:")
-  initWithPatternImage: objc.invokeSelector ("initWithPatternImage:")
-  initWithCIColor: objc.invokeSelector ("initWithCIColor:")
+  initWithWhite: objc.invokeSelector "initWithWhite:alpha:"
+  initWithHSBA: objc.invokeSelector "initWithHue:saturation:brightness:alpha:"
+  initWithRGBA: objc.invokeSelector "initWithRed:green:blue:alpha:"
+  initWithCGColor: objc.invokeSelector "initWithCGColor:"
+  initWithPatternImage: objc.invokeSelector "initWithPatternImage:"
+  initWithCIColor: objc.invokeSelector "initWithCIColor:"
 
   # Creating a UIColor with Preset Component Values
   ck.addProperty @, "blackColor", set : null # readonly
@@ -48,14 +48,14 @@ class UIColor extends foundation.NSObject
   # Retrieving Color Information
   ck.addProperty @::, "CGColor"
   ck.addProperty @::, "CIColor"
-  getHSBA: objc.invokeSelector ("getHue:saturation:brightness:alpha:")
-  getRGBA: objc.invokeSelector ("getRed:green:blue:alpha:")
-  getWhite: objc.invokeSelector ("getWhite:alpha:")
+  getHSBA: objc.invokeSelector "getHue:saturation:brightness:alpha:"
+  getRGBA: objc.invokeSelector "getRed:green:blue:alpha:"
+  getWhite: objc.invokeSelector "getWhite:alpha:"
 
   # Drawing Operations
-  set: objc.invokeSelector ("set")
-  setFill: objc.invokeSelector ("setFill")
-  setStroke: objc.invokeSelector ("setStroke")
+  set: objc.invokeSelector "set"
+  setFill: objc.invokeSelector "setFill"
+  setStroke: objc.invokeSelector "setStroke"
 
 new ck.RegisterAttribute UIColor, "UIColor"
 exports.UIColor = UIColor

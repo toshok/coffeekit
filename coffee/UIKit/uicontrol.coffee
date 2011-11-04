@@ -4,15 +4,15 @@ class UIControl extends UIView
   constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
 
   # Preparing and Sending Action Messages
-  sendAction: objc.invokeSelector ("sendAction:to:forEvent:")
-  sendActionsForControlEvents: objc.invokeSelector ("sendActionsForControlEvents:")
-  addTarget: objc.invokeSelector ("addTarget:action:forControlEvents:")
-  removeTarget: objc.invokeSelector ("removeTarget:action:forControlEvents:")
-  actionsForTarget: objc.invokeSelector ("actionsForTarget:forControlEvent:")
+  sendAction: objc.invokeSelector "sendAction:to:forEvent:"
+  sendActionsForControlEvents: objc.invokeSelector "sendActionsForControlEvents:"
+  addTarget: objc.invokeSelector "addTarget:action:forControlEvents:"
+  removeTarget: objc.invokeSelector "removeTarget:action:forControlEvents:"
+  actionsForTarget: objc.invokeSelector "actionsForTarget:forControlEvent:"
 
   # FIXME these two should be properties
-  allTargets: objc.invokeSelector ("allTargets")
-  allControlEvents: objc.invokeSelector ("allControlEvents")
+  allTargets: objc.invokeSelector "allTargets"
+  allControlEvents: objc.invokeSelector "allControlEvents"
 
   # Setting and Getting Control Attributes
   ck.addProperty @::, "state"
@@ -23,10 +23,10 @@ class UIControl extends UIView
   ck.addProperty @::, "contentHorizontalAlignment"
 
   # Tracking Touches and Redrawing Controls
-  beginTrackingWithTouch: objc.invokeSelector ("beginTrackingWithTouch:withEvent:")
-  continueTrackingWithTouch: objc.invokeSelector ("continueTrackingWithTouch:withEvent:")
-  endTrackingWithTouch: objc.invokeSelector ("endTrackingWithTouch:withEvent:")
-  cancelTrackingWithEvent: objc.invokeSelector ("cancelTrackingWithEvent:")
+  beginTrackingWithTouch: objc.invokeSelector "beginTrackingWithTouch:withEvent:"
+  continueTrackingWithTouch: objc.invokeSelector "continueTrackingWithTouch:withEvent:"
+  endTrackingWithTouch: objc.invokeSelector "endTrackingWithTouch:withEvent:"
+  cancelTrackingWithEvent: objc.invokeSelector "cancelTrackingWithEvent:"
 
   ck.addProperty @::, "tracking"
   ck.addProperty @::, "touchInside"

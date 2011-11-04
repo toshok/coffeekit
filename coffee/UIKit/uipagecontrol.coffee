@@ -8,10 +8,10 @@ class UIPageControl extends UIControl
 
   # Updating the Page Display
   ck.addProperty @::, "defersCurrentPageDisplay"
-  updateCurrentPageDisplay: objc.invokeSelector ("updateCurrentPageDisplay")
+  updateCurrentPageDisplay: objc.invokeSelector "updateCurrentPageDisplay"
 
   # Resizing the Control
-  sizeForNumberOfPages: objc.invokeSelector ("sizeForNumberOfPages:")
+  sizeForNumberOfPages: objc.invokeSelector "sizeForNumberOfPages:"
 
 new ck.RegisterAttribute UIPageControl, "UIPageControl"
 exports.UIPageControl = UIPageControl

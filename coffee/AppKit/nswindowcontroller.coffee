@@ -9,8 +9,8 @@ class NSWindowController extends foundation.NSResponder
 
   ck.addProperty @::, "window"
 
-  initWithWindow: objc.invokeSelector ("initWithWindow:")
-  initWithWindowNibName: objc.invokeSelector ("initWithWindowNibName:")
+  initWithWindow: objc.invokeSelector "initWithWindow:"
+  initWithWindowNibName: objc.invokeSelector "initWithWindowNibName:"
 
 new ck.RegisterAttribute NSWindowController, "NSWindowController"
 exports.NSWindowController = NSWindowController

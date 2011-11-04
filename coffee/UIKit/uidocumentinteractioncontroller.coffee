@@ -2,18 +2,18 @@
 class UIDocumentInteractionController extends foundation.NSObject
 
   # Creating the Document Interaction Controller
-  @interactionControllerWithURL: objc.invokeSelector ("interactionControllerWithURL:")
+  @interactionControllerWithURL: objc.invokeSelector "interactionControllerWithURL:"
 
   # Presenting and Dismissing a Document Preview
-  presentPreview: objc.invokeSelector ("presentPreviewAnimated:")
-  dismissPreview: objc.invokeSelector ("dismissPreviewAnimated:")
+  presentPreview: objc.invokeSelector "presentPreviewAnimated:"
+  dismissPreview: objc.invokeSelector "dismissPreviewAnimated:"
 
   # Presenting and Dismissing Menus
-  presentOptionsMenuFromRect: objc.invokeSelector ("presentOptionsMenuFromRect:inView:animated:")
-  presentOptionsMenuFromBarButtonItem: objc.invokeSelector ("presentOptionsMenuFromBarButtonItem:animated:")
-  presentOpenInMenuFromRect: objc.invokeSelector ("presentOpenInMenuFromRect:inView:animated:")
-  presentOpenInMenuFromBarButtonItem: objc.invokeSelector ("presentOpenInMenuFromBarButtonItem:animated:")
-  dismissMenu: objc.invokeSelector ("dismissMenuAnimated:")
+  presentOptionsMenuFromRect: objc.invokeSelector "presentOptionsMenuFromRect:inView:animated:"
+  presentOptionsMenuFromBarButtonItem: objc.invokeSelector "presentOptionsMenuFromBarButtonItem:animated:"
+  presentOpenInMenuFromRect: objc.invokeSelector "presentOpenInMenuFromRect:inView:animated:"
+  presentOpenInMenuFromBarButtonItem: objc.invokeSelector "presentOpenInMenuFromBarButtonItem:animated:"
+  dismissMenu: objc.invokeSelector "dismissMenuAnimated:"
 
   # Accessing the Target Document’s Attributes
   ck.addProperty @::, "URL"

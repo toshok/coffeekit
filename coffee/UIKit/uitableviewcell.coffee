@@ -2,12 +2,12 @@
 class UITableViewCell extends UIView
 
   # Initializing a UITableViewCell Object
-  initWithStyle: objc.invokeSelector ("initWithStyle:reuseIdentifier:")
-  initWithFrame: objc.invokeSelector ("initWithFrame:reuseIdentifier:") # Deprecated in iOS 3.0
+  initWithStyle: objc.invokeSelector "initWithStyle:reuseIdentifier:"
+  initWithFrame: objc.invokeSelector "initWithFrame:reuseIdentifier:" # Deprecated in iOS 3.0
 
   # Reusing Cells
   ck.addProperty @::, "reuseIdentifier"
-  prepareForReuse: objc.invokeSelector ("prepareForReuse")
+  prepareForReuse: objc.invokeSelector "prepareForReuse"
 
   # Managing Text as Cell Content
   ck.addProperty @::, "textLabel"
@@ -40,20 +40,20 @@ class UITableViewCell extends UIView
   # Managing Cell Selection and Highlighting
   ck.addProperty @::, "selected", { set: (v) -> setSelected v, false }
   ck.addProperty @::, "selectionStyle"
-  setSelected: objc.invokeSelector ("setSelected:animated:")
+  setSelected: objc.invokeSelector "setSelected:animated:"
   ck.addProperty @::, "highlighted", { set: (v) -> setHighlighted v, false }
-  setHighlighted: objc.invokeSelector ("setHighlighted:animated:")
+  setHighlighted: objc.invokeSelector "setHighlighted:animated:"
 
   # Editing the Cell
   ck.addProperty @::, "editing", { set: (v) -> setEditing v, false }
-  setEditing: objc.invokeSelector ("setEditing:animated:")
+  setEditing: objc.invokeSelector "setEditing:animated:"
   ck.addProperty @::, "editingStyle"
   ck.addProperty @::, "showingDeleteConfirmation"
   ck.addProperty @::, "showsReorderControl"
 
   # Adjusting to State Transitions
-  willTransitionToState: objc.invokeSelector ("willTransitionToState:")
-  didTransitionToState: objc.invokeSelector ("didTransitionToState:")
+  willTransitionToState: objc.invokeSelector "willTransitionToState:"
+  didTransitionToState: objc.invokeSelector "didTransitionToState:"
 
   # Managing Content Indentation
   ck.addProperty @::, "indentationLevel"

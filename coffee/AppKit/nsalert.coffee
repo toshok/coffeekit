@@ -3,13 +3,13 @@ class NSAlert extends foundation.NSObject
   constructor: (handle) ->
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
-  init: objc.invokeSelector ("init")
-  @alertWithError: objc.invokeSelector ("alertWithError:")
-  @alertWithMessageText: objc.invokeSelector ("alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:")
+  init: objc.invokeSelector "init"
+  @alertWithError: objc.invokeSelector "alertWithError:"
+  @alertWithMessageText: objc.invokeSelector "alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:"
 
   # Configuring Alerts
   #
-  layout: objc.invokeSelector ("layout")
+  layout: objc.invokeSelector "layout"
   ck.addProperty @::, "alertStyle" 
   ck.addProperty @::, "accessoryView"
   ck.addProperty @::, "showsHelp"
@@ -18,8 +18,8 @@ class NSAlert extends foundation.NSObject
 
   # Displaying Alerts
   #
-  runModal: objc.invokeSelector ("runModal")
-  beginSheetModalForWindow: objc.invokeSelector ("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo")
+  runModal: objc.invokeSelector "runModal"
+  beginSheetModalForWindow: objc.invokeSelector "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo"
   ck.addProperty @::, "suppressionButton", { set: null } # read-only
   ck.addProperty @::, "showsSuppressionButton"
 
@@ -35,7 +35,7 @@ class NSAlert extends foundation.NSObject
   # Accessing Alert Buttons
   #
   ck.addProperty @::, "buttons", { set: null } # read-only
-  addButtonWithTitle: objc.invokeSelector ("addButtonWithTitle:")
+  addButtonWithTitle: objc.invokeSelector "addButtonWithTitle:"
 
   # Getting Alert Panels
   ck.addProperty @::, "window", { set: null} # read-only
