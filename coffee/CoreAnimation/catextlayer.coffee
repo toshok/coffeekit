@@ -5,17 +5,17 @@ class CATextLayer extends CALayer
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Getting and Setting the Text
-  ck.objcProperty @::, "string"
+  ck.addProperty @::, "string"
 
   # Text Visual Properties
-  ck.objcProperty @::, "font"
-  ck.objcProperty @::, "fontSize"
-  ck.objcProperty @::, "foregroundColor"
+  ck.addProperty @::, "font"
+  ck.addProperty @::, "fontSize"
+  ck.addProperty @::, "foregroundColor"
 
   # Text Alignment and Truncation
-  ck.objcProperty @::, "wrapped"
-  ck.objcProperty @::, "alignmentMode"
-  ck.objcProperty @::, "truncationMode"
+  ck.addProperty @::, "wrapped"
+  ck.addProperty @::, "alignmentMode"
+  ck.addProperty @::, "truncationMode"
 
 new ck.RegisterAttribute CATextLayer, "CATextLayer"
 exports.CATextLayer = CATextLayer

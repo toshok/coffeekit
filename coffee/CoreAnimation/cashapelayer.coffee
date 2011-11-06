@@ -5,20 +5,20 @@ class CAShapeLayer extends CALayer
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Specifying the Shape Path
-  ck.objcProperty @::, "path"
+  ck.addProperty @::, "path"
 
   # Accessing Shape Style Properties
-  ck.objcProperty @::, "fillColor"
-  ck.objcProperty @::, "fillRule"
-  ck.objcProperty @::, "lineCap"
-  ck.objcProperty @::, "lineDashPattern"
-  ck.objcProperty @::, "lineDashPhase"
-  ck.objcProperty @::, "lineJoin"
-  ck.objcProperty @::, "lineWidth"
-  ck.objcProperty @::, "miterLimit"
-  ck.objcProperty @::, "strokeColor"
-  ck.objcProperty @::, "strokeStart"
-  ck.objcProperty @::, "strokeEnd"
+  ck.addProperty @::, "fillColor"
+  ck.addProperty @::, "fillRule"
+  ck.addProperty @::, "lineCap"
+  ck.addProperty @::, "lineDashPattern"
+  ck.addProperty @::, "lineDashPhase"
+  ck.addProperty @::, "lineJoin"
+  ck.addProperty @::, "lineWidth"
+  ck.addProperty @::, "miterLimit"
+  ck.addProperty @::, "strokeColor"
+  ck.addProperty @::, "strokeStart"
+  ck.addProperty @::, "strokeEnd"
 
 new ck.RegisterAttribute CAShapeLayer, "CAShapeLayer"
 exports.CAShapeLayer = CAShapeLayer

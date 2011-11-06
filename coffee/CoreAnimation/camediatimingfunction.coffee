@@ -1,14 +1,14 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAMediaTimingFunction extends NSObject
+class CAMediaTimingFunction extends foundation.NSObject
 
   # Creating Timing Functions
-  @functionWithName: objc.generateFunctionFromSelector ("functionWithName:")
-  @functionWithControlPoints: objc.generateFunctionFromSelector ("functionWithControlPoints::::")
-  initWithControlPoints: objc.generateFunctionFromSelector ("initWithControlPoints::::")
+  @functionWithName: objc.invokeSelector "functionWithName:"
+  @functionWithControlPoints: objc.invokeSelector "functionWithControlPoints::::"
+  initWithControlPoints: objc.invokeSelector "initWithControlPoints::::"
 
   # Accessing the Control Points
-  getControlPointAtIndex: objc.generateFunctionFromSelector ("getControlPointAtIndex:values:")
+  getControlPointAtIndex: objc.invokeSelector "getControlPointAtIndex:values:"
 
 new ck.RegisterAttribute CAMediaTimingFunction, "CAMediaTimingFunction"
 exports.CAMediaTimingFunction = CAMediaTimingFunction

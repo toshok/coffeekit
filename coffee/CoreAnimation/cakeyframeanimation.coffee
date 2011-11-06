@@ -3,21 +3,21 @@
 class CAKeyFrameAnimation extends CAAnimation
 
   # Providing Keyframe Values
-  ck.objcProperty @::, "path"
-  ck.objcProperty @::, "values"
+  ck.addProperty @::, "path"
+  ck.addProperty @::, "values"
 
   # Keyframe Timing
-  ck.objcProperty @::, "keyTimes"
-  ck.objcProperty @::, "timingFunctions"
-  ck.objcProperty @::, "calculationMode"
+  ck.addProperty @::, "keyTimes"
+  ck.addProperty @::, "timingFunctions"
+  ck.addProperty @::, "calculationMode"
 
   # Rotation Mode Attribute
-  ck.objcProperty @::, "rotationMode"
+  ck.addProperty @::, "rotationMode"
 
   # Cubic Mode Attributes
-  ck.objcProperty @::, "tensionValues"
-  ck.objcProperty @::, "continuityValues"
-  ck.objcProperty @::, "biasValues"
+  ck.addProperty @::, "tensionValues"
+  ck.addProperty @::, "continuityValues"
+  ck.addProperty @::, "biasValues"
 
 new ck.RegisterAttribute CAKeyFrameAnimation, "CAKeyFrameAnimation"
 exports.CAKeyFrameAnimation = CAKeyFrameAnimation

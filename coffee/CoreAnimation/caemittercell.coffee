@@ -1,57 +1,57 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAEmitterCell extends NSObject
+class CAEmitterCell extends foundation.NSObject
 
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Creating and Initializing an Emitter Cell
-  @emitterCell: objc.generateFunctionFromSelector ("emitterCell")
+  @emitterCell: objc.invokeSelector "emitterCell"
 
   # Providing Emitter Cell Content
-  ck.objcProperty @::, "contents"
-  ck.objcProperty @::, "contentsRect"
-  ck.objcProperty @::, "emitterCells"
+  ck.addProperty @::, "contents"
+  ck.addProperty @::, "contentsRect"
+  ck.addProperty @::, "emitterCells"
 
   # Setting Emitter Cell Visual Attributes
-  ck.objcProperty @::, "enabled"
-  ck.objcProperty @::, "color"
-  ck.objcProperty @::, "redRange"
-  ck.objcProperty @::, "greenRange"
-  ck.objcProperty @::, "blueRange"
-  ck.objcProperty @::, "alphaRange"
-  ck.objcProperty @::, "redSpeed"
-  ck.objcProperty @::, "greenSpeed"
-  ck.objcProperty @::, "blueSpeed"
-  ck.objcProperty @::, "alphaSpeed"
-  ck.objcProperty @::, "magnificationFilter"
-  ck.objcProperty @::, "minificationFilter"
-  ck.objcProperty @::, "minificationFilterBias"
-  ck.objcProperty @::, "scale"
-  ck.objcProperty @::, "scaleRange"
-  ck.objcProperty @::, "name"
-  ck.objcProperty @::, "style"
+  ck.addProperty @::, "enabled"
+  ck.addProperty @::, "color"
+  ck.addProperty @::, "redRange"
+  ck.addProperty @::, "greenRange"
+  ck.addProperty @::, "blueRange"
+  ck.addProperty @::, "alphaRange"
+  ck.addProperty @::, "redSpeed"
+  ck.addProperty @::, "greenSpeed"
+  ck.addProperty @::, "blueSpeed"
+  ck.addProperty @::, "alphaSpeed"
+  ck.addProperty @::, "magnificationFilter"
+  ck.addProperty @::, "minificationFilter"
+  ck.addProperty @::, "minificationFilterBias"
+  ck.addProperty @::, "scale"
+  ck.addProperty @::, "scaleRange"
+  ck.addProperty @::, "name"
+  ck.addProperty @::, "style"
 
   # Emitter Cell Motion Attributes
-  ck.objcProperty @::, "spin"
-  ck.objcProperty @::, "spinRange"
-  ck.objcProperty @::, "emissionLatitude"
-  ck.objcProperty @::, "emissionLongitude"
-  ck.objcProperty @::, "emissionRange"
+  ck.addProperty @::, "spin"
+  ck.addProperty @::, "spinRange"
+  ck.addProperty @::, "emissionLatitude"
+  ck.addProperty @::, "emissionLongitude"
+  ck.addProperty @::, "emissionRange"
 
   # Emission Cell Temporal Attributes
-  ck.objcProperty @::, "lifetime"
-  ck.objcProperty @::, "lifetimeRange"
-  ck.objcProperty @::, "birthRate"
-  ck.objcProperty @::, "scaleSpeed"
-  ck.objcProperty @::, "velocity"
-  ck.objcProperty @::, "velocityRange"
-  ck.objcProperty @::, "xAcceleration"
-  ck.objcProperty @::, "yAcceleration"
-  ck.objcProperty @::, "zAcceleration"
+  ck.addProperty @::, "lifetime"
+  ck.addProperty @::, "lifetimeRange"
+  ck.addProperty @::, "birthRate"
+  ck.addProperty @::, "scaleSpeed"
+  ck.addProperty @::, "velocity"
+  ck.addProperty @::, "velocityRange"
+  ck.addProperty @::, "xAcceleration"
+  ck.addProperty @::, "yAcceleration"
+  ck.addProperty @::, "zAcceleration"
 
   # Key-Value Coding Extensions
-  @defaultValueForKey: objc.generateFunctionFromSelector ("defaultValueForKey:")
-  shouldArchiveValueForKey: objc.generateFunctionFromSelector ("shouldArchiveValueForKey:")
+  @defaultValueForKey: objc.invokeSelector "defaultValueForKey:"
+  shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"
 
 new ck.RegisterAttribute CAEmitterCell, "CAEmitterCell"
 exports.CAEmitterCell = CAEmitterCell

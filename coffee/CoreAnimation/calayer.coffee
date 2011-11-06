@@ -1,138 +1,138 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CALayer extends NSObject
+class CALayer extends foundation.NSObject
 
   # Creating a Layer
-  @layer: objc.generateFunctionFromSelector ("layer")
-  init: objc.generateFunctionFromSelector ("init")
-  initWithLayer: objc.generateFunctionFromSelector ("initWithLayer:")
+  @layer: objc.invokeSelector "layer"
+  init: objc.invokeSelector "init"
+  initWithLayer: objc.invokeSelector "initWithLayer:"
 
   # Accessing the Presentation Layer
-  presentationLayer: objc.generateFunctionFromSelector ("presentationLayer")
-  modelLayer: objc.generateFunctionFromSelector ("modelLayer")
+  presentationLayer: objc.invokeSelector "presentationLayer"
+  modelLayer: objc.invokeSelector "modelLayer"
 
   # Modifying the Layer Geometry
-  ck.objcProperty @::, "frame"
-  ck.objcProperty @::, "bounds"
-  ck.objcProperty @::, "position"
-  ck.objcProperty @::, "zPosition"
-  ck.objcProperty @::, "anchorPointZ"
-  ck.objcProperty @::, "anchorPoint"
-  ck.objcProperty @::, "contentsScale"
-  affineTransform: objc.generateFunctionFromSelector ("affineTransform")
-  setAffineTransform: objc.generateFunctionFromSelector ("setAffineTransform:")
-  ck.objcProperty @::, "transform"
-  ck.objcProperty @::, "sublayerTransform"
+  ck.addProperty @::, "frame"
+  ck.addProperty @::, "bounds"
+  ck.addProperty @::, "position"
+  ck.addProperty @::, "zPosition"
+  ck.addProperty @::, "anchorPointZ"
+  ck.addProperty @::, "anchorPoint"
+  ck.addProperty @::, "contentsScale"
+  affineTransform: objc.invokeSelector "affineTransform"
+  setAffineTransform: objc.invokeSelector "setAffineTransform:"
+  ck.addProperty @::, "transform"
+  ck.addProperty @::, "sublayerTransform"
 
   # Providing Layer Content
-  ck.objcProperty @::, "contents"
-  ck.objcProperty @::, "contentsRect"
-  ck.objcProperty @::, "contentsCenter"
-  display: objc.generateFunctionFromSelector ("display")
-  displayLayer: objc.generateFunctionFromSelector ("displayLayer:")  # delegate method
-  drawInContext: objc.generateFunctionFromSelector ("drawInContext:")
-  drawLayer: objc.generateFunctionFromSelector ("drawLayer:inContext:")  # delegate method
-  ck.objcProperty @::, "opaque"
-  ck.objcProperty @::, "edgeAntialiasingMask"
-  contentsAreFlipped: objc.generateFunctionFromSelector ("contentsAreFlipped")
-  ck.objcProperty @::, "geometryFlipped"
+  ck.addProperty @::, "contents"
+  ck.addProperty @::, "contentsRect"
+  ck.addProperty @::, "contentsCenter"
+  display: objc.invokeSelector "display"
+  displayLayer: objc.invokeSelector "displayLayer:"  # delegate method
+  drawInContext: objc.invokeSelector "drawInContext:"
+  drawLayer: objc.invokeSelector "drawLayer:inContext:"  # delegate method
+  ck.addProperty @::, "opaque"
+  ck.addProperty @::, "edgeAntialiasingMask"
+  contentsAreFlipped: objc.invokeSelector "contentsAreFlipped"
+  ck.addProperty @::, "geometryFlipped"
 
   # Style Attributes
-  ck.objcProperty @::, "contentsGravity"
-  ck.objcProperty @::, "opacity"
-  ck.objcProperty @::, "hidden"
-  ck.objcProperty @::, "masksToBounds"
-  ck.objcProperty @::, "doubleSided"
-  ck.objcProperty @::, "mask"
-  ck.objcProperty @::, "cornerRadius"
-  ck.objcProperty @::, "borderWidth"
-  ck.objcProperty @::, "borderColor"
-  ck.objcProperty @::, "backgroundColor"
-  ck.objcProperty @::, "backgroundFilters"
-  ck.objcProperty @::, "shadowOpacity"
-  ck.objcProperty @::, "shadowRadius"
-  ck.objcProperty @::, "shadowOffset"
-  ck.objcProperty @::, "shadowColor"
-  ck.objcProperty @::, "shadowPath"
-  ck.objcProperty @::, "filters"
-  ck.objcProperty @::, "compositingFilter"
-  ck.objcProperty @::, "style"
-  ck.objcProperty @::, "minificationFilter"
-  ck.objcProperty @::, "minificationFilterBias"
-  ck.objcProperty @::, "magnificationFilter"
+  ck.addProperty @::, "contentsGravity"
+  ck.addProperty @::, "opacity"
+  ck.addProperty @::, "hidden"
+  ck.addProperty @::, "masksToBounds"
+  ck.addProperty @::, "doubleSided"
+  ck.addProperty @::, "mask"
+  ck.addProperty @::, "cornerRadius"
+  ck.addProperty @::, "borderWidth"
+  ck.addProperty @::, "borderColor"
+  ck.addProperty @::, "backgroundColor"
+  ck.addProperty @::, "backgroundFilters"
+  ck.addProperty @::, "shadowOpacity"
+  ck.addProperty @::, "shadowRadius"
+  ck.addProperty @::, "shadowOffset"
+  ck.addProperty @::, "shadowColor"
+  ck.addProperty @::, "shadowPath"
+  ck.addProperty @::, "filters"
+  ck.addProperty @::, "compositingFilter"
+  ck.addProperty @::, "style"
+  ck.addProperty @::, "minificationFilter"
+  ck.addProperty @::, "minificationFilterBias"
+  ck.addProperty @::, "magnificationFilter"
 
   # Managing the Layer Hierarchy
-  ck.objcProperty @::, "sublayers"
-  ck.objcProperty @::, "superlayer"
-  addSublayer: objc.generateFunctionFromSelector ("addSublayer:")
-  removeFromSuperlayer: objc.generateFunctionFromSelector ("removeFromSuperlayer")
-  insertSublayerAtIndex: objc.generateFunctionFromSelector ("insertSublayer:atIndex:")
-  insertSublayerBelow: objc.generateFunctionFromSelector ("insertSublayer:below:")
-  insertSublayerAbove: objc.generateFunctionFromSelector ("insertSublayer:above:")
-  replaceSublayerWith: objc.generateFunctionFromSelector ("replaceSublayer:with:")
+  ck.addProperty @::, "sublayers"
+  ck.addProperty @::, "superlayer"
+  addSublayer: objc.invokeSelector "addSublayer:"
+  removeFromSuperlayer: objc.invokeSelector "removeFromSuperlayer"
+  insertSublayerAtIndex: objc.invokeSelector "insertSublayer:atIndex:"
+  insertSublayerBelow: objc.invokeSelector "insertSublayer:below:"
+  insertSublayerAbove: objc.invokeSelector "insertSublayer:above:"
+  replaceSublayerWith: objc.invokeSelector "replaceSublayer:with:"
 
   # Updating Layer Display
-  setNeedsDisplay: objc.generateFunctionFromSelector ("setNeedsDisplay")
-  ck.objcProperty @::, "needsDisplayOnBoundsChange"
-  displayIfNeeded: objc.generateFunctionFromSelector ("displayIfNeeded")
-  needsDisplay: objc.generateFunctionFromSelector ("needsDisplay")
-  @needsDisplayForKey: objc.generateFunctionFromSelector ("needsDisplayForKey:")
-  setNeedsDisplayInRect: objc.generateFunctionFromSelector ("setNeedsDisplayInRect:")
+  setNeedsDisplay: objc.invokeSelector "setNeedsDisplay"
+  ck.addProperty @::, "needsDisplayOnBoundsChange"
+  displayIfNeeded: objc.invokeSelector "displayIfNeeded"
+  needsDisplay: objc.invokeSelector "needsDisplay"
+  @needsDisplayForKey: objc.invokeSelector "needsDisplayForKey:"
+  setNeedsDisplayInRect: objc.invokeSelector "setNeedsDisplayInRect:"
 
   # Layer Animations
-  addAnimation: objc.generateFunctionFromSelector ("addAnimation:forKey:")
-  animation: objc.generateFunctionFromSelector ("animationForKey:")
-  removeAllAnimations: objc.generateFunctionFromSelector ("removeAllAnimations")
-  removeAnimation: objc.generateFunctionFromSelector ("removeAnimationForKey:")
-  animationKeys: objc.generateFunctionFromSelector ("animationKeys")
+  addAnimation: objc.invokeSelector "addAnimation:forKey:"
+  animation: objc.invokeSelector "animationForKey:"
+  removeAllAnimations: objc.invokeSelector "removeAllAnimations"
+  removeAnimation: objc.invokeSelector "removeAnimationForKey:"
+  animationKeys: objc.invokeSelector "animationKeys"
 
   # Managing Layer Resizing and Layout
-  ck.objcProperty @::, "layoutManager"
-  ck.objcProperty @::, "needsLayout"
-  ck.objcProperty @::, "constraints"
-  ck.objcProperty @::, "name"
-  ck.objcProperty @::, "autoresizingMask"
-  addConstraint: objc.generateFunctionFromSelector ("addConstraint:")
-  resizeWithOldSuperlayerSize: objc.generateFunctionFromSelector ("resizeWithOldSuperlayerSize:")
-  resizeSublayersWithOldSize: objc.generateFunctionFromSelector ("resizeSublayersWithOldSize:")
-  preferredFrameSize: objc.generateFunctionFromSelector ("preferredFrameSize")
-  layoutIfNeeded: objc.generateFunctionFromSelector ("layoutIfNeeded")
-  layoutSublayers: objc.generateFunctionFromSelector ("layoutSublayers")
+  ck.addProperty @::, "layoutManager"
+  ck.addProperty @::, "needsLayout"
+  ck.addProperty @::, "constraints"
+  ck.addProperty @::, "name"
+  ck.addProperty @::, "autoresizingMask"
+  addConstraint: objc.invokeSelector "addConstraint:"
+  resizeWithOldSuperlayerSize: objc.invokeSelector "resizeWithOldSuperlayerSize:"
+  resizeSublayersWithOldSize: objc.invokeSelector "resizeSublayersWithOldSize:"
+  preferredFrameSize: objc.invokeSelector "preferredFrameSize"
+  layoutIfNeeded: objc.invokeSelector "layoutIfNeeded"
+  layoutSublayers: objc.invokeSelector "layoutSublayers"
 
   # Actions
-  ck.objcProperty @::, "actions"
-  @defaultActionForKey: objc.generateFunctionFromSelector ("defaultActionForKey:")
-  actionForKey: objc.generateFunctionFromSelector ("actionForKey:")
-  actionForLayer: objc.generateFunctionFromSelector ("actionForLayer:forKey:")  # delegate method
+  ck.addProperty @::, "actions"
+  @defaultActionForKey: objc.invokeSelector "defaultActionForKey:"
+  actionForKey: objc.invokeSelector "actionForKey:"
+  actionForLayer: objc.invokeSelector "actionForLayer:forKey:"  # delegate method
 
   # Mapping Between Coordinate and Time Spaces
-  convertPointFromLayer: objc.generateFunctionFromSelector ("convertPoint:fromLayer:")
-  convertPointToLayer: objc.generateFunctionFromSelector ("convertPoint:toLayer:")
-  convertRectFromLayer: objc.generateFunctionFromSelector ("convertRect:fromLayer:")
-  convertRectToLayer: objc.generateFunctionFromSelector ("convertRect:toLayer:")
-  convertTimeFromLayer: objc.generateFunctionFromSelector ("convertTime:fromLayer:")
-  convertTimeToLayer: objc.generateFunctionFromSelector ("convertTime:toLayer:")
+  convertPointFromLayer: objc.invokeSelector "convertPoint:fromLayer:"
+  convertPointToLayer: objc.invokeSelector "convertPoint:toLayer:"
+  convertRectFromLayer: objc.invokeSelector "convertRect:fromLayer:"
+  convertRectToLayer: objc.invokeSelector "convertRect:toLayer:"
+  convertTimeFromLayer: objc.invokeSelector "convertTime:fromLayer:"
+  convertTimeToLayer: objc.invokeSelector "convertTime:toLayer:"
 
   # Hit Testing
-  hitTest: objc.generateFunctionFromSelector ("hitTest:")
-  containsPoint: objc.generateFunctionFromSelector ("containsPoint:")
+  hitTest: objc.invokeSelector "hitTest:"
+  containsPoint: objc.invokeSelector "containsPoint:"
 
   # Rendering
-  renderInContext: objc.generateFunctionFromSelector ("renderInContext:")
-  ck.objcProperty @::, "shouldRasterize"
-  ck.objcProperty @::, "rasterizationScale"
+  renderInContext: objc.invokeSelector "renderInContext:"
+  ck.addProperty @::, "shouldRasterize"
+  ck.addProperty @::, "rasterizationScale"
 
   # Scrolling
-  ck.objcProperty @::, "visibleRect"
-  scrollPoint: objc.generateFunctionFromSelector ("scrollPoint:")
-  scrollRectToVisible: objc.generateFunctionFromSelector ("scrollRectToVisible:")
+  ck.addProperty @::, "visibleRect"
+  scrollPoint: objc.invokeSelector "scrollPoint:"
+  scrollRectToVisible: objc.invokeSelector "scrollRectToVisible:"
 
   # Modifying the Delegate
-  ck.objcProperty @::, "delegate"
+  ck.addProperty @::, "delegate"
 
   # Key-Value Coding Extensions
-  shouldArchiveValueForKey: objc.generateFunctionFromSelector ("shouldArchiveValueForKey:")
-  @defaultValueForKey: objc.generateFunctionFromSelector ("defaultValueForKey:")
+  shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"
+  @defaultValueForKey: objc.invokeSelector "defaultValueForKey:"
 
 new ck.RegisterAttribute CALayer, "CALayer"
 exports.CALayer = CALayer

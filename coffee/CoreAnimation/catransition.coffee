@@ -1,19 +1,19 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CATransition extends NSObject
+class CATransition extends foundation.NSObject
 
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Transition Start and End Point
-  ck.objcProperty @::, "startProgress"
-  ck.objcProperty @::, "endProgress"
+  ck.addProperty @::, "startProgress"
+  ck.addProperty @::, "endProgress"
 
   # Transition Properties
-  ck.objcProperty @::, "type"
-  ck.objcProperty @::, "subtype"
+  ck.addProperty @::, "type"
+  ck.addProperty @::, "subtype"
 
   # Custom Transition Filter
-  ck.objcProperty @::, "filter"
+  ck.addProperty @::, "filter"
 
 new ck.RegisterAttribute CATransition, "CATransition"
 exports.CATransition = CATransition

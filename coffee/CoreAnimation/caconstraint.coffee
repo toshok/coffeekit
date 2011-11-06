@@ -1,21 +1,21 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAConstraint extends NSObject
+class CAConstraint extends foundation.NSObject
 
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Create a New Constraint
-  @constraintWithAttributeAndScaleAndOffset: objc.generateFunctionFromSelector ("constraintWithAttribute:relativeTo:attribute:scale:offset:")
-  @constraintWithAttributeAndOffset: objc.generateFunctionFromSelector ("constraintWithAttribute:relativeTo:attribute:offset:")
-  @constraintWithAttribute: objc.generateFunctionFromSelector ("constraintWithAttribute:relativeTo:attribute:")
-  init: objc.generateFunctionFromSelector ("initWithAttribute:relativeTo:attribute:scale:offset:")
+  @constraintWithAttributeAndScaleAndOffset: objc.invokeSelector "constraintWithAttribute:relativeTo:attribute:scale:offset:"
+  @constraintWithAttributeAndOffset: objc.invokeSelector "constraintWithAttribute:relativeTo:attribute:offset:"
+  @constraintWithAttribute: objc.invokeSelector "constraintWithAttribute:relativeTo:attribute:"
+  init: objc.invokeSelector "initWithAttribute:relativeTo:attribute:scale:offset:"
 
   # Accessing Constraint Values
-  ck.objcProperty @::, "attribute"
-  ck.objcProperty @::, "offset"
-  ck.objcProperty @::, "scale"
-  ck.objcProperty @::, "sourceAttribute"
-  ck.objcProperty @::, "sourceName"
+  ck.addProperty @::, "attribute"
+  ck.addProperty @::, "offset"
+  ck.addProperty @::, "scale"
+  ck.addProperty @::, "sourceAttribute"
+  ck.addProperty @::, "sourceName"
 
 new ck.RegisterAttribute CAConstraint, "CAConstraint"
 exports.CAConstraint = CAConstraint

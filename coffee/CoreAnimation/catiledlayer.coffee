@@ -5,14 +5,14 @@ class CATiledLayer extends CALayer
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Visual Fade
-  @fadeDuration: objc.generateFunctionFromSelector ("fadeDuration")
+  @fadeDuration: objc.invokeSelector "fadeDuration"
 
   # Levels of Detail
-  ck.objcProperty @::, "levelsOfDetail"
-  ck.objcProperty @::, "levelsOfDetailBias"
+  ck.addProperty @::, "levelsOfDetail"
+  ck.addProperty @::, "levelsOfDetailBias"
 
   # Layer Tile Size
-  ck.objcProperty @::, "tileSize"
+  ck.addProperty @::, "tileSize"
 
 new ck.RegisterAttribute CATiledLayer, "CATiledLayer"
 exports.CATiledLayer = CATiledLayer

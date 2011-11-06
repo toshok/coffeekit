@@ -3,7 +3,7 @@
 class CAAnimationGroup extends CAAnimation
 
   # Grouped Animations
-  ck.objcProperty @::, "animations"
+  ck.addProperty @::, "animations"
 
 new ck.RegisterAttribute CAAnimationGroup, "CAAnimationGroup"
 exports.CAAnimationGroup = CAAnimationGroup

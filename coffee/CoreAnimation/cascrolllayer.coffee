@@ -5,11 +5,11 @@ class CAScrollLayer extends CALayer
   constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
 
   # Scrolling Constraints
-  ck.objcProperty @::, "scrollMode"
+  ck.addProperty @::, "scrollMode"
 
   # Scrolling the Layer
-  scrollToPoint: objc.generateFunctionFromSelector ("scrollToPoint:")
-  scrollToRect: objc.generateFunctionFromSelector ("scrollToRect:")
+  scrollToPoint: objc.invokeSelector "scrollToPoint:"
+  scrollToRect: objc.invokeSelector "scrollToRect:"
 
 new ck.RegisterAttribute CAScrollLayer, "CAScrollLayer"
 exports.CAScrollLayer = CAScrollLayer
