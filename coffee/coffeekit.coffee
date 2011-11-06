@@ -21,10 +21,11 @@ class RegisterAttribute extends Attribute
 exports.RegisterAttribute = RegisterAttribute
 
 class SelectorAttribute extends Attribute
-  constructor: (obj, sel_name) ->
+  constructor: (obj, sel_name, type_sig) ->
     super obj
     obj._ck_exported = true
     obj._ck_sel = sel_name
+    obj._ck_typeSig = type_sig ? "@@:"
 exports.SelectorAttribute = SelectorAttribute
 
 class MixinProtocolAttribute extends Attribute
@@ -164,6 +165,10 @@ addProperty = (obj, jsprop, opts) ->
                                              getter._ck_appearance = true
 
 exports.addProperty = addProperty
+
+addConstant = (obj, jsprop, v) ->
+  obj.__defineGetter__ jsprop, -> v
+exports.addConstant = addConstant
 
 objcIBOutlet = (obj, jsprop, ctor) -> 
   # this needs to define the ivar at class registration time.  we add
