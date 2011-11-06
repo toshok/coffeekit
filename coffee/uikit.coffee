@@ -4,6 +4,7 @@ objc.requireFramework "UIKit"
 
 foundation = require "./foundation"
 ck = require "./coffeekit"
+coreanimation = require "./coreanimation"
 
 exports.UIButtonType = UIButtonType =
    custom: 0,

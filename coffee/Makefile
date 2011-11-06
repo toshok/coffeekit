@@ -92,6 +92,7 @@ FRAMEWORK_SOURCES_UIKit= \
 	UIKit/uimenuitem.coffee \
 	UIKit/uiresponder.coffee \
 	UIKit/uiview.coffee \
+	UIKit/uicanvasview.coffee \
 	UIKit/uiwebview.coffee \
 	UIKit/uitoolbar.coffee \
 	UIKit/uitableviewcell.coffee \
