@@ -67,7 +67,7 @@ exports.UIBarButtonSystemItem = UIBarButtonSystemItem =
    pageCurl: 23     # iOS 4.0 and later
 
 
-exports.UIControlEvent = UIControlEvent
+exports.UIControlEvent = UIControlEvent =
    TouchDown           : 1 <<  0,
    TouchDownRepeat     : 1 <<  1,
    TouchDragInside     : 1 <<  2,
