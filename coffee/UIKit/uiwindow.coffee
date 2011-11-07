@@ -4,10 +4,7 @@
 class UIWindow extends UIView
 
   constructor: (handle) ->
-    console.log "in UIWindow.ctor handle = #{handle}"
     super (if handle then handle else objc.allocInstance (@.constructor.name))
-
-  toString: -> "[UIWindow #{@handle}]"
 
   # Configuring Windows
   ck.addProperty @::, "windowLevel"

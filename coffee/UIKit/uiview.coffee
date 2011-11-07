@@ -5,8 +5,6 @@ class UIView extends UIResponder
 
   constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
 
-  toString: -> "[UIView #{@handle}]"
-
   # Initializing a View Object
   initWithFrame: objc.invokeSelector "initWithFrame:"
 

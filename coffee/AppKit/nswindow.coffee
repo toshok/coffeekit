@@ -6,8 +6,6 @@ class NSWindow extends foundation.NSResponder
     console.log "in NSWindow.ctor handle = " + handle
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
-  toString: -> "[NSWindow #{@handle}]"
-
   ck.addProperty @::, "title"
   ck.addProperty @::, "contentView"
 

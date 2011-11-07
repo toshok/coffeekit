@@ -4,8 +4,6 @@ class NSView extends foundation.NSResponder
   constructor: (handle) ->
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
-  toString: -> "[NSView #{@handle}]"
-
   # Creating Instances
   initWithFrame: objc.invokeSelector "initWithFrame:"
 

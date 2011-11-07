@@ -5,8 +5,6 @@ class NSApplication extends foundation.NSResponder
     console.log "in NSApplication.ctor"
     super (if handle then handle else objc.allocInstance (@.constructor.name))
 
-  toString: -> "[NSApplication #{@handle}]"
-
   # Getting the Application
   # FIXME we need better syntax for this...
   this.__defineGetter__ "sharedApplication", ->

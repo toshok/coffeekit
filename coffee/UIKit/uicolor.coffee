@@ -3,8 +3,6 @@
 #console.log "UIColor"
 class UIColor extends foundation.NSObject
 
-  toString: -> "UIColor"
-
   # Creating a UIColor Object from Component Values
   @colorWithWhite: objc.invokeSelector "colorWithWhite:alpha:"
   @colorWithHSBA: objc.invokeSelector "colorWithHue:saturation:brightness:alpha:"

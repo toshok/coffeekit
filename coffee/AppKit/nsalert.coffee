@@ -42,6 +42,5 @@ class NSAlert extends foundation.NSObject
   # Getting Alert Panels
   ck.addProperty @::, "window", { set: null} # read-only
 
-  toString: -> "[NSAlert #{@handle}]"
 new ck.RegisterAttribute NSAlert, "NSAlert"
 exports.NSAlert = NSAlert

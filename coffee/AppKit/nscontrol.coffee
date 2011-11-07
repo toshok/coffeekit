@@ -94,8 +94,6 @@ class NSControlProxy extends foundation.NSObject
                  super (objc.allocInstance(@.constructor.name))
                  @fn = fn
 
-  toString: -> "[NSControlProxy #{@handle}]"
-
   proxyAction: -> @fn()
   new ck.SelectorAttribute @::proxyAction, "action"
 new ck.RegisterAttribute NSControlProxy, "NSControlProxy"
