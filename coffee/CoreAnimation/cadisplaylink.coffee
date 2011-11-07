@@ -2,7 +2,7 @@
 
 class CADisplayLink extends foundation.NSObject
 
-  constructor: -> throw "use @displayLink instead of new CADisplayLink"
+  constructor: (handle) -> super (if handle then handle else throw "use @displayLink instead of new CADisplayLink")
 
   # Creating Instances
   @displayLink: objc.invokeSelector "displayLinkWithTarget:selector:"
