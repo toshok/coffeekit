@@ -7,9 +7,30 @@ DEST_DIR=generated
 BOUND_FRAMEWORKS= AppKit \
 		  CoreAnimation \
 		  Foundation \
-		  UIKit
+		  UIKit \
+		  OpenGLES \
+		  GLKit
 
 EXTRA_COFFEE_FILES= coffeekit.coffee
+
+FRAMEWORK_SOURCES_GLKit= \
+	GLKit/glknamedeffect.coffee \
+	GLKit/glkviewcontrollerdelegate.coffee \
+	GLKit/glkviewdelegate.coffee \
+	GLKit/glkbaseeffect.coffee \
+	GLKit/glkeffectproperty.coffee \
+	GLKit/glkeffectpropertyfog.coffee \
+	GLKit/glkeffectpropertylight.coffee \
+	GLKit/glkeffectpropertymaterial.coffee \
+	GLKit/glkeffectpropertytexture.coffee \
+	GLKit/glkeffectpropertytransform.coffee \
+	GLKit/glkreflectionmapeffect.coffee \
+	GLKit/glkskyboxeffect.coffee \
+	GLKit/glktextureinfo.coffee \
+	GLKit/glktextureloader.coffee \
+	GLKit/glkview.coffee \
+	GLKit/glkcanvasview.coffee \
+	GLKit/glkviewcontroller.coffee
 
 FRAMEWORK_SOURCES_AppKit= \
 	AppKit/nsalert.coffee \
