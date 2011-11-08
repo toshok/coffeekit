@@ -14,6 +14,9 @@ class GLKCanvasView extends GLKView
         @context = new gles.EAGLContext().initWithAPI gles.EAGLRenderingAPI.OpenGLES2
         @webglcontext = objc.allocateWebGLRenderingContext @context
       @webglcontext
-    
+
+  @::__defineGetter__ "width", -> return @frame.width
+  @::__defineGetter__ "height", -> return @frame.height
+
 new ck.RegisterAttribute GLKCanvasView, "GLKCanvasView"
 exports.GLKCanvasView = GLKCanvasView
