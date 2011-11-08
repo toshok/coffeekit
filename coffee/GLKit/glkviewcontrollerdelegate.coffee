@@ -5,10 +5,10 @@ Protocol = foundation.Protocol
 class GLKViewControllerDelegate extends foundation.Protocol
 
   # Handling an Update Event
-  update:    Protocol.requiredMethod "glkViewControllerUpdate:"
+  update:    Protocol.requiredMethod("glkViewControllerUpdate:", {sig: "v@:"})
 
   # Pause and Resume Notifications
-  willPause: Protocol.optionalMethod "glkViewController:willPause:"
+  willPause: Protocol.optionalMethod("glkViewController:willPause:" , {sig: "v@:@B"})
 
 new ck.RegisterAttribute GLKViewControllerDelegate, "GLKViewControllerDelegate"
 exports.GLKViewControllerDelegate = GLKViewControllerDelegate

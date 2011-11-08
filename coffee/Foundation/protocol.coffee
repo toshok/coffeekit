@@ -2,10 +2,10 @@
 
 class Protocol
 
-  @requiredMethod: (n,tramp) -> method: n, required: true, tramp: tramp
-  @optionalMethod: (n) -> method: n
+  @requiredMethod: (n,args) -> method: n, required: true, tramp: args?.tramp, sig: args?.sig
+  @optionalMethod: (n,args) -> method: n, tramp: args?.tramp, sig: args?.sig
 
   @requiredProperty: (n,accessors) -> property: n, required: true, get: accessors?.get, set: accessors?.set
-  @optionalProperty: (n) -> property: n
+  @optionalProperty: (n,accessors) -> property: n, get: accessors?.get, set: accessors?.set
 
 exports.Protocol = Protocol

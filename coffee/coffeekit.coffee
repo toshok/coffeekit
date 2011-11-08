@@ -38,10 +38,11 @@ class MixinProtocolAttribute extends Attribute
         if value.required
           if value.method
             console.log "adding class protocol method #{key}"
-            if value.tramp
+            if value.tramp?
               obj[key] = value.tramp
             else
               obj[key] = objc.invokeSelector value.method
+            obj[key]._ck_typeSig = value.sig ? "@@:"
           else if value.property
             console.log "adding class protocol property #{key}"
             accessors = {}
@@ -59,6 +60,7 @@ class MixinProtocolAttribute extends Attribute
               obj::[key] = value.tramp
             else
               obj::[key] = objc.invokeSelector value.method
+            obj::[key]._ck_typeSig = value.sig ? "@@:"
           else if value.property
             console.log "adding instance protocol property #{key}"
             addProperty obj::, value.property
@@ -100,7 +102,7 @@ autobox = (obj, protocol) ->
     if pv = protocol::[key]
       if pv.method
         ProtocolProxy::[key] = (args...) -> value.call obj, args...
-        new SelectorAttribute ProtocolProxy::[key], pv.method
+        new SelectorAttribute ProtocolProxy::[key], pv.method, pv.sig
       else
         throw "unhandled case:  property #{key} overriding from a protocol #{protocol}"
 

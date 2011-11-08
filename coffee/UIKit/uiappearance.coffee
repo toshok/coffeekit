@@ -46,8 +46,8 @@ makeAppearance = (sel, o, args...) ->
 class UIAppearance extends foundation.Protocol
 
   # Appearance Methods
-  @appearance:                Protocol.requiredMethod("appearance", -> makeAppearance "appearance", @)
-  @appearanceWhenContainedIn: Protocol.requiredMethod("appearanceWhenContainedIn:", (args...) -> makeAppearance "appearanceWhenContainedIn", @, args...)
+  @appearance:                Protocol.requiredMethod("appearance", { tramp: -> makeAppearance "appearance", @ })
+  @appearanceWhenContainedIn: Protocol.requiredMethod("appearanceWhenContainedIn:", {tramp: (args...) -> makeAppearance "appearanceWhenContainedIn", @, args...} )
 
 new ck.RegisterAttribute UIAppearance, "UIAppearance"
 exports.UIAppearance = UIAppearance
