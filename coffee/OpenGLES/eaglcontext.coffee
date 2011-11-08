@@ -1,5 +1,7 @@
 class EAGLContext extends foundation.NSObject
 
+  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+
   # Creating EAGL Contexts
   initWithAPI: objc.invokeSelector ("initWithAPI:")
   initWithAPIAndSharegroup: objc.invokeSelector ("initWithAPI:sharegroup:")
