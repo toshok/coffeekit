@@ -3,6 +3,8 @@
 #console.log "UIImage"
 class UIImage extends foundation.NSObject
 
+  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+
   # Cached Image Loading Routines
   @imageNamed: objc.invokeSelector "imageNamed:"
 
