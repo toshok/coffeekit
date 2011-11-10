@@ -15,6 +15,8 @@ class GLKCanvasViewController extends glkit.GLKViewController
 
   loadView: ->
     @view = new glkit.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
+    @view.drawableDepthFormat = glkit.GLKViewDrawableDepthFormat.Depth16
+
   new ck.SelectorAttribute @::loadView, "loadView", "v@:"
 
 new ck.RegisterAttribute GLKCanvasViewController, "GLKCanvasViewController"
@@ -32,12 +34,11 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
     @glkcontroller.delegate =
         update: =>
-          demo.update()
-          canvas.display()
+          if demo.update?
+            demo.update()
 
     canvas.delegate =
-      drawInRect: (v,r) ->
-        console.log "draw #{v} in rect #{r}"
+      drawInRect: ->
         demo.draw()
 
     demo = require "./j3d/#{demoName}"
@@ -59,8 +60,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
             demo.update()
 
     canvas.delegate =
-      drawInRect: (v,r) ->
-        console.log "draw #{v} in rect #{r}"
+      drawInRect: ->
         demo.draw()
 
     demo.run(canvas)
@@ -79,8 +79,11 @@ class HelloIOSAppDelegate extends foundation.NSObject
       newcontroller.view.addSubview button
 
     addj3dbutton "HelloCube", new foundation.NSRect 60, 50, 200, 50
-    addj3dbutton "Lights", new foundation.NSRect 60, 110, 200, 50
-    addj3dbutton "Scene", new foundation.NSRect 60, 170, 200, 50
+    addj3dbutton "HelloLights", new foundation.NSRect 60, 110, 200, 50
+    addj3dbutton "HelloScene", new foundation.NSRect 60, 170, 200, 50
+    addj3dbutton "HelloHead", new foundation.NSRect 60, 230, 200, 50
+    addj3dbutton "HelloCubemap", new foundation.NSRect 60, 290, 200, 50
+    addj3dbutton "HelloPlasma", new foundation.NSRect 60, 350, 200, 50
 
     @window.rootViewController.pushViewController newcontroller, true
 

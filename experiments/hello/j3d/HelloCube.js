@@ -70,13 +70,13 @@ exports.run = function(canvas) {
 };
 
 exports.update = function () {
-  console.log ("in HelloCube.update");
+  //console.log ("in HelloCube.update");
   cube.rotation.x += Math.PI * J3D.Time.deltaTime / 6000;
   cube.rotation.y += Math.PI/2 * J3D.Time.deltaTime / 3000;
 };
 
 exports.draw = draw = function () {
-  console.log ("in HelloCube.draw");
+  //console.log ("in HelloCube.draw");
   //requestAnimationFrame(draw);
   engine.render();
 };
