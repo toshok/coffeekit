@@ -28,52 +28,57 @@ importScripts ("lib/glMatrix.js",
 
 var plasmaShader =
 "   uniform sampler2D uTexture;	\n"+
-"	varying highp vec2 vTextureCoord;\n"+
-"   varying highp float uTime;\n" +
+"	varying vec2 vTextureCoord;\n"+
 "\n"+
 "	void main(void) {\n"+
-"		highp vec2 ca = vec2(0.1, 0.2);\n"+
-"		highp vec2 cb = vec2(0.7, 0.9);\n"+
-"		highp float da = distance(vTextureCoord, ca);\n"+
-"		highp float db = distance(vTextureCoord, cb);\n"+
+"		vec2 ca = vec2(0.1, 0.2);\n"+
+"		vec2 cb = vec2(0.7, 0.9);\n"+
+"		float da = distance(vTextureCoord, ca);\n"+
+"		float db = distance(vTextureCoord, cb);\n"+
 "		\n"+
-"		highp float t = uTime * 0.5;\n"+
+"		float t = uTime * 0.5;\n"+
 "		\n"+
-"		highp float c1 = sin(da * cos(t) * 16.0 + t * 4.0);\n"+
-"		highp float c2 = cos(vTextureCoord.y * 8.0 + t);\n"+
-"		highp float c3 = cos(db * 14.0) + sin(t);\n"+
+"		float c1 = sin(da * cos(t) * 16.0 + t * 4.0);\n"+
+"		float c2 = cos(vTextureCoord.y * 8.0 + t);\n"+
+"		float c3 = cos(db * 14.0) + sin(t);\n"+
 "	\n"+
-"		highp float p = (c1 + c2 + c3) / 3.0;\n"+
+"		float p = (c1 + c2 + c3) / 3.0;\n"+
 "	\n"+
 "		gl_FragColor = texture2D(uTexture, vec2(p, p));\n"+
 "	}";
 	
-var engine, ctex, texture, texture2, texture3, post;
+var engine, ctex, textures, post;
 	
 exports.run = function (canvas) {
 		
 	engine = new J3D.Engine(canvas);
 
-	texture = new J3D.Texture("demo/models/textures/colorramp1.png");
-	texture2 = new J3D.Texture("demo/models/textures/colorramp2.png");
-	texture3 = new J3D.Texture("demo/models/textures/colorramp3.png");
+    textures = [
+	  new J3D.Texture("demo/models/textures/colorramp1.png"),
+	  new J3D.Texture("demo/models/textures/colorramp2.png"),
+	  new J3D.Texture("demo/models/textures/colorramp3.png")
+    ];
 		
-	ctex = texture;
+	ctex = 1;
 
 	post = new J3D.Postprocess();
-	post.filter = new J3D.Shader("PlasmaFilter", J3D.ShaderSource.BasicFilterVertex, plasmaShader);
+	post.filter = new J3D.Shader("PlasmaFilter", J3D.ShaderSource.BasicFilterVertex, plasmaShader, {
+                                    fragmentIncludes: ["CommonFilterInclude"],
+                                    vertexIncludes: ["CommonInclude"]
+                                 });
 	post.render = function() {
 		J3D.Time.tick();
-		this.renderEffect(ctex.tex);
+		this.renderEffect(textures[ctex].tex);
 	}
 };
 	
 exports.draw = function () {
-	//requestAnimationFrame(draw);	
-		
-	//if(document.getElementById("ra").checked) ctex = texture;
-	//if(document.getElementById("rb").checked) ctex = texture2;
-	//if(document.getElementById("rc").checked) ctex = texture3;
-	
 	post.render();
+};
+
+exports.tap = function () {
+    ctex = (ctex + 1) % 3;
+    // XXX the first color ramp png is broken for some reason.. so let's just toggle between the other two for now.
+    if (ctex == 0)
+        ctex = 1;
 };
