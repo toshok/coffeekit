@@ -127,7 +127,7 @@ addProperty = (obj, jsprop, opts) ->
   # if opts are left off, and jsprop = 'foo',
   # we assume the getter is 'foo' and the setter is
   # 'setFoo'
-  if !opts
+  if typeof opts is "undefined"
     obj.__defineGetter__ jsprop, getter = objc.invokeSelector (jsprop)
     obj.__defineSetter__ jsprop, setter = objc.invokeSelector ("set" + jsprop[0].toUpperCase() + (jsprop.slice 1) + ":")
   else
@@ -139,10 +139,8 @@ addProperty = (obj, jsprop, opts) ->
     if "get" of opts
       if opts.get
         if typeof opts.get is 'string'
-          console.log "adding property #{jsprop} using a string"
           obj.__defineGetter__ jsprop, getter = objc.invokeSelector (opts.get)
         else if typeof opts.get is 'function'
-          console.log "adding property #{jsprop} using a getter"
           obj.__defineGetter__ jsprop, getter = opts.get
         else
           throw "you can only use a string or a function for get:"
