@@ -21,12 +21,23 @@ class GLKCanvasViewController extends glkit.GLKViewController
 
 new ck.RegisterAttribute GLKCanvasViewController, "GLKCanvasViewController"
 
+class TargetActionProxy1 extends foundation.NSObject
+  constructor: (fn) ->
+                 super (objc.allocInstance(@.constructor.name))
+                 @fn = fn
+
+  proxyAction: (a1) -> @fn(a1)
+  new ck.SelectorAttribute @::proxyAction, "action", "v@:@"
+new ck.RegisterAttribute TargetActionProxy1, "TargetActionProxy1"
+
 
 class HelloIOSAppDelegate extends foundation.NSObject
   ck.objcIBOutlet @::, "window", ui.UIWindow
   ck.objcIBOutlet @::, "rootViewController", HelloIOSViewController
 
   runJ3DDemo: (demoName) ->
+    demo = require "./j3d/Hello#{demoName}"
+
     @glkcontroller = new GLKCanvasViewController
     @glkcontroller.title = "#{demoName}"
 
@@ -41,10 +52,15 @@ class HelloIOSAppDelegate extends foundation.NSObject
       drawInRect: ->
         demo.draw()
 
-    demo = require "./j3d/#{demoName}"
-    demo.run(canvas)
+    if demo.tap?
+      canvas.tapProxy = new TargetActionProxy1 demo.tap
+      canvas.addGestureRecognizer new ui.UITapGestureRecognizer().initWithTarget canvas.tapProxy, canvas.tapProxy.proxyAction
+
+    demo.run canvas
 
     @window.rootViewController.pushViewController @glkcontroller, true
+
+
 
   runWebGLDemo: (demoName) ->
     @glkcontroller = new GLKCanvasViewController
@@ -63,7 +79,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
       drawInRect: ->
         demo.draw()
 
-    demo.run(canvas)
+    demo.run canvas
 
     @window.rootViewController.pushViewController @glkcontroller, true
 
@@ -71,19 +87,23 @@ class HelloIOSAppDelegate extends foundation.NSObject
     newcontroller = new HelloIOSViewController "HelloIOSViewController", null
     newcontroller.title = "J3D Demos"
 
-    addj3dbutton = (demo,frame) =>
+    buttonY = 60
+    buttonYDelta = 60
+    
+    addj3dbutton = (demoName) =>
       button = ui.UIButton.buttonWithType (ui.UIButtonType.roundedRect);
-      button.setTitle demo, ui.UIControlState.normal
-      button.frame = frame
-      button.clicked = => @runJ3DDemo demo
+      button.setTitle demoName, ui.UIControlState.normal
+      button.frame = new foundation.NSRect 60, buttonY, 200, 50
+      button.clicked = => @runJ3DDemo demoName
       newcontroller.view.addSubview button
+      buttonY += buttonYDelta
 
-    addj3dbutton "HelloCube", new foundation.NSRect 60, 50, 200, 50
-    addj3dbutton "HelloLights", new foundation.NSRect 60, 110, 200, 50
-    addj3dbutton "HelloScene", new foundation.NSRect 60, 170, 200, 50
-    addj3dbutton "HelloHead", new foundation.NSRect 60, 230, 200, 50
-    addj3dbutton "HelloCubemap", new foundation.NSRect 60, 290, 200, 50
-    addj3dbutton "HelloPlasma", new foundation.NSRect 60, 350, 200, 50
+    addj3dbutton "Cube"
+    addj3dbutton "Lights"
+    addj3dbutton "Scene"
+    addj3dbutton "Head"
+    addj3dbutton "Cubemap"
+    addj3dbutton "Plasma"
 
     @window.rootViewController.pushViewController newcontroller, true
 
