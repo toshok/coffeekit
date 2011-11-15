@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-console.log "UIAlertView"
+#console.log "UIAlertView"
 class UIAlertView extends UIView
 
   constructor: (handle) -> super (if handle then handle else objc.allocInstance @.constructor.name)
