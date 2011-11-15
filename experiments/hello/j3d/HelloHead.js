@@ -107,29 +107,29 @@ function setup() {
   toon.uColorSampler = ramp;
 
   J3D.Loader.loadJSON(path + "leeperry.js", function(jsmeshes) {
-    J3D.Loader.loadJSON(path + "leeperryScene.js", function(jsscene) {
-			  jsscene.path = path;
-			  J3D.Loader.parseJSONScene(jsscene, jsmeshes, engine);
+                      J3D.Loader.loadJSON(path + "leeperryScene.js", function(jsscene) {
+                                          jsscene.path = path;
+                                          J3D.Loader.parseJSONScene(jsscene, jsmeshes, engine);
 
-			  base = engine.scene.find("base");
-			  cam = engine.scene.find("base/camera");
+                                          base = engine.scene.find("base");
+                                          cam = engine.scene.find("base/camera");
 
-			  lee = engine.scene.find("headbase");
+                                          lee = engine.scene.find("headbase");
 
-			  head = engine.scene.find("headbase/head");
+                                          head = engine.scene.find("headbase/head");
 
-			  defphong = head.renderer;
+                                          defphong = head.renderer;
 
-			  console.log("Models loaded...");
+                                          console.log("Models loaded...");
 
-			  setRenderer(reflective, gl.TRIANGLES);
-			  setTransparency(false);
+                                          setRenderer(darkglass, gl.TRIANGLES);
+                                          setTransparency(false);
 
-			  exports.draw = draw;
+                                          exports.draw = draw;
 
-			  console.log("Rendering...");
-			});
-		      });
+                                          console.log("Rendering...");
+                                          });
+                      });
 
 //  document.onmousemove = onMouseMove;
 //  document.onmousedown = changeShaderManual;
