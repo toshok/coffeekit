@@ -1,0 +1,174 @@
+foundation = require './foundation'
+glkit = require './glkit'
+gles = require './opengles'
+ui = require './uikit'
+ck = require './coffeekit'
+
+class HelloIOSViewController extends ui.UIViewController
+new ck.RegisterAttribute HelloIOSViewController, "HelloIOSViewController"
+
+
+class GLKCanvasViewController extends glkit.GLKViewController
+  constructor: (handle) ->
+    super (if handle then handle else objc.allocInstance (@.constructor.name))
+    return @initWithNibNameAndBundle null, null
+
+  loadView: ->
+    @view = new glkit.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
+    @view.drawableDepthFormat = glkit.GLKViewDrawableDepthFormat.Depth16
+
+  new ck.SelectorAttribute @::loadView, "loadView", "v@:"
+
+new ck.RegisterAttribute GLKCanvasViewController, "GLKCanvasViewController"
+
+class TargetActionProxy1 extends foundation.NSObject
+  constructor: (fn) ->
+                 super (objc.allocInstance(@.constructor.name))
+                 @fn = fn
+
+  proxyAction: (a1) -> @fn(a1)
+  new ck.SelectorAttribute @::proxyAction, "action", "v@:@"
+new ck.RegisterAttribute TargetActionProxy1, "TargetActionProxy1"
+
+
+class HelloIOSAppDelegate extends foundation.NSObject
+  ck.objcIBOutlet @::, "window", ui.UIWindow
+  ck.objcIBOutlet @::, "rootViewController", HelloIOSViewController
+
+  runJ3DDemo: (demoName) ->
+    demo = require "./j3d/Hello#{demoName}"
+
+    @glkcontroller = new GLKCanvasViewController
+    @glkcontroller.title = "#{demoName}"
+
+    canvas = @glkcontroller.view
+
+    @glkcontroller.delegate =
+        update: =>
+          if demo.update?
+            demo.update()
+
+    canvas.delegate =
+      drawInRect: ->
+        demo.draw()
+
+    if demo.tap?
+      canvas.tapProxy = new TargetActionProxy1 demo.tap
+      canvas.addGestureRecognizer new ui.UITapGestureRecognizer().initWithTarget canvas.tapProxy, canvas.tapProxy.proxyAction
+
+    demo.run canvas
+
+    @window.rootViewController.pushViewController @glkcontroller, true
+
+
+
+  runMDNDemo: (demoName) ->
+    @glkcontroller = new GLKCanvasViewController
+    @glkcontroller.title = "#{demoName}"
+
+    canvas = @glkcontroller.view
+
+    demo = require "./webgl-samples/#{demoName}/sample"
+
+    @glkcontroller.delegate =
+        update: =>
+          if demo.update?
+            demo.update()
+
+    canvas.delegate =
+      drawInRect: ->
+        demo.draw()
+
+    demo.run canvas
+
+    @window.rootViewController.pushViewController @glkcontroller, true
+
+  workerDemo: ->
+    newcontroller = new HelloIOSViewController "HelloIOSViewController", null
+    newcontroller.title = "Web Workers"
+
+    @primeButton = ui.UIButton.buttonWithType (ui.UIButtonType.roundedRect);
+    @primeButton.setTitle "Click to generate primes", ui.UIControlState.normal
+    @primeButton.frame = new foundation.NSRect 60, 180, 200, 50
+
+    @primeTextField = new ui.UITextField().initWithFrame new foundation.NSRect 60, 240, 200, 50
+    @primeTextField.textAlignment = ui.UITextAlignment.center
+    @primeTextField.frame = new foundation.NSRect 60, 240, 300, 50
+    
+    @primeCount = 0
+    @primeButton.clicked = =>
+      if @worker
+        @primeButton.setTitle "Click to generate primes", ui.UIControlState.normal
+        @worker.close()
+        @worker = null;
+        @primeTextField.text = ""
+      else
+        @primeButton.setTitle "Click to stop", ui.UIControlState.normal
+        @worker = new Worker ('./prime-worker')
+        @worker.onmessage = (msg) =>
+          @primeTextField.text = "Prime #{++@primeCount}: #{msg}"
+          return
+      return
+      
+    newcontroller.view.addSubview @primeButton
+    newcontroller.view.addSubview @primeTextField
+    
+    @window.rootViewController.pushViewController newcontroller, true
+
+                  
+  
+  didFinishLaunching: (notification) ->
+    @window = new ui.UIWindow().initWithFrame ui.UIScreen.mainScreen.bounds
+
+    tableviewcontroller = new ui.UITableViewController().initWithStyle ui.UITableViewStyle.plain
+    tableviewcontroller.title = "CoffeeKit Demos"
+  
+    @tableData = [
+        {title: "Web Workers", rows: [
+            { title: "Primes in a button", clicked: => @workerDemo() }
+        ]}
+        {title: "WebGL", rows: [
+            { title: "MDN sample 2",        clicked: => @runMDNDemo "sample2" }
+            { title: "MDN sample 3",        clicked: => @runMDNDemo "sample3" }
+            { title: "MDN sample 4",        clicked: => @runMDNDemo "sample4" }
+            { title: "MDN sample 5",        clicked: => @runMDNDemo "sample5" }
+            { title: "J3D Engine: Cube",    clicked: => @runJ3DDemo "Cube" }
+            { title: "J3D Engine: Lights",  clicked: => @runJ3DDemo "Lights" }
+            { title: "J3D Engine: Head",    clicked: => @runJ3DDemo "Head" }
+            { title: "J3D Engine: Cubemap", clicked: => @runJ3DDemo "Cubemap" }
+            { title: "J3D Engine: Plasma",  clicked: => @runJ3DDemo "Plasma" }
+        ]}
+    ]
+
+    pathToItem = (arr, pos, path) =>
+        item = arr[path.indexAtPosition pos]
+        if pos is (path.length-1) then item else pathToItem item.rows, pos+1, path
+
+    tableviewcontroller.tableView.delegate =
+        didSelectRow: (tv, path) =>
+            pathToItem(@tableData, 0, path).clicked()
+
+    tableviewcontroller.tableView.dataSource =
+        cellForRow: (tv, path) =>
+            cell = tv.dequeueReusableCellWithIdentifier("reuse") or new ui.UITableViewCell().initWithStyle ui.UITableViewCellStyle.value1, "reuse"
+            cell.textLabel.text = pathToItem(@tableData, 0, path).title
+            cell
+        
+        numberOfSections: => @tableData.length
+        
+        numberOfRowsInSection: (tv, section) => @tableData[section].rows.length
+        
+        titleForHeaderInSection: (tv, section) => @tableData[section].title
+
+
+    navController = new ui.UINavigationController().initWithRootViewController tableviewcontroller
+    @window.rootViewController = navController
+    @rootViewController = navController
+
+    @window.makeKeyAndVisible()
+
+    return true
+  new ck.SelectorAttribute @::didFinishLaunching, "applicationDidFinishLaunching:"
+new ck.RegisterAttribute HelloIOSAppDelegate, "AppDelegate"
+
+ui.UIApplication.main([], "AppDelegate")

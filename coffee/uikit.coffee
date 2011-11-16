@@ -6,6 +6,17 @@ foundation = require "./foundation"
 ck = require "./coffeekit"
 coreanimation = require "./coreanimation"
 
+exports.UITableViewStyle = UITableViewStyle =
+  plain: 0,
+  grouped: 1
+
+  
+exports.UITableViewCellStyle = UITableViewCellStyle =
+   value1: 0,
+   value2: 1,
+   subtitle: 2
+
+
 exports.UIButtonType = UIButtonType =
    custom: 0,
    roundedRect: 1,
@@ -14,6 +25,10 @@ exports.UIButtonType = UIButtonType =
    infoDark: 4,
    contactAdd: 5
 
+exports.UITextAlignment = UITextAlignment =
+   left: 0
+   center: 1
+   right: 2
 
 exports.UIControlState = UIControlState =
    normal               : 0,

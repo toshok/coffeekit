@@ -101,8 +101,24 @@ autobox = (obj, protocol) ->
   for key, value of obj
     if pv = protocol::[key]
       if pv.method
-        ProtocolProxy::[key] = (args...) -> value.call obj, args...
-        new SelectorAttribute ProtocolProxy::[key], pv.method, pv.sig
+        addProxyMethod = (k, v) ->
+          console.log "adding proxy method for #{k}, v.length = #{v.length}"
+          switch v.length
+            when 0 then ProtocolProxy::[k] = () -> v.call obj
+            when 1 then ProtocolProxy::[k] = (a1) -> v.call obj, a1
+            when 2 then ProtocolProxy::[k] = (a1,a2) -> v.call obj, a1, a2
+            when 3 then ProtocolProxy::[k] = (a1,a2,a3) -> v.call obj, a1, a2, a3
+            when 4 then ProtocolProxy::[k] = (a1,a2,a3,a4) -> v.call obj, a1, a2, a3, a4
+            when 5 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5) -> v.call obj, a1, a2, a3, a4, a5
+            when 6 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6) -> v.call obj, a1, a2, a3, a4, a5, a6
+            when 7 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7) -> v.call obj, a1, a2, a3, a4, a5, a6, a7
+            when 8 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8
+            when 9 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9
+            when 10 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
+            else throw "addProxyMethod doesn't support methods with #{v.length} arguments."
+          new SelectorAttribute ProtocolProxy::[k], pv.method, pv.sig
+        
+        addProxyMethod key, value
       else
         throw "unhandled case:  property #{key} overriding from a protocol #{protocol}"
 

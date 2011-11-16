@@ -12,8 +12,8 @@ class UITableViewCell extends UIView
   prepareForReuse: objc.invokeSelector "prepareForReuse"
 
   # Managing Text as Cell Content
-  ck.addProperty @::, "textLabel"
-  ck.addProperty @::, "detailTextLabel"
+  ck.addProperty @::, "textLabel", { set: null }
+  ck.addProperty @::, "detailTextLabel", { set: null }
   ck.addProperty @::, "font" # Deprecated in iOS 3.0
   ck.addProperty @::, "lineBreakMode" # Deprecated in iOS 3.0
   ck.addProperty @::, "selectedTextColor" # Deprecated in iOS 3.0

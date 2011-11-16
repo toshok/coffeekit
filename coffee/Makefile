@@ -13,6 +13,15 @@ BOUND_FRAMEWORKS= AppKit \
 
 EXTRA_COFFEE_FILES= coffeekit.coffee
 
+FRAMEWORK_SOURCES_Foundation= \
+	Foundation/Protocol.coffee \
+	Foundation/nsrect.coffee \
+	Foundation/nsobject.coffee \
+	Foundation/nsresponder.coffee \
+	Foundation/nsrunloop.coffee \
+	Foundation/nsindexpath.coffee
+
+
 FRAMEWORK_SOURCES_GLKit= \
 	GLKit/glknamedeffect.coffee \
 	GLKit/glkviewcontrollerdelegate.coffee \
@@ -79,6 +88,8 @@ FRAMEWORK_SOURCES_UIKit= \
 	UIKit/uiappearance.coffee \
 	UIKit/uitextinput.coffee \
 	UIKit/uikeyinput.coffee \
+	UIKit/uitableviewdatasource.coffee \
+	UIKit/uitableviewdelegate.coffee \
 	UIKit/uitextinputtraits.coffee \
 	UIKit/uiedgeinsets.coffee \
 	UIKit/uioffset.coffee \
