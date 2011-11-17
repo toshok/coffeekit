@@ -35,8 +35,8 @@ class HelloIOSAppDelegate extends foundation.NSObject
   ck.objcIBOutlet @::, "window", ui.UIWindow
   ck.objcIBOutlet @::, "rootViewController", HelloIOSViewController
 
-  runJ3DDemo: (demoName) ->
-    demo = require "./j3d/Hello#{demoName}"
+  runGLDemo: (demoName, demoPath) ->
+    demo = require demoPath
 
     @glkcontroller = new GLKCanvasViewController
     @glkcontroller.title = "#{demoName}"
@@ -60,40 +60,28 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
     @window.rootViewController.pushViewController @glkcontroller, true
 
+    
+  runJ3DDemo: (demoName) ->
+    @runGLDemo demoName, "./j3d/Hello#{demoName}"
 
 
   runMDNDemo: (demoName) ->
-    @glkcontroller = new GLKCanvasViewController
-    @glkcontroller.title = "#{demoName}"
+    @runGLDemo demoName, "./webgl-samples/#{demoName}/sample"
 
-    canvas = @glkcontroller.view
-
-    demo = require "./webgl-samples/#{demoName}/sample"
-
-    @glkcontroller.delegate =
-        update: =>
-          if demo.update?
-            demo.update()
-
-    canvas.delegate =
-      drawInRect: ->
-        demo.draw()
-
-    demo.run canvas
-
-    @window.rootViewController.pushViewController @glkcontroller, true
 
   workerDemo: ->
     newcontroller = new HelloIOSViewController "HelloIOSViewController", null
     newcontroller.title = "Web Workers"
 
+    screenBounds = ui.UIScreen.mainScreen.bounds
+    
     @primeButton = ui.UIButton.buttonWithType (ui.UIButtonType.roundedRect);
     @primeButton.setTitle "Click to generate primes", ui.UIControlState.normal
-    @primeButton.frame = new foundation.NSRect 60, 180, 200, 50
+    
+    @primeButton.frame = new foundation.NSRect (screenBounds.width/2-100), (screenBounds.height/2 - 50), 200, 50
 
-    @primeTextField = new ui.UITextField().initWithFrame new foundation.NSRect 60, 240, 200, 50
+    @primeTextField = new ui.UITextField().initWithFrame new foundation.NSRect 0, screenBounds.height/2+50, screenBounds.width, 50
     @primeTextField.textAlignment = ui.UITextAlignment.center
-    @primeTextField.frame = new foundation.NSRect 60, 240, 300, 50
     
     @primeCount = 0
     @primeButton.clicked = =>
