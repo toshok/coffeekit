@@ -122,6 +122,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
             { title: "MDN sample 5",        clicked: => @runMDNDemo "sample5" }
             { title: "J3D Engine: Cube",    clicked: => @runJ3DDemo "Cube" }
             { title: "J3D Engine: Lights",  clicked: => @runJ3DDemo "Lights" }
+            { title: "J3D Engine: Scene",   clicked: => @runJ3DDemo "Scene" }
             { title: "J3D Engine: Head",    clicked: => @runJ3DDemo "Head" }
             { title: "J3D Engine: Cubemap", clicked: => @runJ3DDemo "Cubemap" }
             { title: "J3D Engine: Plasma",  clicked: => @runJ3DDemo "Plasma" }
