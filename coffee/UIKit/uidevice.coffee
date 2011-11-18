@@ -4,7 +4,7 @@
 class UIDevice extends foundation.NSObject
 
   # Getting the Shared Device Instance
-  @currentDevice: objc.invokeSelector "currentDevice"
+  ck.addProperty @, "currentDevice", set: null, get: -> objc.invokeSelector("currentDevice").call UIDevice
 
   # Determining the Available Features
   ck.addProperty @::, "multitaskingSupported"

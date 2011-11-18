@@ -43,6 +43,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
        sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
        sourceView = new ui.UITextView().initWithFrame ui.UIScreen.mainScreen.bounds
        sourceView.text = contentsOfFile "#{demoPath}.js"
+       sourceView.editable = false
        sourceViewController.view.frame = ui.UIScreen.mainScreen.bounds
        sourceViewController.view.addSubview sourceView
        
@@ -51,7 +52,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
     
     @glkcontroller = new GLKCanvasViewController
-    #@glkcontroller.title = "#{demoName}"
+    @glkcontroller.title = "#{demoName}"
     @glkcontroller.toolbarItems = [
         new ui.UIBarButtonItem().initWithClickHandler "View Source", ui.UIBarButtonItemStyle.bordered, (item) -> viewSource(item)        
     ]
@@ -166,7 +167,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
 
     navController = new ui.UINavigationController().initWithRootViewController tableviewcontroller
-    navController.toolbarHidden = false
+    navController.toolbarHidden = ui.UIDevice.currentDevice.userInterfaceIdiom != ui.UIUserInterfaceIdiom.pad
     @window.rootViewController = navController
     @rootViewController = navController
 

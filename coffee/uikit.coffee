@@ -7,8 +7,8 @@ ck = require "./coffeekit"
 coreanimation = require "./coreanimation"
 
 exports.UITableViewStyle = UITableViewStyle =
-  plain: 0,
-  grouped: 1
+   plain: 0,
+   grouped: 1
 
   
 exports.UITableViewCellStyle = UITableViewCellStyle =
@@ -120,3 +120,6 @@ exports.UIPopoverArrowDirection = UIPopoverArrowDirection =
    any:      (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),
    unknown: ~0
 
+exports.UIUserInterfaceIdiom = UIUserInterfaceIdiom =   
+   phone: 0,
+   pad: 1
