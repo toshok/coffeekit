@@ -44,3 +44,12 @@ class UIControlProxy extends foundation.NSObject
   proxyAction: -> @fn()
   new ck.SelectorAttribute @::proxyAction, "action"
 new ck.RegisterAttribute UIControlProxy, "UIControlProxy"
+
+class UIControlProxy1 extends foundation.NSObject
+  constructor: (fn) ->
+                 super (objc.allocInstance(@.constructor.name))
+                 @fn = fn
+
+  proxyAction: (v) -> @fn v
+  new ck.SelectorAttribute @::proxyAction, "action", "v@:@"
+new ck.RegisterAttribute UIControlProxy1, "UIControlProxy1"

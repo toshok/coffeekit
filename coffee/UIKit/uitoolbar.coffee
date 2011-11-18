@@ -8,7 +8,7 @@ class UIToolbar extends UIView
   ck.addProperty @::, "translucent"
 
   # Configuring Toolbar Items
-  ck.addProperty @::, "items", { set: (v) -> setItems v, false }
+  ck.addProperty @::, "items", { set: (v) -> @setItems v, false }
   setItems: objc.invokeSelector "setItems:animated:"
 
   # Customizing Appearance

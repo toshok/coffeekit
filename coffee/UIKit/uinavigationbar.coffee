@@ -14,7 +14,7 @@ class UINavigationBar extends UIView
   pushNavigationItem: objc.invokeSelector "pushNavigationItem:animated:"
   popNavigationItem: objc.invokeSelector "popNavigationItemAnimated:"
   setItems: objc.invokeSelector "setItems:animated:"
-  ck.addProperty @::, "items", { set: (v) -> setItems v, false }
+  ck.addProperty @::, "items", { set: (v) -> @setItems v, false }
   ck.addProperty @::, "topItem"
   ck.addProperty @::, "backItem"
 

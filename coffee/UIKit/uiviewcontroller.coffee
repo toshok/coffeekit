@@ -95,14 +95,14 @@ class UIViewController extends UIResponder
 
   # Configuring a Navigation Interface
   ck.addProperty @::, "navigationItem"
-  ck.addProperty @::, "editing", { set: (v) -> setEditing v, false }
+  ck.addProperty @::, "editing", { set: (v) -> @setEditing v, false }
   setEditing: objc.invokeSelector "setEditing:animated:"
   editButtonItem: objc.invokeSelector "editButtonItem"
   ck.addProperty @::, "hidesBottomBarWhenPushed"
 
   # Configuring the Navigation Controller’s Toolbar
   setToolbarItems: objc.invokeSelector "setToolbarItems:animated:"
-  ck.addProperty @::, "toolbarItems", { set: (v) -> setToolbarItems v, false }
+  ck.addProperty @::, "toolbarItems", { set: (v) -> @setToolbarItems v, false }
 
   # Configuring Tab Bar Items
   ck.addProperty @::, "tabBarItem"

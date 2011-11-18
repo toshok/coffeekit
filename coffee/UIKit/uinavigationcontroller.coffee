@@ -9,7 +9,7 @@ class UINavigationController extends UIViewController
   # Accessing Items on the Navigation Stack
   ck.addProperty @::, "topViewController"
   ck.addProperty @::, "visibleViewController"
-  ck.addProperty @::, "viewControllers", { set: (v) -> setViewControllers v, false }
+  ck.addProperty @::, "viewControllers", { set: (v) -> @setViewControllers v, false }
   setViewControllers: objc.invokeSelector "setViewControllers:animated:"
 
   # Pushing and Popping Stack Items
@@ -20,7 +20,7 @@ class UINavigationController extends UIViewController
 
   # Configuring Navigation Bars
   ck.addProperty @::, "navigationBar"
-  ck.addProperty @::, "navigationBarHidden", { set: (v) -> setNavigationBarHidden v, false }
+  ck.addProperty @::, "navigationBarHidden", { set: (v) -> @setNavigationBarHidden v, false }
   setNavigationBarHidden: objc.invokeSelector "setNavigationBarHidden:animated:"
 
   # Accessing the Delegate
@@ -29,7 +29,7 @@ class UINavigationController extends UIViewController
   # Configuring Custom Toolbars
   ck.addProperty @::, "toolbar"
   setToolbarHidden: objc.invokeSelector "setToolbarHidden:animated:"
-  ck.addProperty @::, "toolbarHidden", { set: (v) -> setToolbarHidden v, false }
+  ck.addProperty @::, "toolbarHidden", { set: (v) -> @setToolbarHidden v, false }
 
 new ck.RegisterAttribute UINavigationController, "UINavigationController"
 exports.UINavigationController = UINavigationController

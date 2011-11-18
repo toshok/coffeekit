@@ -8,7 +8,7 @@ class UITabBarController extends UIViewController
   ck.addProperty @::, "tabBar"
 
   # Managing the View Controllers
-  ck.addProperty @::, "viewControllers", { set: (v) -> setViewControllers v, false }
+  ck.addProperty @::, "viewControllers", { set: (v) -> @setViewControllers v, false }
   setViewControllers: objc.invokeSelector "setViewControllers:animated:"
   ck.addProperty @::, "customizableViewControllers"
   ck.addProperty @::, "moreNavigationController"

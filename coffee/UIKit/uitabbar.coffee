@@ -7,7 +7,7 @@ class UITabBar extends UIView
   ck.addProperty @::, "delegate"
 
   # Configuring Items
-  ck.addProperty @::, "items", { set: (v) -> setItems v, false }
+  ck.addProperty @::, "items", { set: (v) -> @setItems v, false }
   setItems: objc.invokeSelector "setItems:animated:"
   ck.addProperty @::, "selectedItem"
 

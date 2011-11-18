@@ -4,7 +4,7 @@
 class UISlider extends UIControl
 
   # Accessing the Slider’s Value
-  ck.addProperty @::, "value", { set: (v) -> setValue v, false }
+  ck.addProperty @::, "value", { set: (v) -> @setValue v, false }
   setValue: objc.invokeSelector "setValue:animated:"
 
   # Accessing the Slider’s Value Limits

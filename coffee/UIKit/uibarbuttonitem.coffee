@@ -12,6 +12,10 @@ class UIBarButtonItem extends UIBarItem
   initWithImage: objc.invokeSelector "initWithImage:style:target:action:"
   initWithTitle: objc.invokeSelector "initWithTitle:style:target:action:"
   initWithImageAndLandscape: objc.invokeSelector "initWithImage:landscapeImagePhone:style:target:action:"
+  initWithClickHandler: (title,style,click) ->
+    @proxy = new UIControlProxy1 click
+    @initWithTitle title, style, @proxy, @proxy.proxyAction
+
 
   # Getting and Setting Properties
   ck.addProperty @::, "target"
@@ -40,6 +44,11 @@ class UIBarButtonItem extends UIBarItem
 
   getTitlePositionAdjustment: objc.invokeSelector("titlePositionAdjustmentForBarMetrics:").makeUIAppearance()
   setTitlePositionAdjustment: objc.invokeSelector("setTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
+
+  @::__defineSetter__ "clicked", (v) ->
+                                     @proxy = new UIControlProxy1 v
+                                     @target = @proxy
+                                     @action = @proxy.proxyAction
 
 
 new ck.RegisterAttribute UIBarButtonItem, "UIBarButtonItem"

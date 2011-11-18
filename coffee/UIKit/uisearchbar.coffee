@@ -21,7 +21,7 @@ class UISearchBar extends foundation.NSObject
 
   # Button Configuration
   ck.addProperty @::, "showsBookmarkButton"
-  ck.addProperty @::, "showsCancelButton", { set: (v) -> setShowsCancelButton v, false }
+  ck.addProperty @::, "showsCancelButton", { set: (v) -> @setShowsCancelButton v, false }
   setShowsCancelButton: objc.invokeSelector "setShowsCancelButton:animated:"
   ck.addProperty @::, "showsSearchResultsButton"
   ck.addProperty @::, "searchResultsButtonSelected"

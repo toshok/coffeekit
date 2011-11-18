@@ -5,7 +5,7 @@ class UIScrollView extends UIView
 
   # Managing the Display of Content
   setContentOffset: objc.invokeSelector "setContentOffset:animated:"
-  ck.addProperty @::, "contentOffset", { set: (v) -> setContentOffset v, false }
+  ck.addProperty @::, "contentOffset", { set: (v) -> @setContentOffset v, false }
   ck.addProperty @::, "contentSize"
   ck.addProperty @::, "contentInset"
 
@@ -38,7 +38,7 @@ class UIScrollView extends UIView
   ck.addProperty @::, "panGestureRecognizer"
   ck.addProperty @::, "pinchGestureRecognizer"
   zoomToRect: objc.invokeSelector "zoomToRect:animated:"
-  ck.addProperty @::, "zoomScale", { set: (v) -> setZoomScale v, false }
+  ck.addProperty @::, "zoomScale", { set: (v) -> @setZoomScale v, false }
   setZoomScale: objc.invokeSelector "setZoomScale:animated:"
   ck.addProperty @::, "maximumZoomScale"
   ck.addProperty @::, "minimumZoomScale"

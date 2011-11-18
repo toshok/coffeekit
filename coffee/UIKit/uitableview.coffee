@@ -54,7 +54,7 @@ class UITableView extends UIScrollView
   moveSection: objc.invokeSelector "moveSection:toSection:"
 
   # Managing the Editing of Table Cells
-  ck.addProperty @::, "editing", { set: (v) -> setEditing v, false }
+  ck.addProperty @::, "editing", { set: (v) -> @setEditing v, false }
   setEditing: objc.invokeSelector "setEditing:animated:"
 
   # Reloading the Table View

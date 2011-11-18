@@ -7,7 +7,7 @@ class UISearchDisplayController extends foundation.NSObject
   initWithSearchBar: objc.invokeSelector "initWithSearchBar:contentsController:"
 
   # Displaying the Search Interface
-  ck.addProperty @::, "active", { set: (v) -> setActive v, false }
+  ck.addProperty @::, "active", { set: (v) -> @setActive v, false }
   setActive: objc.invokeSelector "setActive:animated:"
 
   # Configuration

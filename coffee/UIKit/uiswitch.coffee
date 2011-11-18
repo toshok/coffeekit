@@ -7,7 +7,7 @@ class UISwitch extends UIControl
   initWithFrame: objc.invokeSelector "initWithFrame:"
 
   # Setting the Off/On State
-  ck.addProperty @::, "on", { set: (v) -> setOn v, false }
+  ck.addProperty @::, "on", { set: (v) -> @setOn v, false }
   setOn: objc.invokeSelector "setOn:animated:"
 
   # Customizing the Appearance of the Switch

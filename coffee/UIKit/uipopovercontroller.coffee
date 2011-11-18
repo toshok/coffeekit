@@ -7,9 +7,9 @@ class UIPopoverController extends foundation.NSObject
   initWithContentViewController: objc.invokeSelector "initWithContentViewController:"
 
   # Configuring the Popover Attributes
-  ck.addProperty @::, "contentViewController", { set: (v) -> setContentViewController v, false }
+  ck.addProperty @::, "contentViewController", { set: (v) -> @setContentViewController v, false }
   setContentViewController: objc.invokeSelector "setContentViewController:animated:"
-  ck.addProperty @::, "popoverContentSize", { set: (v) -> setPopoverContentSize v, false }
+  ck.addProperty @::, "popoverContentSize", { set: (v) -> @setPopoverContentSize v, false }
   setPopoverContentSize: objc.invokeSelector "setPopoverContentSize:animated:"
   ck.addProperty @::, "passthroughViews"
   ck.addProperty @::, "delegate"

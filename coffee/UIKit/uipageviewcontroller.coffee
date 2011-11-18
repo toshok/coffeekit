@@ -10,7 +10,7 @@ class UIPageViewController extends UIViewController
 
   # Providing Content
   setViewControllers: objc.invokeSelector "setViewControllers:direction:animated:completion:"
-  ck.addProperty @::, "viewControllers", { set: (v) -> setViewControllers v, false, null }
+  ck.addProperty @::, "viewControllers", { set: (v) -> @setViewControllers v, false, null }
   ck.addProperty @::, "gestureRecognizers"
 
   # Display Options

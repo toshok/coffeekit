@@ -7,7 +7,7 @@ class UIMenuController extends foundation.NSObject
   @sharedMenuController: objc.invokeSelector "sharedMenuController"
 
   # Showing and Hiding the Menu
-  ck.addProperty @::, "menuVisible", { set: (v) -> setMenuVisible v, false }
+  ck.addProperty @::, "menuVisible", { set: (v) -> @setMenuVisible v, false }
   setMenuVisible: objc.invokeSelector "setMenuVisible:animated:"
 
   # Positioning the Menu

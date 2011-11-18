@@ -7,7 +7,7 @@ class UIDatePicker extends UIControl
 
   # Managing the Date and Calendar
   ck.addProperty @::, "calendar"
-  ck.addProperty @::, "date", { set: (v) -> setDate v, false }
+  ck.addProperty @::, "date", { set: (v) -> @setDate v, false }
   setDate: objc.invokeSelector "setDate:animated:"
   ck.addProperty @::, "timeZone"
   ck.addProperty @::, "locale" # Deprecated in iOS 5.0

@@ -40,14 +40,14 @@ class UITableViewCell extends UIView
   ck.addProperty @::, "hidesAccessoryWhenEditing" # Deprecated in iOS 3.0
 
   # Managing Cell Selection and Highlighting
-  ck.addProperty @::, "selected", { set: (v) -> setSelected v, false }
+  ck.addProperty @::, "selected", { set: (v) -> @setSelected v, false }
   ck.addProperty @::, "selectionStyle"
   setSelected: objc.invokeSelector "setSelected:animated:"
-  ck.addProperty @::, "highlighted", { set: (v) -> setHighlighted v, false }
+  ck.addProperty @::, "highlighted", { set: (v) -> @setHighlighted v, false }
   setHighlighted: objc.invokeSelector "setHighlighted:animated:"
 
   # Editing the Cell
-  ck.addProperty @::, "editing", { set: (v) -> setEditing v, false }
+  ck.addProperty @::, "editing", { set: (v) -> @setEditing v, false }
   setEditing: objc.invokeSelector "setEditing:animated:"
   ck.addProperty @::, "editingStyle"
   ck.addProperty @::, "showingDeleteConfirmation"

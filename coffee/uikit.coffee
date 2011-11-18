@@ -56,6 +56,11 @@ exports.UIDataDetectorType = UIDataDetectorType =
    all           : ~0
 
 
+exports.UIBarButtonItemStyle = UIBarButtonItemStyle =
+   plain: 0,
+   bordered: 1,
+   done: 2
+
 exports.UIBarButtonSystemItem = UIBarButtonSystemItem =
    done: 0,
    cancel: 1,
@@ -106,3 +111,12 @@ exports.UIControlEvent = UIControlEvent =
    ApplicationReserved : 0x0F000000,
    SystemReserved      : 0xF0000000,
    AllEvents           : 0xFFFFFFFF
+
+exports.UIPopoverArrowDirection = UIPopoverArrowDirection =
+   up:       1 << 0,
+   down:     1 << 1,
+   left:     1 << 2,
+   right:    1 << 3,
+   any:      (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),
+   unknown: ~0
+

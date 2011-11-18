@@ -64,15 +64,15 @@ class UIApplication extends UIResponder
   # Managing Status Bar Orientation
 
   setStatusBarOrientation: objc.invokeSelector "setStatusBarOrientation:animated:"
-  ck.addProperty @::, "statusBarOrientation", { set: (v) -> setStatusBarOrientation v, false }
+  ck.addProperty @::, "statusBarOrientation", { set: (v) -> @setStatusBarOrientation v, false }
   ck.addProperty @::, "statusBarOrientationAnimationDuration", { set: null } # readonly
 
   # Controlling Application Appearance
   setStatusBarHidden: objc.invokeSelector "setStatusBarHidden:withAnimation:"
-  ck.addProperty @::, "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> setStatusBarHidden v, false }
+  ck.addProperty @::, "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> @setStatusBarHidden v, false }
 
   setStatusBarStyle: objc.invokeSelector "setStatusBarStyle:withAnimation:"
-  ck.addProperty @::, "statusBarStyle", { set: (v) -> setStatusBarStyle v, false }
+  ck.addProperty @::, "statusBarStyle", { set: (v) -> @setStatusBarStyle v, false }
   ck.addProperty @::, "statusBarFrame", { set: null }
 
   ck.addProperty @::, "networkActivityIndicatorVisible", { get: "isNetworkActivityIndicatorVisible" }

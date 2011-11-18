@@ -7,7 +7,7 @@ class UIProgressView extends UIView
   initWithProgressViewStyle: objc.invokeSelector "initWithProgressViewStyle:"
 
   # Managing the Progress Bar
-  ck.addProperty @::, "progress", { set: (v) -> setProgress v, false }
+  ck.addProperty @::, "progress", { set: (v) -> @setProgress v, false }
   setProgress: objc.invokeSelector "setProgress:animated:"
 
   # Configuring the Progress Bar
