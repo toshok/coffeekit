@@ -10,8 +10,9 @@ new ck.RegisterAttribute HelloIOSViewController, "HelloIOSViewController"
 
 class GLKCanvasViewController extends glkit.GLKViewController
   constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
-    return @initWithNibNameAndBundle null, null
+    super (if handle then handle else objc.allocInstance(@.constructor.name))
+    if not handle?
+      return @initWithNibNameAndBundle null, null
 
   loadView: ->
     @view = new glkit.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
@@ -38,8 +39,22 @@ class HelloIOSAppDelegate extends foundation.NSObject
   runGLDemo: (demoName, demoPath) ->
     demo = require demoPath
 
+    viewSource = (item) =>
+       sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
+       sourceView = new ui.UITextView().initWithFrame ui.UIScreen.mainScreen.bounds
+       sourceView.text = contentsOfFile "#{demoPath}.js"
+       sourceViewController.view.frame = ui.UIScreen.mainScreen.bounds
+       sourceViewController.view.addSubview sourceView
+       
+       popover = new ui.UIPopoverController().initWithContentViewController sourceViewController
+       popover.presentPopoverFromBarButtonItem item, ui.UIPopoverArrowDirection.up, true
+
+    
     @glkcontroller = new GLKCanvasViewController
-    @glkcontroller.title = "#{demoName}"
+    #@glkcontroller.title = "#{demoName}"
+    @glkcontroller.toolbarItems = [
+        new ui.UIBarButtonItem().initWithClickHandler "View Source", ui.UIBarButtonItemStyle.bordered, (item) -> viewSource(item)        
+    ]
 
     canvas = @glkcontroller.view
 
@@ -151,6 +166,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
 
     navController = new ui.UINavigationController().initWithRootViewController tableviewcontroller
+    navController.toolbarHidden = false
     @window.rootViewController = navController
     @rootViewController = navController
 
