@@ -3,6 +3,9 @@
 #console.log "UIToolbar"
 class UIToolbar extends UIView
 
+  constructor: (handle) ->
+    super (if handle then handle else objc.allocInstance (@.constructor.name))
+
   # Configuring the Toolbar
   ck.addProperty @::, "barStyle"
   ck.addProperty @::, "translucent"
