@@ -36,30 +36,19 @@ class HelloIOSAppDelegate extends foundation.NSObject
   ck.objcIBOutlet @::, "window", ui.UIWindow
   ck.objcIBOutlet @::, "rootViewController", HelloIOSViewController
 
-  runGLDemo: (demoName, demoPath) ->
-    demo = require demoPath
+  uiAlertOnException: (f) ->
+    try
+      f()
+      true
+    catch e
+      alertView = new ui.UIAlertView().init "Exception in demo script", e, null, "Ok", null
+      alertView.show()
+      false
+  
+  loadDemoIntoController: (controller, demo) ->
+    canvas = controller.view
 
-    viewSource = (item) =>
-       sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
-       sourceView = new ui.UITextView().initWithFrame ui.UIScreen.mainScreen.bounds
-       sourceView.text = contentsOfFile "#{demoPath}.js"
-       sourceView.editable = false
-       sourceViewController.view.frame = ui.UIScreen.mainScreen.bounds
-       sourceViewController.view.addSubview sourceView
-       
-       popover = new ui.UIPopoverController().initWithContentViewController sourceViewController
-       popover.presentPopoverFromBarButtonItem item, ui.UIPopoverArrowDirection.up, true
-
-    
-    @glkcontroller = new GLKCanvasViewController
-    @glkcontroller.title = "#{demoName}"
-    @glkcontroller.toolbarItems = [
-        new ui.UIBarButtonItem().initWithClickHandler "View Source", ui.UIBarButtonItemStyle.bordered, (item) -> viewSource(item)        
-    ]
-
-    canvas = @glkcontroller.view
-
-    @glkcontroller.delegate =
+    controller.delegate =
         update: =>
           if demo.update?
             demo.update()
@@ -73,6 +62,61 @@ class HelloIOSAppDelegate extends foundation.NSObject
       canvas.addGestureRecognizer new ui.UITapGestureRecognizer().initWithTarget canvas.tapProxy, canvas.tapProxy.proxyAction
 
     demo.run canvas
+      
+
+
+  runGLDemo: (demoName, demoPath) -> 
+    demo = null
+    
+    demoValid = @uiAlertOnException -> demo = require demoPath
+
+    viewSource = (item) =>
+       if @sourceViewPopover?
+           @sourceViewPopover.dismissPopover true
+           @sourceViewPopover = null
+       else
+           sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
+
+           saveAndClose = =>
+               @sourceViewPopover.dismissPopover true
+               @sourceViewPopover = null
+               console.log "exporting"
+               exportScript demoPath, sourceView.text
+               demoValid = @uiAlertOnException -> demo = require demoPath
+               if demoValid
+                 @loadDemoIntoController @glkcontroller, demo
+               
+
+           toolbar = new ui.UIToolbar().initWithFrame new foundation.NSRect(0, 0, ui.UIScreen.mainScreen.bounds.width, 30)
+           saveButton = new ui.UIBarButtonItem().initWithClickHandler "Save and Close", ui.UIBarButtonItemStyle.bordered, (item) => saveAndClose()
+           toolbar.items = [
+               saveButton
+           ]
+           
+           saveButton.enabled = false
+           
+           sourceView = new ui.UITextView().initWithFrame new foundation.NSRect(0, 30, ui.UIScreen.mainScreen.bounds.width, ui.UIScreen.mainScreen.bounds.height)
+           sourceView.text = contentsOfFile "#{demoPath}.js"
+           sourceView.delegate =
+             didChangeText: ->
+               saveButton.enabled = true
+
+           sourceViewController.view.addSubview toolbar           
+           sourceViewController.view.addSubview sourceView
+           sourceViewController.view.layoutIfNeeded()
+           
+           @sourceViewPopover = new ui.UIPopoverController().initWithContentViewController sourceViewController
+           @sourceViewPopover.presentPopoverFromBarButtonItem item, ui.UIPopoverArrowDirection.up, true
+
+    
+    @glkcontroller = new GLKCanvasViewController
+    @glkcontroller.title = "#{demoName}"
+    @glkcontroller.toolbarItems = [
+        new ui.UIBarButtonItem().initWithClickHandler "View Source", ui.UIBarButtonItemStyle.bordered, (item) -> viewSource(item)        
+    ]
+
+    if demoValid
+      @loadDemoIntoController @glkcontroller, demo
 
     @window.rootViewController.pushViewController @glkcontroller, true
 
