@@ -80,6 +80,7 @@ FRAMEWORK_SOURCES_CoreAnimation= \
 	CoreAnimation/cavaluefunction.coffee
 
 FRAMEWORK_SOURCES_UIKit= \
+	UIKit/uitextviewdelegate.coffee \
 	UIKit/uiwebviewdelegate.coffee \
 	UIKit/uiapplicationdelegate.coffee \
 	UIKit/uiactionsheetdelegate.coffee \
