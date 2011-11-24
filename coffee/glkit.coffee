@@ -8,26 +8,26 @@ gles = require "./opengles"
 ck = require "./coffeekit"
 
 exports.GLKViewDrawableColorFormat = GLKViewDrawableColorFormat =
-   RGBA8888 : 0,
-   RGB565   : 1
+   rgba8888 : 0,
+   rgb565   : 1
 
 exports.GLKViewDrawableDepthFormat = GLKViewDrawableDepthFormat =
-   DepthNone : 0,
-   Depth16   : 1,
-   Depth24   : 2
+   depthNone : 0,
+   depth16   : 1,
+   depth24   : 2
 
 exports.GLKViewDrawableStencilFormat = GLKViewDrawableStencilFormat =
-   StencilNone : 0,
-   Stencil8    : 1
+   stencilNone : 0,
+   stencil8    : 1
 
 exports.GLKViewDrawableMultisample = GLKViewDrawableMultisample =
-   MultisampleNone : 0,
-   Multisample4X   : 1
+   multisampleNone : 0,
+   multisample4X   : 1
 
 exports.GLKVertexAttrib = GLKVertexAttrib =
-   GLKVertexAttribPosition  : 0,
-   GLKVertexAttribNormal    : 1,
-   GLKVertexAttribColor     : 2,
-   GLKVertexAttribTexCoord0 : 3,
-   GLKVertexAttribTexCoord1 : 4
+   position  : 0,
+   normal    : 1,
+   color     : 2,
+   texCoord0 : 3,
+   texCoord1 : 4
 

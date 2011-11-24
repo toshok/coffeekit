@@ -15,7 +15,7 @@ class GLKCanvasViewController extends glkit.GLKViewController
 
   loadView: ->
     @view = new glkit.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
-    @view.drawableDepthFormat = glkit.GLKViewDrawableDepthFormat.Depth16
+    @view.drawableDepthFormat = glkit.GLKViewDrawableDepthFormat.depth16
 
   new ck.SelectorAttribute @::loadView, "loadView", "v@:"
 
