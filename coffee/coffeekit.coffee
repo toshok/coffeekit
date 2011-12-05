@@ -11,12 +11,18 @@ class Attribute
       obj._ck_attributes = []
 
     obj._ck_attributes.unshift this
+
+  @find: (obj, attrType) ->
+    attrs = if obj._ck_attributes? then obj._ck_attributes else []
+    attr for attr in attrs when attr instanceof attrType
+
 exports.Attribute = Attribute
 
 class RegisterAttribute extends Attribute
   constructor: (obj, name) ->
     super obj
     obj._ck_register = name
+
     objc.internalRegisterJSType obj.prototype, obj._ck_register, if obj.__super__ then obj.__super__.constructor._ck_register else ''
 exports.RegisterAttribute = RegisterAttribute
 
@@ -68,14 +74,21 @@ class MixinProtocolAttribute extends Attribute
 exports.MixinProtocolAttribute = MixinProtocolAttribute
 
 class ConformsToProtocolAttribute extends Attribute
-  constructor: (obj, protocol) ->
+  constructor: (obj, @protocol) ->
     super obj
+
     # FIXME
     #   there's not much that's necessary here..  if the attribute is present
     #   we need to synthesize a conformsToProtocol: method which will iterate all
     #   CTPA's and return yes/no.
     #
+    # we should also probably verify that required methods are implemented?  maybe not?...
+    #
     console.log "need to implement ConformsToProtocolAttribute"
+
+  @doesObjectConformTo: (obj, protocol) ->
+    return (conforms for conforms in (Attribute.find obj, ConformsToProtocolAttribute) where conforms.protocol is protocol).length > 0
+
 exports.ConformsToProtocolAttribute = ConformsToProtocolAttribute
 
 
@@ -84,6 +97,11 @@ autobox = (obj, protocol) ->
   class ProtocolProxy extends foundation.NSObject
     constructor: () -> super (objc.allocInstance @.constructor._ck_register)
 
+  # check if the object (or its constructor) conforms to the protocol.  if it does
+  # then we can just use the object, without the proxy
+  if (ConformsToProtocolAttribute.doesObjectConformTo obj, protocol) or (ConformsToProtocolAttribute.doesObjectConformTo obj.prototype.constructor, protocol)
+    return obj
+  
   # first check for required methods.  if obj doesn't implement them, error out.
   for key, value of protocol
     if protocol.hasOwnProperty key
