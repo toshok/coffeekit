@@ -1,5 +1,5 @@
 foundation = require './foundation'
-glkit = require './glkit'
+glk = require './glkit'
 gles = require './opengles'
 ui = require './uikit'
 ck = require './coffeekit'
@@ -8,15 +8,15 @@ class HelloIOSViewController extends ui.UIViewController
 new ck.RegisterAttribute HelloIOSViewController, "HelloIOSViewController"
 
 
-class GLKCanvasViewController extends glkit.GLKViewController
+class GLKCanvasViewController extends glk.GLKViewController
   constructor: (handle) ->
     super (if handle then handle else objc.allocInstance(@.constructor.name))
     if not handle?
       return @initWithNibNameAndBundle null, null
 
   loadView: ->
-    @view = new glkit.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
-    @view.drawableDepthFormat = glkit.GLKViewDrawableDepthFormat.depth16
+    @view = new glk.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
+    @view.drawableDepthFormat = glk.GLKViewDrawableDepthFormat.depth16
 
   new ck.SelectorAttribute @::loadView, "loadView", "v@:"
 
@@ -163,6 +163,30 @@ class HelloIOSAppDelegate extends foundation.NSObject
     
     @window.rootViewController.pushViewController newcontroller, true
 
+  xhrDemo: ->
+    newcontroller = new HelloIOSViewController "HelloIOSViewController", null
+    newcontroller.title = "XmlHttpRequest"
+
+    screenBounds = ui.UIScreen.mainScreen.bounds
+    
+    @xhrButton = ui.UIButton.buttonWithType (ui.UIButtonType.roundedRect);
+    @xhrButton.setTitle "Click to fetch home.mcom.com", ui.UIControlState.normal
+    
+    @xhrButton.frame = new foundation.NSRect (screenBounds.width/2-100), (screenBounds.height/2 - 50), 250, 50
+
+    @xhrButton.clicked = =>
+      xhr = new XmlHttpRequest
+      xhr.open "GET", "http://home.mcom.com/"
+      xhr.readystatechanged = ->
+        if xhr.readyState is 4
+          console.log "response = #{xhr.responseText}"
+      xhr.send()
+      
+    newcontroller.view.addSubview @xhrButton
+    newcontroller.view.addSubview @xhrTextField
+    
+    @window.rootViewController.pushViewController newcontroller, true
+
                   
   
   didFinishLaunching: (notification) ->
@@ -174,6 +198,9 @@ class HelloIOSAppDelegate extends foundation.NSObject
     @tableData = [
         {title: "Web Workers", rows: [
             { title: "Primes in a button", clicked: => @workerDemo() }
+        ]}
+        {title: "XmlHttpRequest", rows: [
+            { title: "Simple fetch", clicked: => @xhrDemo() }
         ]}
         {title: "WebGL", rows: [
             { title: "MDN sample 2",        clicked: => @runMDNDemo "sample2" }
