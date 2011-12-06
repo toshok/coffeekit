@@ -8,7 +8,7 @@ class MKReverseGeocoder extends foundation.NSObject
 
   # Accessing Reverse Geocoder Attributes
   ck.addProperty @::, "coordinate" # Deprecated in iOS 5.0
-  ck.addProperty @::, "delegate" # Deprecated in iOS 5.0
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, MKReverseGeocoderDelegate) } # Deprecated in iOS 5.0
   ck.addProperty @::, "placemark" # Deprecated in iOS 5.0
 
   # Managing the Search

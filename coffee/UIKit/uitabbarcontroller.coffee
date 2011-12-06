@@ -4,7 +4,7 @@
 class UITabBarController extends UIViewController
 
   # Accessing the Tab Bar Controller Properties
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITabBarControllerDelegate) }
   ck.addProperty @::, "tabBar"
 
   # Managing the View Controllers

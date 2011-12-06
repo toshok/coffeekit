@@ -8,7 +8,7 @@ class UINavigationBar extends UIView
   ck.addProperty @::, "translucent"
 
   # Assigning the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationBarDelegate) }
 
   # Pushing and Popping Items
   pushNavigationItem: objc.invokeSelector "pushNavigationItem:animated:"

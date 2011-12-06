@@ -7,7 +7,7 @@ class UIActionSheet extends UIView
   init: objc.invokeSelector "initWithTitle:delegate:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:";
 
   # Setting Properties
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIActionSheetDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIActionSheetDelegate) }
   ck.addProperty @::, "title"
   ck.addProperty @::, "visible", { set: null, get: "isVisible" }
   ck.addProperty @::, "property"

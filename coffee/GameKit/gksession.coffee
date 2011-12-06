@@ -7,7 +7,7 @@ class GKSession extends foundation.NSObject
   init: objc.invokeSelector ("initWithSessionID:displayName:sessionMode:")
 
   # Setting and Getting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKSessionDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKSessionDelegate) }
 
   # Searching for Other Peers
   ck.addProperty @::, "available"

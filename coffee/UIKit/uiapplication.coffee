@@ -8,7 +8,7 @@ class UIApplication extends UIResponder
   ck.addProperty @, "sharedApplication", set: null, get: -> objc.invokeSelector("sharedApplication").call UIApplication
 
   # Setting and Getting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIApplicationDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIApplicationDelegate) }
 
   # Getting Application Windows
   ck.addProperty @::, "keyWindow", { set: null } # readonly

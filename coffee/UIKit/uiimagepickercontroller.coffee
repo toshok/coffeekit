@@ -10,7 +10,7 @@ class UIImagePickerController extends UINavigationController
 
   # Configuring the Picker
   ck.addProperty @::, "allowsEditing"
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIImagePickerControllerDelegate) }
   ck.addProperty @::, "mediaTypes"
   ck.addProperty @::, "allowsImageEditing" # Deprecated in iOS 3.1
 

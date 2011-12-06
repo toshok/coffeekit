@@ -7,7 +7,7 @@ class GLKView extends uikit.UIView
   initWithFrameAndContext: objc.invokeSelector ("initWithFrame:context:")
 
   # Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GLKViewDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GLKViewDelegate) }
 
   # Configuring the Framebuffer Object
   ck.addProperty @::, "drawableColorFormat"

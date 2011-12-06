@@ -4,7 +4,7 @@
 class UITabBar extends UIView
 
   # Getting and Setting Properties
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITabBarDelegate) }
 
   # Configuring Items
   ck.addProperty @::, "items", { set: (v) -> @setItems v, false }

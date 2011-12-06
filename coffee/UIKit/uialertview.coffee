@@ -9,7 +9,7 @@ class UIAlertView extends UIView
   init: objc.invokeSelector "initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:"
 
   # Setting Properties
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAlertViewDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAlertViewDelegate) }
   ck.addProperty @::, "alertViewStyle"
   ck.addProperty @::, "title"
   ck.addProperty @::, "message"

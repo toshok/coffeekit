@@ -31,7 +31,7 @@ class UITextField extends UIControl
   ck.addProperty @::, "rightViewMode"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextFieldDelegate) }
 
   # Drawing and Positioning Overrides
   textRect: objc.invokeSelector "textRectForBounds:"

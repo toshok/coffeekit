@@ -73,8 +73,8 @@ class UITableView extends UIScrollView
   registerNibForCellReuseIdentifier: objc.invokeSelector "registerNib:forCellReuseIdentifier:"
 
   # Managing the Delegate and the Data Source
-  ck.addProperty @::, "dataSource", set: (v) -> objc.invokeSelector("setDataSource:").call this, (ck.autobox v, UITableViewDataSource)
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITableViewDelegate)
+  ck.addProperty @::, "dataSource", { set: (v) -> objc.invokeSelector("setDataSource:").call this, (ck.autobox v, UITableViewDataSource) }
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITableViewDelegate) }
 
 new ck.RegisterAttribute UITableView, "UITableView"
 exports.UITableView = UITableView

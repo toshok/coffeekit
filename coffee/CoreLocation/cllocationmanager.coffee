@@ -4,7 +4,7 @@ class CLLocationManager extends foundation.NSObject
   constructor: (handle) -> super (if handle then handle else @.constructor.name)
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CLLocationManagerDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CLLocationManagerDelegate) }
 
   # Determining the Availability of Services
   @authorizationStatus: objc.invokeSelector ("authorizationStatus")

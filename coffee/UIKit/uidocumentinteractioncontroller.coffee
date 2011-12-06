@@ -26,7 +26,7 @@ class UIDocumentInteractionController extends foundation.NSObject
 
   # Accessing the Controller Attributes
   ck.addProperty @::, "gestureRecognizers"
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIDocumentInteractionControllerDelegate) }
 
 new ck.RegisterAttribute UIDocumentInteractionController, "UIDocumentInteractionController"
 exports.UIDocumentInteractionController = UIDocumentInteractionController

@@ -47,7 +47,7 @@ class UIScrollView extends UIView
   ck.addProperty @::, "bouncesZoom"
 
   # Managing the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIScrollViewDelegate) }
 
 new ck.RegisterAttribute UIScrollView, "UIScrollView"
 exports.UIScrollView = UIScrollView

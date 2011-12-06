@@ -7,7 +7,7 @@ class SKProductsRequest extends SKRequest
   initWithProductIdentifiers: objc.invokeSelector ("initWithProductIdentifiers:")
 
   # Setting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, SKProductsRequestDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, SKProductsRequestDelegate) }
 
 new ck.RegisterAttribute SKProductsRequest, "SKProductsRequest"
 exports.SKProductsRequest = SKProductsRequest

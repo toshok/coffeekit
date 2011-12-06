@@ -8,7 +8,7 @@ class SKRequest extends NSObject
   cancel: objc.invokeSelector ("cancel")
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, SKRequestDelegate
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, SKRequestDelegate) }
 
 new ck.RegisterAttribute SKRequest, "SKRequest"
 exports.SKRequest = SKRequest

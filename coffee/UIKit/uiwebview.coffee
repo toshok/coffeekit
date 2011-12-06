@@ -4,7 +4,7 @@
 class UIWebView extends UIView
 
   # Setting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIWebViewDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIWebViewDelegate) }
 
   # Loading Content
   loadData: objc.invokeSelector "loadData:MIMEType:textEncodingName:baseURL:"

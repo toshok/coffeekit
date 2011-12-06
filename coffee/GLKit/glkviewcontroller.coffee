@@ -8,7 +8,7 @@ class GLKViewController extends uikit.UIViewController
   ck.addProperty @::, "framesPerSecond"
 
   # Configuring the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GLKViewControllerDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GLKViewControllerDelegate) }
 
   # Controlling Frame Updates
   ck.addProperty @::, "paused"

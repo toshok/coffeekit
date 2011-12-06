@@ -7,7 +7,7 @@ class GKFriendRequestComposeViewController extends ui.UINavigationController
   @maxNumberOfRecipients: objc.invokeSelector ("maxNumberOfRecipients")
 
   # Delegate
-  ck.addProperty @::, "composeViewDelegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKFriendRequestComposeViewControllerDelegate)
+  ck.addProperty @::, "composeViewDelegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKFriendRequestComposeViewControllerDelegate) }
 
   # Adding Recipients
   addRecipientsWithEmailAddresses:: objc.invokeSelector ("addRecipientsWithEmailAddresses:")

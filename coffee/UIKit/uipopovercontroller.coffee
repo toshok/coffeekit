@@ -12,7 +12,7 @@ class UIPopoverController extends foundation.NSObject
   ck.addProperty @::, "popoverContentSize", { set: (v) -> @setPopoverContentSize v, false }
   setPopoverContentSize: objc.invokeSelector "setPopoverContentSize:animated:"
   ck.addProperty @::, "passthroughViews"
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPopoverControllerDelegate) }
 
   # Getting the Popover Attributes
   ck.addProperty @::, "popoverVisible"

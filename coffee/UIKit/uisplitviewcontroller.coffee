@@ -7,7 +7,7 @@ class UISplitViewController extends UIViewController
   ck.addProperty @::, "viewControllers"
 
   # Accessing the Delegate Object
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISplitViewController) }
 
 new ck.RegisterAttribute UISplitViewController, "UISplitViewController"
 exports.UISplitViewController = UISplitViewController

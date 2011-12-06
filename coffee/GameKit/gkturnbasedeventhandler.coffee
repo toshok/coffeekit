@@ -7,7 +7,7 @@ class GKTurnBasedEventHandler extends foundation.NSObject
   @sharedTurnBasedEventHandler: objc.invokeSelector ("sharedTurnBasedEventHandler")
 
   # Getting and Setting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKTurnBasedEventHandlerDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKTurnBasedEventHandlerDelegate) }
 
 new ck.RegisterAttribute GKTurnBasedEventHandler, "GKTurnBasedEventHandler"
 exports.GKTurnBasedEventHandler = GKTurnBasedEventHandler

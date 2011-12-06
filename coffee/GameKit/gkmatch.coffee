@@ -4,7 +4,7 @@ class GKMatch extends foundation.NSObject
   constructor: (handle) -> super (if handle then handle else @.constructor.name)
 
   # Getting and Setting the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKMatchDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKMatchDelegate) }
 
   # Working with Other Players
   ck.addProperty @::, "playerIDs"

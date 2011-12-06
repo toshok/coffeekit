@@ -31,7 +31,7 @@ class UIGestureRecognizer extends foundation.NSObject
   requireGestureRecognizerToFail: objc.invokeSelector "requireGestureRecognizerToFail:"
 
   # Setting and Getting the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIGestureRecognizerDelegate) }
 
   # Methods For Subclasses
 

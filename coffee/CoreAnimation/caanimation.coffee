@@ -17,11 +17,7 @@ class CAAnimation extends foundation.NSObject
   ck.addProperty @::, "timingFunction"
 
   # Getting and Setting the Delegate
-  ck.addProperty @::, "delegate"
-
-  # Animation Progress
-  animationDidStart: objc.invokeSelector "animationDidStart:"  # delegate method
-  animationDidStop: objc.invokeSelector "animationDidStop:finished:"  # delegate method
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CAAnimationDelegate) }
 
 new ck.RegisterAttribute CAAnimation, "CAAnimation"
 exports.CAAnimation = CAAnimation

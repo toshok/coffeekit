@@ -5,7 +5,7 @@ class GKLeaderboardViewController extends ui.UINavigationController
 
   # Configuring the Leaderboard View Controller
   ck.addProperty @::, "category"
-  ck.addProperty @::, "leaderboardDelegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKLeaderboardViewControllerDelegate)
+  ck.addProperty @::, "leaderboardDelegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKLeaderboardViewControllerDelegate) }
   ck.addProperty @::, "timeScope"
 
 new ck.RegisterAttribute GKLeaderboardViewController, "GKLeaderboardViewController"

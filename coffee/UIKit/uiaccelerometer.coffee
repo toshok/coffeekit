@@ -8,7 +8,7 @@ class UIAccelerometer extends foundation.NSObject
 
   # Accessing the Accelerometer Properties
   ck.addProperty @::, "updateInterval"
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAccelerometerDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAccelerometerDelegate) }
 
 new ck.RegisterAttribute UIAccelerometer, "UIAccelerometer"
 exports.UIAccelerometer = UIAccelerometer

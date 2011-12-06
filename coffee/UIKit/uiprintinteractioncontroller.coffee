@@ -30,7 +30,7 @@ class UIPrintInteractionController extends foundation.NSObject
   ck.addProperty @::, "showsPageRange"
 
   # Assigning the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPrintInteractionControllerDelegate) }
 
 new ck.RegisterAttribute UIPrintInteractionController, "UIPrintInteractionController"
 exports.UIPrintInteractionController = UIPrintInteractionController

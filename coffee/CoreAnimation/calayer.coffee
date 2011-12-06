@@ -29,9 +29,7 @@ class CALayer extends foundation.NSObject
   ck.addProperty @::, "contentsRect"
   ck.addProperty @::, "contentsCenter"
   display: objc.invokeSelector "display"
-  displayLayer: objc.invokeSelector "displayLayer:"  # delegate method
   drawInContext: objc.invokeSelector "drawInContext:"
-  drawLayer: objc.invokeSelector "drawLayer:inContext:"  # delegate method
   ck.addProperty @::, "opaque"
   ck.addProperty @::, "edgeAntialiasingMask"
   contentsAreFlipped: objc.invokeSelector "contentsAreFlipped"
@@ -103,7 +101,6 @@ class CALayer extends foundation.NSObject
   ck.addProperty @::, "actions"
   @defaultActionForKey: objc.invokeSelector "defaultActionForKey:"
   actionForKey: objc.invokeSelector "actionForKey:"
-  actionForLayer: objc.invokeSelector "actionForLayer:forKey:"  # delegate method
 
   # Mapping Between Coordinate and Time Spaces
   convertPointFromLayer: objc.invokeSelector "convertPoint:fromLayer:"
@@ -128,7 +125,7 @@ class CALayer extends foundation.NSObject
   scrollRectToVisible: objc.invokeSelector "scrollRectToVisible:"
 
   # Modifying the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CALayerDelegate) }
 
   # Key-Value Coding Extensions
   shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"

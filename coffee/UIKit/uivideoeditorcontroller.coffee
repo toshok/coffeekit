@@ -7,7 +7,7 @@ class UIVideoEditorController extends UINavigationController
   @canEditVideoAtPath: objc.invokeSelector "canEditVideoAtPath:"
 
   # Configuring the Editor
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIVideoEditorControllerDelegate) }
   ck.addProperty @::, "videoMaximumDuration"
   ck.addProperty @::, "videoPath"
   ck.addProperty @::, "videoQuality"

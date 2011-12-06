@@ -6,7 +6,7 @@ class UIPageViewController extends UIViewController
   # Creating Page View Controllers
   initWithTransitionStyle: objc.invokeSelector "initWithTransitionStyle:navigationOrientation:options:"
   ck.addProperty @::, "dataSource"
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPageViewControllerDelegate) }
 
   # Providing Content
   setViewControllers: objc.invokeSelector "setViewControllers:direction:animated:completion:"

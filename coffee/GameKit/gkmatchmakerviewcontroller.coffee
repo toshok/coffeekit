@@ -8,7 +8,7 @@ class GKMatchmakerViewController extends ui.UINavigationController
   initWithMatchRequest: objc.invokeSelector ("initWithMatchRequest:")
 
   # Getting and Setting the Delegate
-  ck.addProperty @::, "matchmakerDelegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKMatchmakerViewControllerDelegate)
+  ck.addProperty @::, "matchmakerDelegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKMatchmakerViewControllerDelegate) }
 
   # Matchmaker View Controller Properties
   ck.addProperty @::, "defaultInvitationMessage"

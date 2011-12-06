@@ -9,7 +9,7 @@ class MKMapView extends ui.UIView
   ck.addProperty @::, "scrollEnabled"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, MKMapViewDelegate)
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, MKMapViewDelegate) }
 
   # Manipulating the Visible Portion of the Map
   ck.addProperty @::, "region", { set: (v) -> @setRegion v, false }

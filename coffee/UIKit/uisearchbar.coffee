@@ -32,7 +32,7 @@ class UISearchBar extends foundation.NSObject
   ck.addProperty @::, "showsScopeBar"
 
   # Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISearchBar) }
 
   # Customizing Appearance
   ck.addProperty @::, "backgroundImage"

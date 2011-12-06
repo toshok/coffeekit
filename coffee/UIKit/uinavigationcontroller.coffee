@@ -24,7 +24,7 @@ class UINavigationController extends UIViewController
   setNavigationBarHidden: objc.invokeSelector "setNavigationBarHidden:animated:"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate"
+  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationControllerDelegate) }
 
   # Configuring Custom Toolbars
   ck.addProperty @::, "toolbar"
