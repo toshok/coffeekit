@@ -87,7 +87,7 @@ class ConformsToProtocolAttribute extends Attribute
     console.log "need to implement ConformsToProtocolAttribute"
 
   @doesObjectConformTo: (obj, protocol) ->
-    return (conforms for conforms in (Attribute.find obj, ConformsToProtocolAttribute) where conforms.protocol is protocol).length > 0
+    return (conforms for conforms in (Attribute.find obj, ConformsToProtocolAttribute) when conforms.protocol is protocol).length > 0
 
 exports.ConformsToProtocolAttribute = ConformsToProtocolAttribute
 
@@ -99,7 +99,7 @@ autobox = (obj, protocol) ->
 
   # check if the object (or its constructor) conforms to the protocol.  if it does
   # then we can just use the object, without the proxy
-  if (ConformsToProtocolAttribute.doesObjectConformTo obj, protocol) or (ConformsToProtocolAttribute.doesObjectConformTo obj.prototype.constructor, protocol)
+  if (ConformsToProtocolAttribute.doesObjectConformTo obj, protocol) or (ConformsToProtocolAttribute.doesObjectConformTo obj.constructor, protocol)
     return obj
   
   # first check for required methods.  if obj doesn't implement them, error out.
