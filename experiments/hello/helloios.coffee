@@ -7,7 +7,6 @@ ck = require './coffeekit'
 class HelloIOSViewController extends ui.UIViewController
 new ck.RegisterAttribute HelloIOSViewController, "HelloIOSViewController"
 
-
 class GLKCanvasViewController extends glkit.GLKViewController
   constructor: (handle) ->
     super (if handle then handle else objc.allocInstance (@.constructor.name))

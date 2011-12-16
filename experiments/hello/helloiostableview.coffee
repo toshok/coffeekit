@@ -133,10 +133,10 @@ class HelloIOSAppDelegate extends foundation.NSObject
     newcontroller = new HelloIOSViewController "HelloIOSViewController", null
     newcontroller.title = "Web Workers"
 
-    screenBounds = ui.UIScreen.mainScreen.bounds
-    
     @primeButton = ui.UIButton.buttonWithType (ui.UIButtonType.roundedRect);
     @primeButton.setTitle "Click to generate primes", ui.UIControlState.normal
+    
+    screenBounds = ui.UIScreen.mainScreen.bounds
     
     @primeButton.frame = new foundation.NSRect (screenBounds.width/2-100), (screenBounds.height/2 - 50), 200, 50
 
@@ -155,8 +155,6 @@ class HelloIOSAppDelegate extends foundation.NSObject
         @worker = new Worker ('./prime-worker')
         @worker.onmessage = (msg) =>
           @primeTextField.text = "Prime #{++@primeCount}: #{msg}"
-          return
-      return
       
     newcontroller.view.addSubview @primeButton
     newcontroller.view.addSubview @primeTextField
