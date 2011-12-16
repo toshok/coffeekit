@@ -146,18 +146,6 @@ autobox = (obj, protocol) ->
 exports.autobox = autobox  
 
 addProperty = (obj, jsprop, opts) ->
-  # handle autoboxing here.
-  #if opts?.autobox
-  #  if obj instanceof opts.autobox
-  #    # do nothing, it's already a subclass
-  #  else
-  #    # we need to autobox it..  let's just assume that we don't have a setter method.  that'll complicate things
-  #    obj.__defineGetter__ jsprop, getter = objc.invokeSelector (jsprop)
-  #    obj.__defineSetter__ jsprop, setter = (v) -> 
-  #      proxy = autobox v, opts.autobox 
-  #      objc.invokeSelector("set" + jsprop[0].toUpperCase() + (jsprop.slice 1) + ":") proxy
-  #    return # XXX there is going to be more here...
-
   # if opts are left off, and jsprop = 'foo',
   # we assume the getter is 'foo' and the setter is
   # 'setFoo'
