@@ -5,7 +5,7 @@ class UIViewController extends UIResponder
 
   constructor: (handle, arg2) ->
     if typeof (handle) == 'string'
-      super objc.allocInstance(handle)
+      super objc.allocInstance(@.constructor.name)
       @initWithNibNameAndBundle handle, arg2
     else
       super (if handle then handle else objc.allocInstance (@.constructor.name))
