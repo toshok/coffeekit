@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[CoffeeKit]]></title>
+  <link href="http://toshok.github.com/coffeekit/atom.xml" rel="self"/>
+  <link href="http://toshok.github.com/coffeekit/"/>
+  <updated>2011-12-22T14:32:35-08:00</updated>
+  <id>http://toshok.github.com/coffeekit/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>

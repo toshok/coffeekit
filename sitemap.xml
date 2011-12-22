@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://toshok.github.com/coffeekit/blog/archives/</loc>
+        <lastmod>2011-12-22T13:56:39-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshok.github.com/coffeekit/</loc>
+        <lastmod>2011-12-22T13:56:39-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshok.github.com/coffeekit/release_notes/0.1/</loc>
+        <lastmod>2011-12-22T14:28:22-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshok.github.com/coffeekit/release_notes/0.1.1/</loc>
+        <lastmod>2011-12-22T14:26:23-08:00</lastmod>
+    </url>
+</urlset>
