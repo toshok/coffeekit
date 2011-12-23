@@ -6,10 +6,10 @@
 <head>
   <meta charset="utf-8">
   <title>Blog Archive - CoffeeKit</title>
-  <meta name="author" content="">
+  <meta name="author" content="Toshok Electric Light & Manufacturing">
 
   
-  <meta name="description" content=" Blog Archive Recent Posts ">
+  <meta name="description" content=" Blog Archive Latest Tweets Status updating... $.domReady(function(){ getTwitterFeed("toshokelectric", 4, false); }); Follow @toshokelectric ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://toshok.github.com/coffeekit/blog/archives">
+  <link rel="canonical" href="http://toshokelectric.com/coffeekit/blog/archives">
   <link href="/coffeekit/favicon.png" rel="icon">
   <link href="/coffeekit/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/coffeekit/javascripts/modernizr-2.0.js"></script>
@@ -30,6 +30,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-26820000-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -49,14 +61,15 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:toshok.github.com/coffeekit" />
+    <input type="hidden" name="q" value="site:toshokelectric.com/coffeekit" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/coffeekit/">Blog</a></li>
-  <li><a href="/coffeekit/blog/archives">Archives</a></li>
+  <li><a href="/coffeekit/download">Get it</a</li>
+  <li><a href="/coffeekit/documentation">Documentation</a></li>
+
 </ul>
 
 </nav>
@@ -81,16 +94,23 @@
 
 <aside class="sidebar">
   
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
     
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
   </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("toshokelectric", 4, false);
+    });
+  </script>
+  <script src="/coffeekit/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/toshokelectric" class="twitter-follow-button" data-show-count="false">Follow @toshokelectric</a>
+  
 </section>
-
-
-
-
 
 
   
@@ -100,12 +120,25 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2011 -  -
+  Copyright &copy; 2011 - Toshok Electric Light & Manufacturing -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'toshokelectric';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

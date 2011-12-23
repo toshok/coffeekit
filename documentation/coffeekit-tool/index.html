@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>CoffeeKit 0.1 - CoffeeKit</title>
+  <title>coffeekit tool - CoffeeKit</title>
   <meta name="author" content="Toshok Electric Light & Manufacturing">
 
   
-  <meta name="description" content="CoffeeKit 0.1 Dec 21st, 2011 First version of CoffeeKit distributed to anyone. Just a smoke test to see if the released version
-was usable/correct &hellip;">
+  <meta name="description" content="Coffeekit Tool Dec 22nd, 2011 CoffeeKit comes with a script coffeekit found in /Developer/CoffeeKit/usr/bin/ which at present
+is useful for setting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ was usable/correct &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://toshokelectric.com/coffeekit/release_notes/0.1">
+  <link rel="canonical" href="http://toshokelectric.com/coffeekit/documentation/coffeekit-tool">
   <link href="/coffeekit/favicon.png" rel="icon">
   <link href="/coffeekit/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/coffeekit/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@ was usable/correct &hellip;">
 <article role="article">
   
   <header>
-    <h1 class="entry-title">CoffeeKit 0.1</h1>
+    <h1 class="entry-title">Coffeekit Tool</h1>
     <p class="meta">
 
 
@@ -93,11 +93,53 @@ was usable/correct &hellip;">
   
 
 
-<time datetime="2011-12-21T05:59:00-08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2011</time></p>
+<time datetime="2011-12-22T15:52:00-08:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time></p>
   </header>
   
-  <p>First version of CoffeeKit distributed to anyone.  Just a smoke test to see if the released version
-was usable/correct at all.</p>
+  <p>CoffeeKit comes with a script <code>coffeekit</code> found in <code>/Developer/CoffeeKit/usr/bin/</code> which at present
+is useful for setting up the scaffolding of a new CoffeeKit Xcode project.</p>
+
+<p>To generate a new project, use the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$ </span>/Developer/CoffeeKit/usr/bin/coffeekit genproj org.toshok MyProjectName
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>you&#8217;ll of course replace <code>org.toshok</code> with whatever identifier describes your organization.</p>
+
+<p>This will generate the Xcode project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$ </span>ls
+</span><span class='line'>  MyProjectName/        MyProjectName.xcodeproj/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>opening up the Xcode project (either with this command line or from the Finder):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$ </span>open MyProjectName.xcodeproj
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will bring Xcode up with the project ready to use.  Two <code>.coffee</code> files with have been added, <code>AppDelegate.coffee</code> and <code>ViewController.coffee</code>.</p>
+
+<p>The <code>MyProjectName</code> in the <code>coffeekit</code> invocation above is optional, and will be taking from the current directory name if omitted.  So this sequence of commands will yield an identically named project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$ </span>mkdir MyProjectName
+</span><span class='line'>  <span class="nv">$ </span><span class="nb">cd </span>MyProjectName
+</span><span class='line'>  <span class="nv">$ </span>/Developer/CoffeeKit/usr/bin/coffeekit genproj org.toshok
+</span><span class='line'>  <span class="nv">$ </span>ls
+</span><span class='line'>  MyProjectName/        MyProjectName.xcodeproj/
+</span></code></pre></td></tr></table></div></figure>
+
 
   
     <footer>
@@ -115,9 +157,18 @@ was usable/correct at all.</p>
   
 
 
-<time datetime="2011-12-21T05:59:00-08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2011</time>
+<time datetime="2011-12-22T15:52:00-08:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
         
       </p>
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://toshokelectric.com/coffeekit/documentation/coffeekit-tool/index.html" data-via="toshokelectric" data-counturl="http://toshokelectric.com/coffeekit/documentation/coffeekit-tool/index.html" >Tweet</a>
+  
+  
+  
+</div>
+
       
     </footer>
   

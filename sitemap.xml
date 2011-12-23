@@ -1,19 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://toshok.github.com/coffeekit/blog/archives/</loc>
+        <loc>http://toshokelectric.com/coffeekit/blog/archives/</loc>
         <lastmod>2011-12-22T13:56:39-08:00</lastmod>
     </url>
     <url>
-        <loc>http://toshok.github.com/coffeekit/</loc>
-        <lastmod>2011-12-22T13:56:39-08:00</lastmod>
+        <loc>http://toshokelectric.com/coffeekit/documentation/coffeekit-tool/</loc>
+        <lastmod>2011-12-22T16:04:15-08:00</lastmod>
     </url>
     <url>
-        <loc>http://toshok.github.com/coffeekit/release_notes/0.1/</loc>
-        <lastmod>2011-12-22T14:28:22-08:00</lastmod>
+        <loc>http://toshokelectric.com/coffeekit/documentation/getting-started/</loc>
+        <lastmod>2011-12-22T15:52:45-08:00</lastmod>
     </url>
     <url>
-        <loc>http://toshok.github.com/coffeekit/release_notes/0.1.1/</loc>
-        <lastmod>2011-12-22T14:34:22-08:00</lastmod>
+        <loc>http://toshokelectric.com/coffeekit/documentation/</loc>
+        <lastmod>2011-12-22T16:10:51-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshokelectric.com/coffeekit/download/</loc>
+        <lastmod>2011-12-22T16:20:25-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshokelectric.com/coffeekit/</loc>
+        <lastmod>2011-12-22T14:48:43-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshokelectric.com/coffeekit/</loc>
+        <lastmod>2011-12-22T15:41:07-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshokelectric.com/coffeekit/release_notes/0.1/</loc>
+        <lastmod>2011-12-22T14:35:43-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://toshokelectric.com/coffeekit/release_notes/0.1.1/</loc>
+        <lastmod>2011-12-22T14:35:32-08:00</lastmod>
     </url>
 </urlset>

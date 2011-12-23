@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[CoffeeKit]]></title>
-  <link href="http://toshok.github.com/coffeekit/atom.xml" rel="self"/>
-  <link href="http://toshok.github.com/coffeekit/"/>
-  <updated>2011-12-22T14:34:27-08:00</updated>
-  <id>http://toshok.github.com/coffeekit/</id>
+  <link href="http://toshokelectric.com/coffeekit/atom.xml" rel="self"/>
+  <link href="http://toshokelectric.com/coffeekit/"/>
+  <updated>2011-12-22T16:27:41-08:00</updated>
+  <id>http://toshokelectric.com/coffeekit/</id>
   <author>
-    <name><![CDATA[]]></name>
+    <name><![CDATA[Toshok Electric Light & Manufacturing]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
