@@ -1,0 +1,1090 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED21C76C14A3BED00062D53A /* helloiostableview.coffee in Resources */ = {isa = PBXBuildFile; fileRef = ED21C76B14A3BED00062D53A /* helloiostableview.coffee */; };
+		ED21C84014A3BFD70062D53A /* HelloIOSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED21C83F14A3BFD70062D53A /* HelloIOSViewController.xib */; };
+		ED21C84114A3C01C0062D53A /* helloiostableview.coffee in Sources */ = {isa = PBXBuildFile; fileRef = ED21C76B14A3BED00062D53A /* helloiostableview.coffee */; };
+		ED21C84314A3C2140062D53A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED21C84214A3C2140062D53A /* GLKit.framework */; };
+		ED21C84514A3C3D40062D53A /* HelloCube.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79A14A3BEFF0062D53A /* HelloCube.js */; };
+		ED21C84614A3C3D40062D53A /* HelloCubemap.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79B14A3BEFF0062D53A /* HelloCubemap.js */; };
+		ED21C84714A3C3D40062D53A /* HelloHead.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79C14A3BEFF0062D53A /* HelloHead.js */; };
+		ED21C84814A3C3D40062D53A /* HelloLights.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79D14A3BEFF0062D53A /* HelloLights.js */; };
+		ED21C84914A3C3D40062D53A /* HelloPlasma.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79E14A3BEFF0062D53A /* HelloPlasma.js */; };
+		ED21C84A14A3C3D40062D53A /* HelloScene.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79F14A3BEFF0062D53A /* HelloScene.js */; };
+		ED21C84C14A3C4380062D53A /* glMatrix.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A114A3BEFF0062D53A /* glMatrix.js */; };
+		ED21C84E14A3C45A0062D53A /* J3D.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B614A3BEFF0062D53A /* J3D.js */; };
+		ED21C85014A3C4760062D53A /* BuiltinShaders.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A414A3BEFF0062D53A /* BuiltinShaders.js */; };
+		ED21C85114A3C4760062D53A /* Camera.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A514A3BEFF0062D53A /* Camera.js */; };
+		ED21C85214A3C4760062D53A /* Cubemap.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A614A3BEFF0062D53A /* Cubemap.js */; };
+		ED21C85314A3C4760062D53A /* Engine.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A714A3BEFF0062D53A /* Engine.js */; };
+		ED21C85414A3C4760062D53A /* FrameBuffer.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A814A3BEFF0062D53A /* FrameBuffer.js */; };
+		ED21C85514A3C4760062D53A /* Geometry.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7A914A3BEFF0062D53A /* Geometry.js */; };
+		ED21C85614A3C4760062D53A /* Light.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AA14A3BEFF0062D53A /* Light.js */; };
+		ED21C85714A3C4760062D53A /* Loader.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AB14A3BEFF0062D53A /* Loader.js */; };
+		ED21C85814A3C4760062D53A /* Mesh.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AC14A3BEFF0062D53A /* Mesh.js */; };
+		ED21C85914A3C4760062D53A /* Particles.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AD14A3BEFF0062D53A /* Particles.js */; };
+		ED21C85A14A3C4760062D53A /* Postprocess.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AE14A3BEFF0062D53A /* Postprocess.js */; };
+		ED21C85B14A3C4760062D53A /* Primitives.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7AF14A3BEFF0062D53A /* Primitives.js */; };
+		ED21C85C14A3C4760062D53A /* Scene.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B014A3BEFF0062D53A /* Scene.js */; };
+		ED21C85D14A3C4760062D53A /* Shader.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B114A3BEFF0062D53A /* Shader.js */; };
+		ED21C85E14A3C4760062D53A /* ShaderAtlas.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B214A3BEFF0062D53A /* ShaderAtlas.js */; };
+		ED21C85F14A3C4760062D53A /* ShaderSource.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B314A3BEFF0062D53A /* ShaderSource.js */; };
+		ED21C86014A3C4760062D53A /* Texture.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B414A3BEFF0062D53A /* Texture.js */; };
+		ED21C86114A3C4760062D53A /* Transform.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B514A3BEFF0062D53A /* Transform.js */; };
+		ED21C86314A3C4980062D53A /* Matrix44.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B814A3BEFF0062D53A /* Matrix44.js */; };
+		ED21C86414A3C4980062D53A /* Vector2.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7B914A3BEFF0062D53A /* Vector2.js */; };
+		ED21C86514A3C4980062D53A /* Vector3.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7BA14A3BEFF0062D53A /* Vector3.js */; };
+		ED21C86714A3C4D30062D53A /* Depth.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7BD14A3BEFF0062D53A /* Depth.glsl */; };
+		ED21C86814A3C4D30062D53A /* Gouraud.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7BE14A3BEFF0062D53A /* Gouraud.glsl */; };
+		ED21C86914A3C4D30062D53A /* Lightmap.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7BF14A3BEFF0062D53A /* Lightmap.glsl */; };
+		ED21C86A14A3C4D30062D53A /* Normal2Color.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C014A3BEFF0062D53A /* Normal2Color.glsl */; };
+		ED21C86B14A3C4D30062D53A /* Phong.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C114A3BEFF0062D53A /* Phong.glsl */; };
+		ED21C86C14A3C4D30062D53A /* Reflective.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C214A3BEFF0062D53A /* Reflective.glsl */; };
+		ED21C86D14A3C4D30062D53A /* Skybox.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C314A3BEFF0062D53A /* Skybox.glsl */; };
+		ED21C86E14A3C4D30062D53A /* Toon.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C414A3BEFF0062D53A /* Toon.glsl */; };
+		ED21C86F14A3C4D30062D53A /* Vignette.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C514A3BEFF0062D53A /* Vignette.glsl */; };
+		ED21C87114A3C4F90062D53A /* BasicFilterVertex.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C714A3BEFF0062D53A /* BasicFilterVertex.glsl */; };
+		ED21C87214A3C4F90062D53A /* CommonFilterInclude.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C814A3BEFF0062D53A /* CommonFilterInclude.glsl */; };
+		ED21C87314A3C4F90062D53A /* CommonInclude.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7C914A3BEFF0062D53A /* CommonInclude.glsl */; };
+		ED21C87414A3C4F90062D53A /* Modifiers.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7CA14A3BEFF0062D53A /* Modifiers.glsl */; };
+		ED21C87514A3C4F90062D53A /* VertexInclude.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7CB14A3BEFF0062D53A /* VertexInclude.glsl */; };
+		ED21C87714A3C5120062D53A /* Color.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7CD14A3BEFF0062D53A /* Color.js */; };
+		ED21C87814A3C5120062D53A /* Logger.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7CE14A3BEFF0062D53A /* Logger.js */; };
+		ED21C87914A3C5120062D53A /* ParticleUtil.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7CF14A3BEFF0062D53A /* ParticleUtil.js */; };
+		ED21C87A14A3C5120062D53A /* ShaderUtil.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7D014A3BEFF0062D53A /* ShaderUtil.js */; };
+		ED21C87B14A3C5120062D53A /* Time.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C7D114A3BEFF0062D53A /* Time.js */; };
+		ED21C87E14A3C5550062D53A /* DarkGlass.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79514A3BEFF0062D53A /* DarkGlass.glsl */; };
+		ED21C87F14A3C5550062D53A /* Glass.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79614A3BEFF0062D53A /* Glass.glsl */; };
+		ED21C88014A3C5550062D53A /* Glitter.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79714A3BEFF0062D53A /* Glitter.glsl */; };
+		ED21C88114A3C5550062D53A /* GoldHead.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79814A3BEFF0062D53A /* GoldHead.glsl */; };
+		ED21C88214A3C5550062D53A /* Stripes.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79914A3BEFF0062D53A /* Stripes.glsl */; };
+		ED21C88414A3C57B0062D53A /* back.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78E14A3BEFF0062D53A /* back.jpg */; };
+		ED21C88514A3C57B0062D53A /* down.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78F14A3BEFF0062D53A /* down.jpg */; };
+		ED21C88614A3C57B0062D53A /* front.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79014A3BEFF0062D53A /* front.jpg */; };
+		ED21C88714A3C57B0062D53A /* left.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79114A3BEFF0062D53A /* left.jpg */; };
+		ED21C88814A3C57B0062D53A /* right.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79214A3BEFF0062D53A /* right.jpg */; };
+		ED21C88914A3C57B0062D53A /* up.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C79314A3BEFF0062D53A /* up.jpg */; };
+		ED21C88B14A3C5910062D53A /* colorramp1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78714A3BEFF0062D53A /* colorramp1.png */; };
+		ED21C88C14A3C5910062D53A /* colorramp2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78814A3BEFF0062D53A /* colorramp2.png */; };
+		ED21C88D14A3C5910062D53A /* colorramp3.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78914A3BEFF0062D53A /* colorramp3.png */; };
+		ED21C88E14A3C5910062D53A /* containerbake512.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78A14A3BEFF0062D53A /* containerbake512.jpg */; };
+		ED21C88F14A3C5910062D53A /* crate256.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78B14A3BEFF0062D53A /* crate256.jpg */; };
+		ED21C89014A3C5910062D53A /* metalbase.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78C14A3BEFF0062D53A /* metalbase.jpg */; };
+		ED21C89214A3C5B90062D53A /* back.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77514A3BEFF0062D53A /* back.jpg */; };
+		ED21C89314A3C5B90062D53A /* front.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77614A3BEFF0062D53A /* front.jpg */; };
+		ED21C89414A3C5B90062D53A /* left.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77714A3BEFF0062D53A /* left.jpg */; };
+		ED21C89514A3C5B90062D53A /* right.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77814A3BEFF0062D53A /* right.jpg */; };
+		ED21C89614A3C5B90062D53A /* top.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77914A3BEFF0062D53A /* top.jpg */; };
+		ED21C89814A3C5DA0062D53A /* goldramp.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77A14A3BEFF0062D53A /* goldramp.png */; };
+		ED21C89914A3C5DA0062D53A /* leeperry.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77B14A3BEFF0062D53A /* leeperry.js */; };
+		ED21C89A14A3C5DA0062D53A /* leeperryScene.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77C14A3BEFF0062D53A /* leeperryScene.js */; };
+		ED21C89B14A3C5DA0062D53A /* map_col.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77D14A3BEFF0062D53A /* map_col.jpg */; };
+		ED21C89C14A3C5DA0062D53A /* map_col.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77E14A3BEFF0062D53A /* map_col.png */; };
+		ED21C89D14A3C5DA0062D53A /* particle01.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77F14A3BEFF0062D53A /* particle01.png */; };
+		ED21C89E14A3C5E10062D53A /* cover.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C77314A3BEFF0062D53A /* cover.jpg */; };
+		ED21C8A014A3C6040062D53A /* container.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78014A3BEFF0062D53A /* container.js */; };
+		ED21C8A114A3C6040062D53A /* crate.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78114A3BEFF0062D53A /* crate.js */; };
+		ED21C8A214A3C6040062D53A /* handles.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78214A3BEFF0062D53A /* handles.js */; };
+		ED21C8A314A3C6040062D53A /* monkeyhi.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78314A3BEFF0062D53A /* monkeyhi.js */; };
+		ED21C8A414A3C6040062D53A /* text.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78414A3BEFF0062D53A /* text.json */; };
+		ED21C8A514A3C6040062D53A /* textScene.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C78514A3BEFF0062D53A /* textScene.json */; };
+		ED21C8A714A3C6290062D53A /* sample.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C83214A3BF170062D53A /* sample.js */; };
+		ED21C8A814A3C6290062D53A /* webgl-demo.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C83314A3BF170062D53A /* webgl-demo.js */; };
+		ED21C8AA14A3C6390062D53A /* sample.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82F14A3BF170062D53A /* sample.js */; };
+		ED21C8AB14A3C6390062D53A /* webgl-demo.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C83014A3BF170062D53A /* webgl-demo.js */; };
+		ED21C8AD14A3C6480062D53A /* sample.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82C14A3BF170062D53A /* sample.js */; };
+		ED21C8AE14A3C6480062D53A /* webgl-demo.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82D14A3BF170062D53A /* webgl-demo.js */; };
+		ED21C8B014A3C65C0062D53A /* sample.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82914A3BF170062D53A /* sample.js */; };
+		ED21C8B114A3C65C0062D53A /* webgl-demo.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82A14A3BF170062D53A /* webgl-demo.js */; };
+		ED21C8B314A3C66E0062D53A /* glUtils.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82714A3BF170062D53A /* glUtils.js */; };
+		ED21C8B414A3C6730062D53A /* sylvester.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C83414A3BF170062D53A /* sylvester.js */; };
+		ED324E5114A3CA66006C94AD /* prime-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = ED324E4F14A3CA34006C94AD /* prime-worker.js */; };
+		EDDF86AB149D218B003FFC5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AA149D218B003FFC5E /* UIKit.framework */; };
+		EDDF86AD149D218B003FFC5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AC149D218B003FFC5E /* Foundation.framework */; };
+		EDDF86AF149D218B003FFC5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AE149D218B003FFC5E /* CoreGraphics.framework */; };
+		EDDF86B1149D218B003FFC5E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86B0149D218B003FFC5E /* OpenGLES.framework */; };
+		EDDF86BB149D218B003FFC5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDDF86B9149D218B003FFC5E /* InfoPlist.strings */; };
+		EDDF86BD149D218B003FFC5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86BC149D218B003FFC5E /* main.m */; };
+		EDDF86C2149D218B003FFC5E /* CoffeeKitDemo.coffee in Resources */ = {isa = PBXBuildFile; fileRef = EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */; };
+		EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */; };
+		EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */; };
+		EDDF86DB149D2FB5003FFC5E /* CoffeeKitDemo.coffee in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		EDDF86D6149D2C51003FFC5E /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.coffee";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.js",
+			);
+			script = "/Developer/CoffeeKit/usr/bin/coffee -b -o $DERIVED_FILES_DIR -c $INPUT_FILE_PATH";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED21C84414A3C3740062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C84514A3C3D40062D53A /* HelloCube.js in CopyFiles */,
+				ED21C84614A3C3D40062D53A /* HelloCubemap.js in CopyFiles */,
+				ED21C84714A3C3D40062D53A /* HelloHead.js in CopyFiles */,
+				ED21C84814A3C3D40062D53A /* HelloLights.js in CopyFiles */,
+				ED21C84914A3C3D40062D53A /* HelloPlasma.js in CopyFiles */,
+				ED21C84A14A3C3D40062D53A /* HelloScene.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C84B14A3C3F90062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/lib;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C84C14A3C4380062D53A /* glMatrix.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C84D14A3C43C0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C84E14A3C45A0062D53A /* J3D.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C84F14A3C4600062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src/engine;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C85014A3C4760062D53A /* BuiltinShaders.js in CopyFiles */,
+				ED21C85114A3C4760062D53A /* Camera.js in CopyFiles */,
+				ED21C85214A3C4760062D53A /* Cubemap.js in CopyFiles */,
+				ED21C85314A3C4760062D53A /* Engine.js in CopyFiles */,
+				ED21C85414A3C4760062D53A /* FrameBuffer.js in CopyFiles */,
+				ED21C85514A3C4760062D53A /* Geometry.js in CopyFiles */,
+				ED21C85614A3C4760062D53A /* Light.js in CopyFiles */,
+				ED21C85714A3C4760062D53A /* Loader.js in CopyFiles */,
+				ED21C85814A3C4760062D53A /* Mesh.js in CopyFiles */,
+				ED21C85914A3C4760062D53A /* Particles.js in CopyFiles */,
+				ED21C85A14A3C4760062D53A /* Postprocess.js in CopyFiles */,
+				ED21C85B14A3C4760062D53A /* Primitives.js in CopyFiles */,
+				ED21C85C14A3C4760062D53A /* Scene.js in CopyFiles */,
+				ED21C85D14A3C4760062D53A /* Shader.js in CopyFiles */,
+				ED21C85E14A3C4760062D53A /* ShaderAtlas.js in CopyFiles */,
+				ED21C85F14A3C4760062D53A /* ShaderSource.js in CopyFiles */,
+				ED21C86014A3C4760062D53A /* Texture.js in CopyFiles */,
+				ED21C86114A3C4760062D53A /* Transform.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C86214A3C47C0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src/math;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C86314A3C4980062D53A /* Matrix44.js in CopyFiles */,
+				ED21C86414A3C4980062D53A /* Vector2.js in CopyFiles */,
+				ED21C86514A3C4980062D53A /* Vector3.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C86614A3C49D0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src/shaders/builtin;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C86714A3C4D30062D53A /* Depth.glsl in CopyFiles */,
+				ED21C86814A3C4D30062D53A /* Gouraud.glsl in CopyFiles */,
+				ED21C86914A3C4D30062D53A /* Lightmap.glsl in CopyFiles */,
+				ED21C86A14A3C4D30062D53A /* Normal2Color.glsl in CopyFiles */,
+				ED21C86B14A3C4D30062D53A /* Phong.glsl in CopyFiles */,
+				ED21C86C14A3C4D30062D53A /* Reflective.glsl in CopyFiles */,
+				ED21C86D14A3C4D30062D53A /* Skybox.glsl in CopyFiles */,
+				ED21C86E14A3C4D30062D53A /* Toon.glsl in CopyFiles */,
+				ED21C86F14A3C4D30062D53A /* Vignette.glsl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C87014A3C4E30062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src/shaders/includes;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C87114A3C4F90062D53A /* BasicFilterVertex.glsl in CopyFiles */,
+				ED21C87214A3C4F90062D53A /* CommonFilterInclude.glsl in CopyFiles */,
+				ED21C87314A3C4F90062D53A /* CommonInclude.glsl in CopyFiles */,
+				ED21C87414A3C4F90062D53A /* Modifiers.glsl in CopyFiles */,
+				ED21C87514A3C4F90062D53A /* VertexInclude.glsl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C87614A3C5030062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/src/util;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C87714A3C5120062D53A /* Color.js in CopyFiles */,
+				ED21C87814A3C5120062D53A /* Logger.js in CopyFiles */,
+				ED21C87914A3C5120062D53A /* ParticleUtil.js in CopyFiles */,
+				ED21C87A14A3C5120062D53A /* ShaderUtil.js in CopyFiles */,
+				ED21C87B14A3C5120062D53A /* Time.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C87D14A3C5470062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/shaders;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C87E14A3C5550062D53A /* DarkGlass.glsl in CopyFiles */,
+				ED21C87F14A3C5550062D53A /* Glass.glsl in CopyFiles */,
+				ED21C88014A3C5550062D53A /* Glitter.glsl in CopyFiles */,
+				ED21C88114A3C5550062D53A /* GoldHead.glsl in CopyFiles */,
+				ED21C88214A3C5550062D53A /* Stripes.glsl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C88314A3C5590062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/models/textures/skybox;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C88414A3C57B0062D53A /* back.jpg in CopyFiles */,
+				ED21C88514A3C57B0062D53A /* down.jpg in CopyFiles */,
+				ED21C88614A3C57B0062D53A /* front.jpg in CopyFiles */,
+				ED21C88714A3C57B0062D53A /* left.jpg in CopyFiles */,
+				ED21C88814A3C57B0062D53A /* right.jpg in CopyFiles */,
+				ED21C88914A3C57B0062D53A /* up.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C88A14A3C5800062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/models/textures;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C88B14A3C5910062D53A /* colorramp1.png in CopyFiles */,
+				ED21C88C14A3C5910062D53A /* colorramp2.png in CopyFiles */,
+				ED21C88D14A3C5910062D53A /* colorramp3.png in CopyFiles */,
+				ED21C88E14A3C5910062D53A /* containerbake512.jpg in CopyFiles */,
+				ED21C88F14A3C5910062D53A /* crate256.jpg in CopyFiles */,
+				ED21C89014A3C5910062D53A /* metalbase.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C89114A3C5980062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/models/014/cubemap;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C89214A3C5B90062D53A /* back.jpg in CopyFiles */,
+				ED21C89314A3C5B90062D53A /* front.jpg in CopyFiles */,
+				ED21C89414A3C5B90062D53A /* left.jpg in CopyFiles */,
+				ED21C89514A3C5B90062D53A /* right.jpg in CopyFiles */,
+				ED21C89614A3C5B90062D53A /* top.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C89714A3C5BE0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/models/014;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C89E14A3C5E10062D53A /* cover.jpg in CopyFiles */,
+				ED21C89814A3C5DA0062D53A /* goldramp.png in CopyFiles */,
+				ED21C89914A3C5DA0062D53A /* leeperry.js in CopyFiles */,
+				ED21C89A14A3C5DA0062D53A /* leeperryScene.js in CopyFiles */,
+				ED21C89B14A3C5DA0062D53A /* map_col.jpg in CopyFiles */,
+				ED21C89C14A3C5DA0062D53A /* map_col.png in CopyFiles */,
+				ED21C89D14A3C5DA0062D53A /* particle01.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C89F14A3C5E50062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = j3d/demo/models;
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8A014A3C6040062D53A /* container.js in CopyFiles */,
+				ED21C8A114A3C6040062D53A /* crate.js in CopyFiles */,
+				ED21C8A214A3C6040062D53A /* handles.js in CopyFiles */,
+				ED21C8A314A3C6040062D53A /* monkeyhi.js in CopyFiles */,
+				ED21C8A414A3C6040062D53A /* text.json in CopyFiles */,
+				ED21C8A514A3C6040062D53A /* textScene.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C8A614A3C61B0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "webgl-samples/sample5";
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8A714A3C6290062D53A /* sample.js in CopyFiles */,
+				ED21C8A814A3C6290062D53A /* webgl-demo.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C8A914A3C62D0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "webgl-samples/sample4";
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8AA14A3C6390062D53A /* sample.js in CopyFiles */,
+				ED21C8AB14A3C6390062D53A /* webgl-demo.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C8AC14A3C63B0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "webgl-samples/sample3";
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8AD14A3C6480062D53A /* sample.js in CopyFiles */,
+				ED21C8AE14A3C6480062D53A /* webgl-demo.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C8AF14A3C64B0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "webgl-samples/sample2";
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8B014A3C65C0062D53A /* sample.js in CopyFiles */,
+				ED21C8B114A3C65C0062D53A /* webgl-demo.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED21C8B214A3C65E0062D53A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "webgl-samples";
+			dstSubfolderSpec = 1;
+			files = (
+				ED21C8B414A3C6730062D53A /* sylvester.js in CopyFiles */,
+				ED21C8B314A3C66E0062D53A /* glUtils.js in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		ED21C76B14A3BED00062D53A /* helloiostableview.coffee */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = helloiostableview.coffee; sourceTree = "<group>"; };
+		ED21C76F14A3BEFF0062D53A /* j3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = j3d.js; sourceTree = "<group>"; };
+		ED21C77314A3BEFF0062D53A /* cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover.jpg; sourceTree = "<group>"; };
+		ED21C77514A3BEFF0062D53A /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
+		ED21C77614A3BEFF0062D53A /* front.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = front.jpg; sourceTree = "<group>"; };
+		ED21C77714A3BEFF0062D53A /* left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = left.jpg; sourceTree = "<group>"; };
+		ED21C77814A3BEFF0062D53A /* right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right.jpg; sourceTree = "<group>"; };
+		ED21C77914A3BEFF0062D53A /* top.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top.jpg; sourceTree = "<group>"; };
+		ED21C77A14A3BEFF0062D53A /* goldramp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goldramp.png; sourceTree = "<group>"; };
+		ED21C77B14A3BEFF0062D53A /* leeperry.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = leeperry.js; sourceTree = "<group>"; };
+		ED21C77C14A3BEFF0062D53A /* leeperryScene.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = leeperryScene.js; sourceTree = "<group>"; };
+		ED21C77D14A3BEFF0062D53A /* map_col.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map_col.jpg; sourceTree = "<group>"; };
+		ED21C77E14A3BEFF0062D53A /* map_col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_col.png; sourceTree = "<group>"; };
+		ED21C77F14A3BEFF0062D53A /* particle01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle01.png; sourceTree = "<group>"; };
+		ED21C78014A3BEFF0062D53A /* container.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = container.js; sourceTree = "<group>"; };
+		ED21C78114A3BEFF0062D53A /* crate.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = crate.js; sourceTree = "<group>"; };
+		ED21C78214A3BEFF0062D53A /* handles.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = handles.js; sourceTree = "<group>"; };
+		ED21C78314A3BEFF0062D53A /* monkeyhi.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = monkeyhi.js; sourceTree = "<group>"; };
+		ED21C78414A3BEFF0062D53A /* text.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = text.json; sourceTree = "<group>"; };
+		ED21C78514A3BEFF0062D53A /* textScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textScene.json; sourceTree = "<group>"; };
+		ED21C78714A3BEFF0062D53A /* colorramp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorramp1.png; sourceTree = "<group>"; };
+		ED21C78814A3BEFF0062D53A /* colorramp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorramp2.png; sourceTree = "<group>"; };
+		ED21C78914A3BEFF0062D53A /* colorramp3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorramp3.png; sourceTree = "<group>"; };
+		ED21C78A14A3BEFF0062D53A /* containerbake512.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = containerbake512.jpg; sourceTree = "<group>"; };
+		ED21C78B14A3BEFF0062D53A /* crate256.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate256.jpg; sourceTree = "<group>"; };
+		ED21C78C14A3BEFF0062D53A /* metalbase.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metalbase.jpg; sourceTree = "<group>"; };
+		ED21C78E14A3BEFF0062D53A /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
+		ED21C78F14A3BEFF0062D53A /* down.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = down.jpg; sourceTree = "<group>"; };
+		ED21C79014A3BEFF0062D53A /* front.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = front.jpg; sourceTree = "<group>"; };
+		ED21C79114A3BEFF0062D53A /* left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = left.jpg; sourceTree = "<group>"; };
+		ED21C79214A3BEFF0062D53A /* right.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right.jpg; sourceTree = "<group>"; };
+		ED21C79314A3BEFF0062D53A /* up.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = up.jpg; sourceTree = "<group>"; };
+		ED21C79514A3BEFF0062D53A /* DarkGlass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DarkGlass.glsl; sourceTree = "<group>"; };
+		ED21C79614A3BEFF0062D53A /* Glass.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Glass.glsl; sourceTree = "<group>"; };
+		ED21C79714A3BEFF0062D53A /* Glitter.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Glitter.glsl; sourceTree = "<group>"; };
+		ED21C79814A3BEFF0062D53A /* GoldHead.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GoldHead.glsl; sourceTree = "<group>"; };
+		ED21C79914A3BEFF0062D53A /* Stripes.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stripes.glsl; sourceTree = "<group>"; };
+		ED21C79A14A3BEFF0062D53A /* HelloCube.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloCube.js; sourceTree = "<group>"; };
+		ED21C79B14A3BEFF0062D53A /* HelloCubemap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloCubemap.js; sourceTree = "<group>"; };
+		ED21C79C14A3BEFF0062D53A /* HelloHead.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloHead.js; sourceTree = "<group>"; };
+		ED21C79D14A3BEFF0062D53A /* HelloLights.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloLights.js; sourceTree = "<group>"; };
+		ED21C79E14A3BEFF0062D53A /* HelloPlasma.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloPlasma.js; sourceTree = "<group>"; };
+		ED21C79F14A3BEFF0062D53A /* HelloScene.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HelloScene.js; sourceTree = "<group>"; };
+		ED21C7A114A3BEFF0062D53A /* glMatrix.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = glMatrix.js; sourceTree = "<group>"; };
+		ED21C7A414A3BEFF0062D53A /* BuiltinShaders.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = BuiltinShaders.js; sourceTree = "<group>"; };
+		ED21C7A514A3BEFF0062D53A /* Camera.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Camera.js; sourceTree = "<group>"; };
+		ED21C7A614A3BEFF0062D53A /* Cubemap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Cubemap.js; sourceTree = "<group>"; };
+		ED21C7A714A3BEFF0062D53A /* Engine.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Engine.js; sourceTree = "<group>"; };
+		ED21C7A814A3BEFF0062D53A /* FrameBuffer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = FrameBuffer.js; sourceTree = "<group>"; };
+		ED21C7A914A3BEFF0062D53A /* Geometry.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Geometry.js; sourceTree = "<group>"; };
+		ED21C7AA14A3BEFF0062D53A /* Light.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Light.js; sourceTree = "<group>"; };
+		ED21C7AB14A3BEFF0062D53A /* Loader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Loader.js; sourceTree = "<group>"; };
+		ED21C7AC14A3BEFF0062D53A /* Mesh.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Mesh.js; sourceTree = "<group>"; };
+		ED21C7AD14A3BEFF0062D53A /* Particles.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Particles.js; sourceTree = "<group>"; };
+		ED21C7AE14A3BEFF0062D53A /* Postprocess.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Postprocess.js; sourceTree = "<group>"; };
+		ED21C7AF14A3BEFF0062D53A /* Primitives.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Primitives.js; sourceTree = "<group>"; };
+		ED21C7B014A3BEFF0062D53A /* Scene.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Scene.js; sourceTree = "<group>"; };
+		ED21C7B114A3BEFF0062D53A /* Shader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Shader.js; sourceTree = "<group>"; };
+		ED21C7B214A3BEFF0062D53A /* ShaderAtlas.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ShaderAtlas.js; sourceTree = "<group>"; };
+		ED21C7B314A3BEFF0062D53A /* ShaderSource.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ShaderSource.js; sourceTree = "<group>"; };
+		ED21C7B414A3BEFF0062D53A /* Texture.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Texture.js; sourceTree = "<group>"; };
+		ED21C7B514A3BEFF0062D53A /* Transform.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Transform.js; sourceTree = "<group>"; };
+		ED21C7B614A3BEFF0062D53A /* J3D.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = J3D.js; sourceTree = "<group>"; };
+		ED21C7B814A3BEFF0062D53A /* Matrix44.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Matrix44.js; sourceTree = "<group>"; };
+		ED21C7B914A3BEFF0062D53A /* Vector2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Vector2.js; sourceTree = "<group>"; };
+		ED21C7BA14A3BEFF0062D53A /* Vector3.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Vector3.js; sourceTree = "<group>"; };
+		ED21C7BD14A3BEFF0062D53A /* Depth.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Depth.glsl; sourceTree = "<group>"; };
+		ED21C7BE14A3BEFF0062D53A /* Gouraud.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gouraud.glsl; sourceTree = "<group>"; };
+		ED21C7BF14A3BEFF0062D53A /* Lightmap.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lightmap.glsl; sourceTree = "<group>"; };
+		ED21C7C014A3BEFF0062D53A /* Normal2Color.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Normal2Color.glsl; sourceTree = "<group>"; };
+		ED21C7C114A3BEFF0062D53A /* Phong.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Phong.glsl; sourceTree = "<group>"; };
+		ED21C7C214A3BEFF0062D53A /* Reflective.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reflective.glsl; sourceTree = "<group>"; };
+		ED21C7C314A3BEFF0062D53A /* Skybox.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Skybox.glsl; sourceTree = "<group>"; };
+		ED21C7C414A3BEFF0062D53A /* Toon.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Toon.glsl; sourceTree = "<group>"; };
+		ED21C7C514A3BEFF0062D53A /* Vignette.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vignette.glsl; sourceTree = "<group>"; };
+		ED21C7C714A3BEFF0062D53A /* BasicFilterVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BasicFilterVertex.glsl; sourceTree = "<group>"; };
+		ED21C7C814A3BEFF0062D53A /* CommonFilterInclude.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommonFilterInclude.glsl; sourceTree = "<group>"; };
+		ED21C7C914A3BEFF0062D53A /* CommonInclude.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommonInclude.glsl; sourceTree = "<group>"; };
+		ED21C7CA14A3BEFF0062D53A /* Modifiers.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Modifiers.glsl; sourceTree = "<group>"; };
+		ED21C7CB14A3BEFF0062D53A /* VertexInclude.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VertexInclude.glsl; sourceTree = "<group>"; };
+		ED21C7CD14A3BEFF0062D53A /* Color.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Color.js; sourceTree = "<group>"; };
+		ED21C7CE14A3BEFF0062D53A /* Logger.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Logger.js; sourceTree = "<group>"; };
+		ED21C7CF14A3BEFF0062D53A /* ParticleUtil.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ParticleUtil.js; sourceTree = "<group>"; };
+		ED21C7D014A3BEFF0062D53A /* ShaderUtil.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ShaderUtil.js; sourceTree = "<group>"; };
+		ED21C7D114A3BEFF0062D53A /* Time.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Time.js; sourceTree = "<group>"; };
+		ED21C82714A3BF170062D53A /* glUtils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = glUtils.js; sourceTree = "<group>"; };
+		ED21C82914A3BF170062D53A /* sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sample.js; sourceTree = "<group>"; };
+		ED21C82A14A3BF170062D53A /* webgl-demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "webgl-demo.js"; sourceTree = "<group>"; };
+		ED21C82C14A3BF170062D53A /* sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sample.js; sourceTree = "<group>"; };
+		ED21C82D14A3BF170062D53A /* webgl-demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "webgl-demo.js"; sourceTree = "<group>"; };
+		ED21C82F14A3BF170062D53A /* sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sample.js; sourceTree = "<group>"; };
+		ED21C83014A3BF170062D53A /* webgl-demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "webgl-demo.js"; sourceTree = "<group>"; };
+		ED21C83214A3BF170062D53A /* sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sample.js; sourceTree = "<group>"; };
+		ED21C83314A3BF170062D53A /* webgl-demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "webgl-demo.js"; sourceTree = "<group>"; };
+		ED21C83414A3BF170062D53A /* sylvester.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sylvester.js; sourceTree = "<group>"; };
+		ED21C83F14A3BFD70062D53A /* HelloIOSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelloIOSViewController.xib; sourceTree = "<group>"; };
+		ED21C84214A3C2140062D53A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		ED324E4F14A3CA34006C94AD /* prime-worker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "prime-worker.js"; sourceTree = "<group>"; };
+		EDDF86A6149D218B003FFC5E /* CoffeeKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDDF86AA149D218B003FFC5E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EDDF86AC149D218B003FFC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EDDF86AE149D218B003FFC5E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EDDF86B0149D218B003FFC5E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EDDF86B8149D218B003FFC5E /* CoffeeKitDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeKitDemo-Info.plist"; sourceTree = "<group>"; };
+		EDDF86BA149D218B003FFC5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EDDF86BC149D218B003FFC5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDDF86BE149D218B003FFC5E /* CoffeeKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoffeeKitDemo-Prefix.pch"; sourceTree = "<group>"; };
+		EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoffeeKitDemo.coffee; sourceTree = "<group>"; };
+		EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoffeeKit.a; path = CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib/libCoffeeKit.a; sourceTree = DEVELOPER_DIR; };
+		EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDDF86A2149D218B003FFC5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */,
+				EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */,
+				EDDF86AB149D218B003FFC5E /* UIKit.framework in Frameworks */,
+				EDDF86AD149D218B003FFC5E /* Foundation.framework in Frameworks */,
+				EDDF86AF149D218B003FFC5E /* CoreGraphics.framework in Frameworks */,
+				ED21C84314A3C2140062D53A /* GLKit.framework in Frameworks */,
+				EDDF86B1149D218B003FFC5E /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED21C76D14A3BEFF0062D53A /* j3d */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C76E14A3BEFF0062D53A /* build */,
+				ED21C77014A3BEFF0062D53A /* demo */,
+				ED21C79A14A3BEFF0062D53A /* HelloCube.js */,
+				ED21C79B14A3BEFF0062D53A /* HelloCubemap.js */,
+				ED21C79C14A3BEFF0062D53A /* HelloHead.js */,
+				ED21C79D14A3BEFF0062D53A /* HelloLights.js */,
+				ED21C79E14A3BEFF0062D53A /* HelloPlasma.js */,
+				ED21C79F14A3BEFF0062D53A /* HelloScene.js */,
+				ED21C7A014A3BEFF0062D53A /* lib */,
+				ED21C7A214A3BEFF0062D53A /* src */,
+			);
+			path = j3d;
+			sourceTree = "<group>";
+		};
+		ED21C76E14A3BEFF0062D53A /* build */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C76F14A3BEFF0062D53A /* j3d.js */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		ED21C77014A3BEFF0062D53A /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C77114A3BEFF0062D53A /* models */,
+				ED21C79414A3BEFF0062D53A /* shaders */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
+		ED21C77114A3BEFF0062D53A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C77214A3BEFF0062D53A /* 014 */,
+				ED21C78014A3BEFF0062D53A /* container.js */,
+				ED21C78114A3BEFF0062D53A /* crate.js */,
+				ED21C78214A3BEFF0062D53A /* handles.js */,
+				ED21C78314A3BEFF0062D53A /* monkeyhi.js */,
+				ED21C78414A3BEFF0062D53A /* text.json */,
+				ED21C78514A3BEFF0062D53A /* textScene.json */,
+				ED21C78614A3BEFF0062D53A /* textures */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		ED21C77214A3BEFF0062D53A /* 014 */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C77314A3BEFF0062D53A /* cover.jpg */,
+				ED21C77414A3BEFF0062D53A /* cubemap */,
+				ED21C77A14A3BEFF0062D53A /* goldramp.png */,
+				ED21C77B14A3BEFF0062D53A /* leeperry.js */,
+				ED21C77C14A3BEFF0062D53A /* leeperryScene.js */,
+				ED21C77D14A3BEFF0062D53A /* map_col.jpg */,
+				ED21C77E14A3BEFF0062D53A /* map_col.png */,
+				ED21C77F14A3BEFF0062D53A /* particle01.png */,
+			);
+			path = 014;
+			sourceTree = "<group>";
+		};
+		ED21C77414A3BEFF0062D53A /* cubemap */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C77514A3BEFF0062D53A /* back.jpg */,
+				ED21C77614A3BEFF0062D53A /* front.jpg */,
+				ED21C77714A3BEFF0062D53A /* left.jpg */,
+				ED21C77814A3BEFF0062D53A /* right.jpg */,
+				ED21C77914A3BEFF0062D53A /* top.jpg */,
+			);
+			path = cubemap;
+			sourceTree = "<group>";
+		};
+		ED21C78614A3BEFF0062D53A /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C78714A3BEFF0062D53A /* colorramp1.png */,
+				ED21C78814A3BEFF0062D53A /* colorramp2.png */,
+				ED21C78914A3BEFF0062D53A /* colorramp3.png */,
+				ED21C78A14A3BEFF0062D53A /* containerbake512.jpg */,
+				ED21C78B14A3BEFF0062D53A /* crate256.jpg */,
+				ED21C78C14A3BEFF0062D53A /* metalbase.jpg */,
+				ED21C78D14A3BEFF0062D53A /* skybox */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		ED21C78D14A3BEFF0062D53A /* skybox */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C78E14A3BEFF0062D53A /* back.jpg */,
+				ED21C78F14A3BEFF0062D53A /* down.jpg */,
+				ED21C79014A3BEFF0062D53A /* front.jpg */,
+				ED21C79114A3BEFF0062D53A /* left.jpg */,
+				ED21C79214A3BEFF0062D53A /* right.jpg */,
+				ED21C79314A3BEFF0062D53A /* up.jpg */,
+			);
+			path = skybox;
+			sourceTree = "<group>";
+		};
+		ED21C79414A3BEFF0062D53A /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C79514A3BEFF0062D53A /* DarkGlass.glsl */,
+				ED21C79614A3BEFF0062D53A /* Glass.glsl */,
+				ED21C79714A3BEFF0062D53A /* Glitter.glsl */,
+				ED21C79814A3BEFF0062D53A /* GoldHead.glsl */,
+				ED21C79914A3BEFF0062D53A /* Stripes.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		ED21C7A014A3BEFF0062D53A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7A114A3BEFF0062D53A /* glMatrix.js */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		ED21C7A214A3BEFF0062D53A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7A314A3BEFF0062D53A /* engine */,
+				ED21C7B614A3BEFF0062D53A /* J3D.js */,
+				ED21C7B714A3BEFF0062D53A /* math */,
+				ED21C7BB14A3BEFF0062D53A /* shaders */,
+				ED21C7CC14A3BEFF0062D53A /* util */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		ED21C7A314A3BEFF0062D53A /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7A414A3BEFF0062D53A /* BuiltinShaders.js */,
+				ED21C7A514A3BEFF0062D53A /* Camera.js */,
+				ED21C7A614A3BEFF0062D53A /* Cubemap.js */,
+				ED21C7A714A3BEFF0062D53A /* Engine.js */,
+				ED21C7A814A3BEFF0062D53A /* FrameBuffer.js */,
+				ED21C7A914A3BEFF0062D53A /* Geometry.js */,
+				ED21C7AA14A3BEFF0062D53A /* Light.js */,
+				ED21C7AB14A3BEFF0062D53A /* Loader.js */,
+				ED21C7AC14A3BEFF0062D53A /* Mesh.js */,
+				ED21C7AD14A3BEFF0062D53A /* Particles.js */,
+				ED21C7AE14A3BEFF0062D53A /* Postprocess.js */,
+				ED21C7AF14A3BEFF0062D53A /* Primitives.js */,
+				ED21C7B014A3BEFF0062D53A /* Scene.js */,
+				ED21C7B114A3BEFF0062D53A /* Shader.js */,
+				ED21C7B214A3BEFF0062D53A /* ShaderAtlas.js */,
+				ED21C7B314A3BEFF0062D53A /* ShaderSource.js */,
+				ED21C7B414A3BEFF0062D53A /* Texture.js */,
+				ED21C7B514A3BEFF0062D53A /* Transform.js */,
+			);
+			path = engine;
+			sourceTree = "<group>";
+		};
+		ED21C7B714A3BEFF0062D53A /* math */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7B814A3BEFF0062D53A /* Matrix44.js */,
+				ED21C7B914A3BEFF0062D53A /* Vector2.js */,
+				ED21C7BA14A3BEFF0062D53A /* Vector3.js */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		ED21C7BB14A3BEFF0062D53A /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7BC14A3BEFF0062D53A /* builtin */,
+				ED21C7C614A3BEFF0062D53A /* includes */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		ED21C7BC14A3BEFF0062D53A /* builtin */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7BD14A3BEFF0062D53A /* Depth.glsl */,
+				ED21C7BE14A3BEFF0062D53A /* Gouraud.glsl */,
+				ED21C7BF14A3BEFF0062D53A /* Lightmap.glsl */,
+				ED21C7C014A3BEFF0062D53A /* Normal2Color.glsl */,
+				ED21C7C114A3BEFF0062D53A /* Phong.glsl */,
+				ED21C7C214A3BEFF0062D53A /* Reflective.glsl */,
+				ED21C7C314A3BEFF0062D53A /* Skybox.glsl */,
+				ED21C7C414A3BEFF0062D53A /* Toon.glsl */,
+				ED21C7C514A3BEFF0062D53A /* Vignette.glsl */,
+			);
+			path = builtin;
+			sourceTree = "<group>";
+		};
+		ED21C7C614A3BEFF0062D53A /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7C714A3BEFF0062D53A /* BasicFilterVertex.glsl */,
+				ED21C7C814A3BEFF0062D53A /* CommonFilterInclude.glsl */,
+				ED21C7C914A3BEFF0062D53A /* CommonInclude.glsl */,
+				ED21C7CA14A3BEFF0062D53A /* Modifiers.glsl */,
+				ED21C7CB14A3BEFF0062D53A /* VertexInclude.glsl */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		ED21C7CC14A3BEFF0062D53A /* util */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C7CD14A3BEFF0062D53A /* Color.js */,
+				ED21C7CE14A3BEFF0062D53A /* Logger.js */,
+				ED21C7CF14A3BEFF0062D53A /* ParticleUtil.js */,
+				ED21C7D014A3BEFF0062D53A /* ShaderUtil.js */,
+				ED21C7D114A3BEFF0062D53A /* Time.js */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		ED21C82614A3BF170062D53A /* webgl-samples */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C82714A3BF170062D53A /* glUtils.js */,
+				ED21C82814A3BF170062D53A /* sample2 */,
+				ED21C82B14A3BF170062D53A /* sample3 */,
+				ED21C82E14A3BF170062D53A /* sample4 */,
+				ED21C83114A3BF170062D53A /* sample5 */,
+				ED21C83414A3BF170062D53A /* sylvester.js */,
+			);
+			path = "webgl-samples";
+			sourceTree = "<group>";
+		};
+		ED21C82814A3BF170062D53A /* sample2 */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C82914A3BF170062D53A /* sample.js */,
+				ED21C82A14A3BF170062D53A /* webgl-demo.js */,
+			);
+			path = sample2;
+			sourceTree = "<group>";
+		};
+		ED21C82B14A3BF170062D53A /* sample3 */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C82C14A3BF170062D53A /* sample.js */,
+				ED21C82D14A3BF170062D53A /* webgl-demo.js */,
+			);
+			path = sample3;
+			sourceTree = "<group>";
+		};
+		ED21C82E14A3BF170062D53A /* sample4 */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C82F14A3BF170062D53A /* sample.js */,
+				ED21C83014A3BF170062D53A /* webgl-demo.js */,
+			);
+			path = sample4;
+			sourceTree = "<group>";
+		};
+		ED21C83114A3BF170062D53A /* sample5 */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C83214A3BF170062D53A /* sample.js */,
+				ED21C83314A3BF170062D53A /* webgl-demo.js */,
+			);
+			path = sample5;
+			sourceTree = "<group>";
+		};
+		EDDF869A149D218B003FFC5E = {
+			isa = PBXGroup;
+			children = (
+				ED21C84214A3C2140062D53A /* GLKit.framework */,
+				EDDF86B6149D218B003FFC5E /* CoffeeKitDemo */,
+				EDDF86A9149D218B003FFC5E /* Frameworks */,
+				EDDF86A7149D218B003FFC5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDDF86A7149D218B003FFC5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDDF86A6149D218B003FFC5E /* CoffeeKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDDF86A9149D218B003FFC5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */,
+				EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */,
+				EDDF86AA149D218B003FFC5E /* UIKit.framework */,
+				EDDF86AC149D218B003FFC5E /* Foundation.framework */,
+				EDDF86AE149D218B003FFC5E /* CoreGraphics.framework */,
+				EDDF86B0149D218B003FFC5E /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDDF86B6149D218B003FFC5E /* CoffeeKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				ED21C82614A3BF170062D53A /* webgl-samples */,
+				ED21C76D14A3BEFF0062D53A /* j3d */,
+				ED21C76B14A3BED00062D53A /* helloiostableview.coffee */,
+				ED324E4F14A3CA34006C94AD /* prime-worker.js */,
+				ED21C83F14A3BFD70062D53A /* HelloIOSViewController.xib */,
+				EDDF86B7149D218B003FFC5E /* Supporting Files */,
+			);
+			path = CoffeeKitDemo;
+			sourceTree = "<group>";
+		};
+		EDDF86B7149D218B003FFC5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */,
+				EDDF86B8149D218B003FFC5E /* CoffeeKitDemo-Info.plist */,
+				EDDF86B9149D218B003FFC5E /* InfoPlist.strings */,
+				EDDF86BC149D218B003FFC5E /* main.m */,
+				EDDF86BE149D218B003FFC5E /* CoffeeKitDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDDF86A5149D218B003FFC5E /* CoffeeKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDDF86CD149D218B003FFC5E /* Build configuration list for PBXNativeTarget "CoffeeKitDemo" */;
+			buildPhases = (
+				EDDF86A1149D218B003FFC5E /* Sources */,
+				EDDF86A2149D218B003FFC5E /* Frameworks */,
+				EDDF86A3149D218B003FFC5E /* Resources */,
+				ED21C84414A3C3740062D53A /* CopyFiles */,
+				ED21C84B14A3C3F90062D53A /* CopyFiles */,
+				ED21C84D14A3C43C0062D53A /* CopyFiles */,
+				ED21C84F14A3C4600062D53A /* CopyFiles */,
+				ED21C86214A3C47C0062D53A /* CopyFiles */,
+				ED21C86614A3C49D0062D53A /* CopyFiles */,
+				ED21C87014A3C4E30062D53A /* CopyFiles */,
+				ED21C87614A3C5030062D53A /* CopyFiles */,
+				ED21C87D14A3C5470062D53A /* CopyFiles */,
+				ED21C88314A3C5590062D53A /* CopyFiles */,
+				ED21C88A14A3C5800062D53A /* CopyFiles */,
+				ED21C89114A3C5980062D53A /* CopyFiles */,
+				ED21C89714A3C5BE0062D53A /* CopyFiles */,
+				ED21C89F14A3C5E50062D53A /* CopyFiles */,
+				ED21C8A614A3C61B0062D53A /* CopyFiles */,
+				ED21C8A914A3C62D0062D53A /* CopyFiles */,
+				ED21C8AC14A3C63B0062D53A /* CopyFiles */,
+				ED21C8AF14A3C64B0062D53A /* CopyFiles */,
+				ED21C8B214A3C65E0062D53A /* CopyFiles */,
+				EDDF86A4149D218B003FFC5E /* ShellScript */,
+			);
+			buildRules = (
+				EDDF86D6149D2C51003FFC5E /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = CoffeeKitDemo;
+			productName = CoffeeKitDemo;
+			productReference = EDDF86A6149D218B003FFC5E /* CoffeeKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDDF869C149D218B003FFC5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = EDDF869F149D218B003FFC5E /* Build configuration list for PBXProject "CoffeeKitDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EDDF869A149D218B003FFC5E;
+			productRefGroup = EDDF86A7149D218B003FFC5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDDF86A5149D218B003FFC5E /* CoffeeKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDDF86A3149D218B003FFC5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED324E5114A3CA66006C94AD /* prime-worker.js in Resources */,
+				EDDF86BB149D218B003FFC5E /* InfoPlist.strings in Resources */,
+				EDDF86C2149D218B003FFC5E /* CoffeeKitDemo.coffee in Resources */,
+				ED21C76C14A3BED00062D53A /* helloiostableview.coffee in Resources */,
+				ED21C84014A3BFD70062D53A /* HelloIOSViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EDDF86A4149D218B003FFC5E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp /Developer/CoffeeKit/usr/share/coffeekit/bindings/*.js ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDDF86A1149D218B003FFC5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED21C84114A3C01C0062D53A /* helloiostableview.coffee in Sources */,
+				EDDF86DB149D2FB5003FFC5E /* CoffeeKitDemo.coffee in Sources */,
+				EDDF86BD149D218B003FFC5E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDDF86B9149D218B003FFC5E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDDF86BA149D218B003FFC5E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDDF86CB149D218B003FFC5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDDF86CC149D218B003FFC5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDDF86CE149D218B003FFC5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)/Developer/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeKitDemo/CoffeeKitDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EDDF86CF149D218B003FFC5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)/Developer/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "CoffeeKitDemo/CoffeeKitDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDDF869F149D218B003FFC5E /* Build configuration list for PBXProject "CoffeeKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDDF86CB149D218B003FFC5E /* Debug */,
+				EDDF86CC149D218B003FFC5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDDF86CD149D218B003FFC5E /* Build configuration list for PBXNativeTarget "CoffeeKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDDF86CE149D218B003FFC5E /* Debug */,
+				EDDF86CF149D218B003FFC5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDDF869C149D218B003FFC5E /* Project object */;
+}

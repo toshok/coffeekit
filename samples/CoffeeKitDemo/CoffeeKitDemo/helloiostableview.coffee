@@ -245,5 +245,3 @@ class HelloIOSAppDelegate extends foundation.NSObject
     return true
   new ck.SelectorAttribute @::didFinishLaunching, "applicationDidFinishLaunching:"
 new ck.RegisterAttribute HelloIOSAppDelegate, "AppDelegate"
-
-ui.UIApplication.main([], "AppDelegate")
