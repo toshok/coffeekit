@@ -7,24 +7,24 @@ uikit = require "./uikit"
 gles = require "./opengles"
 ck = require "./coffeekit"
 
-exports.GLKViewDrawableColorFormat = GLKViewDrawableColorFormat =
+exports.GLKViewDrawableColorFormat = GLKViewDrawableColorFormat = ck.makeEnum
    rgba8888 : 0,
    rgb565   : 1
 
-exports.GLKViewDrawableDepthFormat = GLKViewDrawableDepthFormat =
+exports.GLKViewDrawableDepthFormat = GLKViewDrawableDepthFormat = ck.makeEnum
    depthNone : 0,
    depth16   : 1,
    depth24   : 2
 
-exports.GLKViewDrawableStencilFormat = GLKViewDrawableStencilFormat =
+exports.GLKViewDrawableStencilFormat = GLKViewDrawableStencilFormat = ck.makeEnum
    stencilNone : 0,
    stencil8    : 1
 
-exports.GLKViewDrawableMultisample = GLKViewDrawableMultisample =
+exports.GLKViewDrawableMultisample = GLKViewDrawableMultisample = ck.makeEnum
    multisampleNone : 0,
    multisample4X   : 1
 
-exports.GLKVertexAttrib = GLKVertexAttrib =
+exports.GLKVertexAttrib = GLKVertexAttrib = ck.makeEnum
    position  : 0,
    normal    : 1,
    color     : 2,

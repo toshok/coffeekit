@@ -5,7 +5,7 @@ objc.requireFramework "AppKit"
 foundation = require "./foundation"
 ck = require "./coffeekit"
 
-exports.NSButtonType = NSButtonType =
+exports.NSButtonType = NSButtonType = ck.makeEnum
    MomentaryLightButton   : 0,
    PushOnPushOffButton    : 1,
    ToggleButton           : 2,
@@ -18,7 +18,7 @@ exports.NSButtonType = NSButtonType =
    MomentaryLight         : 7
 
 
-exports.NSBezelStyle = NSBezelStyle = 
+exports.NSBezelStyle = NSBezelStyle = ck.makeEnum
    RoundedBezelStyle           : 1,
    RegularSquareBezelStyle     : 2,
    ThickSquareBezelStyle       : 3,

@@ -6,18 +6,18 @@ foundation = require "./foundation"
 ck = require "./coffeekit"
 coreanimation = require "./coreanimation"
 
-exports.UITableViewStyle = UITableViewStyle =
+exports.UITableViewStyle = UITableViewStyle = ck.makeEnum
    plain: 0,
    grouped: 1
 
   
-exports.UITableViewCellStyle = UITableViewCellStyle =
+exports.UITableViewCellStyle = UITableViewCellStyle = ck.makeEnum
    value1: 0,
    value2: 1,
    subtitle: 2
 
 
-exports.UIButtonType = UIButtonType =
+exports.UIButtonType = UIButtonType = ck.makeEnum
    custom: 0,
    roundedRect: 1,
    detailDisclosure: 2,
@@ -25,12 +25,12 @@ exports.UIButtonType = UIButtonType =
    infoDark: 4,
    contactAdd: 5
 
-exports.UITextAlignment = UITextAlignment =
+exports.UITextAlignment = UITextAlignment = ck.makeEnum
    left: 0
    center: 1
    right: 2
 
-exports.UIControlState = UIControlState =
+exports.UIControlState = UIControlState = ck.makeEnum
    normal               : 0,
    highlighted          : 1 << 0,
    disabled             : 1 << 1,
@@ -39,7 +39,7 @@ exports.UIControlState = UIControlState =
    reserved             : 0xFF000000
 
 
-exports.UIBarStyle = UIBarStyle =
+exports.UIBarStyle = UIBarStyle = ck.makeEnum
    default          : 0,
    black            : 1,
    
@@ -47,7 +47,7 @@ exports.UIBarStyle = UIBarStyle =
    blackTranslucent : 2  # Deprecated
 
 
-exports.UIDataDetectorType = UIDataDetectorType =
+exports.UIDataDetectorType = UIDataDetectorType = ck.makeEnum
    phoneNumber   : 1 << 0,
    link          : 1 << 1,
    address       : 1 << 2,
@@ -56,12 +56,12 @@ exports.UIDataDetectorType = UIDataDetectorType =
    all           : ~0
 
 
-exports.UIBarButtonItemStyle = UIBarButtonItemStyle =
+exports.UIBarButtonItemStyle = UIBarButtonItemStyle = ck.makeEnum
    plain: 0,
    bordered: 1,
    done: 2
 
-exports.UIBarButtonSystemItem = UIBarButtonSystemItem =
+exports.UIBarButtonSystemItem = UIBarButtonSystemItem = ck.makeEnum
    done: 0,
    cancel: 1,
    edit: 2,
@@ -88,7 +88,7 @@ exports.UIBarButtonSystemItem = UIBarButtonSystemItem =
    pageCurl: 23     # iOS 4.0 and later
 
 
-exports.UIControlEvent = UIControlEvent =
+exports.UIControlEvent = UIControlEvent = ck.makeEnum
    TouchDown           : 1 <<  0,
    TouchDownRepeat     : 1 <<  1,
    TouchDragInside     : 1 <<  2,
@@ -112,7 +112,7 @@ exports.UIControlEvent = UIControlEvent =
    SystemReserved      : 0xF0000000,
    AllEvents           : 0xFFFFFFFF
 
-exports.UIPopoverArrowDirection = UIPopoverArrowDirection =
+exports.UIPopoverArrowDirection = UIPopoverArrowDirection = ck.makeEnum
    up:       1 << 0,
    down:     1 << 1,
    left:     1 << 2,
@@ -120,6 +120,6 @@ exports.UIPopoverArrowDirection = UIPopoverArrowDirection =
    any:      (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3),
    unknown: ~0
 
-exports.UIUserInterfaceIdiom = UIUserInterfaceIdiom =   
+exports.UIUserInterfaceIdiom = UIUserInterfaceIdiom = ck.makeEnum
    phone: 0,
    pad: 1

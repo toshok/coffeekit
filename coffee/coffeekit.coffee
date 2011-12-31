@@ -207,10 +207,13 @@ exports.instanceProperty = (cls, jsprop, opts) ->
 exports.staticProperty = (cls, jsprop, opts) ->
   addProperty cls, jsprop, opts
 
-
-addConstant = (obj, jsprop, v) ->
-  obj.__defineGetter__ jsprop, -> v
-exports.addConstant = addConstant
+exports.makeEnum = (spec) ->
+  rv = {}
+  addConstant = (obj, jsprop, v) ->
+    Object.defineProperty obj, jsprop, value: v, enumerable: true
+  for name, value of spec
+    addConstant rv, name, value
+  rv
 
 objcIBOutlet = (obj, jsprop, ctor) -> 
   # this needs to define the ivar at class registration time.  we add

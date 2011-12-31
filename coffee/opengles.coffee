@@ -5,7 +5,7 @@ objc.requireFramework "OpenGLES"
 foundation = require './foundation'
 ck = require './coffeekit'
 
-exports.EAGLRenderingAPI = EAGLRenderingAPI =
+exports.EAGLRenderingAPI = EAGLRenderingAPI = ck.makeEnum
    OpenGLES1         : 1
    OpenGLES2         : 2
 
