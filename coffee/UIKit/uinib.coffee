@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UINib"
-class UINib extends foundation.NSObject
+exports.UINib = class UINib extends foundation.NSObject
+  @register()
 
   # Creating a Nib Object
   @nibWithNibName: objc.invokeSelector "nibWithNibName:bundle:"
@@ -9,6 +10,3 @@ class UINib extends foundation.NSObject
 
   # Instantiating a Nib
   instantiateWithOwner: objc.invokeSelector "instantiateWithOwner:options:"
-
-new ck.RegisterAttribute UINib, "UINib"
-exports.UINib = UINib

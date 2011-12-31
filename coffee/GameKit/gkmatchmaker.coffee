@@ -1,21 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GKMatchmaker extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.GKMatchmaker = class GKMatchmaker extends foundation.NSObject
+  @register()
 
   # Retrieving the Shared Matchmaker
-  @sharedMatchmaker: objc.invokeSelector ("sharedMatchmaker")
+  @sharedMatchmaker: objc.invokeSelector "sharedMatchmaker"
 
   # Receiving Invitations From Other Players
-  ck.addProperty @::, "inviteHandler"
+  ck.instanceProperty @, "inviteHandler"
 
   # Matching Players
-  findMatchForRequest: objc.invokeSelector ("findMatchForRequest:withCompletionHandler:")
-  findPlayersForHostedMatchRequest: objc.invokeSelector ("findPlayersForHostedMatchRequest:withCompletionHandler:")
-  addPlayersToMatch: objc.invokeSelector ("addPlayersToMatch:matchRequest:completionHandler:")
-  cancel: objc.invokeSelector ("cancel")
-  queryPlayerGroupActivity: objc.invokeSelector ("queryPlayerGroupActivity:withCompletionHandler:")
-  queryActivity: objc.invokeSelector ("queryActivityWithCompletionHandler:")
-
-new ck.RegisterAttribute GKMatchmaker, "GKMatchmaker"
-exports.GKMatchmaker = GKMatchmaker
+  findMatchForRequest: objc.invokeSelector "findMatchForRequest:withCompletionHandler:"
+  findPlayersForHostedMatchRequest: objc.invokeSelector "findPlayersForHostedMatchRequest:withCompletionHandler:"
+  addPlayersToMatch: objc.invokeSelector "addPlayersToMatch:matchRequest:completionHandler:"
+  cancel: objc.invokeSelector "cancel"
+  queryPlayerGroupActivity: objc.invokeSelector "queryPlayerGroupActivity:withCompletionHandler:"
+  queryActivity: objc.invokeSelector "queryActivityWithCompletionHandler:"

@@ -1,12 +1,10 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITextRange"
-class UITextRange extends foundation.NSObject
+exports.UITextRange = class UITextRange extends foundation.NSObject
+  @register()
 
   # Defining Ranges of Text
-  ck.addProperty @::, "start"
-  ck.addProperty @::, "end"
-  ck.addProperty @::, "empty"
-
-new ck.RegisterAttribute UITextRange, "UITextRange"
-exports.UITextRange = UITextRange
+  ck.instanceProperty @, "start"
+  ck.instanceProperty @, "end"
+  ck.instanceProperty @, "empty"

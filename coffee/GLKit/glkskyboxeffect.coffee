@@ -1,26 +1,23 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKSkyboxEffect extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKSkyboxEffect = class GLKSkyboxEffect extends foundation.NSObject
+  @register()
 
   # Naming the Effect
-  ck.addProperty @::, "label"
+  ck.instanceProperty @, "label"
 
   # Preparing the Effect for Rendering
-  prepareToDraw: objc.invokeSelector ("prepareToDraw")
+  prepareToDraw: objc.invokeSelector "prepareToDraw"
 
   # Drawing the Skybox
-  draw: objc.invokeSelector ("draw")
+  draw: objc.invokeSelector "draw"
 
   # Configuring the Skybox
-  ck.addProperty @::, "textureCubeMap"
-  ck.addProperty @::, "center"
-  ck.addProperty @::, "xSize"
-  ck.addProperty @::, "ySize"
-  ck.addProperty @::, "zSize"
+  ck.instanceProperty @, "textureCubeMap"
+  ck.instanceProperty @, "center"
+  ck.instanceProperty @, "xSize"
+  ck.instanceProperty @, "ySize"
+  ck.instanceProperty @, "zSize"
 
   # Setting the Skybox Transform
-  ck.addProperty @::, "transform"
-
-new ck.RegisterAttribute GLKSkyboxEffect, "GLKSkyboxEffect"
-exports.GLKSkyboxEffect = GLKSkyboxEffect
+  ck.instanceProperty @, "transform"

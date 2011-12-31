@@ -1,28 +1,26 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIImageView"
-class UIImageView extends UIView
+exports.UIImageView = class UIImageView extends UIView
+  @register()
 
   # Initializing a UIImageView Object
   initWithImage: objc.invokeSelector "initWithImage:"
   initWithImageAndHighlightedImage: objc.invokeSelector "initWithImage:highlightedImage:"
 
   # Image Data
-  ck.addProperty @::, "image"
-  ck.addProperty @::, "highlightedImage"
+  ck.instanceProperty @, "image"
+  ck.instanceProperty @, "highlightedImage"
 
   # Animating Images
-  ck.addProperty @::, "animationImages"
-  ck.addProperty @::, "highlightedAnimationImages"
-  ck.addProperty @::, "animationDuration"
-  ck.addProperty @::, "animationRepeatCount"
+  ck.instanceProperty @, "animationImages"
+  ck.instanceProperty @, "highlightedAnimationImages"
+  ck.instanceProperty @, "animationDuration"
+  ck.instanceProperty @, "animationRepeatCount"
   startAnimating: objc.invokeSelector "startAnimating"
   stopAnimating: objc.invokeSelector "stopAnimating"
   isAnimating: objc.invokeSelector "isAnimating"
 
   # Setting and Getting Attributes
-  ck.addProperty @::, "userInteractionEnabled"
-  ck.addProperty @::, "highlighted"
-
-new ck.RegisterAttribute UIImageView, "UIImageView"
-exports.UIImageView = UIImageView
+  ck.instanceProperty @, "userInteractionEnabled"
+  ck.instanceProperty @, "highlighted"

@@ -1,17 +1,15 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIButton"
-class UIButton extends UIControl
-
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIButton = class UIButton extends UIControl
+  @register()
 
   # Creating Buttons
   @buttonWithType: objc.invokeSelector "buttonWithType:"
 
   # Configuring Button Title
-  ck.addProperty @::, "titleLabel"
-  ck.addProperty @::, "reversesTitleShadowWhenHighlighted"
+  ck.instanceProperty @, "titleLabel"
+  ck.instanceProperty @, "reversesTitleShadowWhenHighlighted"
   setTitle: objc.invokeSelector "setTitle:forState:"
   getTitle: objc.invokeSelector "titleForState:"
   setTitleColor: objc.invokeSelector("setTitleColor:forState:").makeUIAppearance()
@@ -19,33 +17,33 @@ class UIButton extends UIControl
   setTitleShadowColor: objc.invokeSelector "setTitleShadowColor:forState:"
   getTitleShadowColor: objc.invokeSelector "titleShadowColorForState:"
 
-  ck.addProperty @::, "font" # Deprecated in iOS 3.0
-  ck.addProperty @::, "lineBreakMode" # Deprecated in iOS 3.0
-  ck.addProperty @::, "titleShadowOffset" # Deprecated in iOS 3.0
+  ck.instanceProperty @, "font" # Deprecated in iOS 3.0
+  ck.instanceProperty @, "lineBreakMode" # Deprecated in iOS 3.0
+  ck.instanceProperty @, "titleShadowOffset" # Deprecated in iOS 3.0
 
   # Configuring Button Presentation
-  ck.addProperty @::, "adjustsImageWhenHighlighted"
-  ck.addProperty @::, "adjustsImageWhenDisabled"
-  ck.addProperty @::, "showsTouchWhenHighlighted"
+  ck.instanceProperty @, "adjustsImageWhenHighlighted"
+  ck.instanceProperty @, "adjustsImageWhenDisabled"
+  ck.instanceProperty @, "showsTouchWhenHighlighted"
   setBackgroundImage: objc.invokeSelector "setBackgroundImage:forState:"
   getBbackgroundImage: objc.invokeSelector "backgroundImageForState:"
   setImage: objc.invokeSelector "setImage:forState:"
   getImage: objc.invokeSelector "imageForState:"
-  ck.addProperty(@::, "tintColor").makeUIAppearance()
+  ck.instanceProperty(@, "tintColor").makeUIAppearance()
 
   # Configuring Edge Insets
-  ck.addProperty @::, "contentEdgeInsets"
-  ck.addProperty @::, "titleEdgeInsets"
-  ck.addProperty @::, "imageEdgeInsets"
+  ck.instanceProperty @, "contentEdgeInsets"
+  ck.instanceProperty @, "titleEdgeInsets"
+  ck.instanceProperty @, "imageEdgeInsets"
 
   # Getting the Current State
-  ck.addProperty @::, "buttonType"
-  ck.addProperty @::, "currentTitle"
-  ck.addProperty @::, "currentTitleColor"
-  ck.addProperty @::, "currentTitleShadowColor"
-  ck.addProperty @::, "currentImage"
-  ck.addProperty @::, "currentBackgroundImage"
-  ck.addProperty @::, "imageView"
+  ck.instanceProperty @, "buttonType"
+  ck.instanceProperty @, "currentTitle"
+  ck.instanceProperty @, "currentTitleColor"
+  ck.instanceProperty @, "currentTitleShadowColor"
+  ck.instanceProperty @, "currentImage"
+  ck.instanceProperty @, "currentBackgroundImage"
+  ck.instanceProperty @, "imageView"
 
   # Getting Dimensions
   backgroundRectForBounds: objc.invokeSelector "backgroundRectForBounds:"
@@ -56,6 +54,3 @@ class UIButton extends UIControl
   @::__defineSetter__ "clicked", (v) ->
                                      @proxy = new UIControlProxy v
                                      @addTarget @proxy, @proxy.proxyAction, UIControlEvent.TouchUpInside
-
-new ck.RegisterAttribute UIButton, "UIButton"
-exports.UIButton = UIButton

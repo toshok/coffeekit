@@ -1,14 +1,15 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIManagedDocument"
-class UIManagedDocument extends UIDocument
+exports.UIManagedDocument = class UIManagedDocument extends UIDocument
+  @register()
 
   # Managing the Core Data Stack
   configurePersistentStoreCoordinator: objc.invokeSelector "configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"
-  ck.addProperty @::, "managedObjectContext"
-  ck.addProperty @::, "managedObjectModel"
-  ck.addProperty @::, "persistentStoreOptions"
-  ck.addProperty @::, "modelConfiguration"
+  ck.instanceProperty @, "managedObjectContext"
+  ck.instanceProperty @, "managedObjectModel"
+  ck.instanceProperty @, "persistentStoreOptions"
+  ck.instanceProperty @, "modelConfiguration"
   persistentStoreType: objc.invokeSelector "persistentStoreTypeForFileType:"
 
   # Customizing Read and Write Operations
@@ -18,6 +19,3 @@ class UIManagedDocument extends UIDocument
 
   # Naming the Persistent Store File
   @persistentStoreName: objc.invokeSelector "persistentStoreName"
-
-new ck.RegisterAttribute UIManagedDocument, "UIManagedDocument"
-exports.UIManagedDocument = UIManagedDocument

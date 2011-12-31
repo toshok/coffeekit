@@ -1,6 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAAnimation extends foundation.NSObject
+exports.CAAnimation = class CAAnimation extends foundation.NSObject
+  @register()
 
   # Archiving Properties
   shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"
@@ -12,12 +13,9 @@ class CAAnimation extends foundation.NSObject
   @animation: objc.invokeSelector "animation"
 
   # Animation Attributes
-  ck.addProperty @::, "removedOnCompletion"
+  ck.instanceProperty @, "removedOnCompletion"
   isRemovedOnCompletion: objc.invokeSelector "isRemovedOnCompletion"
-  ck.addProperty @::, "timingFunction"
+  ck.instanceProperty @, "timingFunction"
 
   # Getting and Setting the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CAAnimationDelegate) }
-
-new ck.RegisterAttribute CAAnimation, "CAAnimation"
-exports.CAAnimation = CAAnimation
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CAAnimationDelegate) }

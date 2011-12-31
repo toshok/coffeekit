@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIDocumentInteractionController"
-class UIDocumentInteractionController extends foundation.NSObject
+exports.UIDocumentInteractionController = class UIDocumentInteractionController extends foundation.NSObject
+  @register()
 
   # Creating the Document Interaction Controller
   @interactionControllerWithURL: objc.invokeSelector "interactionControllerWithURL:"
@@ -18,15 +19,12 @@ class UIDocumentInteractionController extends foundation.NSObject
   dismissMenu: objc.invokeSelector "dismissMenuAnimated:"
 
   # Accessing the Target Document’s Attributes
-  ck.addProperty @::, "URL"
-  ck.addProperty @::, "UTI"
-  ck.addProperty @::, "name"
-  ck.addProperty @::, "icons"
-  ck.addProperty @::, "annotation"
+  ck.instanceProperty @, "URL"
+  ck.instanceProperty @, "UTI"
+  ck.instanceProperty @, "name"
+  ck.instanceProperty @, "icons"
+  ck.instanceProperty @, "annotation"
 
   # Accessing the Controller Attributes
-  ck.addProperty @::, "gestureRecognizers"
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIDocumentInteractionControllerDelegate) }
-
-new ck.RegisterAttribute UIDocumentInteractionController, "UIDocumentInteractionController"
-exports.UIDocumentInteractionController = UIDocumentInteractionController
+  ck.instanceProperty @, "gestureRecognizers"
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIDocumentInteractionControllerDelegate) }

@@ -3,7 +3,8 @@
 #console.log "GKMatchDelegate"
 Protocol = foundation.Protocol
 
-class GKMatchDelegate extends foundation.Protocol
+exports.UIWebView = class GKMatchDelegate extends foundation.Protocol
+  @register()
 
   # Receiving Data from Other Players
   didReceiveData: Protocol.requiredMethod ("match:didReceiveData:fromPlayer:")
@@ -17,6 +18,3 @@ class GKMatchDelegate extends foundation.Protocol
 
   # Reinviting a Player
   shouldReinvitePlayer: Protocol.optionalMethod ("match:shouldReinvitePlayer:")
-
-new ck.RegisterAttribute GKMatchDelegate, "GKMatchDelegate"
-exports.UIWebView = GKMatchDelegate

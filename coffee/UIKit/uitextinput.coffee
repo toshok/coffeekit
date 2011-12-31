@@ -3,7 +3,9 @@
 #console.log "UITextInput"
 Protocol = foundation.Protocol
 
-class UITextInput extends foundation.Protocol
+exports.UITextInput = class UITextInput extends foundation.Protocol
+  @register()
+  @mixinProtocol UIKeyInput
 
   # Replacing and Returning Text
   textInRange:  Protocol.requiredMethod "textInRange:"
@@ -54,7 +56,3 @@ class UITextInput extends foundation.Protocol
 
   # Returning the Text Input View
   textInputView: Protocol.optionalMethod "textInputView"
-
-new ck.MixinProtocolAttribute UITextInput, UIKeyInput
-new ck.RegisterAttribute UITextInput, "UITextInput"
-exports.UITextinput = UITextInput

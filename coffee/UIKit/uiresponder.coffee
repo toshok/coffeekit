@@ -1,9 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIResponder"
-class UIResponder extends foundation.NSObject
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIResponder = class UIResponder extends foundation.NSObject
+  @register()
 
   # Managing the Responder Chain
   nextResponder: objc.invokeSelector "nextResponder"
@@ -14,8 +13,8 @@ class UIResponder extends foundation.NSObject
   resignFirstResponder: objc.invokeSelector "resignFirstResponder"
 
   # Managing Input Views
-  ck.addProperty @::, "inputView"
-  ck.addProperty @::, "inputAccessoryView"
+  ck.instanceProperty @, "inputView"
+  ck.instanceProperty @, "inputAccessoryView"
   reloadInputViews: objc.invokeSelector "reloadInputViews"
 
   # Responding to Touch Events
@@ -33,10 +32,7 @@ class UIResponder extends foundation.NSObject
   remoteControlReceived: objc.invokeSelector "remoteControlReceivedWithEvent:"
 
   # Getting the Undo Manager
-  ck.addProperty @::, "undoManager"
+  ck.instanceProperty @, "undoManager"
 
   # Validating Commands
   canPerformAction: objc.invokeSelector "canPerformAction:withSender:"
-
-new ck.RegisterAttribute UIResponder, "UIResponder"
-exports.UIResponder = UIResponder

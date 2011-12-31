@@ -3,7 +3,8 @@
 #console.log "UIActionSheetDelegate"
 Protocol = foundation.Protocol
 
-class UIActionSheetDelegate extends foundation.Protocol
+exports.UIActionSheetDelegate = class UIActionSheetDelegate extends foundation.Protocol
+  @register()
 
   # Responding to Actions
   clickedButton:  Protocol.optionalMethod "actionSheet:clickedButtonAtIndex:"
@@ -16,6 +17,3 @@ class UIActionSheetDelegate extends foundation.Protocol
 
   # Canceling
   cancel:      Protocol.optionalMethod "actionSheetCancel:"
-
-new ck.RegisterAttribute UIActionSheetDelegate, "UIActionSheetDelegate"
-exports.UIActionSheetDelegate = UIActionSheetDelegate

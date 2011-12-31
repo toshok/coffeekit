@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIStoryboard"
-class UIStoryboard extends foundation.NSObject
+exports.UIStoryboard = class UIStoryboard extends foundation.NSObject
+  @register()
 
   # Getting a Storyboard Object
   storyboardWithName: objc.invokeSelector "storyboardWithName:bundle:"
@@ -9,6 +10,3 @@ class UIStoryboard extends foundation.NSObject
   # Instantiating Storyboard View Controllers
   instantiateInitialViewController: objc.invokeSelector "instantiateInitialViewController"
   instantiateViewControllerWithIdentifier: objc.invokeSelector "instantiateViewControllerWithIdentifier:"
-
-new ck.RegisterAttribute UIStoryboard, "UIStoryboard"
-exports.UIStoryboard = UIStoryboard

@@ -1,17 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKTextureInfo extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKTextureInfo = class GLKTextureInfo extends foundation.NSObject
+  @register()
 
   # Reading Texture Information
-  ck.addProperty @::, "glName"
-  ck.addProperty @::, "glTarget"
-  ck.addProperty @::, "height"
-  ck.addProperty @::, "width"
-  ck.addProperty @::, "textureOrigin"
-  ck.addProperty @::, "alphaState"
-  ck.addProperty @::, "containsMipmaps"
-
-
-new ck.RegisterAttribute GLKTextureInfo, "GLKTextureInfo"
-exports.GLKTextureInfo = GLKTextureInfo
+  ck.instanceProperty @, "glName"
+  ck.instanceProperty @, "glTarget"
+  ck.instanceProperty @, "height"
+  ck.instanceProperty @, "width"
+  ck.instanceProperty @, "textureOrigin"
+  ck.instanceProperty @, "alphaState"
+  ck.instanceProperty @, "containsMipmaps"

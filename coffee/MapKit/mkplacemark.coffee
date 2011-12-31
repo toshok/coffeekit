@@ -1,13 +1,10 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class MKPlacemark extends cl.CLPlacemark
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.MKPlacemark = class MKPlacemark extends cl.CLPlacemark
+  @register()
 
   # Initializing a Placemark Object
-  initWithCoordinate: objc.invokeSelector ("initWithCoordinate:addressDictionary:")
+  initWithCoordinate: objc.invokeSelector "initWithCoordinate:addressDictionary:"
 
   # Accessing the Placemark Attributes
-  ck.addProperty @::, "countryCode"
-
-new ck.RegisterAttribute MKPlacemark, "MKPlacemark"
-exports.MKPlacemark = MKPlacemark
+  ck.instanceProperty @, "countryCode"

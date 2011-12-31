@@ -1,13 +1,10 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UICanvasView"
-class UICanvasView extends UIView
+exports.UICanvasView = class UICanvasView extends UIView
+  @register()
 
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
- 
-  @layerClass: -> coreanimation.CAEAGLLayer
-  new ck.SelectorAttribute @layerClass, "layerClass", "##:"
+  @layerClass: (ck.exposeSelector "layerClass", "##:", -> coreanimation.CAEAGLLayer)
 
   getContext: (name, args) ->
     if name is "2d"
@@ -16,6 +13,3 @@ class UICanvasView extends UIView
       if !@context
         @context = objc.allocateGLContext @layer, args
       @context
-    
-new ck.RegisterAttribute UICanvasView, "UICanvasView"
-exports.UICanvasView = UICanvasView

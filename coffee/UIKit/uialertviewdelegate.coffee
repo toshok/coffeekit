@@ -3,7 +3,8 @@
 #console.log "UIAlertViewDelegate"
 Protocol = foundation.Protocol
 
-class UIAlertViewDelegate extends foundation.Protocol
+exports.UIAlertViewDelegate = class UIAlertViewDelegate extends foundation.Protocol
+  @register()
 
   # Responding to Actions
   clickedButton:                Protocol.optionalMethod "alertView:clickedButtonAtIndex:"
@@ -17,6 +18,3 @@ class UIAlertViewDelegate extends foundation.Protocol
 
   # Canceling
   cancel:                       Protocol.optionalMethod "alertViewCancel:"
-
-new ck.RegisterAttribute UIAlertViewDelegate, "UIAlertViewDelegate"
-exports.UIAlertViewDelegate = UIAlertViewDelegate

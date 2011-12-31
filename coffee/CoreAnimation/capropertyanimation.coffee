@@ -1,17 +1,15 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAPropertyAnimation extends CAAnimation
+exports.CAPropertyAnimation = class CAPropertyAnimation extends CAAnimation
+  @register()
 
   # Animated Key Path
-  ck.addProperty @::, "keyPath"
+  ck.instanceProperty @, "keyPath"
 
   # Property Value Calculation Behavior
-  ck.addProperty @::, "cumulative"
-  ck.addProperty @::, "additive"
-  ck.addProperty @::, "valueFunction"
+  ck.instanceProperty @, "cumulative"
+  ck.instanceProperty @, "additive"
+  ck.instanceProperty @, "valueFunction"
 
   # Creating an Animation
   @animationWithKeyPath: objc.invokeSelector "animationWithKeyPath:"
-
-new ck.RegisterAttribute CAPropertyAnimation, "CAPropertyAnimation"
-exports.CAPropertyAnimation = CAPropertyAnimation

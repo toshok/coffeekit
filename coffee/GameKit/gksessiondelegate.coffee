@@ -3,7 +3,8 @@
 #console.log "GKSessionDelegate"
 Protocol = foundation.Protocol
 
-class GKSessionDelegate extends foundation.Protocol
+exports.UIWebView = class GKSessionDelegate extends foundation.Protocol
+  @register()
 
   # Observing Changes to Peers
   didChangeState: Protocol.requiredMethod ("session:peer:didChangeState:")
@@ -14,6 +15,3 @@ class GKSessionDelegate extends foundation.Protocol
   # Connection Errors
   connectionWithPeerFailed: Protocol.requiredMethod ("session:connectionWithPeerFailed:withError:")
   didFailWithError: Protocol.requiredMethod ("session:didFailWithError:")
-
-new ck.RegisterAttribute GKSessionDelegate, "GKSessionDelegate"
-exports.UIWebView = GKSessionDelegate

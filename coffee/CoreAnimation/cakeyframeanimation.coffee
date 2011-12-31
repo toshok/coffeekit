@@ -1,23 +1,21 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAKeyFrameAnimation extends CAAnimation
+exports.CAKeyFrameAnimation = class CAKeyFrameAnimation extends CAAnimation
+  @register()
 
   # Providing Keyframe Values
-  ck.addProperty @::, "path"
-  ck.addProperty @::, "values"
+  ck.instanceProperty @, "path"
+  ck.instanceProperty @, "values"
 
   # Keyframe Timing
-  ck.addProperty @::, "keyTimes"
-  ck.addProperty @::, "timingFunctions"
-  ck.addProperty @::, "calculationMode"
+  ck.instanceProperty @, "keyTimes"
+  ck.instanceProperty @, "timingFunctions"
+  ck.instanceProperty @, "calculationMode"
 
   # Rotation Mode Attribute
-  ck.addProperty @::, "rotationMode"
+  ck.instanceProperty @, "rotationMode"
 
   # Cubic Mode Attributes
-  ck.addProperty @::, "tensionValues"
-  ck.addProperty @::, "continuityValues"
-  ck.addProperty @::, "biasValues"
-
-new ck.RegisterAttribute CAKeyFrameAnimation, "CAKeyFrameAnimation"
-exports.CAKeyFrameAnimation = CAKeyFrameAnimation
+  ck.instanceProperty @, "tensionValues"
+  ck.instanceProperty @, "continuityValues"
+  ck.instanceProperty @, "biasValues"

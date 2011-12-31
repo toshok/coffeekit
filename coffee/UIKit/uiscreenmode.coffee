@@ -1,11 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIScreenMode"
-class UIScreenMode extends foundation.NSObject
+exports.UIScreenMode = class UIScreenMode extends foundation.NSObject
+  @register()
 
   # Accessing the Screen Mode Attributes
-  ck.addProperty @::, "size"
-  ck.addProperty @::, "pixelAspectRatio"
-
-new ck.RegisterAttribute UIScreenMode, "UIScreenMode"
-exports.UIScreenMode = UIScreenMode
+  ck.instanceProperty @, "size"
+  ck.instanceProperty @, "pixelAspectRatio"

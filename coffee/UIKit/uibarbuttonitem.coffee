@@ -1,10 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIBarButtonItem"
-class UIBarButtonItem extends UIBarItem
-
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIBarButtonItem = class UIBarButtonItem extends UIBarItem
+  @register()
 
   # Initializing an Item
   initWithCustomView: objc.invokeSelector "initWithCustomView:"
@@ -18,14 +16,14 @@ class UIBarButtonItem extends UIBarItem
 
 
   # Getting and Setting Properties
-  ck.addProperty @::, "target"
-  ck.addProperty @::, "action"
-  ck.addProperty @::, "style"
-  ck.addProperty @::, "possibleTitles"
-  ck.addProperty @::, "width"
-  ck.addProperty @::, "customView"
+  ck.instanceProperty @, "target"
+  ck.instanceProperty @, "action"
+  ck.instanceProperty @, "style"
+  ck.instanceProperty @, "possibleTitles"
+  ck.instanceProperty @, "width"
+  ck.instanceProperty @, "customView"
 
-  ck.addProperty(@::, "tintColor").makeUIAppearance()
+  ck.instanceProperty(@, "tintColor").makeUIAppearance()
 
   getBackButtonBackgroundImage: objc.invokeSelector("backButtonBackgroundImageForState:barMetrics:").makeUIAppearance()
   setBackButtonBackgroundImage: objc.invokeSelector("setBackButtonBackgroundImage:forState:barMetrics:").makeUIAppearance()
@@ -49,7 +47,3 @@ class UIBarButtonItem extends UIBarItem
                                      @proxy = new UIControlProxy1 v
                                      @target = @proxy
                                      @action = @proxy.proxyAction
-
-
-new ck.RegisterAttribute UIBarButtonItem, "UIBarButtonItem"
-exports.UIBarButtonItem = UIBarButtonItem

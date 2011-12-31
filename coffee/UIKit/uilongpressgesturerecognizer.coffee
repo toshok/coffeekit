@@ -1,17 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UILongPressGestureRecognizer"
-class UILongPressGestureRecognizer extends UIGestureRecognizer
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UILongPressGestureRecognizer = class UILongPressGestureRecognizer extends UIGestureRecognizer
+  @register()
 
   # Configuring the Gesture Recognizer
-  ck.addProperty @::, "minimumPressDuration"
-  ck.addProperty @::, "numberOfTouchesRequired"
-  ck.addProperty @::, "numberOfTapsRequired"
-  ck.addProperty @::, "allowableMovement"
-
-
-
-new ck.RegisterAttribute UILongPressGestureRecognizer, "UILongPressGestureRecognizer"
-exports.UILongPressGestureRecognizer = UILongPressGestureRecognizer
+  ck.instanceProperty @, "minimumPressDuration"
+  ck.instanceProperty @, "numberOfTouchesRequired"
+  ck.instanceProperty @, "numberOfTapsRequired"
+  ck.instanceProperty @, "allowableMovement"

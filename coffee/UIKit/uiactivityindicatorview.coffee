@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIActivityIndicatorView"
-class UIActivityIndicatorView extends UIView
+exports.UIActivityIndicatorView = class UIActivityIndicatorView extends UIView
+  @register()
 
   # Initializing an Activity Indicator
   initWithActivityIndicatorStyle: objc.invokeSelector "initWithActivityIndicatorStyle:"
@@ -10,11 +11,8 @@ class UIActivityIndicatorView extends UIView
   startAnimating: objc.invokeSelector "startAnimating"
   stopAnimating: objc.invokeSelector "stopAnimating"
   isAnimating: objc.invokeSelector "isAnimating"
-  ck.addProperty @::, "hidesWhenStopped"
+  ck.instanceProperty @, "hidesWhenStopped"
 
   # Configuring the Activity Indicator Appearance
-  ck.addProperty @::, "activityIndicatorViewStyle"
-  ck.addProperty @::, "color"
-
-new ck.RegisterAttribute UIActivityIndicatorView, "UIActivityIndicatorView"
-exports.UIActivityIndicatorView = UIActivityIndicatorView
+  ck.instanceProperty @, "activityIndicatorViewStyle"
+  ck.instanceProperty @, "color"

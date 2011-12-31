@@ -3,7 +3,8 @@
 #console.log "MKMapViewDelgate"
 Protocol = foundation.Protocol
 
-class MKMapViewDelegate extends foundation.Protocol
+exports.MKMapViewDelegate = class MKMapViewDelegate extends foundation.Protocol
+  @register()
 
   # Responding to Map Position Changes
   regionWillChange:                 Protocol.optionalMethod "mapView:regionWillChangeAnimated:"
@@ -36,7 +37,3 @@ class MKMapViewDelegate extends foundation.Protocol
   # Managing Overlay Views
   viewForOverlay:                   Protocol.optionalMethod "mapView:viewForOverlay:"
   didAddOverlayViews:               Protocol.optionalMethod "mapView:didAddOverlayViews:"
-
-new ck.RegisterAttribute MKMapViewDelegate, "MKMapViewDelegate"
-exports.MKMapViewDelegate = MKMapViewDelegate
-

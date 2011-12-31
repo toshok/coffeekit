@@ -34,6 +34,19 @@ class SelectorAttribute extends Attribute
     obj._ck_typeSig = type_sig ? "@@:"
 exports.SelectorAttribute = SelectorAttribute
 
+exports.exposeSelector = (sel_name, rest...) ->
+  if rest.length > 1
+    type_sig = rest[0]
+    fn = rest[1]
+  else if rest.length == 1
+    type_sig = null
+    fn = rest[0]
+  else
+    throw "exposeSelector requires the function to expose"
+
+  new SelectorAttribute fn, sel_name, type_sig
+  fn
+
 class MixinProtocolAttribute extends Attribute
   constructor: (obj, protocol) ->
     super obj
@@ -187,6 +200,13 @@ addProperty = (obj, jsprop, opts) ->
                                              getter._ck_appearance = true
 
 exports.addProperty = addProperty
+
+exports.instanceProperty = (cls, jsprop, opts) ->
+  addProperty cls::, jsprop, opts
+
+exports.staticProperty = (cls, jsprop, opts) ->
+  addProperty cls, jsprop, opts
+
 
 addConstant = (obj, jsprop, v) ->
   obj.__defineGetter__ jsprop, -> v

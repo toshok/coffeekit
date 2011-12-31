@@ -1,14 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKEffectPropertyMaterial extends GLKEffectProperty
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKEffectPropertyMaterial = class GLKEffectPropertyMaterial extends GLKEffectProperty
+  @register()
 
   # Material Properties
-  ck.addProperty @::, "ambientColor"
-  ck.addProperty @::, "diffuseColor"
-  ck.addProperty @::, "emissiveColor"
-  ck.addProperty @::, "shininess"
-  ck.addProperty @::, "specularColor"
-
-new ck.RegisterAttribute GLKEffectPropertyMaterial, "GLKEffectPropertyMaterial"
-exports.GLKEffectPropertyMaterial = GLKEffectPropertyMaterial
+  ck.instanceProperty @, "ambientColor"
+  ck.instanceProperty @, "diffuseColor"
+  ck.instanceProperty @, "emissiveColor"
+  ck.instanceProperty @, "shininess"
+  ck.instanceProperty @, "specularColor"

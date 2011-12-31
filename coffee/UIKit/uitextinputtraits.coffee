@@ -3,7 +3,11 @@
 #console.log "UITextInputTraits"
 Protocol = foundation.Protocol
 
-class UITextInputTraits extends foundation.Protocol
+exports.UITextInputTraits = class UITextInputTraits extends foundation.Protocol
+  @register()
+  # we don't want NSObjectProtocol, I'm pretty sure..  too much underlying stuff we don't want to expose.
+  # so let's leave it at that.
+  # @mixinProtocol foundation.NSObjectProtocol
 
   # Managing the Keyboard Behavior
   autocapitalizationType:        Protocol.requiredProperty "autocapitalizationType"
@@ -14,11 +18,4 @@ class UITextInputTraits extends foundation.Protocol
   keyboardType:                  Protocol.requiredProperty "keyboardType"
   returnKeyType:                 Protocol.requiredProperty "returnKeyType"
   secureTextEntry:               Protocol.requiredProperty "secureTextEntry"
-
-# we don't want NSObjectProtocol, I'm pretty sure..  too much underlying stuff we don't want to expose.
-# so let's leave it at that.
-# new ck.MixinProtocolAttribute UITextInputTraits, foundation.NSObjectProtocol
-
-new ck.RegisterAttribute UITextInputTraits, "UITextInputTraits"
-exports.UITextinputTraits = UITextInputTraits
 

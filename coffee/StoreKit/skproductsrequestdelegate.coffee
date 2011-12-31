@@ -3,10 +3,8 @@
 #console.log "MKMapViewDelgate"
 Protocol = foundation.Protocol
 
-class SKProductsRequestDelegate extends SKRequestDelegate
+exports.SKProductsRequestDelegate = class SKProductsRequestDelegate extends SKRequestDelegate
+  @register()
 
   # Receiving the Response
   didReceiveResponse: Protocol.requiredMethod ("productsRequest:didReceiveResponse:")
-
-new ck.RegisterAttribute SKProductsRequestDelegate, "SKProductsRequestDelegate"
-exports.SKProductsRequestDelegate = SKProductsRequestDelegate

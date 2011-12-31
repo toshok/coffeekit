@@ -1,24 +1,25 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIActionSheet"
-class UIActionSheet extends UIView
+exports.UIActionSheet = class UIActionSheet extends UIView
+  @register()
 
   # Creating Action Sheets
   init: objc.invokeSelector "initWithTitle:delegate:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:";
 
   # Setting Properties
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIActionSheetDelegate) }
-  ck.addProperty @::, "title"
-  ck.addProperty @::, "visible", { set: null, get: "isVisible" }
-  ck.addProperty @::, "property"
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIActionSheetDelegate) }
+  ck.instanceProperty @, "title"
+  ck.instanceProperty @, "visible", { set: null, get: "isVisible" }
+  ck.instanceProperty @, "property"
 
   # Configuring Buttons
   addButton: objc.invokeSelector "addButtonWithTitle:"
-  ck.addProperty @::, "numberOfButtons"
+  ck.instanceProperty @, "numberOfButtons"
   buttonTitle: objc.invokeSelector "buttonTitleAtIndex:"
-  ck.addProperty @::, "cancelButtonIndex"
-  ck.addProperty @::, "destructiveButtonIndex"
-  ck.addProperty @::, "firstOtherButtonIndex"
+  ck.instanceProperty @, "cancelButtonIndex"
+  ck.instanceProperty @, "destructiveButtonIndex"
+  ck.instanceProperty @, "firstOtherButtonIndex"
 
   # Presenting the Action Sheet
     
@@ -30,6 +31,3 @@ class UIActionSheet extends UIView
 
   # Dismissing the Action Sheet
   dismissWithClickedButtonIndexAnimated: objc.invokeSelector "dismissWithClickedButtonIndex:animated:"
-
-new ck.RegisterAttribute UIActionSheet, "UIActionSheet"
-exports.UIActionSheet = UIActionSheet

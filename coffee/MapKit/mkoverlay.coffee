@@ -3,7 +3,8 @@
 #console.log "MKOverlay"
 Protocol = foundation.Protocol
 
-class MKOverlay extends foundation.Protocol
+exports.MKOverlay = class MKOverlay extends foundation.Protocol
+  @register()
 
   # Describing the Overlay Geometry
   coordinate:          Protocol.optionalProperty "coordinate"
@@ -11,6 +12,3 @@ class MKOverlay extends foundation.Protocol
 
   # Determining Map Intersections
   intersectsMapRect:   Protocol.optionalMethod "intersectsMapRect:"
-
-new ck.RegisterAttribute MKMKOverlay, "MKMKOverlay"
-exports.MKMKOverlay = MKMKOverlay

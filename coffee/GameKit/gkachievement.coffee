@@ -1,31 +1,28 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GKAchievement extends NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.GKAchievement = class GKAchievement extends NSObject
+  @register()
 
   # Retrieving Achievement Progress from Game Center
-  @loadAchievementsWithCompletionHandler: objc.invokeSelector ("loadAchievementsWithCompletionHandler:")
+  @loadAchievementsWithCompletionHandler: objc.invokeSelector "loadAchievementsWithCompletionHandler:"
 
   # Initializing an Achievement Object
-  initWithIdentifier: objc.invokeSelector ("initWithIdentifier:")
+  initWithIdentifier: objc.invokeSelector "initWithIdentifier:"
 
   # Configuring an Achievement
-  ck.addProperty @::, "identifier"
-  ck.addProperty @::, "percentComplete"
+  ck.instanceProperty @, "identifier"
+  ck.instanceProperty @, "percentComplete"
 
   # Reading the State of an Achievement
-  ck.addProperty @::, "completed"
-  ck.addProperty @::, "lastReportedDate"
-  ck.addProperty @::, "hidden"
+  ck.instanceProperty @, "completed"
+  ck.instanceProperty @, "lastReportedDate"
+  ck.instanceProperty @, "hidden"
 
   # Reporting Progress on an Achievement
-  reportAchievement: objc.invokeSelector ("reportAchievementWithCompletionHandler:")
+  reportAchievement: objc.invokeSelector "reportAchievementWithCompletionHandler:"
 
   # Displaying a Notification Banner For an Achievement
-  ck.addProperty @::, "showsCompletionBanner"
+  ck.instanceProperty @, "showsCompletionBanner"
 
   # Resetting the Player’s Progress on Achievements
-  @resetAchievements: objc.invokeSelector ("resetAchievementsWithCompletionHandler:")
-
-new ck.RegisterAttribute GKAchievement, "GKAchievement"
-exports.GKAchievement = GKAchievement
+  @resetAchievements: objc.invokeSelector "resetAchievementsWithCompletionHandler:"

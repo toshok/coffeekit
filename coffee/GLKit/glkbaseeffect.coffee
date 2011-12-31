@@ -1,38 +1,37 @@
-class GLKBaseEffect extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
+
+exports.GLKBaseEffect = class GLKBaseEffect extends foundation.NSObject
+  @register()
+  @mixinProtocol GLKNamedEffect
 
   # Naming the Effect
-  ck.addProperty @::, "label"
+  ck.instanceProperty @, "label"
 
   # Configuring the Modelview Transform
-  ck.addProperty @::, "transform"
+  ck.instanceProperty @, "transform"
 
   # Configuring Lights
-  ck.addProperty @::, "lightingType"
-  ck.addProperty @::, "lightModelTwoSided"
-  ck.addProperty @::, "material"
-  ck.addProperty @::, "lightModelAmbientColor"
-  ck.addProperty @::, "light0"
-  ck.addProperty @::, "light1"
-  ck.addProperty @::, "light2"
+  ck.instanceProperty @, "lightingType"
+  ck.instanceProperty @, "lightModelTwoSided"
+  ck.instanceProperty @, "material"
+  ck.instanceProperty @, "lightModelAmbientColor"
+  ck.instanceProperty @, "light0"
+  ck.instanceProperty @, "light1"
+  ck.instanceProperty @, "light2"
 
   # Configuring Textures
-  ck.addProperty @::, "texturingEnabled"
-  ck.addProperty @::, "texture2d0"
-  ck.addProperty @::, "texture2d1"
-  ck.addProperty @::, "textureOrder"
+  ck.instanceProperty @, "texturingEnabled"
+  ck.instanceProperty @, "texture2d0"
+  ck.instanceProperty @, "texture2d1"
+  ck.instanceProperty @, "textureOrder"
 
   # Configuring Fog
-  ck.addProperty @::, "fog"
+  ck.instanceProperty @, "fog"
 
   # Configuring Color Information
-  ck.addProperty @::, "colorMaterialEnabled"
-  ck.addProperty @::, "useConstantColor"
-  ck.addProperty @::, "constantColor"
+  ck.instanceProperty @, "colorMaterialEnabled"
+  ck.instanceProperty @, "useConstantColor"
+  ck.instanceProperty @, "constantColor"
 
   # Preparing the Effect for Drawing
-  prepareToDraw: objc.invokeSelector ("prepareToDraw")
-
-new ck.MixinProtocolAttribute GLKBaseEffect, GLKNamedEffect
-new ck.RegisterAttribute GLKBaseEffect, "GLKBaseEffect"
-exports.GLKBaseEffect = GLKBaseEffect
+  prepareToDraw: objc.invokeSelector "prepareToDraw"

@@ -1,21 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CATextLayer extends CALayer
-
-  constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
+exports.CATextLayer = class CATextLayer extends CALayer
+  @register()
 
   # Getting and Setting the Text
-  ck.addProperty @::, "string"
+  ck.instanceProperty @, "string"
 
   # Text Visual Properties
-  ck.addProperty @::, "font"
-  ck.addProperty @::, "fontSize"
-  ck.addProperty @::, "foregroundColor"
+  ck.instanceProperty @, "font"
+  ck.instanceProperty @, "fontSize"
+  ck.instanceProperty @, "foregroundColor"
 
   # Text Alignment and Truncation
-  ck.addProperty @::, "wrapped"
-  ck.addProperty @::, "alignmentMode"
-  ck.addProperty @::, "truncationMode"
-
-new ck.RegisterAttribute CATextLayer, "CATextLayer"
-exports.CATextLayer = CATextLayer
+  ck.instanceProperty @, "wrapped"
+  ck.instanceProperty @, "alignmentMode"
+  ck.instanceProperty @, "truncationMode"

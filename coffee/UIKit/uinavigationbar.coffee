@@ -1,30 +1,28 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UINavigationBar"
-class UINavigationBar extends UIView
+exports.UINavigationBar = class UINavigationBar extends UIView
+  @register()
 
   # Configuring Navigation Bars
-  ck.addProperty @::, "barStyle"
-  ck.addProperty @::, "translucent"
+  ck.instanceProperty @, "barStyle"
+  ck.instanceProperty @, "translucent"
 
   # Assigning the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationBarDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationBarDelegate) }
 
   # Pushing and Popping Items
   pushNavigationItem: objc.invokeSelector "pushNavigationItem:animated:"
   popNavigationItem: objc.invokeSelector "popNavigationItemAnimated:"
   setItems: objc.invokeSelector "setItems:animated:"
-  ck.addProperty @::, "items", { set: (v) -> @setItems v, false }
-  ck.addProperty @::, "topItem"
-  ck.addProperty @::, "backItem"
+  ck.instanceProperty @, "items", { set: (v) -> @setItems v, false }
+  ck.instanceProperty @, "topItem"
+  ck.instanceProperty @, "backItem"
 
   # Customizing the Bar Appearance
-  ck.addProperty @::, "tintColor"
+  ck.instanceProperty @, "tintColor"
   backgroundImage: objc.invokeSelector "backgroundImageForBarMetrics:"
   setBackgroundImage: objc.invokeSelector "setBackgroundImage:forBarMetrics:"
   titleVerticalPositionAdjustment: objc.invokeSelector "titleVerticalPositionAdjustmentForBarMetrics:"
   setTitleVerticalPositionAdjustment: objc.invokeSelector "setTitleVerticalPositionAdjustment:forBarMetrics:"
-  ck.addProperty @::, "titleTextAttributes"
-
-new ck.RegisterAttribute UINavigationBar, "UINavigationBar"
-exports.UINavigationBar = UINavigationBar
+  ck.instanceProperty @, "titleTextAttributes"

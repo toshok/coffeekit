@@ -1,16 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPrintFormatter"
-class UIPrintFormatter extends foundation.NSObject
+exports.UIPrintFormatter = class UIPrintFormatter extends foundation.NSObject
+  @register()
 
   # Laying Out the Content
-  ck.addProperty @::, "contentInsets"
-  ck.addProperty @::, "maximumContentHeight"
-  ck.addProperty @::, "maximumContentWidth"
+  ck.instanceProperty @, "contentInsets"
+  ck.instanceProperty @, "maximumContentHeight"
+  ck.instanceProperty @, "maximumContentWidth"
 
   # Managing Pagination
-  ck.addProperty @::, "startPage"
-  ck.addProperty @::, "pageCount"
+  ck.instanceProperty @, "startPage"
+  ck.instanceProperty @, "pageCount"
 
   # Drawing the Content
   drawInRectForPageAtIndex: objc.invokeSelector "drawInRect:forPageAtIndex:"
@@ -18,7 +19,4 @@ class UIPrintFormatter extends foundation.NSObject
 
   # Communicating with the Page Renderer
   removeFromPrintPageRenderer: objc.invokeSelector "removeFromPrintPageRenderer"
-  ck.addProperty @::, "printPageRenderer"
-
-new ck.RegisterAttribute UIPrintFormatter, "UIPrintFormatter"
-exports.UIPrintFormatter = UIPrintFormatter
+  ck.instanceProperty @, "printPageRenderer"

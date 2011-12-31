@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIBezierPath"
-class UIBezierPath extends foundation.NSObject
+exports.UIBezierPath = class UIBezierPath extends foundation.NSObject
+  @register()
 
   # Creating a UIBezierPath Object
   bezierPath: objc.invokeSelector "bezierPath"
@@ -21,16 +22,16 @@ class UIBezierPath extends foundation.NSObject
   closePath: objc.invokeSelector "closePath"
   removeAllPoints: objc.invokeSelector "removeAllPoints"
   appendPath: objc.invokeSelector "appendPath:"
-  ck.addProperty @::, "CGPath"
-  ck.addProperty @::, "currentPoint"
+  ck.instanceProperty @, "CGPath"
+  ck.instanceProperty @, "currentPoint"
 
   # Accessing Drawing Properties
-  ck.addProperty @::, "lineWidth"
-  ck.addProperty @::, "lineCapStyle"
-  ck.addProperty @::, "lineJoinStyle"
-  ck.addProperty @::, "miterLimit"
-  ck.addProperty @::, "flatness"
-  ck.addProperty @::, "usesEvenOddFillRule"
+  ck.instanceProperty @, "lineWidth"
+  ck.instanceProperty @, "lineCapStyle"
+  ck.instanceProperty @, "lineJoinStyle"
+  ck.instanceProperty @, "miterLimit"
+  ck.instanceProperty @, "flatness"
+  ck.instanceProperty @, "usesEvenOddFillRule"
   setLineDash: objc.invokeSelector "setLineDash:count:phase:"
   getLineDash: objc.invokeSelector "getLineDash:count:phase:"
 
@@ -45,13 +46,9 @@ class UIBezierPath extends foundation.NSObject
 
   # Hit Detection
   containsPoint: objc.invokeSelector "containsPoint:"
-  ck.addProperty @::, "empty"
-  ck.addProperty @::, "bounds"
+  ck.instanceProperty @, "empty"
+  ck.instanceProperty @, "bounds"
 
   # Applying Transformations
   applyTransform: objc.invokeSelector "applyTransform:"
-
-
-new ck.RegisterAttribute UIBezierPath, "UIBezierPath"
-exports.UIBezierPath = UIBezierPath
  

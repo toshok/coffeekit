@@ -1,6 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CALayer extends foundation.NSObject
+exports.CALayer = class CALayer extends foundation.NSObject
+  @register()
 
   # Creating a Layer
   @layer: objc.invokeSelector "layer"
@@ -12,56 +13,56 @@ class CALayer extends foundation.NSObject
   modelLayer: objc.invokeSelector "modelLayer"
 
   # Modifying the Layer Geometry
-  ck.addProperty @::, "frame"
-  ck.addProperty @::, "bounds"
-  ck.addProperty @::, "position"
-  ck.addProperty @::, "zPosition"
-  ck.addProperty @::, "anchorPointZ"
-  ck.addProperty @::, "anchorPoint"
-  ck.addProperty @::, "contentsScale"
+  ck.instanceProperty @, "frame"
+  ck.instanceProperty @, "bounds"
+  ck.instanceProperty @, "position"
+  ck.instanceProperty @, "zPosition"
+  ck.instanceProperty @, "anchorPointZ"
+  ck.instanceProperty @, "anchorPoint"
+  ck.instanceProperty @, "contentsScale"
   affineTransform: objc.invokeSelector "affineTransform"
   setAffineTransform: objc.invokeSelector "setAffineTransform:"
-  ck.addProperty @::, "transform"
-  ck.addProperty @::, "sublayerTransform"
+  ck.instanceProperty @, "transform"
+  ck.instanceProperty @, "sublayerTransform"
 
   # Providing Layer Content
-  ck.addProperty @::, "contents"
-  ck.addProperty @::, "contentsRect"
-  ck.addProperty @::, "contentsCenter"
+  ck.instanceProperty @, "contents"
+  ck.instanceProperty @, "contentsRect"
+  ck.instanceProperty @, "contentsCenter"
   display: objc.invokeSelector "display"
   drawInContext: objc.invokeSelector "drawInContext:"
-  ck.addProperty @::, "opaque"
-  ck.addProperty @::, "edgeAntialiasingMask"
+  ck.instanceProperty @, "opaque"
+  ck.instanceProperty @, "edgeAntialiasingMask"
   contentsAreFlipped: objc.invokeSelector "contentsAreFlipped"
-  ck.addProperty @::, "geometryFlipped"
+  ck.instanceProperty @, "geometryFlipped"
 
   # Style Attributes
-  ck.addProperty @::, "contentsGravity"
-  ck.addProperty @::, "opacity"
-  ck.addProperty @::, "hidden"
-  ck.addProperty @::, "masksToBounds"
-  ck.addProperty @::, "doubleSided"
-  ck.addProperty @::, "mask"
-  ck.addProperty @::, "cornerRadius"
-  ck.addProperty @::, "borderWidth"
-  ck.addProperty @::, "borderColor"
-  ck.addProperty @::, "backgroundColor"
-  ck.addProperty @::, "backgroundFilters"
-  ck.addProperty @::, "shadowOpacity"
-  ck.addProperty @::, "shadowRadius"
-  ck.addProperty @::, "shadowOffset"
-  ck.addProperty @::, "shadowColor"
-  ck.addProperty @::, "shadowPath"
-  ck.addProperty @::, "filters"
-  ck.addProperty @::, "compositingFilter"
-  ck.addProperty @::, "style"
-  ck.addProperty @::, "minificationFilter"
-  ck.addProperty @::, "minificationFilterBias"
-  ck.addProperty @::, "magnificationFilter"
+  ck.instanceProperty @, "contentsGravity"
+  ck.instanceProperty @, "opacity"
+  ck.instanceProperty @, "hidden"
+  ck.instanceProperty @, "masksToBounds"
+  ck.instanceProperty @, "doubleSided"
+  ck.instanceProperty @, "mask"
+  ck.instanceProperty @, "cornerRadius"
+  ck.instanceProperty @, "borderWidth"
+  ck.instanceProperty @, "borderColor"
+  ck.instanceProperty @, "backgroundColor"
+  ck.instanceProperty @, "backgroundFilters"
+  ck.instanceProperty @, "shadowOpacity"
+  ck.instanceProperty @, "shadowRadius"
+  ck.instanceProperty @, "shadowOffset"
+  ck.instanceProperty @, "shadowColor"
+  ck.instanceProperty @, "shadowPath"
+  ck.instanceProperty @, "filters"
+  ck.instanceProperty @, "compositingFilter"
+  ck.instanceProperty @, "style"
+  ck.instanceProperty @, "minificationFilter"
+  ck.instanceProperty @, "minificationFilterBias"
+  ck.instanceProperty @, "magnificationFilter"
 
   # Managing the Layer Hierarchy
-  ck.addProperty @::, "sublayers"
-  ck.addProperty @::, "superlayer"
+  ck.instanceProperty @, "sublayers"
+  ck.instanceProperty @, "superlayer"
   addSublayer: objc.invokeSelector "addSublayer:"
   removeFromSuperlayer: objc.invokeSelector "removeFromSuperlayer"
   insertSublayerAtIndex: objc.invokeSelector "insertSublayer:atIndex:"
@@ -71,7 +72,7 @@ class CALayer extends foundation.NSObject
 
   # Updating Layer Display
   setNeedsDisplay: objc.invokeSelector "setNeedsDisplay"
-  ck.addProperty @::, "needsDisplayOnBoundsChange"
+  ck.instanceProperty @, "needsDisplayOnBoundsChange"
   displayIfNeeded: objc.invokeSelector "displayIfNeeded"
   needsDisplay: objc.invokeSelector "needsDisplay"
   @needsDisplayForKey: objc.invokeSelector "needsDisplayForKey:"
@@ -85,11 +86,11 @@ class CALayer extends foundation.NSObject
   animationKeys: objc.invokeSelector "animationKeys"
 
   # Managing Layer Resizing and Layout
-  ck.addProperty @::, "layoutManager"
-  ck.addProperty @::, "needsLayout"
-  ck.addProperty @::, "constraints"
-  ck.addProperty @::, "name"
-  ck.addProperty @::, "autoresizingMask"
+  ck.instanceProperty @, "layoutManager"
+  ck.instanceProperty @, "needsLayout"
+  ck.instanceProperty @, "constraints"
+  ck.instanceProperty @, "name"
+  ck.instanceProperty @, "autoresizingMask"
   addConstraint: objc.invokeSelector "addConstraint:"
   resizeWithOldSuperlayerSize: objc.invokeSelector "resizeWithOldSuperlayerSize:"
   resizeSublayersWithOldSize: objc.invokeSelector "resizeSublayersWithOldSize:"
@@ -98,7 +99,7 @@ class CALayer extends foundation.NSObject
   layoutSublayers: objc.invokeSelector "layoutSublayers"
 
   # Actions
-  ck.addProperty @::, "actions"
+  ck.instanceProperty @, "actions"
   @defaultActionForKey: objc.invokeSelector "defaultActionForKey:"
   actionForKey: objc.invokeSelector "actionForKey:"
 
@@ -116,20 +117,17 @@ class CALayer extends foundation.NSObject
 
   # Rendering
   renderInContext: objc.invokeSelector "renderInContext:"
-  ck.addProperty @::, "shouldRasterize"
-  ck.addProperty @::, "rasterizationScale"
+  ck.instanceProperty @, "shouldRasterize"
+  ck.instanceProperty @, "rasterizationScale"
 
   # Scrolling
-  ck.addProperty @::, "visibleRect"
+  ck.instanceProperty @, "visibleRect"
   scrollPoint: objc.invokeSelector "scrollPoint:"
   scrollRectToVisible: objc.invokeSelector "scrollRectToVisible:"
 
   # Modifying the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CALayerDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, CALayerDelegate) }
 
   # Key-Value Coding Extensions
   shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"
   @defaultValueForKey: objc.invokeSelector "defaultValueForKey:"
-
-new ck.RegisterAttribute CALayer, "CALayer"
-exports.CALayer = CALayer

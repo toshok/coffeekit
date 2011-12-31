@@ -1,21 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class TWRequest extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.TWRequest = class TWRequest extends foundation.NSObject
+  @register()
 
   # Initializing Requests
-  initWithURL: objc.invokeSelector ("initWithURL:parameters:requestMethod:")
+  initWithURL: objc.invokeSelector "initWithURL:parameters:requestMethod:"
 
   # Accessing Properties
-  ck.addProperty @::, "account"
-  ck.addProperty @::, "requestMethod"
-  ck.addProperty @::, "URL"
-  ck.addProperty @::, "parameters"
-  addMultiPartData: objc.invokeSelector ("addMultiPartData:withName:type:")
+  ck.instanceProperty @, "account"
+  ck.instanceProperty @, "requestMethod"
+  ck.instanceProperty @, "URL"
+  ck.instanceProperty @, "parameters"
+  addMultiPartData: objc.invokeSelector "addMultiPartData:withName:type:"
 
   # Sending Requests
-  performRequestWithHandler: objc.invokeSelector ("performRequestWithHandler:")
-  signedURLRequest: objc.invokeSelector ("signedURLRequest")
-
-new ck.RegisterAttribute TWRequest, "TWRequest"
-exports.TWRequest = TWRequest
+  performRequestWithHandler: objc.invokeSelector "performRequestWithHandler:"
+  signedURLRequest: objc.invokeSelector "signedURLRequest"

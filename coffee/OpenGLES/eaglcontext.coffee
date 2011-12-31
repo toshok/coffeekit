@@ -1,24 +1,22 @@
-class EAGLContext extends foundation.NSObject
+# This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.EAGLContext = class EAGLContext extends foundation.NSObject
+  @register()
 
   # Creating EAGL Contexts
-  initWithAPI: objc.invokeSelector ("initWithAPI:")
-  initWithAPIAndSharegroup: objc.invokeSelector ("initWithAPI:sharegroup:")
+  initWithAPI: objc.invokeSelector "initWithAPI:"
+  initWithAPIAndSharegroup: objc.invokeSelector "initWithAPI:sharegroup:"
 
   # Setting the Current EAGL Context
-  @setCurrentContext: objc.invokeSelector ("setCurrentContext:")
+  @setCurrentContext: objc.invokeSelector "setCurrentContext:"
 
   # Attaching Storage to a Renderbuffer
-  renderbufferStorage: objc.invokeSelector ("renderbufferStorage:fromDrawable:")
+  renderbufferStorage: objc.invokeSelector "renderbufferStorage:fromDrawable:"
 
   # Displaying a Renderbuffer
-  presentRenderbuffer: objc.invokeSelector ("presentRenderbuffer:")
+  presentRenderbuffer: objc.invokeSelector "presentRenderbuffer:"
 
   # Getting EAGL Context Information
-  ck.addProperty @::, "API"
-  ck.addProperty @::, "sharegroup"
-  @currentContext: objc.invokeSelector ("currentContext")
-
-new ck.RegisterAttribute EAGLContext, "EAGLContext"
-exports.EAGLContext = EAGLContext
+  ck.instanceProperty @, "API"
+  ck.instanceProperty @, "sharegroup"
+  @currentContext: objc.invokeSelector "currentContext"

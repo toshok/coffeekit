@@ -1,9 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSApplication extends foundation.NSResponder
-  constructor: (handle) ->
-    console.log "in NSApplication.ctor"
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.NSApplication = class NSApplication extends foundation.NSResponder
+  @register()
 
   # Getting the Application
   # FIXME we need better syntax for this...
@@ -15,7 +13,7 @@ class NSApplication extends foundation.NSResponder
   applicationIconImage: objc.invokeSelector "applicationIconImage"
   setApplicationIconImage: objc.invokeSelector "setApplicationIconImage:"
 
-  ck.addProperty @::, "delegate"
+  ck.instanceProperty @, "delegate"
 
   # Launching Applications
   finishLaunching: objc.invokeSelector "finishLaunching"
@@ -184,6 +182,3 @@ class NSApplication extends foundation.NSResponder
 
   # use this instead of NSApplicationMain
   @main: (args) -> objc.NSApplicationMain (args)
-
-new ck.RegisterAttribute NSApplication, "NSApplication"
-exports.NSApplication = NSApplication

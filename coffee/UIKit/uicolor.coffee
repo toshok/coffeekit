@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIColor"
-class UIColor extends foundation.NSObject
+exports.UIColor = class UIColor extends foundation.NSObject
+  @register()
 
   # Creating a UIColor Object from Component Values
   @colorWithWhite: objc.invokeSelector "colorWithWhite:alpha:"
@@ -21,33 +22,33 @@ class UIColor extends foundation.NSObject
   initWithCIColor: objc.invokeSelector "initWithCIColor:"
 
   # Creating a UIColor with Preset Component Values
-  ck.addProperty @, "blackColor", set : null # readonly
-  ck.addProperty @, "darkGrayColor", set : null # readonly
-  ck.addProperty @, "lightGrayColor", set : null # readonly
-  ck.addProperty @, "whiteColor", set : null # readonly
-  ck.addProperty @, "grayColor", set : null # readonly
-  ck.addProperty @, "redColor", set : null # readonly
-  ck.addProperty @, "greenColor", set : null # readonly
-  ck.addProperty @, "blueColor", set : null # readonly
-  ck.addProperty @, "cyanColor", set : null # readonly
-  ck.addProperty @, "yellowColor", set : null # readonly
-  ck.addProperty @, "magentaColor", set : null # readonly
-  ck.addProperty @, "orangeColor", set : null # readonly
-  ck.addProperty @, "purpleColor", set : null # readonly
-  ck.addProperty @, "brownColor", set : null # readonly
-  ck.addProperty @, "clearColor", set : null # readonly
+  ck.staticProperty @, "blackColor", set : null # readonly
+  ck.staticProperty @, "darkGrayColor", set : null # readonly
+  ck.staticProperty @, "lightGrayColor", set : null # readonly
+  ck.staticProperty @, "whiteColor", set : null # readonly
+  ck.staticProperty @, "grayColor", set : null # readonly
+  ck.staticProperty @, "redColor", set : null # readonly
+  ck.staticProperty @, "greenColor", set : null # readonly
+  ck.staticProperty @, "blueColor", set : null # readonly
+  ck.staticProperty @, "cyanColor", set : null # readonly
+  ck.staticProperty @, "yellowColor", set : null # readonly
+  ck.staticProperty @, "magentaColor", set : null # readonly
+  ck.staticProperty @, "orangeColor", set : null # readonly
+  ck.staticProperty @, "purpleColor", set : null # readonly
+  ck.staticProperty @, "brownColor", set : null # readonly
+  ck.staticProperty @, "clearColor", set : null # readonly
 
   # System Colors
-  ck.addProperty @, "lightTextColor", set : null # readonly
-  ck.addProperty @, "darkTextColor", set : null # readonly
-  ck.addProperty @, "groupTableViewBackgroundColor", set : null # readonly
-  ck.addProperty @, "viewFlipsideBackgroundColor", set : null # readonly
-  ck.addProperty @, "scrollViewTexturedBackgroundColor", set : null # readonly
-  ck.addProperty @, "underPageBackgroundColor", set : null # readonly
+  ck.staticProperty @, "lightTextColor", set : null # readonly
+  ck.staticProperty @, "darkTextColor", set : null # readonly
+  ck.staticProperty @, "groupTableViewBackgroundColor", set : null # readonly
+  ck.staticProperty @, "viewFlipsideBackgroundColor", set : null # readonly
+  ck.staticProperty @, "scrollViewTexturedBackgroundColor", set : null # readonly
+  ck.staticProperty @, "underPageBackgroundColor", set : null # readonly
 
   # Retrieving Color Information
-  ck.addProperty @::, "CGColor"
-  ck.addProperty @::, "CIColor"
+  ck.instanceProperty @, "CGColor"
+  ck.instanceProperty @, "CIColor"
   getHSBA: objc.invokeSelector "getHue:saturation:brightness:alpha:"
   getRGBA: objc.invokeSelector "getRed:green:blue:alpha:"
   getWhite: objc.invokeSelector "getWhite:alpha:"
@@ -56,6 +57,3 @@ class UIColor extends foundation.NSObject
   set: objc.invokeSelector "set"
   setFill: objc.invokeSelector "setFill"
   setStroke: objc.invokeSelector "setStroke"
-
-new ck.RegisterAttribute UIColor, "UIColor"
-exports.UIColor = UIColor

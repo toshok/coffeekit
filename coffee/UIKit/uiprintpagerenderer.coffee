@@ -1,21 +1,22 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPrintPageRenderer"
-class UIPrintPageRenderer extends foundation.NSObject
+exports.UIPrintPageRenderer = class UIPrintPageRenderer extends foundation.NSObject
+  @register()
 
   # Accessing Information About the Print Job
   numberOfPages: objc.invokeSelector "numberOfPages"
-  ck.addProperty @::, "paperRect"
-  ck.addProperty @::, "printableRect"
+  ck.instanceProperty @, "paperRect"
+  ck.instanceProperty @, "printableRect"
 
   # Specifying Header and Footer Heights
-  ck.addProperty @::, "headerHeight"
-  ck.addProperty @::, "footerHeight"
+  ck.instanceProperty @, "headerHeight"
+  ck.instanceProperty @, "footerHeight"
 
   # Managing Print Formatters
   addPrintFormatterStartingAtPageAtIndex: objc.invokeSelector "addPrintFormatter:startingAtPageAtIndex:"
   printFormattersForPageAtIndex: objc.invokeSelector "printFormattersForPageAtIndex:"
-  ck.addProperty @::, "printFormatters"
+  ck.instanceProperty @, "printFormatters"
 
   # Preparing for Drawing
   prepareForDrawingPages: objc.invokeSelector "prepareForDrawingPages:"
@@ -26,6 +27,3 @@ class UIPrintPageRenderer extends foundation.NSObject
   drawContentForPageAtIndex: objc.invokeSelector "drawContentForPageAtIndex:inRect:"
   drawPrintFormatterForPageAtIndex: objc.invokeSelector "drawPrintFormatter:forPageAtIndex:"
   drawFooterForPageAtIndex: objc.invokeSelector "drawFooterForPageAtIndex:inRect:"
-
-new ck.RegisterAttribute UIPrintPageRenderer, "UIPrintPageRenderer"
-exports.UIPrintPageRenderer = UIPrintPageRenderer

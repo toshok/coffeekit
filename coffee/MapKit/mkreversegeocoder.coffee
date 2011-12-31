@@ -1,20 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class MKReverseGeocoder extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.MKReverseGeocoder = class MKReverseGeocoder extends foundation.NSObject
+  @register()
 
   # Initializing the Reverse Geocoder
-  initWithCoordinate: objc.invokeSelector ("initWithCoordinate:") # Deprecated in iOS 5.0
+  initWithCoordinate: objc.invokeSelector "initWithCoordinate:" # Deprecated in iOS 5.0
 
   # Accessing Reverse Geocoder Attributes
-  ck.addProperty @::, "coordinate" # Deprecated in iOS 5.0
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, MKReverseGeocoderDelegate) } # Deprecated in iOS 5.0
-  ck.addProperty @::, "placemark" # Deprecated in iOS 5.0
+  ck.instanceProperty @, "coordinate" # Deprecated in iOS 5.0
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, MKReverseGeocoderDelegate) } # Deprecated in iOS 5.0
+  ck.instanceProperty @, "placemark" # Deprecated in iOS 5.0
 
   # Managing the Search
-  ck.addProperty @::, "querying" # Deprecated in iOS 5.0
-  cancel: objc.invokeSelector ("cancel") # Deprecated in iOS 5.0
-  start: objc.invokeSelector ("start") # Deprecated in iOS 5.0
-
-new ck.RegisterAttribute MKReverseGeocoder, "MKReverseGeocoder"
-exports.MKReverseGeocoder = MKReverseGeocoder
+  ck.instanceProperty @, "querying" # Deprecated in iOS 5.0
+  cancel: objc.invokeSelector "cancel" # Deprecated in iOS 5.0
+  start: objc.invokeSelector "start" # Deprecated in iOS 5.0

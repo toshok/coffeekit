@@ -1,14 +1,10 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKEffectPropertyTexture extends GLKEffectProperty
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKEffectPropertyTexture = class GLKEffectPropertyTexture extends GLKEffectProperty
+  @register()
 
   # Configuring Texture Properties
-  ck.addProperty @::, "enabled"
-  ck.addProperty @::, "envMode"
-  ck.addProperty @::, "glName"
-  ck.addProperty @::, "target"
-
-
-new ck.RegisterAttribute GLKEffectPropertyTexture, "GLKEffectPropertyTexture"
-exports.GLKEffectPropertyTexture = GLKEffectPropertyTexture
+  ck.instanceProperty @, "enabled"
+  ck.instanceProperty @, "envMode"
+  ck.instanceProperty @, "glName"
+  ck.instanceProperty @, "target"

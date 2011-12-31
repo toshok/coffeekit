@@ -1,18 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIWindow"
-class UIWindow extends UIView
-
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIWindow = class UIWindow extends UIView
+  @register()
 
   # Configuring Windows
-  ck.addProperty @::, "windowLevel"
-  ck.addProperty @::, "screen"
-  ck.addProperty @::, "rootViewController"
+  ck.instanceProperty @, "windowLevel"
+  ck.instanceProperty @, "screen"
+  ck.instanceProperty @, "rootViewController"
 
   # Making Windows Key
-  ck.addProperty @::, "keyWindow"
+  ck.instanceProperty @, "keyWindow"
   makeKeyAndVisible: objc.invokeSelector "makeKeyAndVisible"
   becomeKeyWindow: objc.invokeSelector "becomeKeyWindow"
   makeKeyWindow: objc.invokeSelector "makeKeyWindow"
@@ -26,6 +24,3 @@ class UIWindow extends UIView
 
   # Sending Events
   sendEvent: objc.invokeSelector "sendEvent:"
-
-new ck.RegisterAttribute UIWindow, "UIWindow"
-exports.UIWindow = UIWindow

@@ -1,40 +1,38 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITextView"
-class UITextView extends UIScrollView
+exports.UITextView = class UITextView extends UIScrollView
+  @register()
+  @mixinProtocol UITextInput
 
   # Configuring the Text Attributes
-  ck.addProperty @::, "text"
-  ck.addProperty @::, "font"
-  ck.addProperty @::, "textColor"
-  ck.addProperty @::, "editable"
-  ck.addProperty @::, "dataDetectorTypes"
-  ck.addProperty @::, "textAlignment"
+  ck.instanceProperty @, "text"
+  ck.instanceProperty @, "font"
+  ck.instanceProperty @, "textColor"
+  ck.instanceProperty @, "editable"
+  ck.instanceProperty @, "dataDetectorTypes"
+  ck.instanceProperty @, "textAlignment"
   hasText: objc.invokeSelector "hasText"
 
   # Working with the Selection
-  ck.addProperty @::, "selectedRange"
+  ck.instanceProperty @, "selectedRange"
   scrollRangeToVisible: objc.invokeSelector "scrollRangeToVisible:"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextViewDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextViewDelegate) }
 
   # Replacing the System Input Views
-  ck.addProperty @::, "inputView"
-  ck.addProperty @::, "inputAccessoryView"
+  ck.instanceProperty @, "inputView"
+  ck.instanceProperty @, "inputAccessoryView"
 
   # UITextInputTraits Protocol
   # Managing the Keyboard Behavior
-  ck.addProperty @::, "autocapitalizationType"
-  ck.addProperty @::, "autocorrectionType"
-  ck.addProperty @::, "spellCheckingType"
-  ck.addProperty @::, "enablesReturnKeyAutomatically"
-  ck.addProperty @::, "keyboardAppearance"
-  ck.addProperty @::, "keyboardType"
-  ck.addProperty @::, "returnKeyType"
-  ck.addProperty @::, "secureTextEntry"
+  ck.instanceProperty @, "autocapitalizationType"
+  ck.instanceProperty @, "autocorrectionType"
+  ck.instanceProperty @, "spellCheckingType"
+  ck.instanceProperty @, "enablesReturnKeyAutomatically"
+  ck.instanceProperty @, "keyboardAppearance"
+  ck.instanceProperty @, "keyboardType"
+  ck.instanceProperty @, "returnKeyType"
+  ck.instanceProperty @, "secureTextEntry"
   # end UITextInputTraits Protocol
-
-new ck.MixinProtocolAttribute UITextView, UITextInput
-new ck.RegisterAttribute UITextView, "UITextView"
-exports.UITextView = UITextView

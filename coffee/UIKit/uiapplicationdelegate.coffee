@@ -3,7 +3,8 @@
 #console.log "UIApplicationDelegate"
 Protocol = foundation.Protocol
 
-class UIApplicationDelegate extends foundation.Protocol
+exports.UIApplicationDelegate = class UIApplicationDelegate extends foundation.Protocol
+  @register()
 
   # Monitoring Application State Changes
   didFinishLaunching:              Protocol.optionalMethod "application:didFinishLaunchingWithOptions:"
@@ -42,6 +43,3 @@ class UIApplicationDelegate extends foundation.Protocol
 
   # Providing a Window for Storyboarding
   #window  property
-
-new ck.RegisterAttribute UIApplicationDelegate, "UIApplicationDelegate"
-exports.UIApplication = UIApplicationDelegate

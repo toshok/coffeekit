@@ -1,24 +1,20 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CAShapeLayer extends CALayer
-
-  constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
+exports.CAShapeLayer = class CAShapeLayer extends CALayer
+  @register()
 
   # Specifying the Shape Path
-  ck.addProperty @::, "path"
+  ck.instanceProperty @, "path"
 
   # Accessing Shape Style Properties
-  ck.addProperty @::, "fillColor"
-  ck.addProperty @::, "fillRule"
-  ck.addProperty @::, "lineCap"
-  ck.addProperty @::, "lineDashPattern"
-  ck.addProperty @::, "lineDashPhase"
-  ck.addProperty @::, "lineJoin"
-  ck.addProperty @::, "lineWidth"
-  ck.addProperty @::, "miterLimit"
-  ck.addProperty @::, "strokeColor"
-  ck.addProperty @::, "strokeStart"
-  ck.addProperty @::, "strokeEnd"
-
-new ck.RegisterAttribute CAShapeLayer, "CAShapeLayer"
-exports.CAShapeLayer = CAShapeLayer
+  ck.instanceProperty @, "fillColor"
+  ck.instanceProperty @, "fillRule"
+  ck.instanceProperty @, "lineCap"
+  ck.instanceProperty @, "lineDashPattern"
+  ck.instanceProperty @, "lineDashPhase"
+  ck.instanceProperty @, "lineJoin"
+  ck.instanceProperty @, "lineWidth"
+  ck.instanceProperty @, "miterLimit"
+  ck.instanceProperty @, "strokeColor"
+  ck.instanceProperty @, "strokeStart"
+  ck.instanceProperty @, "strokeEnd"

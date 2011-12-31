@@ -1,9 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIImage"
-class UIImage extends foundation.NSObject
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIImage = class UIImage extends foundation.NSObject
+  @register()
 
   # Cached Image Loading Routines
   @imageNamed: objc.invokeSelector "imageNamed:"
@@ -28,16 +27,16 @@ class UIImage extends foundation.NSObject
   initWithCIImage: objc.invokeSelector "initWithCIImage:"
 
   # Image Attributes
-  ck.addProperty @::, "imageOrientation"
-  ck.addProperty @::, "size"
-  ck.addProperty @::, "scale"
-  ck.addProperty @::, "CGImage"
-  ck.addProperty @::, "CIImage"
-  ck.addProperty @::, "images"
-  ck.addProperty @::, "duration"
-  ck.addProperty @::, "capInsets"
-  ck.addProperty @::, "leftCapWidth" # Deprecated in iOS 5.0
-  ck.addProperty @::, "topCapHeight" # Deprecated in iOS 5.0
+  ck.instanceProperty @, "imageOrientation"
+  ck.instanceProperty @, "size"
+  ck.instanceProperty @, "scale"
+  ck.instanceProperty @, "CGImage"
+  ck.instanceProperty @, "CIImage"
+  ck.instanceProperty @, "images"
+  ck.instanceProperty @, "duration"
+  ck.instanceProperty @, "capInsets"
+  ck.instanceProperty @, "leftCapWidth" # Deprecated in iOS 5.0
+  ck.instanceProperty @, "topCapHeight" # Deprecated in iOS 5.0
 
   # Drawing Images
   drawAtPoint: objc.invokeSelector "drawAtPoint:"
@@ -45,6 +44,3 @@ class UIImage extends foundation.NSObject
   drawInRect: objc.invokeSelector "drawInRect:"
   drawInRectWithBlend: objc.invokeSelector "drawInRect:blendMode:alpha:"
   drawAsPatternInRect: objc.invokeSelector "drawAsPatternInRect:"
-
-new ck.RegisterAttribute UIImage, "UIImage"
-exports.UIImage = UIImage

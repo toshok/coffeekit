@@ -1,27 +1,28 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIImagePickerController"
-class UIImagePickerController extends UINavigationController
+exports.UIImagePickerController = class UIImagePickerController extends UINavigationController
+  @register()
 
   # Setting the Picker Source
   @availableMediaTypes: objc.invokeSelector "availableMediaTypesForSourceType:"
   @isSourceTypeAvailable: objc.invokeSelector "isSourceTypeAvailable:"
-  ck.addProperty @::, "sourceType"
+  ck.instanceProperty @, "sourceType"
 
   # Configuring the Picker
-  ck.addProperty @::, "allowsEditing"
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIImagePickerControllerDelegate) }
-  ck.addProperty @::, "mediaTypes"
-  ck.addProperty @::, "allowsImageEditing" # Deprecated in iOS 3.1
+  ck.instanceProperty @, "allowsEditing"
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIImagePickerControllerDelegate) }
+  ck.instanceProperty @, "mediaTypes"
+  ck.instanceProperty @, "allowsImageEditing" # Deprecated in iOS 3.1
 
   # Configuring the Video Capture Options
-  ck.addProperty @::, "videoQuality"
-  ck.addProperty @::, "videoMaximumDuration"
+  ck.instanceProperty @, "videoQuality"
+  ck.instanceProperty @, "videoMaximumDuration"
 
   # Customizing the Camera Controls
-  ck.addProperty @::, "showsCameraControls"
-  ck.addProperty @::, "cameraOverlayView"
-  ck.addProperty @::, "cameraViewTransform"
+  ck.instanceProperty @, "showsCameraControls"
+  ck.instanceProperty @, "cameraOverlayView"
+  ck.instanceProperty @, "cameraViewTransform"
 
   # Capturing Still Images or Movies
   takePicture: objc.invokeSelector "takePicture"
@@ -29,12 +30,9 @@ class UIImagePickerController extends UINavigationController
   stopVideoCapture: objc.invokeSelector "stopVideoCapture"
 
   # Configuring the Camera
-  ck.addProperty @::, "cameraDevice"
+  ck.instanceProperty @, "cameraDevice"
   @isCameraDeviceAvailable: objc.invokeSelector "isCameraDeviceAvailable:"
   @availableCaptureModesForCameraDevice: objc.invokeSelector "availableCaptureModesForCameraDevice:"
-  ck.addProperty @::, "cameraCaptureMode"
-  ck.addProperty @::, "cameraFlashMode"
+  ck.instanceProperty @, "cameraCaptureMode"
+  ck.instanceProperty @, "cameraFlashMode"
   @isFlashAvailableForCameraDevice: objc.invokeSelector "isFlashAvailableForCameraDevice:"
-
-new ck.RegisterAttribute UIImagePickerController, "UIImagePickerController"
-exports.UIImagePickerController = UIImagePickerController

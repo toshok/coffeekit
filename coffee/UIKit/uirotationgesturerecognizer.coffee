@@ -1,14 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIRotationGestureRecognizer"
-class UIRotationGestureRecognizer extends UIGestureRecognizer
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIRotationGestureRecognizer = class UIRotationGestureRecognizer extends UIGestureRecognizer
+  @register()
 
   # Interpreting the Gesture
-  ck.addProperty @::, "rotation"
-  ck.addProperty @::, "velocity"
-
-
-new ck.RegisterAttribute UIRotationGestureRecognizer, "UIRotationGestureRecognizer"
-exports.UIRotationGestureRecognizer = UIRotationGestureRecognizer
+  ck.instanceProperty @, "rotation"
+  ck.instanceProperty @, "velocity"

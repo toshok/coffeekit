@@ -1,26 +1,23 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GKScore extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.GKScore = class GKScore extends foundation.NSObject
+  @register()
 
   # Initializing a Score Object
-  init: objc.invokeSelector ("init")
-  initWithCategory: objc.invokeSelector ("initWithCategory:")
+  init: objc.invokeSelector "init"
+  initWithCategory: objc.invokeSelector "initWithCategory:"
 
   # Score Properties
-  ck.addProperty @::, "playerID"
-  ck.addProperty @::, "category"
-  ck.addProperty @::, "date"
-  ck.addProperty @::, "value"
-  ck.addProperty @::, "context"
-  ck.addProperty @::, "formattedValue"
-  ck.addProperty @::, "rank"
+  ck.instanceProperty @, "playerID"
+  ck.instanceProperty @, "category"
+  ck.instanceProperty @, "date"
+  ck.instanceProperty @, "value"
+  ck.instanceProperty @, "context"
+  ck.instanceProperty @, "formattedValue"
+  ck.instanceProperty @, "rank"
 
   # Reporting a New Score
-  reportScore: objc.invokeSelector ("reportScoreWithCompletionHandler:")
+  reportScore: objc.invokeSelector "reportScoreWithCompletionHandler:"
 
   # Changing the Default Leaderboard
-  ck.addProperty @::, "shouldSetDefaultLeaderboard"
-
-new ck.RegisterAttribute GKScore, "GKScore"
-exports.GKScore = GKScore
+  ck.instanceProperty @, "shouldSetDefaultLeaderboard"

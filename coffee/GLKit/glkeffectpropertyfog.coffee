@@ -1,19 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKEffectPropertyFog extends GLKEffectProperty
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKEffectPropertyFog = class GLKEffectPropertyFog extends GLKEffectProperty
+  @register()
 
   # Enabling Fog
-  ck.addProperty @::, "enabled"
+  ck.instanceProperty @, "enabled"
 
   # Choosing the Fog Mode
-  ck.addProperty @::, "mode"
+  ck.instanceProperty @, "mode"
 
   # Fog Properties
-  ck.addProperty @::, "color"
-  ck.addProperty @::, "density"
-  ck.addProperty @::, "start"
-  ck.addProperty @::, "end"
-
-new ck.RegisterAttribute GLKEffectPropertyFog, "GLKEffectPropertyFog"
-exports.GLKEffectPropertyFog = GLKEffectPropertyFog
+  ck.instanceProperty @, "color"
+  ck.instanceProperty @, "density"
+  ck.instanceProperty @, "start"
+  ck.instanceProperty @, "end"

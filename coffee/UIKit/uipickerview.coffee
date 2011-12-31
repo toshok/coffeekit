@@ -1,10 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPickerView"
-class UIPickerView extends UIView
+exports.UIPickerView = class UIPickerView extends UIView
+  @register()
 
   # Getting the Dimensions of the View Picker
-  ck.addProperty @::, "numberOfComponents"
+  ck.instanceProperty @, "numberOfComponents"
   numberOfRowsInComponent: objc.invokeSelector "numberOfRowsInComponent:"
   rowSizeForComponent: objc.invokeSelector "rowSizeForComponent:"
 
@@ -20,13 +21,10 @@ class UIPickerView extends UIView
   viewForRowInComponent: objc.invokeSelector "viewForRow:forComponent:"
 
   # Specifying the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPickerViewDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPickerViewDelegate) }
 
   # Specifying the Data Source
-  ck.addProperty @::, "dataSource"
+  ck.instanceProperty @, "dataSource"
 
   # Managing the Appearance of the Picker View
-  ck.addProperty @::, "showsSelectionIndicator"
-
-new ck.RegisterAttribute UIPickerView, "UIPickerView"
-exports.UIPickerView = UIPickerView
+  ck.instanceProperty @, "showsSelectionIndicator"

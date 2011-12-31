@@ -3,7 +3,8 @@
 #console.log "MKMapViewDelgate"
 Protocol = foundation.Protocol
 
-class CLLocationManagerDelegate extends foundation.Protocol
+exports.CLLocationManagerDelegate = class CLLocationManagerDelegate extends foundation.Protocol
+  @register()
 
   # Responding to Location Events
   didUpdateToLocation:   Protocol.optionalMethod ("locationManager:didUpdateToLocation:fromLocation:")
@@ -21,6 +22,3 @@ class CLLocationManagerDelegate extends foundation.Protocol
 
   # Responding to Authorization Changes
   didChangeAuthorizationStatus: Protocol.optionalMethod ("locationManager:didChangeAuthorizationStatus:")
-
-new ck.RegisterAttribute CLLocationManagerDelegate, "CLLocationManagerDelegate"
-exports.CLLocationManagerDelegate = CLLocationManagerDelegate

@@ -1,32 +1,30 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIScreen"
-class UIScreen extends foundation.NSObject
+exports.UIScreen = class UIScreen extends foundation.NSObject
+  @register()
 
   # Getting the Available Screens
-  ck.addProperty @, "mainScreen", { set: null } # readonly class property
-  ck.addProperty @, "screens", { set: null } # readonly class property
-  ck.addProperty @::, "mirroredScreen"
+  ck.staticProperty @, "mainScreen", { set: null } # readonly class property
+  ck.staticProperty @, "screens", { set: null } # readonly class property
+  ck.instanceProperty @, "mirroredScreen"
 
   # Getting the Bounds Information
-  ck.addProperty @::, "bounds"
-  ck.addProperty @::, "applicationFrame"
-  ck.addProperty @::, "scale"
+  ck.instanceProperty @, "bounds"
+  ck.instanceProperty @, "applicationFrame"
+  ck.instanceProperty @, "scale"
 
   # Accessing the Screen Modes
-  ck.addProperty @::, "preferredMode"
-  ck.addProperty @::, "availableModes"
-  ck.addProperty @::, "currentMode"
+  ck.instanceProperty @, "preferredMode"
+  ck.instanceProperty @, "availableModes"
+  ck.instanceProperty @, "currentMode"
 
   # Getting a Display Link
   displayLink: objc.invokeSelector "displayLinkWithTarget:selector:"
 
   # Setting a Display’s Brightness
-  ck.addProperty @::, "brightness"
-  ck.addProperty @::, "wantsSoftwareDimming"
+  ck.instanceProperty @, "brightness"
+  ck.instanceProperty @, "wantsSoftwareDimming"
 
   # Setting a Display’s Overscan Compensation.
-  ck.addProperty @::, "overscanCompensation"
-
-new ck.RegisterAttribute UIScreen, "UIScreen"
-exports.UIScreen = UIScreen
+  ck.instanceProperty @, "overscanCompensation"

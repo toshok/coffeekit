@@ -1,23 +1,21 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIAccessibilityElement"
-class UIAccessibilityElement extends foundation.NSObject
+exports.UIAccessibilityElement = class UIAccessibilityElement extends foundation.NSObject
+  @register()
 
   # Creating an Accessibility Element
   initWithAccessibilityContainer: objc.invokeSelector "initWithAccessibilityContainer:"
 
   # Accessing the Containing View
-  ck.addProperty @::, "accessibilityContainer"
+  ck.instanceProperty @, "accessibilityContainer"
 
   # Determining Accessibility
-  ck.addProperty @::, "isAccessibilityElement"
+  ck.instanceProperty @, "isAccessibilityElement"
 
   # Accessing the Attributes of an Accessibility Element
-  ck.addProperty @::, "accessibilityLabel"
-  ck.addProperty @::, "accessibilityHint"
-  ck.addProperty @::, "accessibilityValue"
-  ck.addProperty @::, "accessibilityFrame"
-  ck.addProperty @::, "accessibilityTraits"
- 
-new ck.RegisterAttribute UIAccessibilityElement, "UIAccessibilityElement"
-exports.UIAccessibilityElement = UIAccessibilityElement
+  ck.instanceProperty @, "accessibilityLabel"
+  ck.instanceProperty @, "accessibilityHint"
+  ck.instanceProperty @, "accessibilityValue"
+  ck.instanceProperty @, "accessibilityFrame"
+  ck.instanceProperty @, "accessibilityTraits"

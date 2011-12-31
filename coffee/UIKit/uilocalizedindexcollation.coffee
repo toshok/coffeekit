@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UILocalizedIndexCollation"
-class UILocalizedIndexCollation extends foundation.NSObject
+exports.UILocalizedIndexCollation = class UILocalizedIndexCollation extends foundation.NSObject
+  @register()
 
   # Getting the Shared Instance
   @currentCollation: objc.invokeSelector "currentCollation"
@@ -11,9 +12,6 @@ class UILocalizedIndexCollation extends foundation.NSObject
   sortedArrayFromArray: objc.invokeSelector "sortedArrayFromArray:collationStringSelector:"
 
   # Providing Section Index Data to the Table View
-  ck.addProperty @::, "sectionTitles"
-  ck.addProperty @::, "sectionIndexTitles"
+  ck.instanceProperty @, "sectionTitles"
+  ck.instanceProperty @, "sectionIndexTitles"
   sectionForSectionIndexTitleAtIndex: objc.invokeSelector "sectionForSectionIndexTitleAtIndex:"
-
-new ck.RegisterAttribute UILocalizedIndexCollation, "UILocalizedIndexCollation"
-exports.UILocalizedIndexCollation = UILocalizedIndexCollation

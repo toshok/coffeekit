@@ -1,9 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIControl"
-class UIControl extends UIView
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIControl = class UIControl extends UIView
+  @register()
 
   # Preparing and Sending Action Messages
   sendAction: objc.invokeSelector "sendAction:to:forEvent:"
@@ -17,12 +16,12 @@ class UIControl extends UIView
   allControlEvents: objc.invokeSelector "allControlEvents"
 
   # Setting and Getting Control Attributes
-  ck.addProperty @::, "state"
-  ck.addProperty @::, "enabled"
-  ck.addProperty @::, "selected"
-  ck.addProperty @::, "highlighted"
-  ck.addProperty @::, "contentVerticalAlignment"
-  ck.addProperty @::, "contentHorizontalAlignment"
+  ck.instanceProperty @, "state"
+  ck.instanceProperty @, "enabled"
+  ck.instanceProperty @, "selected"
+  ck.instanceProperty @, "highlighted"
+  ck.instanceProperty @, "contentVerticalAlignment"
+  ck.instanceProperty @, "contentHorizontalAlignment"
 
   # Tracking Touches and Redrawing Controls
   beginTrackingWithTouch: objc.invokeSelector "beginTrackingWithTouch:withEvent:"
@@ -30,26 +29,23 @@ class UIControl extends UIView
   endTrackingWithTouch: objc.invokeSelector "endTrackingWithTouch:withEvent:"
   cancelTrackingWithEvent: objc.invokeSelector "cancelTrackingWithEvent:"
 
-  ck.addProperty @::, "tracking"
-  ck.addProperty @::, "touchInside"
-
-new ck.RegisterAttribute UIControl, "UIControl"
-exports.UIControl = UIControl
+  ck.instanceProperty @, "tracking"
+  ck.instanceProperty @, "touchInside"
 
 class UIControlProxy extends foundation.NSObject
+  @register()
+
   constructor: (fn) ->
-                 super (objc.allocInstance(@.constructor.name))
+                 super()
                  @fn = fn
 
-  proxyAction: -> @fn()
-  new ck.SelectorAttribute @::proxyAction, "action"
-new ck.RegisterAttribute UIControlProxy, "UIControlProxy"
+  proxyAction: ck.exposeSelector("action", -> @fn())
 
 class UIControlProxy1 extends foundation.NSObject
+  @register()
+
   constructor: (fn) ->
-                 super (objc.allocInstance(@.constructor.name))
+                 super()
                  @fn = fn
 
-  proxyAction: (v) -> @fn v
-  new ck.SelectorAttribute @::proxyAction, "action", "v@:@"
-new ck.RegisterAttribute UIControlProxy1, "UIControlProxy1"
+  proxyAction: ck.exposeSelector("action", "v@:@", (v) -> @fn v)

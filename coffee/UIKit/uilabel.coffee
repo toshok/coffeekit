@@ -1,36 +1,34 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UILabel"
-class UILabel extends UIView
+exports.UILabel = class UILabel extends UIView
+  @register()
 
   # Accessing the Text Attributes
-  ck.addProperty @::, "text"
-  ck.addProperty @::, "font"
-  ck.addProperty @::, "textColor"
-  ck.addProperty @::, "textAlignment"
-  ck.addProperty @::, "lineBreakMode"
-  ck.addProperty @::, "enabled"
+  ck.instanceProperty @, "text"
+  ck.instanceProperty @, "font"
+  ck.instanceProperty @, "textColor"
+  ck.instanceProperty @, "textAlignment"
+  ck.instanceProperty @, "lineBreakMode"
+  ck.instanceProperty @, "enabled"
 
   # Sizing the Label’s Text
-  ck.addProperty @::, "adjustsFontSizeToFitWidth"
-  ck.addProperty @::, "baselineAdjustment"
-  ck.addProperty @::, "minimumFontSize"
-  ck.addProperty @::, "numberOfLines"
+  ck.instanceProperty @, "adjustsFontSizeToFitWidth"
+  ck.instanceProperty @, "baselineAdjustment"
+  ck.instanceProperty @, "minimumFontSize"
+  ck.instanceProperty @, "numberOfLines"
 
   # Managing Highlight Values
-  ck.addProperty @::, "highlightedTextColor"
-  ck.addProperty @::, "highlighted"
+  ck.instanceProperty @, "highlightedTextColor"
+  ck.instanceProperty @, "highlighted"
 
   # Drawing a Shadow
-  ck.addProperty @::, "shadowColor"
-  ck.addProperty @::, "shadowOffset"
+  ck.instanceProperty @, "shadowColor"
+  ck.instanceProperty @, "shadowOffset"
 
   # Drawing and Positioning Overrides
   textRect: objc.invokeSelector "textRectForBounds:limitedToNumberOfLines:"
   drawTextInRect: objc.invokeSelector "drawTextInRect:"
 
   # Setting and Getting Attributes
-  ck.addProperty @::, "userInteractionEnabled"
-
-new ck.RegisterAttribute UILabel, "UILabel"
-exports.UILabel = UILabel
+  ck.instanceProperty @, "userInteractionEnabled"

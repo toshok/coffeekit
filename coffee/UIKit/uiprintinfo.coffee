@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPrintInfo"
-class UIPrintInfo extends foundation.NSObject
+exports.UIPrintInfo = class UIPrintInfo extends foundation.NSObject
+  @register()
 
   # Creating a UIPrintInfo Object
   @printInfo: objc.invokeSelector "printInfo"
@@ -9,11 +10,8 @@ class UIPrintInfo extends foundation.NSObject
   dictionaryRepresentation: objc.invokeSelector "dictionaryRepresentation"
 
   # Getting and Setting Print-Job Attributes
-  ck.addProperty @::, "duplex"
-  ck.addProperty @::, "jobName"
-  ck.addProperty @::, "orientation"
-  ck.addProperty @::, "outputType"
-  ck.addProperty @::, "printerID"
-
-new ck.RegisterAttribute UIPrintInfo, "UIPrintInfo"
-exports.UIPrintInfo = UIPrintInfo
+  ck.instanceProperty @, "duplex"
+  ck.instanceProperty @, "jobName"
+  ck.instanceProperty @, "orientation"
+  ck.instanceProperty @, "outputType"
+  ck.instanceProperty @, "printerID"

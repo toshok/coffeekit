@@ -3,13 +3,11 @@
 #console.log "MKMapViewDelgate"
 Protocol = foundation.Protocol
 
-class SKRequestDelegate extends foundation.Protocol
+exports.SKRequestDelegate = class SKRequestDelegate extends foundation.Protocol
+  @register()
 
   # Completing Requests
   requestDidFinish: Protocol.optionalMethod ("requestDidFinish:")
 
   # Handling Errrors
   requestDidFail: Protocol.optionalMethod ("request:didFailWithError:")
-
-new ck.RegisterAttribute SKRequestDelegate, "SKRequestDelegate"
-exports.SKRequestDelegate = SKRequestDelegate

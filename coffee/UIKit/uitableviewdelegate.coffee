@@ -3,7 +3,8 @@
 #console.log "UITableViewDelegate"
 Protocol = foundation.Protocol
 
-class UITableViewDelegate extends foundation.Protocol
+exports.UITableViewDelegate = class UITableViewDelegate extends foundation.Protocol
+  @register()
 
   # Configuring Rows for the Table View
   heightForRowAtIndexPath:  Protocol.optionalMethod "tableView:heightForRowAtIndexPath:"
@@ -40,6 +41,3 @@ class UITableViewDelegate extends foundation.Protocol
   shouldShowMenuForRow:              Protocol.optionalMethod "tableView:shouldShowMenuForRowAtIndexPath:"
   canPerformActionForRow:            Protocol.optionalMethod "tableView:canPerformAction:forRowAtIndexPath:withSender:"
   performActionForRow:               Protocol.optionalMethod "tableView:performAction:forRowAtIndexPath:withSender:"
-
-new ck.RegisterAttribute UITableViewDelegate, "UITableViewDelegate"
-exports.UITableViewDelegate = UITableViewDelegate

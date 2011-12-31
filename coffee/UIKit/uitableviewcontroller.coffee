@@ -1,16 +1,14 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITableViewController"
-class UITableViewController extends UIViewController
+exports.UITableViewController = class UITableViewController extends UIViewController
+  @register()
 
   # Initializing the UITableViewController Object
   initWithStyle: objc.invokeSelector "initWithStyle:"
 
   # Getting the Table View
-  ck.addProperty @::, "tableView"
+  ck.instanceProperty @, "tableView"
 
   # Configuring the Table Behavior
-  ck.addProperty @::, "clearsSelectionOnViewWillAppear"
-
-new ck.RegisterAttribute UITableViewController, "UITableViewController"
-exports.UITableViewController = UITableViewController
+  ck.instanceProperty @, "clearsSelectionOnViewWillAppear"

@@ -1,24 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIBarItem"
-class UIBarItem extends UIView
-
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIBarItem = class UIBarItem extends UIView
+  @register()
 
   # Getting and Setting Properties
-  ck.addProperty @::, "enabled"
-  ck.addProperty @::, "image"
-  ck.addProperty @::, "landscapeImagePhone"
-  ck.addProperty @::, "imageInsets"
-  ck.addProperty @::, "landscapeImagePhoneInsets"
-  ck.addProperty @::, "title"
-  ck.addProperty @::, "tag"
+  ck.instanceProperty @, "enabled"
+  ck.instanceProperty @, "image"
+  ck.instanceProperty @, "landscapeImagePhone"
+  ck.instanceProperty @, "imageInsets"
+  ck.instanceProperty @, "landscapeImagePhoneInsets"
+  ck.instanceProperty @, "title"
+  ck.instanceProperty @, "tag"
 
   # Customizing Appearance
   setTitleTextAttributes: objc.invokeSelector "setTitleTextAttributes:forState:"
   getTitleTextAttributes: objc.invokeSelector "titleTextAttributesForState:"
-
-
-new ck.RegisterAttribute UIBarItem, "UIBarItem"
-exports.UIBarItem = UIBarItem

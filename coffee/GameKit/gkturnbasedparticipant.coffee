@@ -1,15 +1,12 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GKTurnBasedParticipant extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.GKTurnBasedParticipant = class GKTurnBasedParticipant extends foundation.NSObject
+  @register()
 
   # Participant Information
-  ck.addProperty @::, "playerID"
-  ck.addProperty @::, "lastTurnDate"
-  ck.addProperty @::, "status"
+  ck.instanceProperty @, "playerID"
+  ck.instanceProperty @, "lastTurnDate"
+  ck.instanceProperty @, "status"
 
   # Setting the Match Outcome
-  ck.addProperty @::, "matchOutcome"
-
-new ck.RegisterAttribute GKTurnBasedParticipant, "GKTurnBasedParticipant"
-exports.GKTurnBasedParticipant = GKTurnBasedParticipant
+  ck.instanceProperty @, "matchOutcome"

@@ -1,11 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "GLKCanvasView"
-class GLKCanvasView extends GLKView
+exports.GLKCanvasView = class GLKCanvasView extends GLKView
+  @register()
 
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
- 
   getContext: (name, args) ->
     if name is "2d"
       throw "GLKCanvasView doesn't support 2d rendering"
@@ -17,6 +15,3 @@ class GLKCanvasView extends GLKView
 
   @::__defineGetter__ "width", -> return @frame.width
   @::__defineGetter__ "height", -> return @frame.height
-
-new ck.RegisterAttribute GLKCanvasView, "GLKCanvasView"
-exports.GLKCanvasView = GLKCanvasView

@@ -1,18 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSWindowController extends foundation.NSResponder
+exports.NSWindowController = class NSWindowController extends foundation.NSResponder
+  @register()
 
   constructor: (handle, arg2) ->
     if typeof (handle) == 'string'
-      super objc.allocInstance(handle)
+      super()
       @initWithWindowNibName (arg2)
     else
-      super (if handle then handle else objc.allocInstance (@.constructor.name))
+      super handle
 
-  ck.addProperty @::, "window"
+  ck.instanceProperty @, "window"
 
   initWithWindow: objc.invokeSelector "initWithWindow:"
   initWithWindowNibName: objc.invokeSelector "initWithWindowNibName:"
-
-new ck.RegisterAttribute NSWindowController, "NSWindowController"
-exports.NSWindowController = NSWindowController

@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIFont"
-class UIFont extends foundation.NSObject
+exports.UIFont = class UIFont extends foundation.NSObject
+  @register()
 
   # Creating Arbitrary Fonts
   @fontWithName: objc.invokeSelector "fontWithName:size:"
@@ -17,23 +18,20 @@ class UIFont extends foundation.NSObject
   fontNamesForFamilyName: objc.invokeSelector "fontNamesForFamilyName:"
 
   # Getting Font Name Attributes
-  ck.addProperty @::, "familyName"
-  ck.addProperty @::, "fontName"
+  ck.instanceProperty @, "familyName"
+  ck.instanceProperty @, "fontName"
 
   # Getting Font Metrics
-  ck.addProperty @::, "pointSize"
-  ck.addProperty @::, "ascender"
-  ck.addProperty @::, "descender"
-  ck.addProperty @::, "capHeight"
-  ck.addProperty @::, "xHeight"
-  ck.addProperty @::, "lineHeight"
-  ck.addProperty @::, "leading" # Deprecated in iOS 4.0
+  ck.instanceProperty @, "pointSize"
+  ck.instanceProperty @, "ascender"
+  ck.instanceProperty @, "descender"
+  ck.instanceProperty @, "capHeight"
+  ck.instanceProperty @, "xHeight"
+  ck.instanceProperty @, "lineHeight"
+  ck.instanceProperty @, "leading" # Deprecated in iOS 4.0
 
   # Getting System Font Information
   @labelFontSize: objc.invokeSelector "labelFontSize"
   @buttonFontSize: objc.invokeSelector "buttonFontSize"
   @smallSystemFontSize: objc.invokeSelector "smallSystemFontSize"
   @systemFontSize: objc.invokeSelector "systemFontSize"
-
-new ck.RegisterAttribute UIFont, "UIFont"
-exports.UIFont = UIFont

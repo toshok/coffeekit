@@ -1,14 +1,12 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 
-class NSButton extends NSControl
-  constructor: (handle) ->
-    console.log "NSButton.ctor called with handle #{handle}"
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.NSButton = class NSButton extends NSControl
+  @register()
 
-  ck.addProperty @::, "title"
-  ck.addProperty @::, "bezelStyle"
-  ck.addProperty @::, "buttonType"
+  ck.instanceProperty @, "title"
+  ck.instanceProperty @, "bezelStyle"
+  ck.instanceProperty @, "buttonType"
 
   @::__defineSetter__ "clicked", (v) ->
                                    if v
@@ -19,7 +17,3 @@ class NSButton extends NSControl
                                      @proxy = null
                                      @target = null
                                      @action = null
-
-new ck.RegisterAttribute NSButton, "NSButton"
-exports.NSButton = NSButton
-

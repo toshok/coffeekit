@@ -3,7 +3,8 @@
 #console.log "GKMatchmakerViewControllerDelegate"
 Protocol = foundation.Protocol
 
-class GKMatchmakerViewControllerDelegate extends foundation.Protocol
+exports.UIWebView = class GKMatchmakerViewControllerDelegate extends foundation.Protocol
+  @register()
 
   # Completing a Match Request
   didFindMatch: Protocol.optionalMethod ("matchmakerViewController:didFindMatch:")
@@ -17,6 +18,3 @@ class GKMatchmakerViewControllerDelegate extends foundation.Protocol
 
   # Hosted Matches
   didReceiveAcceptFromHostedPlayer: Protocol.optionalMethod ("matchmakerViewController:didReceiveAcceptFromHostedPlayer:")
-
-new ck.RegisterAttribute GKMatchmakerViewControllerDelegate, "GKMatchmakerViewControllerDelegate"
-exports.UIWebView = GKMatchmakerViewControllerDelegate

@@ -1,13 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPinchGestureRecognizer"
-class UIPinchGestureRecognizer extends UIGestureRecognizer
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIPinchGestureRecognizer = class UIPinchGestureRecognizer extends UIGestureRecognizer
+  @register()
 
   # Interpreting the Pinching Gesture
-  ck.addProperty @::, "scale"
-  ck.addProperty @::, "velocity"
-
-new ck.RegisterAttribute UIPinchGestureRecognizer, "UIPinchGestureRecognizer"
-exports.UIPinchGestureRecognizer = UIPinchGestureRecognizer
+  ck.instanceProperty @, "scale"
+  ck.instanceProperty @, "velocity"

@@ -3,7 +3,8 @@
 #console.log "CALayerDelegate"
 Protocol = foundation.Protocol
 
-class CALayerDelegate extends foundation.Protocol
+exports.CALayerDelegate = class CALayerDelegate extends foundation.Protocol
+  @register()
 
   # Providing Layer Content
 
@@ -12,6 +13,3 @@ class CALayerDelegate extends foundation.Protocol
 
   # Actions
   actionForLayer: Protocol.optionalMethod "actionForLayer:forKey:"
-
-new ck.RegisterAttribute CALayerDelegate, "CALayerDelegate"
-exports.CALayerDelegate = CALayerDelegate

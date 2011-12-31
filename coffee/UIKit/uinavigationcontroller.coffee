@@ -1,15 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UINavigationController"
-class UINavigationController extends UIViewController
+exports.UINavigationController = class UINavigationController extends UIViewController
+  @register()
 
   # Creating Navigation Controllers
   initWithRootViewController: objc.invokeSelector "initWithRootViewController:"
 
   # Accessing Items on the Navigation Stack
-  ck.addProperty @::, "topViewController"
-  ck.addProperty @::, "visibleViewController"
-  ck.addProperty @::, "viewControllers", { set: (v) -> @setViewControllers v, false }
+  ck.instanceProperty @, "topViewController"
+  ck.instanceProperty @, "visibleViewController"
+  ck.instanceProperty @, "viewControllers", { set: (v) -> @setViewControllers v, false }
   setViewControllers: objc.invokeSelector "setViewControllers:animated:"
 
   # Pushing and Popping Stack Items
@@ -19,17 +20,14 @@ class UINavigationController extends UIViewController
   popToViewController: objc.invokeSelector "popToViewController:animated:"
 
   # Configuring Navigation Bars
-  ck.addProperty @::, "navigationBar"
-  ck.addProperty @::, "navigationBarHidden", { set: (v) -> @setNavigationBarHidden v, false }
+  ck.instanceProperty @, "navigationBar"
+  ck.instanceProperty @, "navigationBarHidden", { set: (v) -> @setNavigationBarHidden v, false }
   setNavigationBarHidden: objc.invokeSelector "setNavigationBarHidden:animated:"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationControllerDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationControllerDelegate) }
 
   # Configuring Custom Toolbars
-  ck.addProperty @::, "toolbar"
+  ck.instanceProperty @, "toolbar"
   setToolbarHidden: objc.invokeSelector "setToolbarHidden:animated:"
-  ck.addProperty @::, "toolbarHidden", { set: (v) -> @setToolbarHidden v, false }
-
-new ck.RegisterAttribute UINavigationController, "UINavigationController"
-exports.UINavigationController = UINavigationController
+  ck.instanceProperty @, "toolbarHidden", { set: (v) -> @setToolbarHidden v, false }

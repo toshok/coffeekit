@@ -1,14 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class SKProduct extends NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.SKProduct = class SKProduct extends NSObject
+  @register()
 
   # Getting Product Attributes
-  ck.addProperty @::, "localizedDescription"
-  ck.addProperty @::, "localizedTitle"
-  ck.addProperty @::, "price"
-  ck.addProperty @::, "priceLocale"
-  ck.addProperty @::, "productIdentifier"
-
-new ck.RegisterAttribute SKProduct, "SKProduct"
-exports.SKProduct = SKProduct
+  ck.instanceProperty @, "localizedDescription"
+  ck.instanceProperty @, "localizedTitle"
+  ck.instanceProperty @, "price"
+  ck.instanceProperty @, "priceLocale"
+  ck.instanceProperty @, "productIdentifier"

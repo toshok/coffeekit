@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPrintInteractionController"
-class UIPrintInteractionController extends foundation.NSObject
+exports.UIPrintInteractionController = class UIPrintInteractionController extends foundation.NSObject
+  @register()
 
   # Getting the Shared Controller Instance
   @sharedPrintController: objc.invokeSelector "sharedPrintController"
@@ -13,10 +14,10 @@ class UIPrintInteractionController extends foundation.NSObject
   @printableUTIs: objc.invokeSelector "printableUTIs"
 
   # Providing the Source of Printable Content
-  ck.addProperty @::, "printingItem"
-  ck.addProperty @::, "printingItems"
-  ck.addProperty @::, "printPageRenderer"
-  ck.addProperty @::, "printFormatter"
+  ck.instanceProperty @, "printingItem"
+  ck.instanceProperty @, "printingItems"
+  ck.instanceProperty @, "printPageRenderer"
+  ck.instanceProperty @, "printFormatter"
 
   # Presenting the Printing User Interface
   present: objc.invokeSelector "presentAnimated:completionHandler:"
@@ -25,12 +26,9 @@ class UIPrintInteractionController extends foundation.NSObject
   dismiss: objc.invokeSelector "dismissAnimated:"
 
   # Accessing Print-Job Information
-  ck.addProperty @::, "printInfo"
-  ck.addProperty @::, "printPaper"
-  ck.addProperty @::, "showsPageRange"
+  ck.instanceProperty @, "printInfo"
+  ck.instanceProperty @, "printPaper"
+  ck.instanceProperty @, "showsPageRange"
 
   # Assigning the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPrintInteractionControllerDelegate) }
-
-new ck.RegisterAttribute UIPrintInteractionController, "UIPrintInteractionController"
-exports.UIPrintInteractionController = UIPrintInteractionController
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPrintInteractionControllerDelegate) }

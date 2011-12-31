@@ -3,10 +3,8 @@
 #console.log "GKAchievementViewControllerDelegate"
 Protocol = foundation.Protocol
 
-class GKAchievementViewControllerDelegate extends foundation.Protocol
+exports.UIWebView = class GKAchievementViewControllerDelegate extends foundation.Protocol
+  @register()
 
   # Responding to a Dismiss Action
   didFinish: Protocol.requiredMethod ("achievementViewControllerDidFinish:")
-
-new ck.RegisterAttribute GKAchievementViewControllerDelegate, "GKAchievementViewControllerDelegate"
-exports.UIWebView = GKAchievementViewControllerDelegate

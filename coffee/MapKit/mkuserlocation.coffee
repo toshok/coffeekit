@@ -1,16 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class MKUserLocation extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.MKUserLocation = class MKUserLocation extends foundation.NSObject
+  @register()
 
   # Determining the User’s Position
-  ck.addProperty @::, "location"
-  ck.addProperty @::, "updating"
-  ck.addProperty @::, "heading"
+  ck.instanceProperty @, "location"
+  ck.instanceProperty @, "updating"
+  ck.instanceProperty @, "heading"
 
   # Accessing the User Annotation Text
-  ck.addProperty @::, "title"
-  ck.addProperty @::, "subtitle"
-
-new ck.RegisterAttribute MKUserLocation, "MKUserLocation"
-exports.MKUserLocation = MKUserLocation
+  ck.instanceProperty @, "title"
+  ck.instanceProperty @, "subtitle"

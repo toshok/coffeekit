@@ -1,14 +1,12 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPrintPaper"
-class UIPrintPaper extends foundation.NSObject
+exports.UIPrintPaper = class UIPrintPaper extends foundation.NSObject
+  @register()
 
   # Getting the Paper Size and the Printing Area
-  ck.addProperty @::, "paperSize"
-  ck.addProperty @::, "printableRect"
+  ck.instanceProperty @, "paperSize"
+  ck.instanceProperty @, "printableRect"
 
   # Obtaining the Best Paper Size for Printing
   @bestPaperForPageSize: objc.invokeSelector "bestPaperForPageSize:withPapersFromArray:"
-
-new ck.RegisterAttribute UIPrintPaper, "UIPrintPaper"
-exports.UIPrintPaper = UIPrintPaper

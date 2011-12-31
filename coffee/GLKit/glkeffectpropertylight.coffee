@@ -1,27 +1,24 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKEffectPropertyLight extends GLKEffectProperty
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKEffectPropertyLight = class GLKEffectPropertyLight extends GLKEffectProperty
+  @register()
 
   # Configuring Common Lighting Properties
-  ck.addProperty @::, "enabled"
-  ck.addProperty @::, "position"
-  ck.addProperty @::, "transform"
+  ck.instanceProperty @, "enabled"
+  ck.instanceProperty @, "position"
+  ck.instanceProperty @, "transform"
 
   # Configuring Light Colors
-  ck.addProperty @::, "ambientColor"
-  ck.addProperty @::, "diffuseColor"
-  ck.addProperty @::, "specularColor"
+  ck.instanceProperty @, "ambientColor"
+  ck.instanceProperty @, "diffuseColor"
+  ck.instanceProperty @, "specularColor"
 
   # Configuring Lighting Attenuation
-  ck.addProperty @::, "constantAttenuation"
-  ck.addProperty @::, "linearAttenuation"
-  ck.addProperty @::, "quadraticAttenuation"
+  ck.instanceProperty @, "constantAttenuation"
+  ck.instanceProperty @, "linearAttenuation"
+  ck.instanceProperty @, "quadraticAttenuation"
 
   # Configuring Spotlight Properties
-  ck.addProperty @::, "spotCutoff"
-  ck.addProperty @::, "spotDirection"
-  ck.addProperty @::, "spotExponent"
-
-new ck.RegisterAttribute GLKEffectPropertyLight, "GLKEffectPropertyLight"
-exports.GLKEffectPropertyLight = GLKEffectPropertyLight
+  ck.instanceProperty @, "spotCutoff"
+  ck.instanceProperty @, "spotDirection"
+  ck.instanceProperty @, "spotExponent"

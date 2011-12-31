@@ -2,11 +2,8 @@
 
 Protocol = foundation.Protocol
 
-class GLKNamedEffect extends foundation.Protocol
+exports.GLKNamedEffect = class GLKNamedEffect extends foundation.Protocol
+  @register()
 
   # Binding the Shader Program
   prepareToDraw:  Protocol.requiredMethod "prepareToDraw"
-
-new ck.RegisterAttribute GLKNamedEffect, "GLKNamedEffect"
-exports.GLKNamedEffect = GLKNamedEffect
-

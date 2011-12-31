@@ -3,7 +3,8 @@
 #console.log "MKAnnotation"
 Protocol = foundation.Protocol
 
-class MKAnnotation extends foundation.Protocol
+exports.MKAnnotation = class MKAnnotation extends foundation.Protocol
+  @register()
 
   # Position Attributes
   coordinate:     Protocol.optionalProperty "coordinate"
@@ -12,6 +13,3 @@ class MKAnnotation extends foundation.Protocol
   # Title Attributes
   title:          Protocol.optionalProperty "title"
   subtitle:       Protocol.optionalProperty "subtitle"
-
-new ck.RegisterAttribute MKAnnotation, "MKAnnotation"
-exports.MKAnnotation = MKAnnotation

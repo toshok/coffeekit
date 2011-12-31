@@ -3,7 +3,8 @@
 #console.log "UITableViewDataSource"
 Protocol = foundation.Protocol
 
-class UITableViewDataSource extends foundation.Protocol
+exports.UITableViewDataSource = class UITableViewDataSource extends foundation.Protocol
+  @register()
 
   # Configuring a Table View
   cellForRow:                  Protocol.requiredMethod("tableView:cellForRowAtIndexPath:", {sig: "@@:@@"})
@@ -21,6 +22,3 @@ class UITableViewDataSource extends foundation.Protocol
   # Reordering Table Rows
   canMoveRow:                  Protocol.optionalMethod "tableView:canMoveRowAtIndexPath:"
   moveRow:                     Protocol.optionalMethod "tableView:moveRowAtIndexPath:toIndexPath:"
-
-new ck.RegisterAttribute UITableViewDataSource, "UITableViewDataSource"
-exports.UITableViewDataSource = UITableViewDataSource

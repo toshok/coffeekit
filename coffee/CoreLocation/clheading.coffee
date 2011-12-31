@@ -1,19 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CLHeading extends foundation.NSObject
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.CLHeading = class CLHeading extends foundation.NSObject
+  @register()
 
   # Accessing the Heading Attributes
-  ck.addProperty @::, "magneticHeading"
-  ck.addProperty @::, "trueHeading"
-  ck.addProperty @::, "headingAccuracy"
-  ck.addProperty @::, "timestamp"
-  description: objc.invokeSelector ("description")
+  ck.instanceProperty @, "magneticHeading"
+  ck.instanceProperty @, "trueHeading"
+  ck.instanceProperty @, "headingAccuracy"
+  ck.instanceProperty @, "timestamp"
+  description: objc.invokeSelector "description"
 
   # Accessing the Raw Heading Data
-  ck.addProperty @::, "x"
-  ck.addProperty @::, "y"
-  ck.addProperty @::, "z"
-
-new ck.RegisterAttribute CLHeading, "CLHeading"
-exports.CLHeading = CLHeading
+  ck.instanceProperty @, "x"
+  ck.instanceProperty @, "y"
+  ck.instanceProperty @, "z"

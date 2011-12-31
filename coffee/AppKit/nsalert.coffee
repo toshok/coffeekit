@@ -1,9 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 
-class NSAlert extends foundation.NSObject
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.NSAlert = class NSAlert extends foundation.NSObject
+  @register()
 
   init: objc.invokeSelector "init"
   @alertWithError: objc.invokeSelector "alertWithError:"
@@ -12,35 +11,32 @@ class NSAlert extends foundation.NSObject
   # Configuring Alerts
   #
   layout: objc.invokeSelector "layout"
-  ck.addProperty @::, "alertStyle" 
-  ck.addProperty @::, "accessoryView"
-  ck.addProperty @::, "showsHelp"
-  ck.addProperty @::, "helpAnchor"
-  ck.addProperty @::, "delegate"
+  ck.instanceProperty @, "alertStyle" 
+  ck.instanceProperty @, "accessoryView"
+  ck.instanceProperty @, "showsHelp"
+  ck.instanceProperty @, "helpAnchor"
+  ck.instanceProperty @, "delegate"
 
   # Displaying Alerts
   #
   runModal: objc.invokeSelector "runModal"
   beginSheetModalForWindow: objc.invokeSelector "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo"
-  ck.addProperty @::, "suppressionButton", { set: null } # read-only
-  ck.addProperty @::, "showsSuppressionButton"
+  ck.instanceProperty @, "suppressionButton", { set: null } # read-only
+  ck.instanceProperty @, "showsSuppressionButton"
 
   # Accessing Alert Text
   #
-  ck.addProperty @::, "informativeText"
-  ck.addProperty @::, "messageText"
+  ck.instanceProperty @, "informativeText"
+  ck.instanceProperty @, "messageText"
 
   # Accesing Alert Icons
   #
-  ck.addProperty @::, "icon"
+  ck.instanceProperty @, "icon"
 
   # Accessing Alert Buttons
   #
-  ck.addProperty @::, "buttons", { set: null } # read-only
+  ck.instanceProperty @, "buttons", { set: null } # read-only
   addButtonWithTitle: objc.invokeSelector "addButtonWithTitle:"
 
   # Getting Alert Panels
-  ck.addProperty @::, "window", { set: null} # read-only
-
-new ck.RegisterAttribute NSAlert, "NSAlert"
-exports.NSAlert = NSAlert
+  ck.instanceProperty @, "window", { set: null} # read-only

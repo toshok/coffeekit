@@ -1,6 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSController extends foundation.NSObject
+exports.NSController = class NSController extends foundation.NSObject
+  @register()
 
   # Managing Editing
   objectDidBeginEditing: objc.invokeSelector "objectDidBeginEditing:"
@@ -9,6 +10,3 @@ class NSController extends foundation.NSObject
   commitEditingWithDelegate: objc.invokeSelector "commitEditingWithDelegate:didCommitSelector:contextInfo:"
   discardEditing: objc.invokeSelector "discardEditing"
   isEditing: objc.invokeSelector "isEditing"
-
-new ck.RegisterAttribute NSController, "NSController"
-exports.NSController = NSController

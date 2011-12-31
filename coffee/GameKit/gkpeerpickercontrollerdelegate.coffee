@@ -3,7 +3,8 @@
 #console.log "GKPeerPickerControllerDelegate"
 Protocol = foundation.Protocol
 
-class GKPeerPickerControllerDelegate extends foundation.Protocol
+exports.UIWebView = class GKPeerPickerControllerDelegate extends foundation.Protocol
+  @register()
 
   # Creating a Session for the Peer Picker
   didSelectConnectionType: Protocol.optionalMethod ("peerPickerController:didSelectConnectionType:")
@@ -14,6 +15,3 @@ class GKPeerPickerControllerDelegate extends foundation.Protocol
 
   # Responding When the User Cancels the Connection Attempt
   didCancel: Protocol.optionalMethod ("peerPickerControllerDidCancel:")
-
-new ck.RegisterAttribute GKPeerPickerControllerDelegate, "GKPeerPickerControllerDelegate"
-exports.UIWebView = GKPeerPickerControllerDelegate

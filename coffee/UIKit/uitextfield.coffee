@@ -1,37 +1,38 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITextField"
-class UITextField extends UIControl
+exports.UITextField = class UITextField extends UIControl
+  @register()
 
   # Accessing the Text Attributes
-  ck.addProperty @::, "text"
-  ck.addProperty @::, "placeholder"
-  ck.addProperty @::, "font"
-  ck.addProperty @::, "textColor"
-  ck.addProperty @::, "textAlignment"
+  ck.instanceProperty @, "text"
+  ck.instanceProperty @, "placeholder"
+  ck.instanceProperty @, "font"
+  ck.instanceProperty @, "textColor"
+  ck.instanceProperty @, "textAlignment"
 
   # Sizing the Text Field’s Text
-  ck.addProperty @::, "adjustsFontSizeToFitWidth"
-  ck.addProperty @::, "minimumFontSize"
+  ck.instanceProperty @, "adjustsFontSizeToFitWidth"
+  ck.instanceProperty @, "minimumFontSize"
 
   # Managing the Editing Behavior
-  ck.addProperty @::, "editing"
-  ck.addProperty @::, "clearsOnBeginEditing"
+  ck.instanceProperty @, "editing"
+  ck.instanceProperty @, "clearsOnBeginEditing"
 
   # Setting the View’s Background Appearance
-  ck.addProperty @::, "borderStyle"
-  ck.addProperty @::, "background"
-  ck.addProperty @::, "disabledBackground"
+  ck.instanceProperty @, "borderStyle"
+  ck.instanceProperty @, "background"
+  ck.instanceProperty @, "disabledBackground"
 
   # Managing Overlay Views
-  ck.addProperty @::, "clearButtonMode"
-  ck.addProperty @::, "leftView"
-  ck.addProperty @::, "leftViewMode"
-  ck.addProperty @::, "rightView"
-  ck.addProperty @::, "rightViewMode"
+  ck.instanceProperty @, "clearButtonMode"
+  ck.instanceProperty @, "leftView"
+  ck.instanceProperty @, "leftViewMode"
+  ck.instanceProperty @, "rightView"
+  ck.instanceProperty @, "rightViewMode"
 
   # Accessing the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextFieldDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextFieldDelegate) }
 
   # Drawing and Positioning Overrides
   textRect: objc.invokeSelector "textRectForBounds:"
@@ -45,20 +46,17 @@ class UITextField extends UIControl
   rightViewRect: objc.invokeSelector "rightViewRectForBounds:"
 
   # Replacing the System Input Views
-  ck.addProperty @::, "inputView"
-  ck.addProperty @::, "inputAccessoryView"
+  ck.instanceProperty @, "inputView"
+  ck.instanceProperty @, "inputAccessoryView"
 
   # UITextInputTraits Protocol
   # Managing the Keyboard Behavior
-  ck.addProperty @::, "autocapitalizationType"
-  ck.addProperty @::, "autocorrectionType"
-  ck.addProperty @::, "spellCheckingType"
-  ck.addProperty @::, "enablesReturnKeyAutomatically"
-  ck.addProperty @::, "keyboardAppearance"
-  ck.addProperty @::, "keyboardType"
-  ck.addProperty @::, "returnKeyType"
-  ck.addProperty @::, "secureTextEntry"
+  ck.instanceProperty @, "autocapitalizationType"
+  ck.instanceProperty @, "autocorrectionType"
+  ck.instanceProperty @, "spellCheckingType"
+  ck.instanceProperty @, "enablesReturnKeyAutomatically"
+  ck.instanceProperty @, "keyboardAppearance"
+  ck.instanceProperty @, "keyboardType"
+  ck.instanceProperty @, "returnKeyType"
+  ck.instanceProperty @, "secureTextEntry"
   # end UITextInputTraits Protocol
-
-new ck.RegisterAttribute UITextField, "UITextField"
-exports.UITextField = UITextField

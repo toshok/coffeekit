@@ -1,18 +1,19 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIApplication"
-class UIApplication extends UIResponder
+exports.UIApplication = class UIApplication extends UIResponder
+  @register()
 
   # Getting the Application Instance
 
-  ck.addProperty @, "sharedApplication", set: null, get: -> objc.invokeSelector("sharedApplication").call UIApplication
+  ck.staticProperty @, "sharedApplication", set: null, get: -> objc.invokeSelector("sharedApplication").call UIApplication
 
   # Setting and Getting the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIApplicationDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIApplicationDelegate) }
 
   # Getting Application Windows
-  ck.addProperty @::, "keyWindow", { set: null } # readonly
-  ck.addProperty @::, "windows", { set: null } # readonly
+  ck.instanceProperty @, "keyWindow", { set: null } # readonly
+  ck.instanceProperty @, "windows", { set: null } # readonly
 
   # Controlling and Handling Events
   sendEvent: objc.invokeSelector "sendEvent:"
@@ -20,10 +21,10 @@ class UIApplication extends UIResponder
   beginIgnoringInteractionEvents: objc.invokeSelector "beginIgnoringInteractionEvents";
   endIgnoringInteractionEvents: objc.invokeSelector "endIgnoringInteractionEvents";
 
-  ck.addProperty @::, "isIgnoringInteractionEvents", { set: null } # readonly
+  ck.instanceProperty @, "isIgnoringInteractionEvents", { set: null } # readonly
 
-  ck.addProperty @::, "applicationSupportsShakeToEdit"
-  ck.addProperty @::, "proximitySensingEnabled", { get: "isProximitySensingEnabled" } #  property Deprecated in iOS 3.0
+  ck.instanceProperty @, "applicationSupportsShakeToEdit"
+  ck.instanceProperty @, "proximitySensingEnabled", { get: "isProximitySensingEnabled" } #  property Deprecated in iOS 3.0
 
   # Opening a URL Resource
   openURL: objc.invokeSelector "openURL:"
@@ -35,11 +36,11 @@ class UIApplication extends UIResponder
   enableRemoteNotificationTypes: objc.invokeSelector "enableRemoteNotificationTypes";
 
   # Managing Application Activity
-  ck.addProperty @::, "idleTimerDisabled", { get: "isIdleTimerDisabled" }
+  ck.instanceProperty @, "idleTimerDisabled", { get: "isIdleTimerDisabled" }
 
   # Managing Background Execution
-  ck.addProperty @::, "applicationState", { set: null } # readonly
-  ck.addProperty @::, "backgroundTimeRemaining", { set: null }
+  ck.instanceProperty @, "applicationState", { set: null } # readonly
+  ck.instanceProperty @, "backgroundTimeRemaining", { set: null }
   
   beginBackgroundTaskWithExpirationHandler: objc.invokeSelector "beginBackgroundTaskWithExpirationHandler:"
   endBackgroundTask: objc.invokeSelector "endBackgroundTask:"
@@ -52,10 +53,10 @@ class UIApplication extends UIResponder
   cancelLocalNotification: objc.invokeSelector "cancelLocalNotification:"
   cancelAllLocalNotification: objc.invokeSelector "cancelAllLocalNotification:"
 
-  ck.addProperty @::, "scheduledLocalNotifications"
+  ck.instanceProperty @, "scheduledLocalNotifications"
 
   # Determining the Availability of Protected Content
-  ck.addProperty @::, "protectedDataAvailable", { get: "isProtectedDataAvailable", set: null } # readonly
+  ck.instanceProperty @, "protectedDataAvailable", { get: "isProtectedDataAvailable", set: null } # readonly
 
   # Registering for Remote Control Events
   beginReceivingRemoteControlEvents: objc.invokeSelector "beginReceivingRemoteControlEvents"
@@ -64,25 +65,22 @@ class UIApplication extends UIResponder
   # Managing Status Bar Orientation
 
   setStatusBarOrientation: objc.invokeSelector "setStatusBarOrientation:animated:"
-  ck.addProperty @::, "statusBarOrientation", { set: (v) -> @setStatusBarOrientation v, false }
-  ck.addProperty @::, "statusBarOrientationAnimationDuration", { set: null } # readonly
+  ck.instanceProperty @, "statusBarOrientation", { set: (v) -> @setStatusBarOrientation v, false }
+  ck.instanceProperty @, "statusBarOrientationAnimationDuration", { set: null } # readonly
 
   # Controlling Application Appearance
   setStatusBarHidden: objc.invokeSelector "setStatusBarHidden:withAnimation:"
-  ck.addProperty @::, "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> @setStatusBarHidden v, false }
+  ck.instanceProperty @, "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> @setStatusBarHidden v, false }
 
   setStatusBarStyle: objc.invokeSelector "setStatusBarStyle:withAnimation:"
-  ck.addProperty @::, "statusBarStyle", { set: (v) -> @setStatusBarStyle v, false }
-  ck.addProperty @::, "statusBarFrame", { set: null }
+  ck.instanceProperty @, "statusBarStyle", { set: (v) -> @setStatusBarStyle v, false }
+  ck.instanceProperty @, "statusBarFrame", { set: null }
 
-  ck.addProperty @::, "networkActivityIndicatorVisible", { get: "isNetworkActivityIndicatorVisible" }
-  ck.addProperty @::, "applicationIconBadgeNumber"
-  ck.addProperty @::, "userInterfaceLayoutDirection", { set: null } # readonly
+  ck.instanceProperty @, "networkActivityIndicatorVisible", { get: "isNetworkActivityIndicatorVisible" }
+  ck.instanceProperty @, "applicationIconBadgeNumber"
+  ck.instanceProperty @, "userInterfaceLayoutDirection", { set: null } # readonly
 
   # Setting the Icon of a Newsstand Application
   setNewsstandIconImage: objc.invokeSelector "setNewsstandIconImage:"
 
   @main: (args, delegateClassName) -> objc.UIApplicationMain args, delegateClassName
-
-new ck.RegisterAttribute UIApplication, "UIApplication"
-exports.UIApplication = UIApplication

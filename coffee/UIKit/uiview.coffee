@@ -1,46 +1,46 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIView"
-class UIView extends UIResponder
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIView = class UIView extends UIResponder
+  @register()
+  @mixinProtocol UIAppearance
 
   # Initializing a View Object
   initWithFrame: objc.invokeSelector "initWithFrame:"
 
   # Configuring a View’s Visual Appearance
-  ck.addProperty @::, "backgroundColor"
-  ck.addProperty @::, "hidden"
-  ck.addProperty @::, "alpha"
-  ck.addProperty @::, "opaque"
-  ck.addProperty @::, "clipsToBounds"
-  ck.addProperty @::, "clearsContextBeforeDrawing"
+  ck.instanceProperty @, "backgroundColor"
+  ck.instanceProperty @, "hidden"
+  ck.instanceProperty @, "alpha"
+  ck.instanceProperty @, "opaque"
+  ck.instanceProperty @, "clipsToBounds"
+  ck.instanceProperty @, "clearsContextBeforeDrawing"
   @layerClass: objc.invokeSelector "layerClass"
-  ck.addProperty @::, "layer"
+  ck.instanceProperty @, "layer"
 
   # Configuring the Event-Related Behavior
-  ck.addProperty @::, "userInteractionEnabled"
-  ck.addProperty @::, "multipleTouchEnabled"
-  ck.addProperty @::, "exclusiveTouch"
+  ck.instanceProperty @, "userInteractionEnabled"
+  ck.instanceProperty @, "multipleTouchEnabled"
+  ck.instanceProperty @, "exclusiveTouch"
 
   # Configuring the Bounds and Frame Rectangles
-  ck.addProperty @::, "frame"
-  ck.addProperty @::, "bounds"
-  ck.addProperty @::, "center"
-  ck.addProperty @::, "transform"
+  ck.instanceProperty @, "frame"
+  ck.instanceProperty @, "bounds"
+  ck.instanceProperty @, "center"
+  ck.instanceProperty @, "transform"
 
   # Configuring the Resizing Behavior
-  ck.addProperty @::, "autoresizingMask"
-  ck.addProperty @::, "autoresizesSubviews"
-  ck.addProperty @::, "contentMode"
-  ck.addProperty @::, "contentStretch"
+  ck.instanceProperty @, "autoresizingMask"
+  ck.instanceProperty @, "autoresizesSubviews"
+  ck.instanceProperty @, "contentMode"
+  ck.instanceProperty @, "contentStretch"
   sizeThatFits: objc.invokeSelector "sizeThatFits:"
   sizeToFit: objc.invokeSelector "sizeToFit"
 
   # Managing the View Hierarchy
-  ck.addProperty @::, "superview"
-  ck.addProperty @::, "subviews"
-  ck.addProperty @::, "window"
+  ck.instanceProperty @, "superview"
+  ck.instanceProperty @, "subviews"
+  ck.instanceProperty @, "window"
   addSubview: objc.invokeSelector "addSubview:"
   bringSubviewToFront: objc.invokeSelector "bringSubviewToFront:"
   sendSubviewToBack: objc.invokeSelector "sendSubviewToBack:"
@@ -60,7 +60,7 @@ class UIView extends UIResponder
   drawRect: objc.invokeSelector "drawRect:"
   setNeedsDisplay: objc.invokeSelector "setNeedsDisplay"
   setNeedsDisplayInRect: objc.invokeSelector "setNeedsDisplayInRect:"
-  ck.addProperty @::, "contentScaleFactor"
+  ck.instanceProperty @, "contentScaleFactor"
 
   # Formatting Printed View Content
   viewPrintFormatter: objc.invokeSelector "viewPrintFormatter"
@@ -69,7 +69,7 @@ class UIView extends UIResponder
   # Managing Gesture Recognizers
   addGestureRecognizer: objc.invokeSelector "addGestureRecognizer:"
   removeGestureRecognizer: objc.invokeSelector "removeGestureRecognizer:"
-  ck.addProperty @::, "gestureRecognizers"
+  ck.instanceProperty @, "gestureRecognizers"
 
   # Animating Views with Blocks
   animateWithDurationDelayCompletion: objc.invokeSelector "animateWithDuration:delay:options:animations:completion:"
@@ -98,7 +98,7 @@ class UIView extends UIResponder
   areAnimationsEnabled: objc.invokeSelector "areAnimationsEnabled"
 
   # Identifying the View at Runtime
-  ck.addProperty @::, "tag"
+  ck.instanceProperty @, "tag"
   viewWithTag: objc.invokeSelector "viewWithTag:"
 
   # Converting Between View Coordinate Systems
@@ -121,7 +121,3 @@ class UIView extends UIResponder
   didMoveToSuperview: objc.invokeSelector "didMoveToSuperview"
   willMoveToWindow: objc.invokeSelector "willMoveToWindow:"
   didMoveToWindow: objc.invokeSelector "didMoveToWindow"
-
-new ck.MixinProtocolAttribute UIView, UIAppearance
-new ck.RegisterAttribute UIView, "UIView"
-exports.UIView = UIView

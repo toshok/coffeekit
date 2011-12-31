@@ -1,19 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPageControl"
-class UIPageControl extends UIControl
+exports.UIPageControl = class UIPageControl extends UIControl
+  @register()
 
   # Managing the Page Navigation
-  ck.addProperty @::, "currentPage"
-  ck.addProperty @::, "numberOfPages"
-  ck.addProperty @::, "hidesForSinglePage"
+  ck.instanceProperty @, "currentPage"
+  ck.instanceProperty @, "numberOfPages"
+  ck.instanceProperty @, "hidesForSinglePage"
 
   # Updating the Page Display
-  ck.addProperty @::, "defersCurrentPageDisplay"
+  ck.instanceProperty @, "defersCurrentPageDisplay"
   updateCurrentPageDisplay: objc.invokeSelector "updateCurrentPageDisplay"
 
   # Resizing the Control
   sizeForNumberOfPages: objc.invokeSelector "sizeForNumberOfPages:"
-
-new ck.RegisterAttribute UIPageControl, "UIPageControl"
-exports.UIPageControl = UIPageControl

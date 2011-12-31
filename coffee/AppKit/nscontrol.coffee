@@ -1,31 +1,30 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSControl extends NSView
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.NSContext = class NSControl extends NSView
+  @register()
 
   # Initializing an NSControl
   initWithFrame: objc.invokeSelector "initWithFrame:"
 
   # Setting the Control’s Cell
-  ck.addProperty @::, "cellClass"
-  ck.addProperty @::, "cell"
+  ck.instanceProperty @, "cellClass"
+  ck.instanceProperty @, "cell"
 
   # Enabling and Disabling the Control
-  ck.addProperty @::, "enabled", { get: "isEnabled" }
+  ck.instanceProperty @, "enabled", { get: "isEnabled" }
 
   # Identifying the Selected Cell
   selectedCell: objc.invokeSelector "selectedCell"
   selectedTag: objc.invokeSelector "selectedTag"
 
   # Setting the Control’s Value
-  ck.addProperty @::, "doubleValue"
-  ck.addProperty @::, "floatValue"
-  ck.addProperty @::, "intValue"
-  ck.addProperty @::, "integerValue"
-  ck.addProperty @::, "objectValue"
-  ck.addProperty @::, "stringValue"
-  ck.addProperty @::, "attributedStringValue"
+  ck.instanceProperty @, "doubleValue"
+  ck.instanceProperty @, "floatValue"
+  ck.instanceProperty @, "intValue"
+  ck.instanceProperty @, "integerValue"
+  ck.instanceProperty @, "objectValue"
+  ck.instanceProperty @, "stringValue"
+  ck.instanceProperty @, "attributedStringValue"
   setNeedsDisplay: objc.invokeSelector "setNeedsDisplay"
 
   # Interacting with Other Controls
@@ -37,10 +36,10 @@ class NSControl extends NSView
   takeStringValueFrom: objc.invokeSelector "takeStringValueFrom:"
 
   # Formatting Text
-  ck.addProperty @::, "alignment"
-  ck.addProperty @::, "font"
-  ck.addProperty @::, "formatter"
-  ck.addProperty @::, "baseWritingDirection"
+  ck.instanceProperty @, "alignment"
+  ck.instanceProperty @, "font"
+  ck.instanceProperty @, "formatter"
+  ck.instanceProperty @, "baseWritingDirection"
   setFloatingPointFormat: objc.invokeSelector "setFloatingPointFormat:left:right:" # Deprecated in Mac OS X v10.0
 
   # Managing the Field Editor
@@ -60,14 +59,14 @@ class NSControl extends NSView
   updateCellInside: objc.invokeSelector "updateCellInside:"
 
   # Implementing the Target/action Mechanism
-  ck.addProperty @::, "action"
-  ck.addProperty @::, "target"
-  ck.addProperty @::, "continuous", { get: "isContinuous" }
+  ck.instanceProperty @, "action"
+  ck.instanceProperty @, "target"
+  ck.instanceProperty @, "continuous", { get: "isContinuous" }
   sendActionTo: objc.invokeSelector "sendAction:to:"
   sendActionOn: objc.invokeSelector "sendActionOn:"
 
   # Getting and Setting Tags
-  ck.addProperty @::, "tag"
+  ck.instanceProperty @, "tag"
 
   # Activating from the Keyboard
   performClick: objc.invokeSelector "performClick:"
@@ -76,7 +75,7 @@ class NSControl extends NSView
 
   # Tracking the Mouse
   mouseDown: objc.invokeSelector "mouseDown:"
-  ck.addProperty @::, "ignoresMultiClick"
+  ck.instanceProperty @, "ignoresMultiClick"
 
   # Control Editing Notifications
   controlTextDidBeginEditing: objc.invokeSelector "controlTextDidBeginEditing:"  # delegate method
@@ -86,14 +85,12 @@ class NSControl extends NSView
   # Supporting Constraint-Based Layout
   invalidateIntrinsicContentSizeForCell: objc.invokeSelector "invalidateIntrinsicContentSizeForCell:"
 
-new ck.RegisterAttribute NSControl, "NSControl"
-exports.NSControl = NSControl
-
 class NSControlProxy extends foundation.NSObject
+  @register()
+
   constructor: (fn) ->
-                 super (objc.allocInstance(@.constructor.name))
+                 super()
                  @fn = fn
 
   proxyAction: -> @fn()
   new ck.SelectorAttribute @::proxyAction, "action"
-new ck.RegisterAttribute NSControlProxy, "NSControlProxy"

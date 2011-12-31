@@ -1,11 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CABasicAnimation extends CAAnimation
+exports.CABasicAnimation = class CABasicAnimation extends CAAnimation
+  @register()
 
   # Interpolation Values
-  ck.addProperty @::, "fromValue"
-  ck.addProperty @::, "toValue"
-  ck.addProperty @::, "byValue"
-
-new ck.RegisterAttribute CABasicAnimation, "CABasicAnimation"
-exports.CABasicAnimation = CABasicAnimation
+  ck.instanceProperty @, "fromValue"
+  ck.instanceProperty @, "toValue"
+  ck.instanceProperty @, "byValue"

@@ -1,9 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIGestureRecognizer"
-class UIGestureRecognizer extends foundation.NSObject
-
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.UIGestureRecognizer = class UIGestureRecognizer extends foundation.NSObject
+  @register()
 
   # Initializing a Gesture Recognizer
   initWithTarget: objc.invokeSelector "initWithTarget:action:"
@@ -18,20 +17,20 @@ class UIGestureRecognizer extends foundation.NSObject
   numberOfTouches: objc.invokeSelector "numberOfTouches"
 
   # Getting the Recognizer’s State and View
-  ck.addProperty @::, "state"
-  ck.addProperty @::, "view"
-  ck.addProperty @::, "enabled"
+  ck.instanceProperty @, "state"
+  ck.instanceProperty @, "view"
+  ck.instanceProperty @, "enabled"
 
   # Canceling and Delaying Touches
-  ck.addProperty @::, "cancelsTouchesInView"
-  ck.addProperty @::, "delaysTouchesBegan"
-  ck.addProperty @::, "delaysTouchesEnded"
+  ck.instanceProperty @, "cancelsTouchesInView"
+  ck.instanceProperty @, "delaysTouchesBegan"
+  ck.instanceProperty @, "delaysTouchesEnded"
 
   # Specifying Dependencies Between Gesture Recognizers
   requireGestureRecognizerToFail: objc.invokeSelector "requireGestureRecognizerToFail:"
 
   # Setting and Getting the Delegate
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIGestureRecognizerDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIGestureRecognizerDelegate) }
 
   # Methods For Subclasses
 
@@ -45,6 +44,3 @@ class UIGestureRecognizer extends foundation.NSObject
   ignoreTouch: objc.invokeSelector "ignoreTouch:forEvent:"
   canBePreventedByGestureRecognizer: objc.invokeSelector "canBePreventedByGestureRecognizer:"
   canPreventGestureRecognizer: objc.invokeSelector "canPreventGestureRecognizer:"
-
-new ck.RegisterAttribute UIGestureRecognizer, "UIGestureRecognizer"
-exports.UIGestureRecognizer = UIGestureRecognizer

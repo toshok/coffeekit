@@ -3,7 +3,8 @@
 #console.log "GKVoiceChatClient"
 Protocol = foundation.Protocol
 
-class GKVoiceChatClient extends foundation.Protocol
+exports.GKVoiceChatClient = class GKVoiceChatClient extends foundation.Protocol
+  @register()
 
   # Getting Information About the Participant
   participantID:        Protocol.requiredMethod ("participantID")
@@ -19,6 +20,3 @@ class GKVoiceChatClient extends foundation.Protocol
   didStart:             Protocol.optionalMethod ("voiceChatService:didStartWithParticipantID:")
   didNotStart:          Protocol.optionalMethod ("voiceChatService:didNotStartWithParticipantID:error:")
   didStop:              Protocol.optionalMethod ("voiceChatService:didStopWithParticipantID:error:")
-
-new ck.RegisterAttribute GKVoiceChatClient, "GKVoiceChatClient"
-exports.UIWebView = GKVoiceChatClient

@@ -3,12 +3,10 @@
 #console.log "GKTurnBasedEventHandlerDelegate"
 Protocol = foundation.Protocol
 
-class GKTurnBasedEventHandlerDelegate extends foundation.Protocol
+exports.UIWebView = class GKTurnBasedEventHandlerDelegate extends foundation.Protocol
+  @register()
 
   # Receiving Turn-based Events
   handleInviteFromGameCenter: Protocol.optionalMethod ("handleInviteFromGameCenter:")
   handleTurnEventForMatch:    Protocol.optionalMethod ("handleTurnEventForMatch:")
   handleMatchEnded:           Protocol.optionalMethod ("handleMatchEnded:")
-
-new ck.RegisterAttribute GKTurnBasedEventHandlerDelegate, "GKTurnBasedEventHandlerDelegate"
-exports.UIWebView = GKTurnBasedEventHandlerDelegate

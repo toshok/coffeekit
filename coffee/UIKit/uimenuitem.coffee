@@ -1,14 +1,12 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIMenuItem"
-class UIMenuItem extends foundation.NSObject
+exports.UIMenuItem = class UIMenuItem extends foundation.NSObject
+  @register()
 
   # Creating a Menu Item
   initWithTitle: objc.invokeSelector "initWithTitle:action:"
 
   # Accessing Menu-Item Attributes
-  ck.addProperty @::, "title"
-  ck.addProperty @::, "action"
-
-new ck.RegisterAttribute UIMenuItem, "UIMenuItem"
-exports.UIMenuItem = UIMenuItem
+  ck.instanceProperty @, "title"
+  ck.instanceProperty @, "action"

@@ -3,10 +3,8 @@
 #console.log "GKLeaderboardViewControllerDelegate"
 Protocol = foundation.Protocol
 
-class GKLeaderboardViewControllerDelegate extends foundation.Protocol
+exports.UIWebView = class GKLeaderboardViewControllerDelegate extends foundation.Protocol
+  @register()
 
   # Handling User Actions
   didFinish: Protocol.requiredMethod ("leaderboardViewControllerDidFinish:")
-
-new ck.RegisterAttribute GKLeaderboardViewControllerDelegate, "GKLeaderboardViewControllerDelegate"
-exports.UIWebView = GKLeaderboardViewControllerDelegate

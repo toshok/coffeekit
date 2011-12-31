@@ -1,14 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class MKMultiPoint extends MKShape
-  constructor: (handle) -> super (if handle then handle else @.constructor.name)
+exports.MKMultiPoint = class MKMultiPoint extends MKShape
+  @register()
 
   # Accessing the Points in the Shape
-  ck.addProperty @::, "points"
-  ck.addProperty @::, "pointCount"
+  ck.instanceProperty @, "points"
+  ck.instanceProperty @, "pointCount"
 
   # Getting Coordinate Values
-  getCoordinates: objc.invokeSelector ("getCoordinates:range:")
-
-new ck.RegisterAttribute MKMultiPoint, "MKMultiPoint"
-exports.MKMultiPoint = MKMultiPoint
+  getCoordinates: objc.invokeSelector "getCoordinates:range:"

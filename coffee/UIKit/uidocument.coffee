@@ -1,16 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIDocument"
-class UIDocument extends foundation.NSObject
+exports.UIDocument = class UIDocument extends foundation.NSObject
+  @register()
+
   # Initializing a Document Object
   initWithFileURL: objc.invokeSelector "initWithFileURL:"
 
   # Accessing Document Attributes
-  ck.addProperty @::, "fileURL"
-  ck.addProperty @::, "localizedName"
-  ck.addProperty @::, "fileType"
-  ck.addProperty @::, "fileModificationDate"
-  ck.addProperty @::, "documentState"
+  ck.instanceProperty @, "fileURL"
+  ck.instanceProperty @, "localizedName"
+  ck.instanceProperty @, "fileType"
+  ck.instanceProperty @, "fileModificationDate"
+  ck.instanceProperty @, "documentState"
 
   # Writing Document Data
   closeWithCompletionHandler: objc.invokeSelector "closeWithCompletionHandler:"
@@ -40,7 +42,7 @@ class UIDocument extends foundation.NSObject
   # Tracking Changes and Autosaving
   hasUnsavedChanges: objc.invokeSelector "hasUnsavedChanges"
   updateChangeCount: objc.invokeSelector "updateChangeCount:"
-  ck.addProperty @::, "undoManager"
+  ck.instanceProperty @, "undoManager"
   changeCountToken: objc.invokeSelector "changeCountTokenForSaveOperation:"
   updateChangeCountWithToken: objc.invokeSelector "updateChangeCountWithToken:forSaveOperation:"
   autosaveWithCompletionHandler: objc.invokeSelector "autosaveWithCompletionHandler:"
@@ -49,6 +51,3 @@ class UIDocument extends foundation.NSObject
   handleError: objc.invokeSelector "handleError:userInteractionPermitted:"
   finishedHandlingError: objc.invokeSelector "finishedHandlingError:recovered:"
   userInteractionNoLongerPermitted: objc.invokeSelector "userInteractionNoLongerPermittedForError:"
-
-new ck.RegisterAttribute UIDocument, "UIDocument"
-exports.UIDocument = UIDocument

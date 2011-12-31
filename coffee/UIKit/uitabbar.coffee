@@ -1,15 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITabBar"
-class UITabBar extends UIView
+exports.UITabBar = class UITabBar extends UIView
+  @register()
 
   # Getting and Setting Properties
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITabBarDelegate) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITabBarDelegate) }
 
   # Configuring Items
-  ck.addProperty @::, "items", { set: (v) -> @setItems v, false }
+  ck.instanceProperty @, "items", { set: (v) -> @setItems v, false }
   setItems: objc.invokeSelector "setItems:animated:"
-  ck.addProperty @::, "selectedItem"
+  ck.instanceProperty @, "selectedItem"
 
   # Customizing Tab Bars
   beginCustomizingItems: objc.invokeSelector "beginCustomizingItems:"
@@ -17,10 +18,7 @@ class UITabBar extends UIView
   isCustomizing: objc.invokeSelector "isCustomizing"
 
   # Customizing Appearance
-  ck.addProperty @::, "backgroundImage"
-  ck.addProperty @::, "selectedImageTintColor"
-  ck.addProperty @::, "selectionIndicatorImage"
-  ck.addProperty @::, "tintColor"
-
-new ck.RegisterAttribute UITabBar, "UITabBar"
-exports.UITabBar = UITabBar
+  ck.instanceProperty @, "backgroundImage"
+  ck.instanceProperty @, "selectedImageTintColor"
+  ck.instanceProperty @, "selectionIndicatorImage"
+  ck.instanceProperty @, "tintColor"

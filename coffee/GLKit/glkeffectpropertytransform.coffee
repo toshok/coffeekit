@@ -1,18 +1,14 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class GLKEffectPropertyTransform extends GLKEffectProperty
-  constructor: (handle) -> super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.GLKEffectPropertyTransform = class GLKEffectPropertyTransform extends GLKEffectProperty
+  @register()
 
   # Configuring Modelview Properties
-  ck.addProperty @::, "modelviewMatrix"
-  ck.addProperty @::, "normalMatrix"
+  ck.instanceProperty @, "modelviewMatrix"
+  ck.instanceProperty @, "normalMatrix"
 
   # Configuring the Projection Matrix
-  ck.addProperty @::, "projectionMatrix"
+  ck.instanceProperty @, "projectionMatrix"
 
   # Configuring the Transform Matrix
-  ck.addProperty @::, "transformMatrix"
-
-
-new ck.RegisterAttribute GLKEffectPropertyTransform, "GLKEffectPropertyTransform"
-exports.GLKEffectPropertyTransform = GLKEffectPropertyTransform
+  ck.instanceProperty @, "transformMatrix"

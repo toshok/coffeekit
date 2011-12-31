@@ -1,14 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class CARenderer extends foundation.NSObject
-
-  constructor: (handle) -> super (if handle then handle else objc.createInstance (@.constructor.name))
+exports.CARenderer = class CARenderer extends foundation.NSObject
+  @register()
 
   # Rendered Layer
-  ck.addProperty @::, "layer"
+  ck.instanceProperty @, "layer"
 
   # Renderer Geometry
-  ck.addProperty @::, "bounds"
+  ck.instanceProperty @, "bounds"
 
   # Create a New Renderer
   rendererWithCGLContext: objc.invokeSelector "rendererWithCGLContext:options:"
@@ -20,6 +19,3 @@ class CARenderer extends foundation.NSObject
   render: objc.invokeSelector "render"
   nextFrameTime: objc.invokeSelector "nextFrameTime"
   endFrame: objc.invokeSelector "endFrame"
-
-new ck.RegisterAttribute CARenderer, "CARenderer"
-exports.CARenderer = CARenderer

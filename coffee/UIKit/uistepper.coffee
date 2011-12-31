@@ -1,18 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIStepper"
-class UIStepper extends UIControl
+exports.UIStepper = class UIStepper extends UIControl
+  @register()
 
   # Configuring the Stepper
-  ck.addProperty @::, "continuous"
-  ck.addProperty @::, "autorepeat"
-  ck.addProperty @::, "wraps"
-  ck.addProperty @::, "minimumValue"
-  ck.addProperty @::, "maximumValue"
-  ck.addProperty @::, "stepValue"
+  ck.instanceProperty @, "continuous"
+  ck.instanceProperty @, "autorepeat"
+  ck.instanceProperty @, "wraps"
+  ck.instanceProperty @, "minimumValue"
+  ck.instanceProperty @, "maximumValue"
+  ck.instanceProperty @, "stepValue"
 
   # Accessing the Stepper’s Value
-  ck.addProperty @::, "value"
-
-new ck.RegisterAttribute UIStepper, "UIStepper"
-exports.UIStepper = UIStepper
+  ck.instanceProperty @, "value"

@@ -1,8 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSView extends foundation.NSResponder
-  constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance (@.constructor.name))
+exports.NSView = class NSView extends foundation.NSResponder
+  @register()
 
   # Creating Instances
   initWithFrame: objc.invokeSelector "initWithFrame:"
@@ -141,7 +140,7 @@ class NSView extends foundation.NSResponder
   isInFullScreenMode: objc.invokeSelector "isInFullScreenMode"
 
   # Hiding Views
-  ck.addProperty @::, "hidden", { get: "isHidden" }
+  ck.instanceProperty @, "hidden", { get: "isHidden" }
   isHiddenOrHasHiddenAncestor: objc.invokeSelector "isHiddenOrHasHiddenAncestor"
   viewDidHide: objc.invokeSelector "viewDidHide"
   viewDidUnhide: objc.invokeSelector "viewDidUnhide"
@@ -297,8 +296,8 @@ class NSView extends foundation.NSResponder
   showDefinitionForAttributedString: objc.invokeSelector "showDefinitionForAttributedString:range:options:baselineOriginProvider:"
 
   # Touch Event Handling
-  ck.addProperty @::, "acceptsTouchEvents"
-  ck.addProperty @::, "wantsRestingTouches"
+  ck.instanceProperty @, "acceptsTouchEvents"
+  ck.instanceProperty @, "wantsRestingTouches"
 
   # Drawing Find Indicator
   isDrawingFindIndicator: objc.invokeSelector "isDrawingFindIndicator"
@@ -347,6 +346,3 @@ class NSView extends foundation.NSResponder
   constraintsAffectingLayoutForOrientation: objc.invokeSelector "constraintsAffectingLayoutForOrientation:"
   hasAmbiguousLayout: objc.invokeSelector "hasAmbiguousLayout"
   exerciseAmbiguityInLayout: objc.invokeSelector "exerciseAmbiguityInLayout"
-
-new ck.RegisterAttribute NSView, "NSView"
-exports.NSView = NSView

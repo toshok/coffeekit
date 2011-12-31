@@ -3,7 +3,8 @@
 #console.log "MKMapViewDelgate"
 Protocol = foundation.Protocol
 
-class SKPaymentTransactionObserver extends foundation.Protocol
+exports.SKPaymentTransactionObserver = class SKPaymentTransactionObserver extends foundation.Protocol
+  @register()
 
   # Handling Transactions
   updatedTransactions: Protocol.requiredMethod ("paymentQueue:updatedTransactions:")
@@ -12,6 +13,3 @@ class SKPaymentTransactionObserver extends foundation.Protocol
   # Handling Restored Transactions
   restoreCompletedTransactionsFailedWithError:      Protocol.optionalMethod ("paymentQueue:restoreCompletedTransactionsFailedWithError:")
   paymentQueueRestoreCompletedTransactionsFinished: Protocol.optionalMethod ("paymentQueueRestoreCompletedTransactionsFinished:")
-
-new ck.RegisterAttribute SKPaymentTransactionObserver, "SKPaymentTransactionObserver"
-exports.SKPaymentTransactionObserver = SKPaymentTransactionObserver

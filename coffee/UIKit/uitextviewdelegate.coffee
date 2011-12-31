@@ -3,7 +3,8 @@
 #console.log "UITextViewDelegate"
 Protocol = foundation.Protocol
 
-class UITextViewDelegate extends foundation.Protocol
+exports.UITextViewDelegate = class UITextViewDelegate extends foundation.Protocol
+  @register()
 
   # Responding to Editing Notifications
   shouldBeginEditing: Protocol.optionalMethod "textViewShouldBeginEditing:"
@@ -17,6 +18,3 @@ class UITextViewDelegate extends foundation.Protocol
 
   # Responding to Selection Changes
   didChangeSelection: Protocol.optionalMethod "textViewDidChangeSelection:"
-
-new ck.RegisterAttribute UITextViewDelegate, "UITextViewDelegate"
-exports.UITextViewDelegate = UITextViewDelegate

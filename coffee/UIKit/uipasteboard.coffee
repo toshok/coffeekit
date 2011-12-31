@@ -1,7 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIPasteboard"
-class UIPasteboard extends foundation.NSObject
+exports.UIPasteboard = class UIPasteboard extends foundation.NSObject
+  @register()
 
   # Getting and Removing Pasteboards
   @generalPasteboard: objc.invokeSelector "generalPasteboard"
@@ -10,9 +11,9 @@ class UIPasteboard extends foundation.NSObject
   @removePasteboardWithName: objc.invokeSelector "removePasteboardWithName:"
 
   # Getting and Setting Pasteboard Attributes
-  ck.addProperty @::, "name"
-  ck.addProperty @::, "persistent"
-  ck.addProperty @::, "changeCount"
+  ck.instanceProperty @, "name"
+  ck.instanceProperty @, "persistent"
+  ck.instanceProperty @, "changeCount"
 
   # Determining Types of Single Pasteboard Items
   pasteboardTypes: objc.invokeSelector "pasteboardTypes"
@@ -25,26 +26,23 @@ class UIPasteboard extends foundation.NSObject
   setValue:forPasteboardType: objc.invokeSelector "setValue:forPasteboardType:"
 
   # Determining the Types of Multiple Pasteboard Items
-  ck.addProperty @::, "numberOfItems"
+  ck.instanceProperty @, "numberOfItems"
   pasteboardTypesForItemSet: objc.invokeSelector "pasteboardTypesForItemSet:"
   itemSetWithPasteboardTypes: objc.invokeSelector "itemSetWithPasteboardTypes:"
   containsPasteboardTypesInItemSet: objc.invokeSelector "containsPasteboardTypes:inItemSet:"
 
   # Getting and Setting Multiple Pasteboard Items
-  ck.addProperty @::, "items"
+  ck.instanceProperty @, "items"
   dataForPasteboardTypeInItemSet: objc.invokeSelector "dataForPasteboardType:inItemSet:"
   valuesForPasteboardTypeInItemSet: objc.invokeSelector "valuesForPasteboardType:inItemSet:"
   addItems: objc.invokeSelector "addItems:"
 
   # Getting and Setting Pasteboard Items of Standard Data Types
-  ck.addProperty @::, "string"
-  ck.addProperty @::, "strings"
-  ck.addProperty @::, "image"
-  ck.addProperty @::, "images"
-  ck.addProperty @::, "URL"
-  ck.addProperty @::, "URLs"
-  ck.addProperty @::, "color"
-  ck.addProperty @::, "colors"
-
-new ck.RegisterAttribute UIPasteboard, "UIPasteboard"
-exports.UIPasteboard = UIPasteboard
+  ck.instanceProperty @, "string"
+  ck.instanceProperty @, "strings"
+  ck.instanceProperty @, "image"
+  ck.instanceProperty @, "images"
+  ck.instanceProperty @, "URL"
+  ck.instanceProperty @, "URLs"
+  ck.instanceProperty @, "color"
+  ck.instanceProperty @, "colors"

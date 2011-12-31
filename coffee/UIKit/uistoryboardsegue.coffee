@@ -1,18 +1,16 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIStoryboardSegue"
-class UIStoryboardSegue extends foundation.NSObject
+exports.UIStoryboardSegue = class UIStoryboardSegue extends foundation.NSObject
+  @register()
 
   # Initializing a Storyboard Segue
   initWithIdentifier: objc.invokeSelector "initWithIdentifier:source:destination:"
 
   # Accessing the Segue Attributes
-  ck.addProperty @::, "sourceViewController"
-  ck.addProperty @::, "destinationViewController"
-  ck.addProperty @::, "identifier"
+  ck.instanceProperty @, "sourceViewController"
+  ck.instanceProperty @, "destinationViewController"
+  ck.instanceProperty @, "identifier"
 
   # Performing the Segue
   perform: objc.invokeSelector "perform"
-
-new ck.RegisterAttribute UIStoryboardSegue, "UIStoryboardSegue"
-exports.UIStoryboardSegue = UIStoryboardSegue

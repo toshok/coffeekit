@@ -1,23 +1,21 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UISearchDisplayController"
-class UISearchDisplayController extends foundation.NSObject
+exports.UISearchDisplayController = class UISearchDisplayController extends foundation.NSObject
+  @register()
 
   # Initialization
   initWithSearchBar: objc.invokeSelector "initWithSearchBar:contentsController:"
 
   # Displaying the Search Interface
-  ck.addProperty @::, "active", { set: (v) -> @setActive v, false }
+  ck.instanceProperty @, "active", { set: (v) -> @setActive v, false }
   setActive: objc.invokeSelector "setActive:animated:"
 
   # Configuration
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISearchDisplayControllerDelegate) }
-  ck.addProperty @::, "searchBar"
-  ck.addProperty @::, "searchContentsController"
-  ck.addProperty @::, "searchResultsTableView"
-  ck.addProperty @::, "searchResultsDataSource"
-  ck.addProperty @::, "searchResultsDelegate"
-  ck.addProperty @::, "searchResultsTitle"
-
-new ck.RegisterAttribute UISearchDisplayController, "UISearchDisplayController"
-exports.UISearchDisplayController = UISearchDisplayController
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISearchDisplayControllerDelegate) }
+  ck.instanceProperty @, "searchBar"
+  ck.instanceProperty @, "searchContentsController"
+  ck.instanceProperty @, "searchResultsTableView"
+  ck.instanceProperty @, "searchResultsDataSource"
+  ck.instanceProperty @, "searchResultsDelegate"
+  ck.instanceProperty @, "searchResultsTitle"

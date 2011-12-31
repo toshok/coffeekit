@@ -1,25 +1,26 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITableView"
-class UITableView extends UIScrollView
+exports.UITableView = class UITableView extends UIScrollView
+  @register()
 
   # Initializing a UITableView Object
   initWithFrame: objc.invokeSelector "initWithFrame:style:"
 
   # Configuring a Table View
   dequeueReusableCellWithIdentifier: objc.invokeSelector "dequeueReusableCellWithIdentifier:"
-  ck.addProperty @::, "style"
+  ck.instanceProperty @, "style"
   numberOfRowsInSection: objc.invokeSelector "numberOfRowsInSection:"
   numberOfSections: objc.invokeSelector "numberOfSections"
-  ck.addProperty @::, "rowHeight"
-  ck.addProperty @::, "separatorStyle"
-  ck.addProperty @::, "separatorColor"
-  ck.addProperty @::, "backgroundView"
-  ck.addProperty @::, "tableHeaderView"
-  ck.addProperty @::, "tableFooterView"
-  ck.addProperty @::, "sectionHeaderHeight"
-  ck.addProperty @::, "sectionFooterHeight"
-  ck.addProperty @::, "sectionIndexMinimumDisplayRowCount"
+  ck.instanceProperty @, "rowHeight"
+  ck.instanceProperty @, "separatorStyle"
+  ck.instanceProperty @, "separatorColor"
+  ck.instanceProperty @, "backgroundView"
+  ck.instanceProperty @, "tableHeaderView"
+  ck.instanceProperty @, "tableFooterView"
+  ck.instanceProperty @, "sectionHeaderHeight"
+  ck.instanceProperty @, "sectionFooterHeight"
+  ck.instanceProperty @, "sectionIndexMinimumDisplayRowCount"
 
   # Accessing Cells and Sections
   cellForRowAtIndexPath: objc.invokeSelector "cellForRowAtIndexPath:"
@@ -38,10 +39,10 @@ class UITableView extends UIScrollView
   indexPathsForSelectedRows: objc.invokeSelector "indexPathsForSelectedRows"
   selectRowAtIndexPath: objc.invokeSelector "selectRowAtIndexPath:animated:scrollPosition:"
   deselectRowAtIndexPath: objc.invokeSelector "deselectRowAtIndexPath:animated:"
-  ck.addProperty @::, "allowsSelection"
-  ck.addProperty @::, "allowsMultipleSelection"
-  ck.addProperty @::, "allowsSelectionDuringEditing"
-  ck.addProperty @::, "allowsMultipleSelectionDuringEditing"
+  ck.instanceProperty @, "allowsSelection"
+  ck.instanceProperty @, "allowsMultipleSelection"
+  ck.instanceProperty @, "allowsSelectionDuringEditing"
+  ck.instanceProperty @, "allowsMultipleSelectionDuringEditing"
 
   # Inserting, Deleting, and Moving Rows and Sections
   beginUpdates: objc.invokeSelector "beginUpdates"
@@ -54,7 +55,7 @@ class UITableView extends UIScrollView
   moveSection: objc.invokeSelector "moveSection:toSection:"
 
   # Managing the Editing of Table Cells
-  ck.addProperty @::, "editing", { set: (v) -> @setEditing v, false }
+  ck.instanceProperty @, "editing", { set: (v) -> @setEditing v, false }
   setEditing: objc.invokeSelector "setEditing:animated:"
 
   # Reloading the Table View
@@ -73,8 +74,5 @@ class UITableView extends UIScrollView
   registerNibForCellReuseIdentifier: objc.invokeSelector "registerNib:forCellReuseIdentifier:"
 
   # Managing the Delegate and the Data Source
-  ck.addProperty @::, "dataSource", { set: (v) -> objc.invokeSelector("setDataSource:").call this, (ck.autobox v, UITableViewDataSource) }
-  ck.addProperty @::, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITableViewDelegate) }
-
-new ck.RegisterAttribute UITableView, "UITableView"
-exports.UITableView = UITableView
+  ck.instanceProperty @, "dataSource", { set: (v) -> objc.invokeSelector("setDataSource:").call this, (ck.autobox v, UITableViewDataSource) }
+  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITableViewDelegate) }
