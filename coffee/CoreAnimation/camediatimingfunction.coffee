@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports CAMediaTimingFunction = class CAMediaTimingFunction extends foundation.NSObject
+exports.CAMediaTimingFunction = class CAMediaTimingFunction extends foundation.NSObject
   @register()
 
   # Creating Timing Functions
