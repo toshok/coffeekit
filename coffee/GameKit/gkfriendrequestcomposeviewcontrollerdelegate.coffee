@@ -4,7 +4,7 @@
 Protocol = foundation.Protocol
 
 exports.UIWebView = class GKFriendRequestComposeViewControllerDelegate extends foundation.Protocol
-  @register()
-
   # Responding to User Events
   didFinish: Protocol.requiredMethod ("friendRequestComposeViewControllerDidFinish:")
+
+  @register()

@@ -1,18 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GKMatchmaker = class GKMatchmaker extends foundation.NSObject
-  @register()
-
   # Retrieving the Shared Matchmaker
-  @sharedMatchmaker: objc.invokeSelector "sharedMatchmaker"
+  @sharedMatchmaker: @nativeSelector "sharedMatchmaker"
 
   # Receiving Invitations From Other Players
-  ck.instanceProperty @, "inviteHandler"
+  @instanceProperty "inviteHandler"
 
   # Matching Players
-  findMatchForRequest: objc.invokeSelector "findMatchForRequest:withCompletionHandler:"
-  findPlayersForHostedMatchRequest: objc.invokeSelector "findPlayersForHostedMatchRequest:withCompletionHandler:"
-  addPlayersToMatch: objc.invokeSelector "addPlayersToMatch:matchRequest:completionHandler:"
-  cancel: objc.invokeSelector "cancel"
-  queryPlayerGroupActivity: objc.invokeSelector "queryPlayerGroupActivity:withCompletionHandler:"
-  queryActivity: objc.invokeSelector "queryActivityWithCompletionHandler:"
+  findMatchForRequest: @nativeSelector "findMatchForRequest:withCompletionHandler:"
+  findPlayersForHostedMatchRequest: @nativeSelector "findPlayersForHostedMatchRequest:withCompletionHandler:"
+  addPlayersToMatch: @nativeSelector "addPlayersToMatch:matchRequest:completionHandler:"
+  cancel: @nativeSelector "cancel"
+  queryPlayerGroupActivity: @nativeSelector "queryPlayerGroupActivity:withCompletionHandler:"
+  queryActivity: @nativeSelector "queryActivityWithCompletionHandler:"
+
+  @register()

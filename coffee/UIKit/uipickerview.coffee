@@ -2,29 +2,29 @@
 
 #console.log "UIPickerView"
 exports.UIPickerView = class UIPickerView extends UIView
-  @register()
-
   # Getting the Dimensions of the View Picker
-  ck.instanceProperty @, "numberOfComponents"
-  numberOfRowsInComponent: objc.invokeSelector "numberOfRowsInComponent:"
-  rowSizeForComponent: objc.invokeSelector "rowSizeForComponent:"
+  numberOfRowsInComponent: @nativeSelector "numberOfRowsInComponent:"
+  rowSizeForComponent:     @nativeSelector "rowSizeForComponent:"
+  @instanceProperty "numberOfComponents"
 
   # Reloading the View Picker
-  reloadAllComponents: objc.invokeSelector "reloadAllComponents"
-  reloadComponent: objc.invokeSelector "reloadComponent:"
+  reloadAllComponents:     @nativeSelector "reloadAllComponents"
+  reloadComponent:         @nativeSelector "reloadComponent:"
 
   # Selecting Rows in the View Picker
-  selectRow: objc.invokeSelector "selectRow:inComponent:animated:"
-  selectedRow: objc.invokeSelector "selectedRowInComponent:"
+  selectRow:               @nativeSelector "selectRow:inComponent:animated:"
+  selectedRow:             @nativeSelector "selectedRowInComponent:"
 
   # Returning the View for a Row and Component
-  viewForRowInComponent: objc.invokeSelector "viewForRow:forComponent:"
+  viewForRowInComponent:   @nativeSelector "viewForRow:forComponent:"
 
   # Specifying the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIPickerViewDelegate) }
+  @autoboxProperty  "delegate", UIPickerViewDelegate
 
   # Specifying the Data Source
-  ck.instanceProperty @, "dataSource"
+  @instanceProperty "dataSource"
 
   # Managing the Appearance of the Picker View
-  ck.instanceProperty @, "showsSelectionIndicator"
+  @instanceProperty "showsSelectionIndicator"
+
+  @register()

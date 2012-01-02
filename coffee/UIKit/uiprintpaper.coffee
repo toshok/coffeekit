@@ -2,11 +2,11 @@
 
 #console.log "UIPrintPaper"
 exports.UIPrintPaper = class UIPrintPaper extends foundation.NSObject
-  @register()
-
   # Getting the Paper Size and the Printing Area
-  ck.instanceProperty @, "paperSize"
-  ck.instanceProperty @, "printableRect"
+  @instanceProperty "paperSize"
+  @instanceProperty "printableRect"
 
   # Obtaining the Best Paper Size for Printing
-  @bestPaperForPageSize: objc.invokeSelector "bestPaperForPageSize:withPapersFromArray:"
+  @bestPaperForPageSize: @nativeSelector "bestPaperForPageSize:withPapersFromArray:"
+
+  @register()

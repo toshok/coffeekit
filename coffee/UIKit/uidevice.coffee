@@ -2,37 +2,37 @@
 
 #console.log "UIDevice"
 exports.UIDevice = class UIDevice extends foundation.NSObject
-  @register()
-
   # Getting the Shared Device Instance
-  ck.staticProperty @, "currentDevice", set: null, get: -> objc.invokeSelector("currentDevice").call UIDevice
+  @staticProperty                                "currentDevice", set: null, get: -> objc.invokeSelector("currentDevice").call UIDevice
 
   # Determining the Available Features
-  ck.instanceProperty @, "multitaskingSupported"
+  @instanceProperty                              "multitaskingSupported"
 
   # Identifying the Device and Operating System
-  ck.instanceProperty @, "name"
-  ck.instanceProperty @, "systemName"
-  ck.instanceProperty @, "systemVersion"
-  ck.instanceProperty @, "model"
-  ck.instanceProperty @, "localizedModel"
-  ck.instanceProperty @, "userInterfaceIdiom"
-  ck.instanceProperty @, "uniqueIdentifier" # Deprecated in iOS 5.0
+  @instanceProperty 				 "name"
+  @instanceProperty 				 "systemName"
+  @instanceProperty 				 "systemVersion"
+  @instanceProperty 				 "model"
+  @instanceProperty 				 "localizedModel"
+  @instanceProperty 				 "userInterfaceIdiom"
+  @instanceProperty 				 "uniqueIdentifier" # Deprecated in iOS 5.0
 
   # Getting the Device Orientation
-  ck.instanceProperty @, "orientation"
-  ck.instanceProperty @, "generatesDeviceOrientationNotifications"
-  beginGeneratingDeviceOrientationNotifications: objc.invokeSelector "beginGeneratingDeviceOrientationNotifications"
-  endGeneratingDeviceOrientationNotifications: objc.invokeSelector "endGeneratingDeviceOrientationNotifications"
+  @instanceProperty 				 "orientation"
+  @instanceProperty 				 "generatesDeviceOrientationNotifications"
+  beginGeneratingDeviceOrientationNotifications: @nativeSelector "beginGeneratingDeviceOrientationNotifications"
+  endGeneratingDeviceOrientationNotifications:   @nativeSelector "endGeneratingDeviceOrientationNotifications"
 
   # Getting the Device Battery State
-  ck.instanceProperty @, "batteryLevel"
-  ck.instanceProperty @, "batteryMonitoringEnabled"
-  ck.instanceProperty @, "batteryState"
+  @instanceProperty 				 "batteryLevel"
+  @instanceProperty 				 "batteryMonitoringEnabled"
+  @instanceProperty                              "batteryState"
 
   # Using the Proximity Sensor
-  ck.instanceProperty @, "proximityMonitoringEnabled"
-  ck.instanceProperty @, "proximityState"
+  @instanceProperty 				 "proximityMonitoringEnabled"
+  @instanceProperty                              "proximityState"
 
   # Playing Input Clicks
-  playInputClick: objc.invokeSelector "playInputClick"
+  playInputClick:                                @nativeSelector "playInputClick"
+
+  @register()

@@ -2,14 +2,14 @@
 
 #console.log "UIVideoEditorController"
 exports.UIVideoEditorController = class UIVideoEditorController extends UINavigationController
-  @register()
-
   # Determining Editing Availability
-  @canEditVideoAtPath: objc.invokeSelector "canEditVideoAtPath:"
+  @canEditVideoAtPath: @nativeSelector "canEditVideoAtPath:"
 
   # Configuring the Editor
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIVideoEditorControllerDelegate) }
-  ck.instanceProperty @, "videoMaximumDuration"
-  ck.instanceProperty @, "videoPath"
-  ck.instanceProperty @, "videoQuality"
+  @autoboxProperty  "delegate", UIVideoEditorControllerDelegate
+  @instanceProperty "videoMaximumDuration"
+  @instanceProperty "videoPath"
+  @instanceProperty "videoQuality"
+
+  @register()
 

@@ -2,16 +2,16 @@
 
 #console.log "UIPrintInfo"
 exports.UIPrintInfo = class UIPrintInfo extends foundation.NSObject
-  @register()
-
   # Creating a UIPrintInfo Object
-  @printInfo: objc.invokeSelector "printInfo"
-  @printInfoWithDictionary: objc.invokeSelector "printInfoWithDictionary:"
-  dictionaryRepresentation: objc.invokeSelector "dictionaryRepresentation"
+  @printInfo:               @nativeSelector "printInfo"
+  @printInfoWithDictionary: @nativeSelector "printInfoWithDictionary:"
+  dictionaryRepresentation: @nativeSelector "dictionaryRepresentation"
 
   # Getting and Setting Print-Job Attributes
-  ck.instanceProperty @, "duplex"
-  ck.instanceProperty @, "jobName"
-  ck.instanceProperty @, "orientation"
-  ck.instanceProperty @, "outputType"
-  ck.instanceProperty @, "printerID"
+  @instanceProperty "duplex"
+  @instanceProperty "jobName"
+  @instanceProperty "orientation"
+  @instanceProperty "outputType"
+  @instanceProperty "printerID"
+
+  @register()

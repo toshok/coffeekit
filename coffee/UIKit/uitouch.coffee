@@ -2,18 +2,18 @@
 
 #console.log "UITouch"
 exports.UITouch = class UITouch extends foundation.NSObject
-  @register()
-
   # Getting the Location of Touches
-  locationInView: objc.invokeSelector "locationInView:"
-  previousLocationInView: objc.invokeSelector "previousLocationInView:"
-  ck.instanceProperty @, "view"
-  ck.instanceProperty @, "window"
+  locationInView:         @nativeSelector "locationInView:"
+  previousLocationInView: @nativeSelector "previousLocationInView:"
+  @instanceProperty "view"
+  @instanceProperty "window"
 
   # Getting Touch Attributes
-  ck.instanceProperty @, "tapCount"
-  ck.instanceProperty @, "timestamp"
-  ck.instanceProperty @, "phase"
+  @instanceProperty "tapCount"
+  @instanceProperty "timestamp"
+  @instanceProperty "phase"
 
   # Getting a Touch Object’s Gesture Recognizers
-  ck.instanceProperty @, "gestureRecognizers"
+  @instanceProperty "gestureRecognizers"
+
+  @register()

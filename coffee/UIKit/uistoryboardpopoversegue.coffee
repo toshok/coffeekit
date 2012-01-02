@@ -2,7 +2,7 @@
 
 #console.log "UIStoryboardPopoverSegue"
 exports.UIStoryboardPopoverSegue = class UIStoryboardPopoverSegue extends UIStoryboardSegue
-  @register()
-
   # Accessing the Segue Attributes
-  ck.instanceProperty @, "popoverController"
+  @instanceProperty "popoverController"
+
+  @register()

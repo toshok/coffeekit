@@ -5,31 +5,32 @@ ui = require './uikit'
 ck = require './coffeekit'
 
 class HelloIOSViewController extends ui.UIViewController
-new ck.RegisterAttribute HelloIOSViewController, "HelloIOSViewController"
+  @register()
 
 
 class GLKCanvasViewController extends glk.GLKViewController
   constructor: (handle) ->
-    super (if handle then handle else objc.allocInstance(@.constructor.name))
+    super handle
     if not handle?
       return @initWithNibNameAndBundle null, null
+    @handle
 
-  loadView: ->
+  loadView: @override ->
     @view = new glk.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
     @view.drawableDepthFormat = glk.GLKViewDrawableDepthFormat.depth16
 
-  new ck.SelectorAttribute @::loadView, "loadView", "v@:"
-
-new ck.RegisterAttribute GLKCanvasViewController, "GLKCanvasViewController"
+  @register()
 
 class TargetActionProxy1 extends foundation.NSObject
   constructor: (fn) ->
-                 super (objc.allocInstance(@.constructor.name))
+                 super()
                  @fn = fn
 
-  proxyAction: (a1) -> @fn(a1)
-  new ck.SelectorAttribute @::proxyAction, "action", "v@:@"
-new ck.RegisterAttribute TargetActionProxy1, "TargetActionProxy1"
+  proxyAction: @nativeSelector("action", (a1) -> @fn a1).
+                    returnType(-> ck.sig.Void).
+                    paramTypes(-> [foundation.NSObject])
+
+  @register()
 
 
 class HelloIOSAppDelegate extends foundation.NSObject
@@ -39,11 +40,11 @@ class HelloIOSAppDelegate extends foundation.NSObject
   uiAlertOnException: (f) ->
     try
       f()
-      true
+      yes
     catch e
       alertView = new ui.UIAlertView().init "Exception in demo script", e, null, "Ok", null
       alertView.show()
-      false
+      no
   
   loadDemoIntoController: (controller, demo) ->
     canvas = controller.view
@@ -71,42 +72,42 @@ class HelloIOSAppDelegate extends foundation.NSObject
     demoValid = @uiAlertOnException -> demo = require demoPath
 
     viewSource = (item) =>
-       if @sourceViewPopover?
-           @sourceViewPopover.dismissPopover true
-           @sourceViewPopover = null
-       else
-           sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
+      if @sourceViewPopover?
+        @sourceViewPopover.dismissPopover yes
+        @sourceViewPopover = null
+      else
+        sourceViewController = new HelloIOSViewController "HelloIOSViewController", null
 
-           saveAndClose = =>
-               @sourceViewPopover.dismissPopover true
-               @sourceViewPopover = null
-               console.log "exporting"
-               exportScript demoPath, sourceView.text
-               demoValid = @uiAlertOnException -> demo = require demoPath
-               if demoValid
-                 @loadDemoIntoController @glkcontroller, demo
+        saveAndClose = =>
+          @sourceViewPopover.dismissPopover yes
+          @sourceViewPopover = null
+          console.log "exporting"
+          exportScript demoPath, sourceView.text
+          demoValid = @uiAlertOnException -> demo = require demoPath
+          if demoValid
+            @loadDemoIntoController @glkcontroller, demo
                
 
-           toolbar = new ui.UIToolbar().initWithFrame new foundation.NSRect(0, 0, ui.UIScreen.mainScreen.bounds.width, 30)
-           saveButton = new ui.UIBarButtonItem().initWithClickHandler "Save and Close", ui.UIBarButtonItemStyle.bordered, (item) => saveAndClose()
-           toolbar.items = [
-               saveButton
-           ]
+        toolbar = new ui.UIToolbar().initWithFrame new foundation.NSRect(0, 0, ui.UIScreen.mainScreen.bounds.width, 30)
+        saveButton = new ui.UIBarButtonItem().initWithClickHandler "Save and Close", ui.UIBarButtonItemStyle.bordered, (item) => saveAndClose()
+        toolbar.items = [
+            saveButton
+        ]
            
-           saveButton.enabled = false
+        saveButton.enabled = no
            
-           sourceView = new ui.UITextView().initWithFrame new foundation.NSRect(0, 30, ui.UIScreen.mainScreen.bounds.width, ui.UIScreen.mainScreen.bounds.height)
-           sourceView.text = contentsOfFile "#{demoPath}.js"
-           sourceView.delegate =
-             didChangeText: ->
-               saveButton.enabled = true
+        sourceView = new ui.UITextView().initWithFrame new foundation.NSRect(0, 30, ui.UIScreen.mainScreen.bounds.width, ui.UIScreen.mainScreen.bounds.height)
+        sourceView.text = contentsOfFile "#{demoPath}.js"
+        sourceView.delegate =
+          didChangeText: ->
+            saveButton.enabled = yes
 
-           sourceViewController.view.addSubview toolbar           
-           sourceViewController.view.addSubview sourceView
-           sourceViewController.view.layoutIfNeeded()
+        sourceViewController.view.addSubview toolbar           
+        sourceViewController.view.addSubview sourceView
+        sourceViewController.view.layoutIfNeeded()
            
-           @sourceViewPopover = new ui.UIPopoverController().initWithContentViewController sourceViewController
-           @sourceViewPopover.presentPopoverFromBarButtonItem item, ui.UIPopoverArrowDirection.up, true
+        @sourceViewPopover = new ui.UIPopoverController().initWithContentViewController sourceViewController
+        @sourceViewPopover.presentPopoverFromBarButtonItem item, ui.UIPopoverArrowDirection.up, yes
 
     
     @glkcontroller = new GLKCanvasViewController
@@ -118,7 +119,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
     if demoValid
       @loadDemoIntoController @glkcontroller, demo
 
-    @window.rootViewController.pushViewController @glkcontroller, true
+    @window.rootViewController.pushViewController @glkcontroller, yes
 
     
   runJ3DDemo: (demoName) ->
@@ -159,7 +160,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
     newcontroller.view.addSubview @primeButton
     newcontroller.view.addSubview @primeTextField
     
-    @window.rootViewController.pushViewController newcontroller, true
+    @window.rootViewController.pushViewController newcontroller, yes
 
   xhrDemo: ->
     newcontroller = new HelloIOSViewController "HelloIOSViewController", null
@@ -183,11 +184,11 @@ class HelloIOSAppDelegate extends foundation.NSObject
     newcontroller.view.addSubview @xhrButton
     newcontroller.view.addSubview @xhrTextField
     
-    @window.rootViewController.pushViewController newcontroller, true
+    @window.rootViewController.pushViewController newcontroller, yes
 
                   
   
-  didFinishLaunching: (notification) ->
+  didFinishLaunching: @override ->
     @window = new ui.UIWindow().initWithFrame ui.UIScreen.mainScreen.bounds
 
     tableviewcontroller = new ui.UITableViewController().initWithStyle ui.UITableViewStyle.plain
@@ -242,6 +243,9 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
     @window.makeKeyAndVisible()
 
-    return true
-  new ck.SelectorAttribute @::didFinishLaunching, "applicationDidFinishLaunching:"
-new ck.RegisterAttribute HelloIOSAppDelegate, "AppDelegate"
+    yes
+
+  @conformsToProtocol ui.UIApplicationDelegate
+
+  @register("AppDelegate")
+

@@ -2,8 +2,8 @@
 
 #console.log "UITapGestureRecognizer"
 exports.UITapGestureRecognizer = class UITapGestureRecognizer extends UIGestureRecognizer
-  @register()
-
   # Configuring the Gesture
-  ck.instanceProperty @, "numberOfTapsRequired"
-  ck.instanceProperty @, "numberOfTouchesRequired"
+  @instanceProperty "numberOfTapsRequired"
+  @instanceProperty "numberOfTouchesRequired"
+
+  @register()

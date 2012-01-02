@@ -2,53 +2,52 @@
 
 #console.log "UIBezierPath"
 exports.UIBezierPath = class UIBezierPath extends foundation.NSObject
-  @register()
-
   # Creating a UIBezierPath Object
-  bezierPath: objc.invokeSelector "bezierPath"
-  bezierPathWithRect: objc.invokeSelector "bezierPathWithRect:"
-  bezierPathWithOvalInRect: objc.invokeSelector "bezierPathWithOvalInRect:"
-  bezierPathWithRoundedRect: objc.invokeSelector "bezierPathWithRoundedRect:cornerRadius:"
-  bezierPathWithRoundedRectByRoundingCorners: objc.invokeSelector "bezierPathWithRoundedRect:byRoundingCorners:cornerRadii:"
-  bezierPathWithArc: objc.invokeSelector "bezierPathWithArcCenter:radius:startAngle:endAngle:clockwise:"
-  bezierPathWithCGPath: objc.invokeSelector "bezierPathWithCGPath:"
+  bezierPath:                                 @nativeSelector "bezierPath"
+  bezierPathWithRect:                         @nativeSelector "bezierPathWithRect:"
+  bezierPathWithOvalInRect:                   @nativeSelector "bezierPathWithOvalInRect:"
+  bezierPathWithRoundedRect:                  @nativeSelector "bezierPathWithRoundedRect:cornerRadius:"
+  bezierPathWithRoundedRectByRoundingCorners: @nativeSelector "bezierPathWithRoundedRect:byRoundingCorners:cornerRadii:"
+  bezierPathWithArc:                          @nativeSelector "bezierPathWithArcCenter:radius:startAngle:endAngle:clockwise:"
+  bezierPathWithCGPath:                       @nativeSelector "bezierPathWithCGPath:"
 
   # Constructing a Path
-  moveToPoint: objc.invokeSelector "moveToPoint:"
-  addLineToPoint: objc.invokeSelector "addLineToPoint:"
-  addArc: objc.invokeSelector "addArcWithCenter:radius:startAngle:endAngle:clockwise:"
-  addCurve: objc.invokeSelector "addCurveToPoint:controlPoint1:controlPoint2:"
-  addQuadCurve: objc.invokeSelector "addQuadCurveToPoint:controlPoint:"
-  closePath: objc.invokeSelector "closePath"
-  removeAllPoints: objc.invokeSelector "removeAllPoints"
-  appendPath: objc.invokeSelector "appendPath:"
-  ck.instanceProperty @, "CGPath"
-  ck.instanceProperty @, "currentPoint"
+  moveToPoint:      @nativeSelector "moveToPoint:"
+  addLineToPoint:   @nativeSelector "addLineToPoint:"
+  addArc:           @nativeSelector "addArcWithCenter:radius:startAngle:endAngle:clockwise:"
+  addCurve:         @nativeSelector "addCurveToPoint:controlPoint1:controlPoint2:"
+  addQuadCurve:     @nativeSelector "addQuadCurveToPoint:controlPoint:"
+  closePath:        @nativeSelector "closePath"
+  removeAllPoints:  @nativeSelector "removeAllPoints"
+  appendPath:       @nativeSelector "appendPath:"
+  @instanceProperty "CGPath"
+  @instanceProperty "currentPoint"
 
   # Accessing Drawing Properties
-  ck.instanceProperty @, "lineWidth"
-  ck.instanceProperty @, "lineCapStyle"
-  ck.instanceProperty @, "lineJoinStyle"
-  ck.instanceProperty @, "miterLimit"
-  ck.instanceProperty @, "flatness"
-  ck.instanceProperty @, "usesEvenOddFillRule"
-  setLineDash: objc.invokeSelector "setLineDash:count:phase:"
-  getLineDash: objc.invokeSelector "getLineDash:count:phase:"
+  @instanceProperty "lineWidth"
+  @instanceProperty "lineCapStyle"
+  @instanceProperty "lineJoinStyle"
+  @instanceProperty "miterLimit"
+  @instanceProperty "flatness"
+  @instanceProperty "usesEvenOddFillRule"
+  setLineDash:      @nativeSelector "setLineDash:count:phase:"
+  getLineDash:      @nativeSelector "getLineDash:count:phase:"
 
   # Drawing Paths
-  fill: objc.invokeSelector "fill"
-  fillWithBlendMode: objc.invokeSelector "fillWithBlendMode:alpha:"
-  stroke: objc.invokeSelector "stroke"
-  strokeWithBlendMode: objc.invokeSelector "strokeWithBlendMode:alpha:"
+  fill:                @nativeSelector "fill"
+  fillWithBlendMode:   @nativeSelector "fillWithBlendMode:alpha:"
+  stroke:              @nativeSelector "stroke"
+  strokeWithBlendMode: @nativeSelector "strokeWithBlendMode:alpha:"
 
   # Clipping Paths
-  addClip: objc.invokeSelector "addClip"
+  addClip:             @nativeSelector "addClip"
 
   # Hit Detection
-  containsPoint: objc.invokeSelector "containsPoint:"
-  ck.instanceProperty @, "empty"
-  ck.instanceProperty @, "bounds"
+  containsPoint:    @nativeSelector "containsPoint:"
+  @instanceProperty "empty"
+  @instanceProperty "bounds"
 
   # Applying Transformations
-  applyTransform: objc.invokeSelector "applyTransform:"
+  applyTransform:   @nativeSelector "applyTransform:"
  
+  @register()

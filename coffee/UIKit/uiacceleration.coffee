@@ -2,10 +2,10 @@
 
 #console.log "UIAcceleration"
 exports.UIAcceleration = class UIAcceleration extends foundation.NSObject
-  @register()
-
   # Accessing the Acceleration Values
-  ck.instanceProperty @, "x"
-  ck.instanceProperty @, "y"
-  ck.instanceProperty @, "z"
-  ck.instanceProperty @, "timestamp"
+  @instanceProperty "x"
+  @instanceProperty "y"
+  @instanceProperty "z"
+  @instanceProperty "timestamp"
+
+  @register()

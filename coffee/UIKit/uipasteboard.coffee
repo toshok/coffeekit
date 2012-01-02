@@ -2,47 +2,47 @@
 
 #console.log "UIPasteboard"
 exports.UIPasteboard = class UIPasteboard extends foundation.NSObject
-  @register()
-
   # Getting and Removing Pasteboards
-  @generalPasteboard: objc.invokeSelector "generalPasteboard"
-  @pasteboardWithName: objc.invokeSelector "pasteboardWithName:create:"
-  @pasteboardWithUniqueName: objc.invokeSelector "pasteboardWithUniqueName"
-  @removePasteboardWithName: objc.invokeSelector "removePasteboardWithName:"
+  @generalPasteboard:        @nativeSelector "generalPasteboard"
+  @pasteboardWithName:       @nativeSelector "pasteboardWithName:create:"
+  @pasteboardWithUniqueName: @nativeSelector "pasteboardWithUniqueName"
+  @removePasteboardWithName: @nativeSelector "removePasteboardWithName:"
 
   # Getting and Setting Pasteboard Attributes
-  ck.instanceProperty @, "name"
-  ck.instanceProperty @, "persistent"
-  ck.instanceProperty @, "changeCount"
+  @instanceProperty "name"
+  @instanceProperty "persistent"
+  @instanceProperty "changeCount"
 
   # Determining Types of Single Pasteboard Items
-  pasteboardTypes: objc.invokeSelector "pasteboardTypes"
-  containsPasteboardTypes: objc.invokeSelector "containsPasteboardTypes:"
+  pasteboardTypes:         @nativeSelector "pasteboardTypes"
+  containsPasteboardTypes: @nativeSelector "containsPasteboardTypes:"
 
   # Getting and Setting Single Pasteboard Items
-  dataForPasteboardType: objc.invokeSelector "dataForPasteboardType:"
-  valueForPasteboardType: objc.invokeSelector "valueForPasteboardType:"
-  setData:forPasteboardType: objc.invokeSelector "setData:forPasteboardType:"
-  setValue:forPasteboardType: objc.invokeSelector "setValue:forPasteboardType:"
+  dataForPasteboardType:      @nativeSelector "dataForPasteboardType:"
+  valueForPasteboardType:     @nativeSelector "valueForPasteboardType:"
+  setData:forPasteboardType:  @nativeSelector "setData:forPasteboardType:"
+  setValue:forPasteboardType: @nativeSelector "setValue:forPasteboardType:"
 
   # Determining the Types of Multiple Pasteboard Items
-  ck.instanceProperty @, "numberOfItems"
-  pasteboardTypesForItemSet: objc.invokeSelector "pasteboardTypesForItemSet:"
-  itemSetWithPasteboardTypes: objc.invokeSelector "itemSetWithPasteboardTypes:"
-  containsPasteboardTypesInItemSet: objc.invokeSelector "containsPasteboardTypes:inItemSet:"
+  pasteboardTypesForItemSet:        @nativeSelector "pasteboardTypesForItemSet:"
+  itemSetWithPasteboardTypes:       @nativeSelector "itemSetWithPasteboardTypes:"
+  containsPasteboardTypesInItemSet: @nativeSelector "containsPasteboardTypes:inItemSet:"
+  @instanceProperty "numberOfItems"
 
   # Getting and Setting Multiple Pasteboard Items
-  ck.instanceProperty @, "items"
-  dataForPasteboardTypeInItemSet: objc.invokeSelector "dataForPasteboardType:inItemSet:"
-  valuesForPasteboardTypeInItemSet: objc.invokeSelector "valuesForPasteboardType:inItemSet:"
-  addItems: objc.invokeSelector "addItems:"
+  dataForPasteboardTypeInItemSet:   @nativeSelector "dataForPasteboardType:inItemSet:"
+  valuesForPasteboardTypeInItemSet: @nativeSelector "valuesForPasteboardType:inItemSet:"
+  addItems:                         @nativeSelector "addItems:"
+  @instanceProperty "items"
 
   # Getting and Setting Pasteboard Items of Standard Data Types
-  ck.instanceProperty @, "string"
-  ck.instanceProperty @, "strings"
-  ck.instanceProperty @, "image"
-  ck.instanceProperty @, "images"
-  ck.instanceProperty @, "URL"
-  ck.instanceProperty @, "URLs"
-  ck.instanceProperty @, "color"
-  ck.instanceProperty @, "colors"
+  @instanceProperty "string"
+  @instanceProperty "strings"
+  @instanceProperty "image"
+  @instanceProperty "images"
+  @instanceProperty "URL"
+  @instanceProperty "URLs"
+  @instanceProperty "color"
+  @instanceProperty "colors"
+
+  @register()

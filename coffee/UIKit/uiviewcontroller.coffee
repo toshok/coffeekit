@@ -2,8 +2,6 @@
 
 #console.log "UIViewController"
 exports.UIViewController = class UIViewController extends UIResponder
-  @register()
-
   constructor: (handle, arg2) ->
     if typeof (handle) == 'string'
       super()
@@ -12,106 +10,107 @@ exports.UIViewController = class UIViewController extends UIResponder
       super handle
 
   # Creating a View Controller Using Nib Files
-  initWithNibNameAndBundle: objc.invokeSelector "initWithNibName:bundle:"
-  ck.instanceProperty @, "nibName"
-  ck.instanceProperty @, "nibBundle"
+  initWithNibNameAndBundle: @nativeSelector "initWithNibName:bundle:"
+  @instanceProperty "nibName"
+  @instanceProperty "nibBundle"
 
   # Managing the View
-  ck.instanceProperty @, "view"
-  loadView: objc.invokeSelector "loadView"
-  viewDidLoad: objc.invokeSelector "viewDidLoad"
-  viewWillUnload: objc.invokeSelector "viewWillUnload"
-  viewDidUnload: objc.invokeSelector "viewDidUnload"
-  isViewLoaded: objc.invokeSelector "isViewLoaded"
-  ck.instanceProperty @, "title"
-  ck.instanceProperty @, "contentSizeForViewInPopover"
-  ck.instanceProperty @, "modalInPopover"
+  loadView:       @nativeSelector("loadView").returnType(-> ck.sig.Void)
+  viewDidLoad:    @nativeSelector "viewDidLoad"
+  viewWillUnload: @nativeSelector "viewWillUnload"
+  viewDidUnload:  @nativeSelector "viewDidUnload"
+  isViewLoaded:   @nativeSelector "isViewLoaded"
+  @instanceProperty "view"
+  @instanceProperty "title"
+  @instanceProperty "contentSizeForViewInPopover"
+  @instanceProperty "modalInPopover"
 
   # Using a Storyboard
-  performSegue: objc.invokeSelector "performSegueWithIdentifier:sender:"
-  prepareForSegue: objc.invokeSelector "prepareForSegue:sender:"
-  ck.instanceProperty @, "storyboard"
+  performSegue:     @nativeSelector "performSegueWithIdentifier:sender:"
+  prepareForSegue:  @nativeSelector "prepareForSegue:sender:"
+  @instanceProperty "storyboard"
 
   # Responding to View Events
-  viewWillAppear: objc.invokeSelector "viewWillAppear:"
-  viewDidAppear: objc.invokeSelector "viewDidAppear:"
-  viewWillDisappear: objc.invokeSelector "viewWillDisappear:"
-  viewDidDisappear: objc.invokeSelector "viewDidDisappear:"
+  viewWillAppear:    @nativeSelector "viewWillAppear:"
+  viewDidAppear:     @nativeSelector "viewDidAppear:"
+  viewWillDisappear: @nativeSelector "viewWillDisappear:"
+  viewDidDisappear:  @nativeSelector "viewDidDisappear:"
 
   # Configuring the View’s Layout Behavior
-  ck.instanceProperty @, "wantsFullScreenLayout"
+  @instanceProperty "wantsFullScreenLayout"
 
   # Configuring the View Rotation Settings
-  ck.instanceProperty @, "interfaceOrientation"
-  shouldAutorotateToInterfaceOrientation: objc.invokeSelector "shouldAutorotateToInterfaceOrientation:"
-  attemptRotationToDeviceOrientation: objc.invokeSelector "attemptRotationToDeviceOrientation"
-  rotatingHeaderView: objc.invokeSelector "rotatingHeaderView"
-  rotatingFooterView: objc.invokeSelector "rotatingFooterView"
+  @instanceProperty "interfaceOrientation"
+  shouldAutorotateToInterfaceOrientation: @nativeSelector "shouldAutorotateToInterfaceOrientation:"
+  attemptRotationToDeviceOrientation:     @nativeSelector "attemptRotationToDeviceOrientation"
+  rotatingHeaderView:                     @nativeSelector "rotatingHeaderView"
+  rotatingFooterView:                     @nativeSelector "rotatingFooterView"
 
   # Responding to View Rotation Events
-  willRotateToInterfaceOrientation:duration: objc.invokeSelector "willRotateToInterfaceOrientation:duration:"
-  willAnimateRotationToInterfaceOrientation: objc.invokeSelector "willAnimateRotationToInterfaceOrientation:duration:"
-  didRotateFromInterfaceOrientation: objc.invokeSelector "didRotateFromInterfaceOrientation:"
-  didAnimateFirstHalfOfRotationToInterfaceOrientation: objc.invokeSelector "didAnimateFirstHalfOfRotationToInterfaceOrientation:" # Deprecated in iOS 5.0
-  willAnimateFirstHalfOfRotationToInterfaceOrientation: objc.invokeSelector "willAnimateFirstHalfOfRotationToInterfaceOrientation:duration:" # Deprecated in iOS 5.0
-  willAnimateSecondHalfOfRotationFromInterfaceOrientation: objc.invokeSelector "willAnimateSecondHalfOfRotationFromInterfaceOrientation:duration:" # Deprecated in iOS 5.0
+  willRotateToInterfaceOrientation:duration:               @nativeSelector "willRotateToInterfaceOrientation:duration:"
+  willAnimateRotationToInterfaceOrientation:               @nativeSelector "willAnimateRotationToInterfaceOrientation:duration:"
+  didRotateFromInterfaceOrientation:                       @nativeSelector "didRotateFromInterfaceOrientation:"
+  didAnimateFirstHalfOfRotationToInterfaceOrientation:     @nativeSelector "didAnimateFirstHalfOfRotationToInterfaceOrientation:" # Deprecated in iOS 5.0
+  willAnimateFirstHalfOfRotationToInterfaceOrientation:    @nativeSelector "willAnimateFirstHalfOfRotationToInterfaceOrientation:duration:" # Deprecated in iOS 5.0
+  willAnimateSecondHalfOfRotationFromInterfaceOrientation: @nativeSelector "willAnimateSecondHalfOfRotationFromInterfaceOrientation:duration:" # Deprecated in iOS 5.0
 
   # Managing Child View Controllers
-  ck.instanceProperty @, "childViewControllers"
-  addChildViewController: objc.invokeSelector "addChildViewController:"
-  removeFromParentViewController: objc.invokeSelector "removeFromParentViewController"
-  automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers: objc.invokeSelector "automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers"
+  @instanceProperty "childViewControllers"
+  addChildViewController:                                                 @nativeSelector "addChildViewController:"
+  removeFromParentViewController:                                         @nativeSelector "removeFromParentViewController"
+  automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers: @nativeSelector "automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers"
 
   # Managing the Layout of Contained View Controllers
-  viewDidLayoutSubviews: objc.invokeSelector "viewDidLayoutSubviews"
-  viewWillLayoutSubviews: objc.invokeSelector "viewWillLayoutSubviews"
-  willMoveToParentViewController: objc.invokeSelector "willMoveToParentViewController:"
-  isMovingFromParentViewController: objc.invokeSelector "isMovingFromParentViewController"
-  isMovingToParentViewController: objc.invokeSelector "isMovingToParentViewController"
-  didMoveToParentViewController: objc.invokeSelector "didMoveToParentViewController:"
+  viewDidLayoutSubviews:            @nativeSelector "viewDidLayoutSubviews"
+  viewWillLayoutSubviews:           @nativeSelector "viewWillLayoutSubviews"
+  willMoveToParentViewController:   @nativeSelector "willMoveToParentViewController:"
+  isMovingFromParentViewController: @nativeSelector "isMovingFromParentViewController"
+  isMovingToParentViewController:   @nativeSelector "isMovingToParentViewController"
+  didMoveToParentViewController:    @nativeSelector "didMoveToParentViewController:"
 
   # Initiating Transitions Between Contained View Controllers
-  transition: objc.invokeSelector "transitionFromViewController:toViewController:duration:options:animations:completion:"
+  transition:                       @nativeSelector "transitionFromViewController:toViewController:duration:options:animations:completion:"
 
   # Handling Memory Warnings
-  didReceiveMemoryWarning: objc.invokeSelector "didReceiveMemoryWarning"
+  didReceiveMemoryWarning:          @nativeSelector "didReceiveMemoryWarning"
 
   # Getting Other Related View Controllers
-  ck.instanceProperty @, "parentViewController"
-  ck.instanceProperty @, "searchDisplayController"
-  ck.instanceProperty @, "splitViewController"
-  ck.instanceProperty @, "modalViewController"
-  ck.instanceProperty @, "navigationController"
-  ck.instanceProperty @, "tabBarController"
+  @instanceProperty "parentViewController"
+  @instanceProperty "searchDisplayController"
+  @instanceProperty "splitViewController"
+  @instanceProperty "modalViewController"
+  @instanceProperty "navigationController"
+  @instanceProperty "tabBarController"
 
   # Presenting View Controllers
-  ck.instanceProperty @, "definesPresentationContext"
-  ck.instanceProperty @, "providesPresentationContextTransitionStyle"
-  present: objc.invokeSelector "presentViewController:animated:completion:"
-  ck.instanceProperty @, "presentingViewController"
-  ck.instanceProperty @, "presentedViewController"
-  isBeingPresented: objc.invokeSelector "isBeingPresented"
-  dismiss: objc.invokeSelector "dismissViewControllerAnimated:completion:"
-  isBeingDismissed: objc.invokeSelector "isBeingDismissed"
+  present:          @nativeSelector "presentViewController:animated:completion:"
+  isBeingPresented: @nativeSelector "isBeingPresented"
+  dismiss:          @nativeSelector "dismissViewControllerAnimated:completion:"
+  isBeingDismissed: @nativeSelector "isBeingDismissed"
+  @instanceProperty "definesPresentationContext"
+  @instanceProperty "providesPresentationContextTransitionStyle"
+  @instanceProperty "presentingViewController"
+  @instanceProperty "presentedViewController"
 
   # Configuring a Navigation Interface
-  ck.instanceProperty @, "navigationItem"
-  ck.instanceProperty @, "editing", { set: (v) -> @setEditing v, false }
-  setEditing: objc.invokeSelector "setEditing:animated:"
-  editButtonItem: objc.invokeSelector "editButtonItem"
-  ck.instanceProperty @, "hidesBottomBarWhenPushed"
+  setEditing:     @nativeSelector "setEditing:animated:"
+  editButtonItem: @nativeSelector "editButtonItem"
+  @instanceProperty "navigationItem"
+  @instanceProperty "editing", { set: (v) -> @setEditing v, false }
+  @instanceProperty "hidesBottomBarWhenPushed"
 
   # Configuring the Navigation Controller’s Toolbar
-  setToolbarItems: objc.invokeSelector "setToolbarItems:animated:"
-  ck.instanceProperty @, "toolbarItems", { set: (v) -> @setToolbarItems v, false }
+  setToolbarItems: @nativeSelector "setToolbarItems:animated:"
+  @instanceProperty "toolbarItems", { set: (v) -> @setToolbarItems v, false }
 
   # Configuring Tab Bar Items
-  ck.instanceProperty @, "tabBarItem"
+  @instanceProperty "tabBarItem"
 
   # Presenting Modal Views
-  presentModal: objc.invokeSelector "presentModalViewController:animated:"
-  dismissModal: objc.invokeSelector "dismissModalViewControllerAnimated:"
-  ck.instanceProperty @, "modalTransitionStyle"
-  ck.instanceProperty @, "modalPresentationStyle"
-  disablesAutomaticKeyboardDismissal: objc.invokeSelector "disablesAutomaticKeyboardDismissal"
+  presentModal:                       @nativeSelector "presentModalViewController:animated:"
+  dismissModal:                       @nativeSelector "dismissModalViewControllerAnimated:"
+  disablesAutomaticKeyboardDismissal: @nativeSelector "disablesAutomaticKeyboardDismissal"
+  @instanceProperty "modalTransitionStyle"
+  @instanceProperty "modalPresentationStyle"
 
+  @register()

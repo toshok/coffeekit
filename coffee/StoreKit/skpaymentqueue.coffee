@@ -1,22 +1,22 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.SKPaymentQueue = class SKPaymentQueue extends NSObject
-  @register()
-
   # Determining Whether the User Can Make Payments
-  @canMakePayments: objc.invokeSelector "canMakePayments"
+  @canMakePayments: @nativeSelector "canMakePayments"
 
   # Getting the Queue
-  @defaultQueue: objc.invokeSelector "defaultQueue"
+  @defaultQueue: @nativeSelector "defaultQueue"
 
   # Adding and Removing the Observer
-  addTransactionObserver: objc.invokeSelector "addTransactionObserver:"
-  removeTransactionObserver: objc.invokeSelector "removeTransactionObserver:"
+  addTransactionObserver: @nativeSelector "addTransactionObserver:"
+  removeTransactionObserver: @nativeSelector "removeTransactionObserver:"
 
   # Managing Transactions
-  ck.instanceProperty @, "transactions"
-  addPayment: objc.invokeSelector "addPayment:"
-  finishTransaction: objc.invokeSelector "finishTransaction:"
+  @instanceProperty "transactions"
+  addPayment: @nativeSelector "addPayment:"
+  finishTransaction: @nativeSelector "finishTransaction:"
 
   # Restoring Purchases
-  restoreCompletedTransactions: objc.invokeSelector "restoreCompletedTransactions"
+  restoreCompletedTransactions: @nativeSelector "restoreCompletedTransactions"
+
+  @register()

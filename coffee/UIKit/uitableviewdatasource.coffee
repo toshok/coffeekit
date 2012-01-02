@@ -1,24 +1,23 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITableViewDataSource"
-Protocol = foundation.Protocol
 
 exports.UITableViewDataSource = class UITableViewDataSource extends foundation.Protocol
-  @register()
-
   # Configuring a Table View
-  cellForRow:                  Protocol.requiredMethod("tableView:cellForRowAtIndexPath:", {sig: "@@:@@"})
-  numberOfSections:            Protocol.optionalMethod("numberOfSectionsInTableView:", {sig: "i@:@"})
-  numberOfRowsInSection:       Protocol.requiredMethod("tableView:numberOfRowsInSection:", {sig: "i@:@i"})
-  sectionIndexTitles:          Protocol.optionalMethod "sectionIndexTitlesForTableView:"
-  sectionForSectionIndexTitle: Protocol.optionalMethod "tableView:sectionForSectionIndexTitle:atIndex:"
-  titleForHeaderInSection:     Protocol.optionalMethod("tableView:titleForHeaderInSection:", {sig: "@@:@i"})
-  titleForFooterInSection:     Protocol.optionalMethod "tableView:titleForFooterInSection:"
+  cellForRow:                  @requiredMethod("tableView:cellForRowAtIndexPath:", sig: "@@:@@")
+  numberOfSections:            @optionalMethod("numberOfSectionsInTableView:", sig: "i@:@")
+  numberOfRowsInSection:       @requiredMethod("tableView:numberOfRowsInSection:", sig: "i@:@i")
+  sectionIndexTitles:          @optionalMethod "sectionIndexTitlesForTableView:"
+  sectionForSectionIndexTitle: @optionalMethod "tableView:sectionForSectionIndexTitle:atIndex:"
+  titleForHeaderInSection:     @optionalMethod("tableView:titleForHeaderInSection:", sig: "@@:@i")
+  titleForFooterInSection:     @optionalMethod "tableView:titleForFooterInSection:"
   
   # Inserting or Deleting Table Rows
-  commitEditingStyle:          Protocol.optionalMethod "tableView:commitEditingStyle:forRowAtIndexPath:"
-  canEditRow:                  Protocol.optionalMethod "tableView:canEditRowAtIndexPath:"
+  commitEditingStyle:          @optionalMethod "tableView:commitEditingStyle:forRowAtIndexPath:"
+  canEditRow:                  @optionalMethod "tableView:canEditRowAtIndexPath:"
   
   # Reordering Table Rows
-  canMoveRow:                  Protocol.optionalMethod "tableView:canMoveRowAtIndexPath:"
-  moveRow:                     Protocol.optionalMethod "tableView:moveRowAtIndexPath:toIndexPath:"
+  canMoveRow:                  @optionalMethod "tableView:canMoveRowAtIndexPath:"
+  moveRow:                     @optionalMethod "tableView:moveRowAtIndexPath:toIndexPath:"
+
+  @register()

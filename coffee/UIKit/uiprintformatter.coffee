@@ -2,21 +2,21 @@
 
 #console.log "UIPrintFormatter"
 exports.UIPrintFormatter = class UIPrintFormatter extends foundation.NSObject
-  @register()
-
   # Laying Out the Content
-  ck.instanceProperty @, "contentInsets"
-  ck.instanceProperty @, "maximumContentHeight"
-  ck.instanceProperty @, "maximumContentWidth"
+  @instanceProperty "contentInsets"
+  @instanceProperty "maximumContentHeight"
+  @instanceProperty "maximumContentWidth"
 
   # Managing Pagination
-  ck.instanceProperty @, "startPage"
-  ck.instanceProperty @, "pageCount"
+  @instanceProperty "startPage"
+  @instanceProperty "pageCount"
 
   # Drawing the Content
-  drawInRectForPageAtIndex: objc.invokeSelector "drawInRect:forPageAtIndex:"
-  rectForPageAtIndex: objc.invokeSelector "rectForPageAtIndex:"
+  drawInRectForPageAtIndex:    @nativeSelector "drawInRect:forPageAtIndex:"
+  rectForPageAtIndex:          @nativeSelector "rectForPageAtIndex:"
 
   # Communicating with the Page Renderer
-  removeFromPrintPageRenderer: objc.invokeSelector "removeFromPrintPageRenderer"
-  ck.instanceProperty @, "printPageRenderer"
+  removeFromPrintPageRenderer: @nativeSelector "removeFromPrintPageRenderer"
+  @instanceProperty "printPageRenderer"
+
+  @register()

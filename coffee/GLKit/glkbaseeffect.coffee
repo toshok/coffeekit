@@ -1,37 +1,38 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GLKBaseEffect = class GLKBaseEffect extends foundation.NSObject
-  @register()
   @mixinProtocol GLKNamedEffect
 
   # Naming the Effect
-  ck.instanceProperty @, "label"
+  @instanceProperty "label"
 
   # Configuring the Modelview Transform
-  ck.instanceProperty @, "transform"
+  @instanceProperty "transform"
 
   # Configuring Lights
-  ck.instanceProperty @, "lightingType"
-  ck.instanceProperty @, "lightModelTwoSided"
-  ck.instanceProperty @, "material"
-  ck.instanceProperty @, "lightModelAmbientColor"
-  ck.instanceProperty @, "light0"
-  ck.instanceProperty @, "light1"
-  ck.instanceProperty @, "light2"
+  @instanceProperty "lightingType"
+  @instanceProperty "lightModelTwoSided"
+  @instanceProperty "material"
+  @instanceProperty "lightModelAmbientColor"
+  @instanceProperty "light0"
+  @instanceProperty "light1"
+  @instanceProperty "light2"
 
   # Configuring Textures
-  ck.instanceProperty @, "texturingEnabled"
-  ck.instanceProperty @, "texture2d0"
-  ck.instanceProperty @, "texture2d1"
-  ck.instanceProperty @, "textureOrder"
+  @instanceProperty "texturingEnabled"
+  @instanceProperty "texture2d0"
+  @instanceProperty "texture2d1"
+  @instanceProperty "textureOrder"
 
   # Configuring Fog
-  ck.instanceProperty @, "fog"
+  @instanceProperty "fog"
 
   # Configuring Color Information
-  ck.instanceProperty @, "colorMaterialEnabled"
-  ck.instanceProperty @, "useConstantColor"
-  ck.instanceProperty @, "constantColor"
+  @instanceProperty "colorMaterialEnabled"
+  @instanceProperty "useConstantColor"
+  @instanceProperty "constantColor"
 
   # Preparing the Effect for Drawing
-  prepareToDraw: objc.invokeSelector "prepareToDraw"
+  prepareToDraw: @nativeSelector "prepareToDraw"
+
+  @register()

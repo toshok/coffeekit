@@ -2,8 +2,8 @@
 
 #console.log "UISwipeGestureRecognizer"
 exports.UISwipeGestureRecognizer = class UISwipeGestureRecognizer extends UIGestureRecognizer
-  @register()
-
   # Configuring the Gesture
-  ck.instanceProperty @, "direction"
-  ck.instanceProperty @, "numberOfTouchesRequired"
+  @instanceProperty "direction"
+  @instanceProperty "numberOfTouchesRequired"
+
+  @register()

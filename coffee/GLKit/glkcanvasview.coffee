@@ -2,8 +2,6 @@
 
 #console.log "GLKCanvasView"
 exports.GLKCanvasView = class GLKCanvasView extends GLKView
-  @register()
-
   getContext: (name, args) ->
     if name is "2d"
       throw "GLKCanvasView doesn't support 2d rendering"
@@ -15,3 +13,5 @@ exports.GLKCanvasView = class GLKCanvasView extends GLKView
 
   @::__defineGetter__ "width", -> return @frame.width
   @::__defineGetter__ "height", -> return @frame.height
+
+  @register()

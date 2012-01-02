@@ -2,13 +2,13 @@
 
 #console.log "UITableViewController"
 exports.UITableViewController = class UITableViewController extends UIViewController
-  @register()
-
   # Initializing the UITableViewController Object
-  initWithStyle: objc.invokeSelector "initWithStyle:"
+  initWithStyle: @nativeSelector "initWithStyle:"
 
   # Getting the Table View
-  ck.instanceProperty @, "tableView"
+  @instanceProperty "tableView"
 
   # Configuring the Table Behavior
-  ck.instanceProperty @, "clearsSelectionOnViewWillAppear"
+  @instanceProperty "clearsSelectionOnViewWillAppear"
+
+  @register()

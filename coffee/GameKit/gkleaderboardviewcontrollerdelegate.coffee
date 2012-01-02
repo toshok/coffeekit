@@ -4,7 +4,7 @@
 Protocol = foundation.Protocol
 
 exports.UIWebView = class GKLeaderboardViewControllerDelegate extends foundation.Protocol
-  @register()
-
   # Handling User Actions
   didFinish: Protocol.requiredMethod ("leaderboardViewControllerDidFinish:")
+
+  @register()

@@ -2,20 +2,20 @@
 
 #console.log "UIManagedDocument"
 exports.UIManagedDocument = class UIManagedDocument extends UIDocument
-  @register()
-
   # Managing the Core Data Stack
-  configurePersistentStoreCoordinator: objc.invokeSelector "configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"
-  ck.instanceProperty @, "managedObjectContext"
-  ck.instanceProperty @, "managedObjectModel"
-  ck.instanceProperty @, "persistentStoreOptions"
-  ck.instanceProperty @, "modelConfiguration"
-  persistentStoreType: objc.invokeSelector "persistentStoreTypeForFileType:"
+  configurePersistentStoreCoordinator: @nativeSelector "configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"
+  persistentStoreType:                 @nativeSelector "persistentStoreTypeForFileType:"
+  @instanceProperty "managedObjectContext"
+  @instanceProperty "managedObjectModel"
+  @instanceProperty "persistentStoreOptions"
+  @instanceProperty "modelConfiguration"
 
   # Customizing Read and Write Operations
-  readAdditionalContent: objc.invokeSelector "readAdditionalContentFromURL:error:"
-  additionalContent: objc.invokeSelector "additionalContentForURL:error:"
-  writeAdditionalContent: objc.invokeSelector "writeAdditionalContent:toURL:originalContentsURL:error:"
+  readAdditionalContent:  @nativeSelector "readAdditionalContentFromURL:error:"
+  additionalContent:      @nativeSelector "additionalContentForURL:error:"
+  writeAdditionalContent: @nativeSelector "writeAdditionalContent:toURL:originalContentsURL:error:"
 
   # Naming the Persistent Store File
-  @persistentStoreName: objc.invokeSelector "persistentStoreName"
+  @persistentStoreName: @nativeSelector "persistentStoreName"
+
+  @register()

@@ -2,14 +2,14 @@
 
 #console.log "UISwitch"
 exports.UISwitch = class UISwitch extends UIControl
-  @register()
-
   # Initializing the Switch Object
-  initWithFrame: objc.invokeSelector "initWithFrame:"
+  initWithFrame: @nativeSelector "initWithFrame:"
 
   # Setting the Off/On State
-  ck.instanceProperty @, "on", { set: (v) -> @setOn v, false }
-  setOn: objc.invokeSelector "setOn:animated:"
+  @instanceProperty "on", { set: (v) -> @setOn v, false }
+  setOn: @nativeSelector "setOn:animated:"
 
   # Customizing the Appearance of the Switch
-  ck.instanceProperty @, "onTintColor"
+  @instanceProperty "onTintColor"
+
+  @register()

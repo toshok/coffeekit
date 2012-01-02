@@ -1,20 +1,20 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.NSAnimationContext = class NSAnimationContext extends foundation.NSObject
-  @register()
-
   # Grouping Transactions
-  beginGrouping: objc.invokeSelector "beginGrouping"
-  endGrouping: objc.invokeSelector "endGrouping"
+  beginGrouping: @nativeSelector "beginGrouping"
+  endGrouping: @nativeSelector "endGrouping"
 
   # Getting the Current Animation Context
-  currentContext: objc.invokeSelector "currentContext"
+  currentContext: @nativeSelector "currentContext"
 
   # Animation Completion Handlers
-  setCompletionHandler: objc.invokeSelector "setCompletionHandler:"
-  completionHandler: objc.invokeSelector "completionHandler"
-  runAnimationGroup: objc.invokeSelector "runAnimationGroup:completionHandler:"
+  setCompletionHandler: @nativeSelector "setCompletionHandler:"
+  completionHandler: @nativeSelector "completionHandler"
+  runAnimationGroup: @nativeSelector "runAnimationGroup:completionHandler:"
 
   # Modifying the Animation Duration
-  ck.instanceProperty @, "duration"
-  ck.instanceProperty @, "timingFunction"
+  @instanceProperty "duration"
+  @instanceProperty "timingFunction"
+
+  @register()

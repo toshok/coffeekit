@@ -1,42 +1,42 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.NSAnimation = class NSAnimation extends foundation.NSObject
-  @register()
-
   # Initializing an NSAnimation Object
-  initWithDuration:animationCurve: objc.invokeSelector "initWithDuration:animationCurve:"
+  initWithDuration:animationCurve: @nativeSelector "initWithDuration:animationCurve:"
 
   # Configuring an Animation
-  setAnimationBlockingMode: objc.invokeSelector "setAnimationBlockingMode:"
-  animationBlockingMode: objc.invokeSelector "animationBlockingMode"
-  runLoopModesForAnimating: objc.invokeSelector "runLoopModesForAnimating"
-  setAnimationCurve: objc.invokeSelector "setAnimationCurve:"
-  animationCurve: objc.invokeSelector "animationCurve"
-  setDuration: objc.invokeSelector "setDuration:"
-  duration: objc.invokeSelector "duration"
-  setFrameRate: objc.invokeSelector "setFrameRate:"
-  frameRate: objc.invokeSelector "frameRate"
+  setAnimationBlockingMode: @nativeSelector "setAnimationBlockingMode:"
+  animationBlockingMode: @nativeSelector "animationBlockingMode"
+  runLoopModesForAnimating: @nativeSelector "runLoopModesForAnimating"
+  setAnimationCurve: @nativeSelector "setAnimationCurve:"
+  animationCurve: @nativeSelector "animationCurve"
+  setDuration: @nativeSelector "setDuration:"
+  duration: @nativeSelector "duration"
+  setFrameRate: @nativeSelector "setFrameRate:"
+  frameRate: @nativeSelector "frameRate"
 
   # Managing the Delegate
-  setDelegate: objc.invokeSelector "setDelegate:"
-  delegate: objc.invokeSelector "delegate"
+  setDelegate: @nativeSelector "setDelegate:"
+  delegate: @nativeSelector "delegate"
 
   # Controlling and Monitoring an Animation
-  startAnimation: objc.invokeSelector "startAnimation"
-  stopAnimation: objc.invokeSelector "stopAnimation"
-  isAnimating: objc.invokeSelector "isAnimating"
-  setCurrentProgress: objc.invokeSelector "setCurrentProgress:"
-  currentProgress: objc.invokeSelector "currentProgress"
-  currentValue: objc.invokeSelector "currentValue"
+  startAnimation: @nativeSelector "startAnimation"
+  stopAnimation: @nativeSelector "stopAnimation"
+  isAnimating: @nativeSelector "isAnimating"
+  setCurrentProgress: @nativeSelector "setCurrentProgress:"
+  currentProgress: @nativeSelector "currentProgress"
+  currentValue: @nativeSelector "currentValue"
 
   # Managing Progress Marks
-  addProgressMark: objc.invokeSelector "addProgressMark:"
-  removeProgressMark: objc.invokeSelector "removeProgressMark:"
-  setProgressMarks: objc.invokeSelector "setProgressMarks:"
-  progressMarks: objc.invokeSelector "progressMarks"
+  addProgressMark: @nativeSelector "addProgressMark:"
+  removeProgressMark: @nativeSelector "removeProgressMark:"
+  setProgressMarks: @nativeSelector "setProgressMarks:"
+  progressMarks: @nativeSelector "progressMarks"
 
   # Linking Animations Together
-  startWhenAnimationReachesProgress: objc.invokeSelector "startWhenAnimation:reachesProgress:"
-  stopWhenAnimationReachesProgress: objc.invokeSelector "stopWhenAnimation:reachesProgress:"
-  clearStartAnimation: objc.invokeSelector "clearStartAnimation"
-  clearStopAnimation: objc.invokeSelector "clearStopAnimation"
+  startWhenAnimationReachesProgress: @nativeSelector "startWhenAnimation:reachesProgress:"
+  stopWhenAnimationReachesProgress: @nativeSelector "stopWhenAnimation:reachesProgress:"
+  clearStartAnimation: @nativeSelector "clearStartAnimation"
+  clearStopAnimation: @nativeSelector "clearStopAnimation"
+
+  @register()

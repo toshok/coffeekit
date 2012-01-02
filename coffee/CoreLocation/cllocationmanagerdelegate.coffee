@@ -1,24 +1,23 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "MKMapViewDelgate"
-Protocol = foundation.Protocol
 
 exports.CLLocationManagerDelegate = class CLLocationManagerDelegate extends foundation.Protocol
-  @register()
-
   # Responding to Location Events
-  didUpdateToLocation:   Protocol.optionalMethod ("locationManager:didUpdateToLocation:fromLocation:")
-  didFailWithError:      Protocol.optionalMethod ("locationManager:didFailWithError:")
+  didUpdateToLocation:   @optionalMethod ("locationManager:didUpdateToLocation:fromLocation:")
+  didFailWithError:      @optionalMethod ("locationManager:didFailWithError:")
 
   # Responding to Heading Events
-  didUpdateHeading: Protocol.optionalMethod ("locationManager:didUpdateHeading:")
-  shouldDisplayHeadingCalibration: Protocol.optionalMethod ("locationManagerShouldDisplayHeadingCalibration:")
+  didUpdateHeading:                @optionalMethod ("locationManager:didUpdateHeading:")
+  shouldDisplayHeadingCalibration: @optionalMethod ("locationManagerShouldDisplayHeadingCalibration:")
 
   # Responding to Region Events
-  didEnterRegion: Protocol.optionalMethod ("locationManager:didEnterRegion:")
-  didExitRegion: Protocol.optionalMethod ("locationManager:didExitRegion:")
-  monitoringDidFail: Protocol.optionalMethod ("locationManager:monitoringDidFailForRegion:withError:")
-  didStartMonitoring: Protocol.optionalMethod ("locationManager:didStartMonitoringForRegion:")
+  didEnterRegion:     @optionalMethod ("locationManager:didEnterRegion:")
+  didExitRegion:      @optionalMethod ("locationManager:didExitRegion:")
+  monitoringDidFail:  @optionalMethod ("locationManager:monitoringDidFailForRegion:withError:")
+  didStartMonitoring: @optionalMethod ("locationManager:didStartMonitoringForRegion:")
 
   # Responding to Authorization Changes
-  didChangeAuthorizationStatus: Protocol.optionalMethod ("locationManager:didChangeAuthorizationStatus:")
+  didChangeAuthorizationStatus: @optionalMethod ("locationManager:didChangeAuthorizationStatus:")
+
+  @register()

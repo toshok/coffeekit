@@ -2,41 +2,41 @@
 
 
 exports.NSAlert = class NSAlert extends foundation.NSObject
-  @register()
-
-  init: objc.invokeSelector "init"
-  @alertWithError: objc.invokeSelector "alertWithError:"
-  @alertWithMessageText: objc.invokeSelector "alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:"
+  init: @nativeSelector "init"
+  @alertWithError: @nativeSelector "alertWithError:"
+  @alertWithMessageText: @nativeSelector "alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:"
 
   # Configuring Alerts
   #
-  layout: objc.invokeSelector "layout"
-  ck.instanceProperty @, "alertStyle" 
-  ck.instanceProperty @, "accessoryView"
-  ck.instanceProperty @, "showsHelp"
-  ck.instanceProperty @, "helpAnchor"
-  ck.instanceProperty @, "delegate"
+  layout: @nativeSelector "layout"
+  @instanceProperty "alertStyle" 
+  @instanceProperty "accessoryView"
+  @instanceProperty "showsHelp"
+  @instanceProperty "helpAnchor"
+  @instanceProperty "delegate"
 
   # Displaying Alerts
   #
-  runModal: objc.invokeSelector "runModal"
-  beginSheetModalForWindow: objc.invokeSelector "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo"
-  ck.instanceProperty @, "suppressionButton", { set: null } # read-only
-  ck.instanceProperty @, "showsSuppressionButton"
+  runModal: @nativeSelector "runModal"
+  beginSheetModalForWindow: @nativeSelector "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo"
+  @instanceProperty "suppressionButton", { set: null } # read-only
+  @instanceProperty "showsSuppressionButton"
 
   # Accessing Alert Text
   #
-  ck.instanceProperty @, "informativeText"
-  ck.instanceProperty @, "messageText"
+  @instanceProperty "informativeText"
+  @instanceProperty "messageText"
 
   # Accesing Alert Icons
   #
-  ck.instanceProperty @, "icon"
+  @instanceProperty "icon"
 
   # Accessing Alert Buttons
   #
-  ck.instanceProperty @, "buttons", { set: null } # read-only
-  addButtonWithTitle: objc.invokeSelector "addButtonWithTitle:"
+  @instanceProperty "buttons", { set: null } # read-only
+  addButtonWithTitle: @nativeSelector "addButtonWithTitle:"
 
   # Getting Alert Panels
-  ck.instanceProperty @, "window", { set: null} # read-only
+  @instanceProperty "window", { set: null} # read-only
+
+  @register()

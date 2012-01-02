@@ -2,7 +2,7 @@
 
 #console.log "UITextInputStringTokenizer"
 exports.UITextInputStringTokenizer = class UITextInputStringTokenizer extends foundation.NSObject
-  @register()
-
   # Initializing a Tokenizer
-  initWithTextInput: objc.invokeSelector "initWithTextInput:"
+  initWithTextInput: @nativeSelector "initWithTextInput:"
+
+  @register()

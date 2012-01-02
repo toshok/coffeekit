@@ -2,71 +2,71 @@
 
 #console.log "UITableViewCell"
 exports.UITableViewCell = class UITableViewCell extends UIView
-  @register()
-
   # Initializing a UITableViewCell Object
-  initWithStyle: objc.invokeSelector "initWithStyle:reuseIdentifier:"
-  initWithFrame: objc.invokeSelector "initWithFrame:reuseIdentifier:" # Deprecated in iOS 3.0
+  initWithStyle: @nativeSelector "initWithStyle:reuseIdentifier:"
+  initWithFrame: @nativeSelector "initWithFrame:reuseIdentifier:" # Deprecated in iOS 3.0
 
   # Reusing Cells
-  ck.instanceProperty @, "reuseIdentifier"
-  prepareForReuse: objc.invokeSelector "prepareForReuse"
+  @instanceProperty "reuseIdentifier"
+  prepareForReuse: @nativeSelector "prepareForReuse"
 
   # Managing Text as Cell Content
-  ck.instanceProperty @, "textLabel", { set: null }
-  ck.instanceProperty @, "detailTextLabel", { set: null }
-  ck.instanceProperty @, "font" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "lineBreakMode" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "selectedTextColor" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "text" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "textAlignment" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "textColor" # Deprecated in iOS 3.0
+  @instanceProperty "textLabel", { set: null }
+  @instanceProperty "detailTextLabel", { set: null }
+  @instanceProperty "font" # Deprecated in iOS 3.0
+  @instanceProperty "lineBreakMode" # Deprecated in iOS 3.0
+  @instanceProperty "selectedTextColor" # Deprecated in iOS 3.0
+  @instanceProperty "text" # Deprecated in iOS 3.0
+  @instanceProperty "textAlignment" # Deprecated in iOS 3.0
+  @instanceProperty "textColor" # Deprecated in iOS 3.0
 
   # Managing Images as Cell Content
-  ck.instanceProperty @, "imageView"
-  ck.instanceProperty @, "image" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "selectedImage" # Deprecated in iOS 3.0
+  @instanceProperty "imageView"
+  @instanceProperty "image" # Deprecated in iOS 3.0
+  @instanceProperty "selectedImage" # Deprecated in iOS 3.0
 
   # Accessing Views of the Cell Object
-  ck.instanceProperty @, "contentView"
-  ck.instanceProperty @, "backgroundView"
-  ck.instanceProperty @, "selectedBackgroundView"
-  ck.instanceProperty @, "multipleSelectionBackgroundView"
+  @instanceProperty "contentView"
+  @instanceProperty "backgroundView"
+  @instanceProperty "selectedBackgroundView"
+  @instanceProperty "multipleSelectionBackgroundView"
 
   # Managing Accessory Views
-  ck.instanceProperty @, "accessoryType"
-  ck.instanceProperty @, "accessoryView"
-  ck.instanceProperty @, "editingAccessoryType"
-  ck.instanceProperty @, "editingAccessoryView"
-  ck.instanceProperty @, "hidesAccessoryWhenEditing" # Deprecated in iOS 3.0
+  @instanceProperty "accessoryType"
+  @instanceProperty "accessoryView"
+  @instanceProperty "editingAccessoryType"
+  @instanceProperty "editingAccessoryView"
+  @instanceProperty "hidesAccessoryWhenEditing" # Deprecated in iOS 3.0
 
   # Managing Cell Selection and Highlighting
-  ck.instanceProperty @, "selected", { set: (v) -> @setSelected v, false }
-  ck.instanceProperty @, "selectionStyle"
-  setSelected: objc.invokeSelector "setSelected:animated:"
-  ck.instanceProperty @, "highlighted", { set: (v) -> @setHighlighted v, false }
-  setHighlighted: objc.invokeSelector "setHighlighted:animated:"
+  setSelected:    @nativeSelector "setSelected:animated:"
+  setHighlighted: @nativeSelector "setHighlighted:animated:"
+  @instanceProperty "selected", { set: (v) -> @setSelected v, false }
+  @instanceProperty "selectionStyle"
+  @instanceProperty "highlighted", { set: (v) -> @setHighlighted v, false }
 
   # Editing the Cell
-  ck.instanceProperty @, "editing", { set: (v) -> @setEditing v, false }
-  setEditing: objc.invokeSelector "setEditing:animated:"
-  ck.instanceProperty @, "editingStyle"
-  ck.instanceProperty @, "showingDeleteConfirmation"
-  ck.instanceProperty @, "showsReorderControl"
+  setEditing: @nativeSelector "setEditing:animated:"
+  @instanceProperty "editing", { set: (v) -> @setEditing v, false }
+  @instanceProperty "editingStyle"
+  @instanceProperty "showingDeleteConfirmation"
+  @instanceProperty "showsReorderControl"
 
   # Adjusting to State Transitions
-  willTransitionToState: objc.invokeSelector "willTransitionToState:"
-  didTransitionToState: objc.invokeSelector "didTransitionToState:"
+  willTransitionToState: @nativeSelector "willTransitionToState:"
+  didTransitionToState:  @nativeSelector "didTransitionToState:"
 
   # Managing Content Indentation
-  ck.instanceProperty @, "indentationLevel"
-  ck.instanceProperty @, "indentationWidth"
-  ck.instanceProperty @, "shouldIndentWhileEditing"
+  @instanceProperty "indentationLevel"
+  @instanceProperty "indentationWidth"
+  @instanceProperty "shouldIndentWhileEditing"
 
   # Managing Targets and Actions
 
   # These properties are deprecated as of iOS 3.0. Instead, use the tableView:commitEditingStyle:forRowAtIndexPath: method of the UITableViewDataSource protocol or the tableView:accessoryButtonTappedForRowWithIndexPath: method of the UITableViewDelegate protocol.
 
-  ck.instanceProperty @, "accessoryAction" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "editAction" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "target" # Deprecated in iOS 3.0
+  @instanceProperty "accessoryAction" # Deprecated in iOS 3.0
+  @instanceProperty "editAction" # Deprecated in iOS 3.0
+  @instanceProperty "target" # Deprecated in iOS 3.0
+
+  @register()

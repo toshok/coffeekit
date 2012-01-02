@@ -2,18 +2,18 @@
 
 #console.log "UITabBarController"
 exports.UITabBarController = class UITabBarController extends UIViewController
-  @register()
-
   # Accessing the Tab Bar Controller Properties
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITabBarControllerDelegate) }
-  ck.instanceProperty @, "tabBar"
+  @autoboxProperty  "delegate", UITabBarControllerDelegate
+  @instanceProperty "tabBar"
 
   # Managing the View Controllers
-  ck.instanceProperty @, "viewControllers", { set: (v) -> @setViewControllers v, false }
-  setViewControllers: objc.invokeSelector "setViewControllers:animated:"
-  ck.instanceProperty @, "customizableViewControllers"
-  ck.instanceProperty @, "moreNavigationController"
+  setViewControllers: @nativeSelector "setViewControllers:animated:"
+  @instanceProperty   "viewControllers", { set: (v) -> @setViewControllers v, false }
+  @instanceProperty   "customizableViewControllers"
+  @instanceProperty   "moreNavigationController"
 
   # Managing the Selected Tab
-  ck.instanceProperty @, "selectedViewController"
-  ck.instanceProperty @, "selectedIndex"
+  @instanceProperty   "selectedViewController"
+  @instanceProperty   "selectedIndex"
+
+  @register()

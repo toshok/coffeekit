@@ -2,19 +2,19 @@
 
 #console.log "UIEvent"
 exports.UIEvent = class UIEvent extends foundation.NSObject 
-  @register()
-
   # Getting the Touches for an Event
-  allTouches: objc.invokeSelector "allTouches"
-  touchesForView: objc.invokeSelector "touchesForView:"
-  touchesForWindow: objc.invokeSelector "touchesForWindow:"
+  allTouches:       @nativeSelector "allTouches"
+  touchesForView:   @nativeSelector "touchesForView:"
+  touchesForWindow: @nativeSelector "touchesForWindow:"
 
   # Getting Event Attributes
-  ck.instanceProperty @, "timestamp"
+  @instanceProperty "timestamp"
 
   # Getting the Event Type
-  ck.instanceProperty @, "type"
-  ck.instanceProperty @, "subtype"
+  @instanceProperty "type"
+  @instanceProperty "subtype"
 
   # Getting the Touches for a Gesture Recognizer
-  touchesForGestureRecognizer: objc.invokeSelector "touchesForGestureRecognizer:"
+  touchesForGestureRecognizer: @nativeSelector "touchesForGestureRecognizer:"
+
+  @register()

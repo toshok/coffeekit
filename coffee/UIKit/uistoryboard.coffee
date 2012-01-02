@@ -2,11 +2,11 @@
 
 #console.log "UIStoryboard"
 exports.UIStoryboard = class UIStoryboard extends foundation.NSObject
-  @register()
-
   # Getting a Storyboard Object
-  storyboardWithName: objc.invokeSelector "storyboardWithName:bundle:"
+  storyboardWithName:                      @nativeSelector "storyboardWithName:bundle:"
 
   # Instantiating Storyboard View Controllers
-  instantiateInitialViewController: objc.invokeSelector "instantiateInitialViewController"
-  instantiateViewControllerWithIdentifier: objc.invokeSelector "instantiateViewControllerWithIdentifier:"
+  instantiateInitialViewController:        @nativeSelector "instantiateInitialViewController"
+  instantiateViewControllerWithIdentifier: @nativeSelector "instantiateViewControllerWithIdentifier:"
+
+  @register()

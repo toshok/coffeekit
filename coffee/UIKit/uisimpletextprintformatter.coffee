@@ -2,16 +2,16 @@
 
 #console.log "UISimpleTextPrintFormatter"
 exports.UISimpleTextPrintFormatter = class UISimpleTextPrintFormatter extends UIPrintFormatter
-  @register()
-
   # Creating a Simple-Text Print Formatter
-  initWithText: objc.invokeSelector "initWithText:"
+  initWithText:     @nativeSelector "initWithText:"
 
   # Getting and Setting the Text
-  ck.instanceProperty @, "text"
+  @instanceProperty "text"
 
   # Text Attributes for Printed Content
-  ck.instanceProperty @, "font"
-  ck.instanceProperty @, "color"
-  ck.instanceProperty @, "lineBreakMode"
-  ck.instanceProperty @, "textAlignment"
+  @instanceProperty "font"
+  @instanceProperty "color"
+  @instanceProperty "lineBreakMode"
+  @instanceProperty "textAlignment"
+
+  @register()

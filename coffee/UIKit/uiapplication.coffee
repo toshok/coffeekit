@@ -2,85 +2,85 @@
 
 #console.log "UIApplication"
 exports.UIApplication = class UIApplication extends UIResponder
-  @register()
-
   # Getting the Application Instance
 
-  ck.staticProperty @, "sharedApplication", set: null, get: -> objc.invokeSelector("sharedApplication").call UIApplication
+  @staticProperty "sharedApplication", set: null, get: -> objc.invokeSelector("sharedApplication").call UIApplication
 
   # Setting and Getting the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIApplicationDelegate) }
+  @autoboxProperty "delegate", UIApplicationDelegate
 
   # Getting Application Windows
-  ck.instanceProperty @, "keyWindow", { set: null } # readonly
-  ck.instanceProperty @, "windows", { set: null } # readonly
+  @instanceProperty "keyWindow", { set: null } # readonly
+  @instanceProperty "windows", { set: null } # readonly
 
   # Controlling and Handling Events
-  sendEvent: objc.invokeSelector "sendEvent:"
-  sendAction: objc.invokeSelector "sendAction:to:from:forEvent:"
-  beginIgnoringInteractionEvents: objc.invokeSelector "beginIgnoringInteractionEvents";
-  endIgnoringInteractionEvents: objc.invokeSelector "endIgnoringInteractionEvents";
+  sendEvent:                      @nativeSelector "sendEvent:"
+  sendAction:                     @nativeSelector "sendAction:to:from:forEvent:"
+  beginIgnoringInteractionEvents: @nativeSelector "beginIgnoringInteractionEvents";
+  endIgnoringInteractionEvents:   @nativeSelector "endIgnoringInteractionEvents";
 
-  ck.instanceProperty @, "isIgnoringInteractionEvents", { set: null } # readonly
+  @instanceProperty "isIgnoringInteractionEvents", { set: null } # readonly
 
-  ck.instanceProperty @, "applicationSupportsShakeToEdit"
-  ck.instanceProperty @, "proximitySensingEnabled", { get: "isProximitySensingEnabled" } #  property Deprecated in iOS 3.0
+  @instanceProperty "applicationSupportsShakeToEdit"
+  @instanceProperty "proximitySensingEnabled", { get: "isProximitySensingEnabled" } #  property Deprecated in iOS 3.0
 
   # Opening a URL Resource
-  openURL: objc.invokeSelector "openURL:"
-  canOpenURL: objc.invokeSelector "canOpenURL:"
+  openURL:    @nativeSelector "openURL:"
+  canOpenURL: @nativeSelector "canOpenURL:"
 
   # Registering for Remote Notifications
-  registerForRemoteNotificationTypes: objc.invokeSelector "registerForRemoteNotificationTypes:";
-  unregisterForRemoteNotifications: objc.invokeSelector "unregisterForRemoteNotifications";
-  enableRemoteNotificationTypes: objc.invokeSelector "enableRemoteNotificationTypes";
+  registerForRemoteNotificationTypes: @nativeSelector "registerForRemoteNotificationTypes:";
+  unregisterForRemoteNotifications:   @nativeSelector "unregisterForRemoteNotifications";
+  enableRemoteNotificationTypes:      @nativeSelector "enableRemoteNotificationTypes";
 
   # Managing Application Activity
-  ck.instanceProperty @, "idleTimerDisabled", { get: "isIdleTimerDisabled" }
+  @instanceProperty "idleTimerDisabled", { get: "isIdleTimerDisabled" }
 
   # Managing Background Execution
-  ck.instanceProperty @, "applicationState", { set: null } # readonly
-  ck.instanceProperty @, "backgroundTimeRemaining", { set: null }
+  @instanceProperty "applicationState", { set: null } # readonly
+  @instanceProperty "backgroundTimeRemaining", { set: null }
   
-  beginBackgroundTaskWithExpirationHandler: objc.invokeSelector "beginBackgroundTaskWithExpirationHandler:"
-  endBackgroundTask: objc.invokeSelector "endBackgroundTask:"
-  setKeepAliveTimeoutWithHandler: objc.invokeSelector "setKeepAliveTimeout:handler:"
-  clearKeepAliveTimeout: objc.invokeSelector "clearKeepAliveTimeout";
+  beginBackgroundTaskWithExpirationHandler: @nativeSelector "beginBackgroundTaskWithExpirationHandler:"
+  endBackgroundTask:                        @nativeSelector "endBackgroundTask:"
+  setKeepAliveTimeoutWithHandler:           @nativeSelector "setKeepAliveTimeout:handler:"
+  clearKeepAliveTimeout:                    @nativeSelector "clearKeepAliveTimeout";
 
   # Registering for Local Notifications
-  scheduleLocalNotification: objc.invokeSelector "scheduleLocalNotification:"
-  presentLocalNotificationNow: objc.invokeSelector "presentLocalNotificationNow:"
-  cancelLocalNotification: objc.invokeSelector "cancelLocalNotification:"
-  cancelAllLocalNotification: objc.invokeSelector "cancelAllLocalNotification:"
+  scheduleLocalNotification:   @nativeSelector "scheduleLocalNotification:"
+  presentLocalNotificationNow: @nativeSelector "presentLocalNotificationNow:"
+  cancelLocalNotification:     @nativeSelector "cancelLocalNotification:"
+  cancelAllLocalNotification:  @nativeSelector "cancelAllLocalNotification:"
 
-  ck.instanceProperty @, "scheduledLocalNotifications"
+  @instanceProperty "scheduledLocalNotifications"
 
   # Determining the Availability of Protected Content
-  ck.instanceProperty @, "protectedDataAvailable", { get: "isProtectedDataAvailable", set: null } # readonly
+  @instanceProperty "protectedDataAvailable", { get: "isProtectedDataAvailable", set: null } # readonly
 
   # Registering for Remote Control Events
-  beginReceivingRemoteControlEvents: objc.invokeSelector "beginReceivingRemoteControlEvents"
-  endReceivingRemoteControlEvents: objc.invokeSelector "endReceivingRemoteControlEvents"
+  beginReceivingRemoteControlEvents: @nativeSelector "beginReceivingRemoteControlEvents"
+  endReceivingRemoteControlEvents: @nativeSelector "endReceivingRemoteControlEvents"
 
   # Managing Status Bar Orientation
 
-  setStatusBarOrientation: objc.invokeSelector "setStatusBarOrientation:animated:"
-  ck.instanceProperty @, "statusBarOrientation", { set: (v) -> @setStatusBarOrientation v, false }
-  ck.instanceProperty @, "statusBarOrientationAnimationDuration", { set: null } # readonly
+  setStatusBarOrientation: @nativeSelector "setStatusBarOrientation:animated:"
+  @instanceProperty        "statusBarOrientation", { set: (v) -> @setStatusBarOrientation v, false }
+  @instanceProperty        "statusBarOrientationAnimationDuration", { set: null } # readonly
 
   # Controlling Application Appearance
-  setStatusBarHidden: objc.invokeSelector "setStatusBarHidden:withAnimation:"
-  ck.instanceProperty @, "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> @setStatusBarHidden v, false }
+  setStatusBarHidden: @nativeSelector "setStatusBarHidden:withAnimation:"
+  @instanceProperty   "statusBarHidden", { get: "isStatusBarHidden", set: (v) -> @setStatusBarHidden v, false }
 
-  setStatusBarStyle: objc.invokeSelector "setStatusBarStyle:withAnimation:"
-  ck.instanceProperty @, "statusBarStyle", { set: (v) -> @setStatusBarStyle v, false }
-  ck.instanceProperty @, "statusBarFrame", { set: null }
+  setStatusBarStyle: @nativeSelector "setStatusBarStyle:withAnimation:"
+  @instanceProperty  "statusBarStyle", { set: (v) -> @setStatusBarStyle v, false }
+  @instanceProperty  "statusBarFrame", { set: null }
 
-  ck.instanceProperty @, "networkActivityIndicatorVisible", { get: "isNetworkActivityIndicatorVisible" }
-  ck.instanceProperty @, "applicationIconBadgeNumber"
-  ck.instanceProperty @, "userInterfaceLayoutDirection", { set: null } # readonly
+  @instanceProperty "networkActivityIndicatorVisible", { get: "isNetworkActivityIndicatorVisible" }
+  @instanceProperty "applicationIconBadgeNumber"
+  @instanceProperty "userInterfaceLayoutDirection", { set: null } # readonly
 
   # Setting the Icon of a Newsstand Application
-  setNewsstandIconImage: objc.invokeSelector "setNewsstandIconImage:"
+  setNewsstandIconImage: @nativeSelector "setNewsstandIconImage:"
 
   @main: (args, delegateClassName) -> objc.UIApplicationMain args, delegateClassName
+
+  @register()

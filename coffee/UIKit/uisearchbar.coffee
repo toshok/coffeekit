@@ -2,53 +2,53 @@
 
 #console.log "UISearchBar"
 exports.UISearchBar = class UISearchBar extends foundation.NSObject
-  @register()
-
   # Text Content
-  ck.instanceProperty @, "placeholder"
-  ck.instanceProperty @, "prompt"
-  ck.instanceProperty @, "text"
+  @instanceProperty "placeholder"
+  @instanceProperty "prompt"
+  @instanceProperty "text"
 
   # Display Attributes
-  ck.instanceProperty @, "barStyle"
-  ck.instanceProperty @, "tintColor"
-  ck.instanceProperty @, "translucent"
+  @instanceProperty "barStyle"
+  @instanceProperty "tintColor"
+  @instanceProperty "translucent"
 
   # Text Input Properties
-  ck.instanceProperty @, "autocapitalizationType"
-  ck.instanceProperty @, "autocorrectionType"
-  ck.instanceProperty @, "keyboardType"
-  ck.instanceProperty @, "spellCheckingType"
+  @instanceProperty "autocapitalizationType"
+  @instanceProperty "autocorrectionType"
+  @instanceProperty "keyboardType"
+  @instanceProperty "spellCheckingType"
 
   # Button Configuration
-  ck.instanceProperty @, "showsBookmarkButton"
-  ck.instanceProperty @, "showsCancelButton", { set: (v) -> @setShowsCancelButton v, false }
-  setShowsCancelButton: objc.invokeSelector "setShowsCancelButton:animated:"
-  ck.instanceProperty @, "showsSearchResultsButton"
-  ck.instanceProperty @, "searchResultsButtonSelected"
+  @instanceProperty "showsBookmarkButton"
+  @instanceProperty "showsCancelButton", { set: (v) -> @setShowsCancelButton v, false }
+  setShowsCancelButton: @nativeSelector "setShowsCancelButton:animated:"
+  @instanceProperty "showsSearchResultsButton"
+  @instanceProperty "searchResultsButtonSelected"
 
   # Scope Buttons
-  ck.instanceProperty @, "scopeButtonTitles"
-  ck.instanceProperty @, "selectedScopeButtonIndex"
-  ck.instanceProperty @, "showsScopeBar"
+  @instanceProperty "scopeButtonTitles"
+  @instanceProperty "selectedScopeButtonIndex"
+  @instanceProperty "showsScopeBar"
 
   # Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISearchBar) }
+  @autoboxProperty "delegate", UISearchBar
 
   # Customizing Appearance
-  ck.instanceProperty @, "backgroundImage"
-  imageForSearchBarIcon: objc.invokeSelector "imageForSearchBarIcon:state:"
-  setImageForSearchBarIcon: objc.invokeSelector "setImage:forSearchBarIcon:state:"
-  positionAdjustmentForSearchBarIcon: objc.invokeSelector "positionAdjustmentForSearchBarIcon:"
-  setPositionAdjustmentForSearchBarIcon: objc.invokeSelector "setPositionAdjustment:forSearchBarIcon:"
-  ck.instanceProperty @, "scopeBarBackgroundImage"
-  scopeBarButtonBackgroundImage: objc.invokeSelector "scopeBarButtonBackgroundImageForState:"
-  setScopeBarButtonBackgroundImage: objc.invokeSelector "setScopeBarButtonBackgroundImage:forState:"
-  scopeBarButtonDividerImage: objc.invokeSelector "scopeBarButtonDividerImageForLeftSegmentState:rightSegmentState:"
-  setScopeBarButtonDividerImage: objc.invokeSelector "setScopeBarButtonDividerImage:forLeftSegmentState:rightSegmentState:"
-  scopeBarButtonTitleTextAttributes: objc.invokeSelector "scopeBarButtonTitleTextAttributesForState:"
-  setScopeBarButtonTitleTextAttributes: objc.invokeSelector "setScopeBarButtonTitleTextAttributes:forState:"
-  searchFieldBackgroundImage: objc.invokeSelector "searchFieldBackgroundImageForState:"
-  setSearchFieldBackgroundImage: objc.invokeSelector "setSearchFieldBackgroundImage:forState:"
-  ck.instanceProperty @, "searchFieldBackgroundPositionAdjustment"
-  ck.instanceProperty @, "searchTextPositionAdjustment"
+  imageForSearchBarIcon:                 @nativeSelector "imageForSearchBarIcon:state:"
+  setImageForSearchBarIcon:              @nativeSelector "setImage:forSearchBarIcon:state:"
+  positionAdjustmentForSearchBarIcon:    @nativeSelector "positionAdjustmentForSearchBarIcon:"
+  setPositionAdjustmentForSearchBarIcon: @nativeSelector "setPositionAdjustment:forSearchBarIcon:"
+  scopeBarButtonBackgroundImage:         @nativeSelector "scopeBarButtonBackgroundImageForState:"
+  setScopeBarButtonBackgroundImage:      @nativeSelector "setScopeBarButtonBackgroundImage:forState:"
+  scopeBarButtonDividerImage:            @nativeSelector "scopeBarButtonDividerImageForLeftSegmentState:rightSegmentState:"
+  setScopeBarButtonDividerImage:         @nativeSelector "setScopeBarButtonDividerImage:forLeftSegmentState:rightSegmentState:"
+  scopeBarButtonTitleTextAttributes:     @nativeSelector "scopeBarButtonTitleTextAttributesForState:"
+  setScopeBarButtonTitleTextAttributes:  @nativeSelector "setScopeBarButtonTitleTextAttributes:forState:"
+  searchFieldBackgroundImage:            @nativeSelector "searchFieldBackgroundImageForState:"
+  setSearchFieldBackgroundImage:         @nativeSelector "setSearchFieldBackgroundImage:forState:"
+  @instanceProperty "backgroundImage"
+  @instanceProperty "scopeBarBackgroundImage"
+  @instanceProperty "searchFieldBackgroundPositionAdjustment"
+  @instanceProperty "searchTextPositionAdjustment"
+
+  @register()

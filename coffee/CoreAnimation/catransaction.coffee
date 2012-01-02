@@ -1,27 +1,27 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.CATransaction = class CATransaction extends foundation.NSObject
-  @register()
-
   # Creating and Committing Transactions
-  @begin: objc.invokeSelector "begin"
-  @commit: objc.invokeSelector "commit"
-  @flush: objc.invokeSelector "flush"
+  @begin: @nativeSelector "begin"
+  @commit: @nativeSelector "commit"
+  @flush: @nativeSelector "flush"
 
   # Overriding Animation Duration and Timing
-  ck.staticProperty @, "animationDuration"
-  ck.staticProperty @, "animationTimingFunction"
+  @staticProperty "animationDuration"
+  @staticProperty "animationTimingFunction"
 
   # Temporarily Disabling Property Animations
-  ck.staticProperty @, "disableActions"
+  @staticProperty "disableActions"
 
   # Getting and Setting Completion Block Objects
-  ck.staticProperty @, "completionBlock"
+  @staticProperty "completionBlock"
 
   # Managing Concurrency
-  @lock: objc.invokeSelector "lock"
-  @unlock: objc.invokeSelector "unlock"
+  @lock: @nativeSelector "lock"
+  @unlock: @nativeSelector "unlock"
 
   # Getting and Setting Transaction Properties
-  @setValue: objc.invokeSelector "setValue:forKey:"
-  @valueForKey: objc.invokeSelector "valueForKey:"
+  @setValue: @nativeSelector "setValue:forKey:"
+  @valueForKey: @nativeSelector "valueForKey:"
+
+  @register()

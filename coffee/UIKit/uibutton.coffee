@@ -2,55 +2,55 @@
 
 #console.log "UIButton"
 exports.UIButton = class UIButton extends UIControl
-  @register()
-
   # Creating Buttons
-  @buttonWithType: objc.invokeSelector "buttonWithType:"
+  @buttonWithType:     @nativeSelector "buttonWithType:"
 
   # Configuring Button Title
-  ck.instanceProperty @, "titleLabel"
-  ck.instanceProperty @, "reversesTitleShadowWhenHighlighted"
-  setTitle: objc.invokeSelector "setTitle:forState:"
-  getTitle: objc.invokeSelector "titleForState:"
-  setTitleColor: objc.invokeSelector("setTitleColor:forState:").makeUIAppearance()
-  getTitleColor: objc.invokeSelector("titleColorForState:").makeUIAppearance()
-  setTitleShadowColor: objc.invokeSelector "setTitleShadowColor:forState:"
-  getTitleShadowColor: objc.invokeSelector "titleShadowColorForState:"
+  @instanceProperty    "titleLabel"
+  @instanceProperty    "reversesTitleShadowWhenHighlighted"
+  setTitle:            @nativeSelector "setTitle:forState:"
+  getTitle:            @nativeSelector "titleForState:"
+  setTitleColor:       @nativeSelector("setTitleColor:forState:").makeUIAppearance()
+  getTitleColor:       @nativeSelector("titleColorForState:").makeUIAppearance()
+  setTitleShadowColor: @nativeSelector "setTitleShadowColor:forState:"
+  getTitleShadowColor: @nativeSelector "titleShadowColorForState:"
 
-  ck.instanceProperty @, "font" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "lineBreakMode" # Deprecated in iOS 3.0
-  ck.instanceProperty @, "titleShadowOffset" # Deprecated in iOS 3.0
+  @instanceProperty "font" # Deprecated in iOS 3.0
+  @instanceProperty    "lineBreakMode" # Deprecated in iOS 3.0
+  @instanceProperty    "titleShadowOffset" # Deprecated in iOS 3.0
 
   # Configuring Button Presentation
-  ck.instanceProperty @, "adjustsImageWhenHighlighted"
-  ck.instanceProperty @, "adjustsImageWhenDisabled"
-  ck.instanceProperty @, "showsTouchWhenHighlighted"
-  setBackgroundImage: objc.invokeSelector "setBackgroundImage:forState:"
-  getBbackgroundImage: objc.invokeSelector "backgroundImageForState:"
-  setImage: objc.invokeSelector "setImage:forState:"
-  getImage: objc.invokeSelector "imageForState:"
-  ck.instanceProperty(@, "tintColor").makeUIAppearance()
+  @instanceProperty    "adjustsImageWhenHighlighted"
+  @instanceProperty    "adjustsImageWhenDisabled"
+  @instanceProperty    "showsTouchWhenHighlighted"
+  setBackgroundImage:  @nativeSelector "setBackgroundImage:forState:"
+  getBbackgroundImage: @nativeSelector "backgroundImageForState:"
+  setImage:            @nativeSelector "setImage:forState:"
+  getImage:            @nativeSelector "imageForState:"
+  @instanceProperty("tintColor").makeUIAppearance()
 
   # Configuring Edge Insets
-  ck.instanceProperty @, "contentEdgeInsets"
-  ck.instanceProperty @, "titleEdgeInsets"
-  ck.instanceProperty @, "imageEdgeInsets"
+  @instanceProperty    "contentEdgeInsets"
+  @instanceProperty    "titleEdgeInsets"
+  @instanceProperty    "imageEdgeInsets"
 
   # Getting the Current State
-  ck.instanceProperty @, "buttonType"
-  ck.instanceProperty @, "currentTitle"
-  ck.instanceProperty @, "currentTitleColor"
-  ck.instanceProperty @, "currentTitleShadowColor"
-  ck.instanceProperty @, "currentImage"
-  ck.instanceProperty @, "currentBackgroundImage"
-  ck.instanceProperty @, "imageView"
+  @instanceProperty    "buttonType"
+  @instanceProperty    "currentTitle"
+  @instanceProperty    "currentTitleColor"
+  @instanceProperty    "currentTitleShadowColor"
+  @instanceProperty    "currentImage"
+  @instanceProperty    "currentBackgroundImage"
+  @instanceProperty    "imageView"
 
   # Getting Dimensions
-  backgroundRectForBounds: objc.invokeSelector "backgroundRectForBounds:"
-  contentRectForBounds: objc.invokeSelector "contentRectForBounds:"
-  titleRectForContentRect: objc.invokeSelector "titleRectForContentRect:"
-  imageRectForContentRect: objc.invokeSelector "imageRectForContentRect:"
+  backgroundRectForBounds: @nativeSelector "backgroundRectForBounds:"
+  contentRectForBounds:    @nativeSelector "contentRectForBounds:"
+  titleRectForContentRect: @nativeSelector "titleRectForContentRect:"
+  imageRectForContentRect: @nativeSelector "imageRectForContentRect:"
 
   @::__defineSetter__ "clicked", (v) ->
                                      @proxy = new UIControlProxy v
                                      @addTarget @proxy, @proxy.proxyAction, UIControlEvent.TouchUpInside
+
+  @register()

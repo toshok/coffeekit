@@ -2,28 +2,28 @@
 
 #console.log "UIPrintPageRenderer"
 exports.UIPrintPageRenderer = class UIPrintPageRenderer extends foundation.NSObject
-  @register()
-
   # Accessing Information About the Print Job
-  numberOfPages: objc.invokeSelector "numberOfPages"
-  ck.instanceProperty @, "paperRect"
-  ck.instanceProperty @, "printableRect"
+  numberOfPages:    @nativeSelector "numberOfPages"
+  @instanceProperty "paperRect"
+  @instanceProperty "printableRect"
 
   # Specifying Header and Footer Heights
-  ck.instanceProperty @, "headerHeight"
-  ck.instanceProperty @, "footerHeight"
+  @instanceProperty "headerHeight"
+  @instanceProperty "footerHeight"
 
   # Managing Print Formatters
-  addPrintFormatterStartingAtPageAtIndex: objc.invokeSelector "addPrintFormatter:startingAtPageAtIndex:"
-  printFormattersForPageAtIndex: objc.invokeSelector "printFormattersForPageAtIndex:"
-  ck.instanceProperty @, "printFormatters"
+  addPrintFormatterStartingAtPageAtIndex: @nativeSelector "addPrintFormatter:startingAtPageAtIndex:"
+  printFormattersForPageAtIndex:          @nativeSelector "printFormattersForPageAtIndex:"
+  @instanceProperty "printFormatters"
 
   # Preparing for Drawing
-  prepareForDrawingPages: objc.invokeSelector "prepareForDrawingPages:"
+  prepareForDrawingPages:           @nativeSelector "prepareForDrawingPages:"
 
   # Drawing a Page
-  drawPageAtIndex: objc.invokeSelector "drawPageAtIndex:inRect:"
-  drawHeaderForPageAtIndex: objc.invokeSelector "drawHeaderForPageAtIndex:inRect:"
-  drawContentForPageAtIndex: objc.invokeSelector "drawContentForPageAtIndex:inRect:"
-  drawPrintFormatterForPageAtIndex: objc.invokeSelector "drawPrintFormatter:forPageAtIndex:"
-  drawFooterForPageAtIndex: objc.invokeSelector "drawFooterForPageAtIndex:inRect:"
+  drawPageAtIndex:                  @nativeSelector "drawPageAtIndex:inRect:"
+  drawHeaderForPageAtIndex:         @nativeSelector "drawHeaderForPageAtIndex:inRect:"
+  drawContentForPageAtIndex:        @nativeSelector "drawContentForPageAtIndex:inRect:"
+  drawPrintFormatterForPageAtIndex: @nativeSelector "drawPrintFormatter:forPageAtIndex:"
+  drawFooterForPageAtIndex:         @nativeSelector "drawFooterForPageAtIndex:inRect:"
+
+  @register()

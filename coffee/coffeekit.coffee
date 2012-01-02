@@ -23,6 +23,7 @@ class RegisterAttribute extends Attribute
     super obj
     obj._ck_register = name
 
+    console.log "registering #{obj._ck_register}, subclass of #{if obj.__super__ then obj.__super__.constructor._ck_register else ''}"
     objc.internalRegisterJSType obj.prototype, obj._ck_register, if obj.__super__ then obj.__super__.constructor._ck_register else ''
 exports.RegisterAttribute = RegisterAttribute
 
@@ -32,6 +33,7 @@ class SelectorAttribute extends Attribute
     obj._ck_exported = true
     obj._ck_sel = sel_name
     obj._ck_typeSig = type_sig ? "@@:"
+    console.log "exposing function for selector #{obj._ck_sel}/#{obj._ck_typeSig}"
 exports.SelectorAttribute = SelectorAttribute
 
 exports.exposeSelector = (sel_name, rest...) ->
@@ -90,8 +92,18 @@ class ConformsToProtocolAttribute extends Attribute
   constructor: (obj, @protocol) ->
     super obj
 
+    for key, value of protocol::
+      if key is 'constructor'
+        continue
+      if protocol.hasOwnProperty key
+        # class/static
+      else
+        # instance
+        if obj::[key]?
+          obj::[key]._ckProtocolInfo = sel: value.method, sig: value.sig
+
     # FIXME
-    #   there's not much that's necessary here..  if the attribute is present
+    #   there's not much more that's necessary here..  if the attribute is present
     #   we need to synthesize a conformsToProtocol: method which will iterate all
     #   CTPA's and return yes/no.
     #
@@ -226,3 +238,34 @@ objcIBOutlet = (obj, jsprop, ctor) ->
   obj.__defineSetter__ jsprop, (v) -> objc.setInstanceVariable this, jsprop, v
 
 exports.objcIBOutlet = objcIBOutlet
+
+exports.sig =
+  Class:    -> "#"
+  Selector: -> ":"
+  Char:     -> "c"
+  UChar:    -> "C"
+  Short:    -> "s"
+  UShort:   -> "S"
+  Int:      -> "i"
+  UInt:     -> "I"
+  Long:     -> "l"
+  ULong:    -> "L"
+  LongLong: -> "q"
+  ULongLong: -> "Q"
+  Float:    -> "f"
+  Double:   -> "d"
+  Bool:     -> "B"
+  Void:     -> "v"
+  Ptr:      -> "^"
+  CharStar: -> "*"
+  NSString: -> "@"
+
+exports.typeSignature = (types) ->
+  getTypeSignature = (t) ->
+    if t.getTypeSignature?
+      t.getTypeSignature()
+    else if typeof t is 'function'
+      t()
+    else
+      throw "unable to find a type signature mapping for type #{t}"
+  (getTypeSignature(t) for t in types).join ''

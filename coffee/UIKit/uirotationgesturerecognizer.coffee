@@ -2,8 +2,8 @@
 
 #console.log "UIRotationGestureRecognizer"
 exports.UIRotationGestureRecognizer = class UIRotationGestureRecognizer extends UIGestureRecognizer
-  @register()
-
   # Interpreting the Gesture
-  ck.instanceProperty @, "rotation"
-  ck.instanceProperty @, "velocity"
+  @instanceProperty "rotation"
+  @instanceProperty "velocity"
+
+  @register()

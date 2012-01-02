@@ -2,17 +2,17 @@
 
 #console.log "UIToolbar"
 exports.UIToolbar = class UIToolbar extends UIView
-  @register()
-
   # Configuring the Toolbar
-  ck.instanceProperty @, "barStyle"
-  ck.instanceProperty @, "translucent"
+  @instanceProperty "barStyle"
+  @instanceProperty "translucent"
 
   # Configuring Toolbar Items
-  ck.instanceProperty @, "items", { set: (v) -> @setItems v, false }
-  setItems: objc.invokeSelector "setItems:animated:"
+  @instanceProperty "items", { set: (v) -> @setItems v, false }
+  setItems: @nativeSelector "setItems:animated:"
 
   # Customizing Appearance
-  backgroundImage: objc.invokeSelector "backgroundImageForToolbarPosition:barMetrics:"
-  setBackgroundImage: objc.invokeSelector "setBackgroundImage:forToolbarPosition:barMetrics:"
-  ck.instanceProperty @, "tintColor"
+  backgroundImage:    @nativeSelector "backgroundImageForToolbarPosition:barMetrics:"
+  setBackgroundImage: @nativeSelector "setBackgroundImage:forToolbarPosition:barMetrics:"
+  @instanceProperty "tintColor"
+
+  @register()

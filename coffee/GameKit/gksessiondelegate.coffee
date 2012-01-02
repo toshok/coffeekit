@@ -4,8 +4,6 @@
 Protocol = foundation.Protocol
 
 exports.UIWebView = class GKSessionDelegate extends foundation.Protocol
-  @register()
-
   # Observing Changes to Peers
   didChangeState: Protocol.requiredMethod ("session:peer:didChangeState:")
 
@@ -15,3 +13,5 @@ exports.UIWebView = class GKSessionDelegate extends foundation.Protocol
   # Connection Errors
   connectionWithPeerFailed: Protocol.requiredMethod ("session:connectionWithPeerFailed:withError:")
   didFailWithError: Protocol.requiredMethod ("session:didFailWithError:")
+
+  @register()

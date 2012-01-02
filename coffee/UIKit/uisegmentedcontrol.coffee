@@ -2,43 +2,43 @@
 
 #console.log "UISegmentedControl"
 exports.UISegmentedControl = class UISegmentedControl extends UIControl
-  @register()
-
   # Initializing a Segmented Control
-  initWithItems: objc.invokeSelector "initWithItems:"
+  initWithItems: @nativeSelector "initWithItems:"
 
   # Managing Segment Content
-  setImage: objc.invokeSelector "setImage:forSegmentAtIndex:"
-  image: objc.invokeSelector "imageForSegmentAtIndex:"
-  setTitle: objc.invokeSelector "setTitle:forSegmentAtIndex:"
-  title: objc.invokeSelector "titleForSegmentAtIndex:"
+  setImage: @nativeSelector "setImage:forSegmentAtIndex:"
+  image:    @nativeSelector "imageForSegmentAtIndex:"
+  setTitle: @nativeSelector "setTitle:forSegmentAtIndex:"
+  title:    @nativeSelector "titleForSegmentAtIndex:"
 
   # Managing Segments
-  insertSegmentWithImage: objc.invokeSelector "insertSegmentWithImage:atIndex:animated:"
-  insertSegmentWithTitle: objc.invokeSelector "insertSegmentWithTitle:atIndex:animated:"
-  ck.instanceProperty @, "numberOfSegments"
-  removeAllSegments: objc.invokeSelector "removeAllSegments"
-  removeSegment: objc.invokeSelector "removeSegmentAtIndex:animated:"
-  ck.instanceProperty @, "selectedSegmentIndex"
+  insertSegmentWithImage: @nativeSelector "insertSegmentWithImage:atIndex:animated:"
+  insertSegmentWithTitle: @nativeSelector "insertSegmentWithTitle:atIndex:animated:"
+  removeSegment:          @nativeSelector "removeSegmentAtIndex:animated:"
+  removeAllSegments:      @nativeSelector "removeAllSegments"
+  @instanceProperty "numberOfSegments"
+  @instanceProperty "selectedSegmentIndex"
 
   # Managing Segment Behavior and Appearance
-  ck.instanceProperty @, "momentary"
-  ck.instanceProperty @, "segmentedControlStyle"
-  setEnabled: objc.invokeSelector "setEnabled:forSegmentAtIndex:"
-  isEnabled: objc.invokeSelector "isEnabledForSegmentAtIndex:"
-  setContentOffset: objc.invokeSelector "setContentOffset:forSegmentAtIndex:"
-  contentOffset: objc.invokeSelector "contentOffsetForSegmentAtIndex:"
-  setWidth: objc.invokeSelector "setWidth:forSegmentAtIndex:"
-  width: objc.invokeSelector "widthForSegmentAtIndex:"
-  ck.instanceProperty @, "apportionsSegmentWidthsByContent"
+  setEnabled:       @nativeSelector "setEnabled:forSegmentAtIndex:"
+  isEnabled:        @nativeSelector "isEnabledForSegmentAtIndex:"
+  setContentOffset: @nativeSelector "setContentOffset:forSegmentAtIndex:"
+  contentOffset:    @nativeSelector "contentOffsetForSegmentAtIndex:"
+  setWidth:         @nativeSelector "setWidth:forSegmentAtIndex:"
+  width:            @nativeSelector "widthForSegmentAtIndex:"
+  @instanceProperty "momentary"
+  @instanceProperty "segmentedControlStyle"
+  @instanceProperty "apportionsSegmentWidthsByContent"
 
   # Customizing Appearance
-  ck.instanceProperty(@, "tintColor").makeUIAppearance()
-  backgroundImage: objc.invokeSelector("backgroundImageForState:barMetrics:").makeUIAppearance()
-  setBackgroundImage: objc.invokeSelector("setBackgroundImage:forState:barMetrics:").makeUIAppearance()
-  contentPositionAdjustment: objc.invokeSelector("contentPositionAdjustmentForSegmentType:barMetrics:").makeUIAppearance()
-  setContentPositionAdjustment: objc.invokeSelector("setContentPositionAdjustment:forSegmentType:barMetrics:").makeUIAppearance()
-  dividerImage: objc.invokeSelector("dividerImageForLeftSegmentState:rightSegmentState:barMetrics:").makeUIAppearance()
-  setDividerImage: objc.invokeSelector("setDividerImage:forLeftSegmentState:rightSegmentState:barMetrics:").makeUIAppearance()
-  titleTextAttributes: objc.invokeSelector("titleTextAttributesForState:").makeUIAppearance()
-  setTitleTextAttributes: objc.invokeSelector("setTitleTextAttributes:forState:").makeUIAppearance()
+  @instanceProperty("tintColor").makeUIAppearance()
+  backgroundImage:              @nativeSelector("backgroundImageForState:barMetrics:").makeUIAppearance()
+  setBackgroundImage:           @nativeSelector("setBackgroundImage:forState:barMetrics:").makeUIAppearance()
+  contentPositionAdjustment:    @nativeSelector("contentPositionAdjustmentForSegmentType:barMetrics:").makeUIAppearance()
+  setContentPositionAdjustment: @nativeSelector("setContentPositionAdjustment:forSegmentType:barMetrics:").makeUIAppearance()
+  dividerImage:                 @nativeSelector("dividerImageForLeftSegmentState:rightSegmentState:barMetrics:").makeUIAppearance()
+  setDividerImage:              @nativeSelector("setDividerImage:forLeftSegmentState:rightSegmentState:barMetrics:").makeUIAppearance()
+  titleTextAttributes:          @nativeSelector("titleTextAttributesForState:").makeUIAppearance()
+  setTitleTextAttributes:       @nativeSelector("setTitleTextAttributes:forState:").makeUIAppearance()
+
+  @register()

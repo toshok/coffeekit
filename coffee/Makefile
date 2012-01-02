@@ -54,6 +54,8 @@ FRAMEWORK_SOURCES_AppKit= \
 	AppKit/nsapplication.coffee
 
 FRAMEWORK_SOURCES_CoreAnimation= \
+	CoreAnimation/caanimationdelegate.coffee \
+	CoreAnimation/calayerdelegate.coffee \
 	CoreAnimation/caconstraint.coffee \
 	CoreAnimation/caconstraintlayoutmanager.coffee \
 	CoreAnimation/carenderer.coffee \
@@ -86,6 +88,21 @@ FRAMEWORK_SOURCES_UIKit= \
 	UIKit/uiactionsheetdelegate.coffee \
 	UIKit/uiaccelerometerdelegate.coffee \
 	UIKit/uialertviewdelegate.coffee \
+	UIKit/uisearchdisplaydelegate.coffee \
+	UIKit/uipopovercontrollerdelegate.coffee \
+	UIKit/uiprintinteractioncontrollerdelegate.coffee \
+	UIKit/uidocumentinteractioncontrollerdelegate.coffee \
+	UIKit/uitabbardelegate.coffee \
+	UIKit/uiscrollviewdelegate.coffee \
+	UIKit/uipickerviewdelegate.coffee \
+	UIKit/uitabbarcontrollerdelegate.coffee \
+	UIKit/uipageviewcontrollerdelegate.coffee \
+	UIKit/uinavigationbardelegate.coffee \
+	UIKit/uinavigationcontrollerdelegate.coffee \
+	UIKit/uivideoeditorcontrollerdelegate.coffee \
+	UIKit/uiimagepickercontrollerdelegate.coffee \
+	UIKit/uitextfielddelegate.coffee \
+	UIKit/uigesturerecognizerdelegate.coffee \
 	UIKit/uiappearance.coffee \
 	UIKit/uitextinput.coffee \
 	UIKit/uikeyinput.coffee \

@@ -2,6 +2,9 @@
 
 class Protocol
 
+  @register: (n = @.name) ->
+  @mixinProtocol: (p) -> new ck.MixinProtocolAttribute @, p
+
   @requiredMethod: (n,args) -> method: n, required: true, tramp: args?.tramp, sig: args?.sig
   @optionalMethod: (n,args) -> method: n, tramp: args?.tramp, sig: args?.sig
 

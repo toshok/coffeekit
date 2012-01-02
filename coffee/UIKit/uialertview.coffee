@@ -2,28 +2,28 @@
 
 #console.log "UIAlertView"
 exports.UIAlertView = class UIAlertView extends UIView
-  @register()
-
   # Creating Alert Views
-  init: objc.invokeSelector "initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:"
+  init: @nativeSelector "initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:"
 
   # Setting Properties
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAlertViewDelegate) }
-  ck.instanceProperty @, "alertViewStyle"
-  ck.instanceProperty @, "title"
-  ck.instanceProperty @, "message"
-  ck.instanceProperty @, "visible"
+  @autoboxProperty  "delegate", UIAlertViewDelegate
+  @instanceProperty "alertViewStyle"
+  @instanceProperty "title"
+  @instanceProperty "message"
+  @instanceProperty "visible"
 
   # Configuring Buttons
-  addButtonWithTitle: objc.invokeSelector "addButtonWithTitle:"
-  ck.instanceProperty @, "numberOfButtons"
-  buttonTitleAtIndex: objc.invokeSelector "buttonTitleAtIndex:"
-  textFieldAtIndex: objc.invokeSelector "textFieldAtIndex:"
-  ck.instanceProperty @, "cancelButtonIndex"
-  ck.instanceProperty @, "firstOtherButtonIndex"
+  addButtonWithTitle: @nativeSelector "addButtonWithTitle:"
+  buttonTitleAtIndex: @nativeSelector "buttonTitleAtIndex:"
+  textFieldAtIndex:   @nativeSelector "textFieldAtIndex:"
+  @instanceProperty   "numberOfButtons"
+  @instanceProperty   "cancelButtonIndex"
+  @instanceProperty   "firstOtherButtonIndex"
 
   # Displaying
-  show: objc.invokeSelector "show"
+  show: @nativeSelector "show"
 
   # Dismissing
-  dismissWithClickedButtonIndex: objc.invokeSelector "dismissWithClickedButtonIndex:animated:"
+  dismissWithClickedButtonIndex: @nativeSelector "dismissWithClickedButtonIndex:animated:"
+
+  @register()

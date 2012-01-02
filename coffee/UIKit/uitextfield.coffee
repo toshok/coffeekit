@@ -2,61 +2,61 @@
 
 #console.log "UITextField"
 exports.UITextField = class UITextField extends UIControl
-  @register()
-
   # Accessing the Text Attributes
-  ck.instanceProperty @, "text"
-  ck.instanceProperty @, "placeholder"
-  ck.instanceProperty @, "font"
-  ck.instanceProperty @, "textColor"
-  ck.instanceProperty @, "textAlignment"
+  @instanceProperty "text"
+  @instanceProperty "placeholder"
+  @instanceProperty "font"
+  @instanceProperty "textColor"
+  @instanceProperty "textAlignment"
 
   # Sizing the Text Field’s Text
-  ck.instanceProperty @, "adjustsFontSizeToFitWidth"
-  ck.instanceProperty @, "minimumFontSize"
+  @instanceProperty "adjustsFontSizeToFitWidth"
+  @instanceProperty "minimumFontSize"
 
   # Managing the Editing Behavior
-  ck.instanceProperty @, "editing"
-  ck.instanceProperty @, "clearsOnBeginEditing"
+  @instanceProperty "editing"
+  @instanceProperty "clearsOnBeginEditing"
 
   # Setting the View’s Background Appearance
-  ck.instanceProperty @, "borderStyle"
-  ck.instanceProperty @, "background"
-  ck.instanceProperty @, "disabledBackground"
+  @instanceProperty "borderStyle"
+  @instanceProperty "background"
+  @instanceProperty "disabledBackground"
 
   # Managing Overlay Views
-  ck.instanceProperty @, "clearButtonMode"
-  ck.instanceProperty @, "leftView"
-  ck.instanceProperty @, "leftViewMode"
-  ck.instanceProperty @, "rightView"
-  ck.instanceProperty @, "rightViewMode"
+  @instanceProperty "clearButtonMode"
+  @instanceProperty "leftView"
+  @instanceProperty "leftViewMode"
+  @instanceProperty "rightView"
+  @instanceProperty "rightViewMode"
 
   # Accessing the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextFieldDelegate) }
+  @autoboxProperty "delegate", UITextFieldDelegate
 
   # Drawing and Positioning Overrides
-  textRect: objc.invokeSelector "textRectForBounds:"
-  drawTextInRect: objc.invokeSelector "drawTextInRect:"
-  placeholderRect: objc.invokeSelector "placeholderRectForBounds:"
-  drawPlaceholderInRect: objc.invokeSelector "drawPlaceholderInRect:"
-  borderRect: objc.invokeSelector "borderRectForBounds:"
-  editingRect: objc.invokeSelector "editingRectForBounds:"
-  clearButtonRect: objc.invokeSelector "clearButtonRectForBounds:"
-  leftViewRect: objc.invokeSelector "leftViewRectForBounds:"
-  rightViewRect: objc.invokeSelector "rightViewRectForBounds:"
+  textRect:              @nativeSelector "textRectForBounds:"
+  drawTextInRect:        @nativeSelector "drawTextInRect:"
+  placeholderRect:       @nativeSelector "placeholderRectForBounds:"
+  drawPlaceholderInRect: @nativeSelector "drawPlaceholderInRect:"
+  borderRect:            @nativeSelector "borderRectForBounds:"
+  editingRect:           @nativeSelector "editingRectForBounds:"
+  clearButtonRect:       @nativeSelector "clearButtonRectForBounds:"
+  leftViewRect:          @nativeSelector "leftViewRectForBounds:"
+  rightViewRect:         @nativeSelector "rightViewRectForBounds:"
 
   # Replacing the System Input Views
-  ck.instanceProperty @, "inputView"
-  ck.instanceProperty @, "inputAccessoryView"
+  @instanceProperty "inputView"
+  @instanceProperty "inputAccessoryView"
 
   # UITextInputTraits Protocol
   # Managing the Keyboard Behavior
-  ck.instanceProperty @, "autocapitalizationType"
-  ck.instanceProperty @, "autocorrectionType"
-  ck.instanceProperty @, "spellCheckingType"
-  ck.instanceProperty @, "enablesReturnKeyAutomatically"
-  ck.instanceProperty @, "keyboardAppearance"
-  ck.instanceProperty @, "keyboardType"
-  ck.instanceProperty @, "returnKeyType"
-  ck.instanceProperty @, "secureTextEntry"
+  @instanceProperty "autocapitalizationType"
+  @instanceProperty "autocorrectionType"
+  @instanceProperty "spellCheckingType"
+  @instanceProperty "enablesReturnKeyAutomatically"
+  @instanceProperty "keyboardAppearance"
+  @instanceProperty "keyboardType"
+  @instanceProperty "returnKeyType"
+  @instanceProperty "secureTextEntry"
   # end UITextInputTraits Protocol
+
+  @register()

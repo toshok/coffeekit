@@ -2,11 +2,11 @@
 
 #console.log "UITextInputMode"
 exports.UITextInputMode = class UITextInputMode extends foundation.NSObject
-  @register()
-
   # Getting the Current and Active Text-Input Modes
-  @currentInputMode: objc.invokeSelector "currentInputMode"
-  @activeInputModes: objc.invokeSelector "activeInputModes"
+  @currentInputMode: @nativeSelector "currentInputMode"
+  @activeInputModes: @nativeSelector "activeInputModes"
 
   # Getting the Primary Language
-  ck.instanceProperty @, "primaryLanguage"
+  @instanceProperty "primaryLanguage"
+
+  @register()

@@ -2,9 +2,8 @@
 
 #console.log "UICanvasView"
 exports.UICanvasView = class UICanvasView extends UIView
-  @register()
-
-  @layerClass: (ck.exposeSelector "layerClass", "##:", -> coreanimation.CAEAGLLayer)
+  @layerClass: @nativeSelector("layerClass", -> coreAnimation.CAEAGLLayer).
+                    returnType(-> ck.sig.Class)
 
   getContext: (name, args) ->
     if name is "2d"
@@ -13,3 +12,5 @@ exports.UICanvasView = class UICanvasView extends UIView
       if !@context
         @context = objc.allocateGLContext @layer, args
       @context
+
+  @register()

@@ -2,10 +2,10 @@
 
 #console.log "UISplitViewController"
 exports.UISplitViewController = class UISplitViewController extends UIViewController
-  @register()
-
   # Managing the Child View Controllers
-  ck.instanceProperty @, "viewControllers"
+  @instanceProperty "viewControllers"
 
   # Accessing the Delegate Object
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISplitViewController) }
+  @autoboxProperty "delegate", UISplitViewController
+
+  @register()

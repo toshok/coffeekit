@@ -2,20 +2,20 @@
 
 #console.log "UITabBarItem"
 exports.UITabBarItem = class UITabBarItem extends UIBarItem
-  @register()
-
   # Initializing a Item
-  initWithTabBarSystemItem: objc.invokeSelector "initWithTabBarSystemItem:tag:"
-  initWithTitle: objc.invokeSelector "initWithTitle:image:tag:"
+  initWithTabBarSystemItem: @nativeSelector "initWithTabBarSystemItem:tag:"
+  initWithTitle:            @nativeSelector "initWithTitle:image:tag:"
 
   # Getting and Setting Properties
-  ck.instanceProperty @, "badgeValue"
+  @instanceProperty "badgeValue"
 
   # Managing the Finished Selected Image
-  finishedSelectedImage: objc.invokeSelector "finishedSelectedImage"
-  finishedUnselectedImage: objc.invokeSelector "finishedUnselectedImage"
-  setFinishedSelectedImage: objc.invokeSelector "setFinishedSelectedImage:withFinishedUnselectedImage:"
+  finishedSelectedImage:    @nativeSelector "finishedSelectedImage"
+  finishedUnselectedImage:  @nativeSelector "finishedUnselectedImage"
+  setFinishedSelectedImage: @nativeSelector "setFinishedSelectedImage:withFinishedUnselectedImage:"
 
   # Customizing Appearance
-  titlePositionAdjustment: objc.invokeSelector "titlePositionAdjustment"
-  setTitlePositionAdjustment: objc.invokeSelector "setTitlePositionAdjustment:"
+  titlePositionAdjustment:    @nativeSelector "titlePositionAdjustment"
+  setTitlePositionAdjustment: @nativeSelector "setTitlePositionAdjustment:"
+
+  @register()

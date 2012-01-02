@@ -2,22 +2,22 @@
 
 #console.log "UIMenuController"
 exports.UIMenuController = class UIMenuController extends foundation.NSObject
-  @register()
-
   # Getting the Menu Controller Instance
-  @sharedMenuController: objc.invokeSelector "sharedMenuController"
+  @sharedMenuController: @nativeSelector "sharedMenuController"
 
   # Showing and Hiding the Menu
-  ck.instanceProperty @, "menuVisible", { set: (v) -> @setMenuVisible v, false }
-  setMenuVisible: objc.invokeSelector "setMenuVisible:animated:"
+  @instanceProperty "menuVisible", { set: (v) -> @setMenuVisible v, false }
+  setMenuVisible:   @nativeSelector "setMenuVisible:animated:"
 
   # Positioning the Menu
-  setTargetRect: objc.invokeSelector "setTargetRect:inView:"
-  ck.instanceProperty @, "menuFrame"
-  ck.instanceProperty @, "arrowDirection"
+  setTargetRect:    @nativeSelector "setTargetRect:inView:"
+  @instanceProperty "menuFrame"
+  @instanceProperty "arrowDirection"
 
   # Updating the Menu
-  update: objc.invokeSelector "update"
+  update:           @nativeSelector "update"
 
   # Customizing Menu Items
-  ck.instanceProperty @, "menuItems"
+  @instanceProperty "menuItems"
+
+  @register()

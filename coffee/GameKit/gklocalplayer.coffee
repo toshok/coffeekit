@@ -1,18 +1,18 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GKLocalPlayer = class GKLocalPlayer extends GKPlayer
-  @register()
-
   # Accessing the Shared Local Player
-  @localPlayer: objc.invokeSelector "localPlayer"
+  @localPlayer: @nativeSelector "localPlayer"
 
   # Authentication
-  authenticate: objc.invokeSelector "authenticateWithCompletionHandler:"
-  ck.instanceProperty @, "authenticated"
+  authenticate: @nativeSelector "authenticateWithCompletionHandler:"
+  @instanceProperty "authenticated"
 
   # Accessing Friends
-  loadFriends: objc.invokeSelector "loadFriendsWithCompletionHandler:"
-  ck.instanceProperty @, "friends"
+  loadFriends: @nativeSelector "loadFriendsWithCompletionHandler:"
+  @instanceProperty "friends"
 
   # Age-Restricted Content
-  ck.instanceProperty @, "underage"
+  @instanceProperty "underage"
+
+  @register()

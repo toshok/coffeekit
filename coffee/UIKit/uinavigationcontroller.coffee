@@ -2,32 +2,32 @@
 
 #console.log "UINavigationController"
 exports.UINavigationController = class UINavigationController extends UIViewController
-  @register()
-
   # Creating Navigation Controllers
-  initWithRootViewController: objc.invokeSelector "initWithRootViewController:"
+  initWithRootViewController: @nativeSelector "initWithRootViewController:"
 
   # Accessing Items on the Navigation Stack
-  ck.instanceProperty @, "topViewController"
-  ck.instanceProperty @, "visibleViewController"
-  ck.instanceProperty @, "viewControllers", { set: (v) -> @setViewControllers v, false }
-  setViewControllers: objc.invokeSelector "setViewControllers:animated:"
+  setViewControllers: 	   @nativeSelector "setViewControllers:animated:"
+  @instanceProperty   	   "topViewController"
+  @instanceProperty   	   "visibleViewController"
+  @instanceProperty   	   "viewControllers", { set: (v) -> @setViewControllers v, false }
 
   # Pushing and Popping Stack Items
-  pushViewController: objc.invokeSelector "pushViewController:animated:"
-  popViewController: objc.invokeSelector "popViewControllerAnimated:"
-  popToRootViewController: objc.invokeSelector "popToRootViewControllerAnimated:"
-  popToViewController: objc.invokeSelector "popToViewController:animated:"
+  pushViewController:      @nativeSelector "pushViewController:animated:"
+  popViewController:       @nativeSelector "popViewControllerAnimated:"
+  popToRootViewController: @nativeSelector "popToRootViewControllerAnimated:"
+  popToViewController:     @nativeSelector "popToViewController:animated:"
 
   # Configuring Navigation Bars
-  ck.instanceProperty @, "navigationBar"
-  ck.instanceProperty @, "navigationBarHidden", { set: (v) -> @setNavigationBarHidden v, false }
-  setNavigationBarHidden: objc.invokeSelector "setNavigationBarHidden:animated:"
+  @instanceProperty       "navigationBar"
+  @instanceProperty       "navigationBarHidden", { set: (v) -> @setNavigationBarHidden v, false }
+  setNavigationBarHidden: @nativeSelector "setNavigationBarHidden:animated:"
 
   # Accessing the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UINavigationControllerDelegate) }
+  @autoboxProperty        "delegate", UINavigationControllerDelegate
 
   # Configuring Custom Toolbars
-  ck.instanceProperty @, "toolbar"
-  setToolbarHidden: objc.invokeSelector "setToolbarHidden:animated:"
-  ck.instanceProperty @, "toolbarHidden", { set: (v) -> @setToolbarHidden v, false }
+  @instanceProperty       "toolbar"
+  setToolbarHidden:       @nativeSelector "setToolbarHidden:animated:"
+  @instanceProperty       "toolbarHidden", { set: (v) -> @setToolbarHidden v, false }
+
+  @register()

@@ -2,48 +2,50 @@
 
 #console.log "UIBarButtonItem"
 exports.UIBarButtonItem = class UIBarButtonItem extends UIBarItem
-  @register()
-
   # Initializing an Item
-  initWithCustomView: objc.invokeSelector "initWithCustomView:"
-  initWithBarButtonSystemItem: objc.invokeSelector "initWithBarButtonSystemItem:target:action:"
-  initWithImage: objc.invokeSelector "initWithImage:style:target:action:"
-  initWithTitle: objc.invokeSelector "initWithTitle:style:target:action:"
-  initWithImageAndLandscape: objc.invokeSelector "initWithImage:landscapeImagePhone:style:target:action:"
+  initWithCustomView:          @nativeSelector "initWithCustomView:"
+  initWithBarButtonSystemItem: @nativeSelector "initWithBarButtonSystemItem:target:action:"
+  initWithImage:               @nativeSelector "initWithImage:style:target:action:"
+  initWithTitle:               @nativeSelector "initWithTitle:style:target:action:"
+  initWithImageAndLandscape:   @nativeSelector "initWithImage:landscapeImagePhone:style:target:action:"
+
   initWithClickHandler: (title,style,click) ->
     @proxy = new UIControlProxy1 click
     @initWithTitle title, style, @proxy, @proxy.proxyAction
 
 
   # Getting and Setting Properties
-  ck.instanceProperty @, "target"
-  ck.instanceProperty @, "action"
-  ck.instanceProperty @, "style"
-  ck.instanceProperty @, "possibleTitles"
-  ck.instanceProperty @, "width"
-  ck.instanceProperty @, "customView"
+  @instanceProperty "target"
+  @instanceProperty "action"
+  @instanceProperty "style"
+  @instanceProperty "possibleTitles"
+  @instanceProperty "width"
+  @instanceProperty "customView"
 
-  ck.instanceProperty(@, "tintColor").makeUIAppearance()
+  @instanceProperty("tintColor").makeUIAppearance()
 
-  getBackButtonBackgroundImage: objc.invokeSelector("backButtonBackgroundImageForState:barMetrics:").makeUIAppearance()
-  setBackButtonBackgroundImage: objc.invokeSelector("setBackButtonBackgroundImage:forState:barMetrics:").makeUIAppearance()
+  getBackButtonBackgroundImage:                      @nativeSelector("backButtonBackgroundImageForState:barMetrics:").makeUIAppearance()
+  setBackButtonBackgroundImage:                      @nativeSelector("setBackButtonBackgroundImage:forState:barMetrics:").makeUIAppearance()
 
-  getBackButtonTitlePositionAdjustment: objc.invokeSelector("backButtonTitlePositionAdjustmentForBarMetrics:").makeUIAppearance()
-  setBackButtonTitlePositionAdjustment: objc.invokeSelector("setBackButtonTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
+  getBackButtonTitlePositionAdjustment:              @nativeSelector("backButtonTitlePositionAdjustmentForBarMetrics:").makeUIAppearance()
+  setBackButtonTitlePositionAdjustment:              @nativeSelector("setBackButtonTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
 
-  getBackButtonBackgroundVerticalPositionAdjustment: objc.invokeSelector("backButtonBackgroundVerticalPositionAdjustmentForBarMetrics:").makeUIAppearance()
-  setBackButtonBackgroundVerticalPositionAdjustment: objc.invokeSelector("setBackButtonBackgroundVerticalPositionAdjustment:forBarMetrics:").makeUIAppearance()
+  getBackButtonBackgroundVerticalPositionAdjustment: @nativeSelector("backButtonBackgroundVerticalPositionAdjustmentForBarMetrics:").makeUIAppearance()
+  setBackButtonBackgroundVerticalPositionAdjustment: @nativeSelector("setBackButtonBackgroundVerticalPositionAdjustment:forBarMetrics:").makeUIAppearance()
 
-  getBackgroundVerticalPositionAdjustment: objc.invokeSelector("backgroundVerticalPositionAdjustmentForBarMetrics:").makeUIAppearance()
-  setBackgroundVerticalPositionAdjustment: objc.invokeSelector("setBackgroundVerticalPositionAdjustment:forBarMetrics:").makeUIAppearance()
+  getBackgroundVerticalPositionAdjustment:           @nativeSelector("backgroundVerticalPositionAdjustmentForBarMetrics:").makeUIAppearance()
+  setBackgroundVerticalPositionAdjustment:           @nativeSelector("setBackgroundVerticalPositionAdjustment:forBarMetrics:").makeUIAppearance()
 
-  getBackgroundImage: objc.invokeSelector("backgroundImageForState:barMetrics:").makeUIAppearance()
-  setBackgroundImage: objc.invokeSelector("setBackgroundImage:forState:barMetrics:").makeUIAppearance()
+  getBackgroundImage:                                @nativeSelector("backgroundImageForState:barMetrics:").makeUIAppearance()
+  setBackgroundImage:                                @nativeSelector("setBackgroundImage:forState:barMetrics:").makeUIAppearance()
 
-  getTitlePositionAdjustment: objc.invokeSelector("titlePositionAdjustmentForBarMetrics:").makeUIAppearance()
-  setTitlePositionAdjustment: objc.invokeSelector("setTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
+  getTitlePositionAdjustment:                        @nativeSelector("titlePositionAdjustmentForBarMetrics:").makeUIAppearance()
+  setTitlePositionAdjustment:                        @nativeSelector("setTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
 
   @::__defineSetter__ "clicked", (v) ->
                                      @proxy = new UIControlProxy1 v
                                      @target = @proxy
                                      @action = @proxy.proxyAction
+
+  @register()
+

@@ -1,35 +1,35 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GKVoiceChatService = class GKVoiceChatService extends foundation.NSObject
-  @register()
-
   # Determining Whether Voice Chat Is Available
-  @isVoIPAllowed: objc.invokeSelector "isVoIPAllowed"
+  @isVoIPAllowed: @nativeSelector "isVoIPAllowed"
 
   # Getting the Shared Voice Chat Service
-  @defaultVoiceChatService: objc.invokeSelector "defaultVoiceChatService"
+  @defaultVoiceChatService: @nativeSelector "defaultVoiceChatService"
 
   # Setting the Client
-  ck.instanceProperty @, "client"
+  @instanceProperty "client"
 
   # Establishing a Voice Chat
-  startVoiceChatWithParticipantID:error:: objc.invokeSelector "startVoiceChatWithParticipantID:error:"
+  startVoiceChatWithParticipantID:error:: @nativeSelector "startVoiceChatWithParticipantID:error:"
 
   # Adjusting Audio Properties
-  ck.instanceProperty @, "microphoneMuted"
-  ck.instanceProperty @, "remoteParticipantVolume"
+  @instanceProperty "microphoneMuted"
+  @instanceProperty "remoteParticipantVolume"
 
   # Monitoring the Audio Level
-  ck.instanceProperty @, "inputMeteringEnabled"
-  ck.instanceProperty @, "inputMeterLevel"
-  ck.instanceProperty @, "outputMeteringEnabled"
-  ck.instanceProperty @, "outputMeterLevel"
+  @instanceProperty "inputMeteringEnabled"
+  @instanceProperty "inputMeterLevel"
+  @instanceProperty "outputMeteringEnabled"
+  @instanceProperty "outputMeterLevel"
 
   # Ending a Voice Chat
-  stopVoiceChatWithParticipantID:: objc.invokeSelector "stopVoiceChatWithParticipantID:"
+  stopVoiceChatWithParticipantID:: @nativeSelector "stopVoiceChatWithParticipantID:"
 
   # Methods Called by the Client
-  acceptCallID:error:: objc.invokeSelector "acceptCallID:error:"
-  denyCallID:: objc.invokeSelector "denyCallID:"
-  receivedData:fromParticipantID:: objc.invokeSelector "receivedData:fromParticipantID:"
-  receivedRealTimeData:fromParticipantID:: objc.invokeSelector "receivedRealTimeData:fromParticipantID:"
+  acceptCallID:error:: @nativeSelector "acceptCallID:error:"
+  denyCallID:: @nativeSelector "denyCallID:"
+  receivedData:fromParticipantID:: @nativeSelector "receivedData:fromParticipantID:"
+  receivedRealTimeData:fromParticipantID:: @nativeSelector "receivedRealTimeData:fromParticipantID:"
+
+  @register()

@@ -2,16 +2,16 @@
 
 #console.log "UIPageControl"
 exports.UIPageControl = class UIPageControl extends UIControl
-  @register()
-
   # Managing the Page Navigation
-  ck.instanceProperty @, "currentPage"
-  ck.instanceProperty @, "numberOfPages"
-  ck.instanceProperty @, "hidesForSinglePage"
+  @instanceProperty "currentPage"
+  @instanceProperty "numberOfPages"
+  @instanceProperty "hidesForSinglePage"
 
   # Updating the Page Display
-  ck.instanceProperty @, "defersCurrentPageDisplay"
-  updateCurrentPageDisplay: objc.invokeSelector "updateCurrentPageDisplay"
+  @instanceProperty         "defersCurrentPageDisplay"
+  updateCurrentPageDisplay: @nativeSelector "updateCurrentPageDisplay"
 
   # Resizing the Control
-  sizeForNumberOfPages: objc.invokeSelector "sizeForNumberOfPages:"
+  sizeForNumberOfPages: @nativeSelector "sizeForNumberOfPages:"
+
+  @register()

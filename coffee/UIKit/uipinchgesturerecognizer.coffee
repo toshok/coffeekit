@@ -2,8 +2,8 @@
 
 #console.log "UIPinchGestureRecognizer"
 exports.UIPinchGestureRecognizer = class UIPinchGestureRecognizer extends UIGestureRecognizer
-  @register()
-
   # Interpreting the Pinching Gesture
-  ck.instanceProperty @, "scale"
-  ck.instanceProperty @, "velocity"
+  @instanceProperty "scale"
+  @instanceProperty "velocity"
+
+  @register()

@@ -1,13 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.MKCircle = class MKCircle extends MKShape
-  @register()
-
   # Creating a Circle Overlay
-  @circleWithCenterCoordinate:radius:: objc.invokeSelector "circleWithCenterCoordinate:radius:"
-  @circleWithMapRect:: objc.invokeSelector "circleWithMapRect:"
+  @circleWithCenterCoordinate:radius:: @nativeSelector "circleWithCenterCoordinate:radius:"
+  @circleWithMapRect:: @nativeSelector "circleWithMapRect:"
 
   # Accessing the Overlay’s Attributes
-  ck.instanceProperty @, "coordinate"
-  ck.instanceProperty @, "radius"
-  ck.instanceProperty @, "boundingMapRect"
+  @instanceProperty "coordinate"
+  @instanceProperty "radius"
+  @instanceProperty "boundingMapRect"
+
+  @register()

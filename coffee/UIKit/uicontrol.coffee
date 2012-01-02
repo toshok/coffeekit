@@ -2,50 +2,54 @@
 
 #console.log "UIControl"
 exports.UIControl = class UIControl extends UIView
-  @register()
-
   # Preparing and Sending Action Messages
-  sendAction: objc.invokeSelector "sendAction:to:forEvent:"
-  sendActionsForControlEvents: objc.invokeSelector "sendActionsForControlEvents:"
-  addTarget: objc.invokeSelector "addTarget:action:forControlEvents:"
-  removeTarget: objc.invokeSelector "removeTarget:action:forControlEvents:"
-  actionsForTarget: objc.invokeSelector "actionsForTarget:forControlEvent:"
+  sendAction:                  @nativeSelector "sendAction:to:forEvent:"
+  sendActionsForControlEvents: @nativeSelector "sendActionsForControlEvents:"
+  addTarget:                   @nativeSelector "addTarget:action:forControlEvents:"
+  removeTarget:                @nativeSelector "removeTarget:action:forControlEvents:"
+  actionsForTarget:            @nativeSelector "actionsForTarget:forControlEvent:"
 
   # FIXME these two should be properties
-  allTargets: objc.invokeSelector "allTargets"
-  allControlEvents: objc.invokeSelector "allControlEvents"
+  allTargets:                  @nativeSelector "allTargets"
+  allControlEvents:            @nativeSelector "allControlEvents"
 
   # Setting and Getting Control Attributes
-  ck.instanceProperty @, "state"
-  ck.instanceProperty @, "enabled"
-  ck.instanceProperty @, "selected"
-  ck.instanceProperty @, "highlighted"
-  ck.instanceProperty @, "contentVerticalAlignment"
-  ck.instanceProperty @, "contentHorizontalAlignment"
+  @instanceProperty            "state"
+  @instanceProperty            "enabled"
+  @instanceProperty            "selected"
+  @instanceProperty            "highlighted"
+  @instanceProperty            "contentVerticalAlignment"
+  @instanceProperty            "contentHorizontalAlignment"
 
   # Tracking Touches and Redrawing Controls
-  beginTrackingWithTouch: objc.invokeSelector "beginTrackingWithTouch:withEvent:"
-  continueTrackingWithTouch: objc.invokeSelector "continueTrackingWithTouch:withEvent:"
-  endTrackingWithTouch: objc.invokeSelector "endTrackingWithTouch:withEvent:"
-  cancelTrackingWithEvent: objc.invokeSelector "cancelTrackingWithEvent:"
+  beginTrackingWithTouch:      @nativeSelector "beginTrackingWithTouch:withEvent:"
+  continueTrackingWithTouch:   @nativeSelector "continueTrackingWithTouch:withEvent:"
+  endTrackingWithTouch:        @nativeSelector "endTrackingWithTouch:withEvent:"
+  cancelTrackingWithEvent:     @nativeSelector "cancelTrackingWithEvent:"
 
-  ck.instanceProperty @, "tracking"
-  ck.instanceProperty @, "touchInside"
+  @instanceProperty            "tracking"
+  @instanceProperty            "touchInside"
+
+  @register()
 
 class UIControlProxy extends foundation.NSObject
-  @register()
-
   constructor: (fn) ->
                  super()
                  @fn = fn
 
-  proxyAction: ck.exposeSelector("action", -> @fn())
+  proxyAction: @nativeSelector("action", -> @fn()).
+                    returnType(-> ck.sig.Void)
+
+  @register()
 
 class UIControlProxy1 extends foundation.NSObject
-  @register()
-
   constructor: (fn) ->
                  super()
                  @fn = fn
 
-  proxyAction: ck.exposeSelector("action", "v@:@", (v) -> @fn v)
+  proxyAction: @nativeSelector("action", (v)-> @fn(v)).
+                    returnType(-> ck.sig.Void).
+                    paramTypes(-> [foundation.NSObject])
+
+  @register()
+

@@ -2,37 +2,37 @@
 
 #console.log "UIResponder"
 exports.UIResponder = class UIResponder extends foundation.NSObject
-  @register()
-
   # Managing the Responder Chain
-  nextResponder: objc.invokeSelector "nextResponder"
-  isFirstResponder: objc.invokeSelector "isFirstResponder"
-  canBecomeFirstResponder: objc.invokeSelector "canBecomeFirstResponder"
-  becomeFirstResponder: objc.invokeSelector "becomeFirstResponder"
-  canResignFirstResponder: objc.invokeSelector "canResignFirstResponder"
-  resignFirstResponder: objc.invokeSelector "resignFirstResponder"
+  nextResponder:           @nativeSelector "nextResponder"
+  isFirstResponder:        @nativeSelector "isFirstResponder"
+  canBecomeFirstResponder: @nativeSelector "canBecomeFirstResponder"
+  becomeFirstResponder:    @nativeSelector "becomeFirstResponder"
+  canResignFirstResponder: @nativeSelector "canResignFirstResponder"
+  resignFirstResponder:    @nativeSelector "resignFirstResponder"
 
   # Managing Input Views
-  ck.instanceProperty @, "inputView"
-  ck.instanceProperty @, "inputAccessoryView"
-  reloadInputViews: objc.invokeSelector "reloadInputViews"
+  @instanceProperty "inputView"
+  @instanceProperty "inputAccessoryView"
+  reloadInputViews: @nativeSelector "reloadInputViews"
 
   # Responding to Touch Events
-  touchesBegan: objc.invokeSelector "touchesBegan:withEvent:"
-  touchesMoved: objc.invokeSelector "touchesMoved:withEvent:"
-  touchesEnded: objc.invokeSelector "touchesEnded:withEvent:"
-  touchesCancelled: objc.invokeSelector "touchesCancelled:withEvent:"
+  touchesBegan:     @nativeSelector "touchesBegan:withEvent:"
+  touchesMoved:     @nativeSelector "touchesMoved:withEvent:"
+  touchesEnded:     @nativeSelector "touchesEnded:withEvent:"
+  touchesCancelled: @nativeSelector "touchesCancelled:withEvent:"
 
   # Responding to Motion Events
-  motionBegan: objc.invokeSelector "motionBegan:withEvent:"
-  motionEnded: objc.invokeSelector "motionEnded:withEvent:"
-  motionCancelled: objc.invokeSelector "motionCancelled:withEvent:"
+  motionBegan:     @nativeSelector "motionBegan:withEvent:"
+  motionEnded:     @nativeSelector "motionEnded:withEvent:"
+  motionCancelled: @nativeSelector "motionCancelled:withEvent:"
 
   # Responding to Remote-Control Events
-  remoteControlReceived: objc.invokeSelector "remoteControlReceivedWithEvent:"
+  remoteControlReceived: @nativeSelector "remoteControlReceivedWithEvent:"
 
   # Getting the Undo Manager
-  ck.instanceProperty @, "undoManager"
+  @instanceProperty "undoManager"
 
   # Validating Commands
-  canPerformAction: objc.invokeSelector "canPerformAction:withSender:"
+  canPerformAction: @nativeSelector "canPerformAction:withSender:"
+
+  @register()

@@ -2,11 +2,11 @@
 
 #console.log "UINib"
 exports.UINib = class UINib extends foundation.NSObject
-  @register()
-
   # Creating a Nib Object
-  @nibWithNibName: objc.invokeSelector "nibWithNibName:bundle:"
-  @nibWithData: objc.invokeSelector "nibWithData:bundle:"
+  @nibWithNibName: @nativeSelector "nibWithNibName:bundle:"
+  @nibWithData:    @nativeSelector "nibWithData:bundle:"
 
   # Instantiating a Nib
-  instantiateWithOwner: objc.invokeSelector "instantiateWithOwner:options:"
+  instantiateWithOwner: @nativeSelector "instantiateWithOwner:options:"
+
+  @register()

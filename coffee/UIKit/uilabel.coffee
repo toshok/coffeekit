@@ -2,33 +2,33 @@
 
 #console.log "UILabel"
 exports.UILabel = class UILabel extends UIView
-  @register()
-
   # Accessing the Text Attributes
-  ck.instanceProperty @, "text"
-  ck.instanceProperty @, "font"
-  ck.instanceProperty @, "textColor"
-  ck.instanceProperty @, "textAlignment"
-  ck.instanceProperty @, "lineBreakMode"
-  ck.instanceProperty @, "enabled"
+  @instanceProperty "text"
+  @instanceProperty "font"
+  @instanceProperty "textColor"
+  @instanceProperty "textAlignment"
+  @instanceProperty "lineBreakMode"
+  @instanceProperty "enabled"
 
   # Sizing the Label’s Text
-  ck.instanceProperty @, "adjustsFontSizeToFitWidth"
-  ck.instanceProperty @, "baselineAdjustment"
-  ck.instanceProperty @, "minimumFontSize"
-  ck.instanceProperty @, "numberOfLines"
+  @instanceProperty "adjustsFontSizeToFitWidth"
+  @instanceProperty "baselineAdjustment"
+  @instanceProperty "minimumFontSize"
+  @instanceProperty "numberOfLines"
 
   # Managing Highlight Values
-  ck.instanceProperty @, "highlightedTextColor"
-  ck.instanceProperty @, "highlighted"
+  @instanceProperty "highlightedTextColor"
+  @instanceProperty "highlighted"
 
   # Drawing a Shadow
-  ck.instanceProperty @, "shadowColor"
-  ck.instanceProperty @, "shadowOffset"
+  @instanceProperty "shadowColor"
+  @instanceProperty "shadowOffset"
 
   # Drawing and Positioning Overrides
-  textRect: objc.invokeSelector "textRectForBounds:limitedToNumberOfLines:"
-  drawTextInRect: objc.invokeSelector "drawTextInRect:"
+  textRect:       @nativeSelector "textRectForBounds:limitedToNumberOfLines:"
+  drawTextInRect: @nativeSelector "drawTextInRect:"
 
   # Setting and Getting Attributes
-  ck.instanceProperty @, "userInteractionEnabled"
+  @instanceProperty "userInteractionEnabled"
+
+  @register()

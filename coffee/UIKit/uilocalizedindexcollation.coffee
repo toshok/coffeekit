@@ -2,16 +2,16 @@
 
 #console.log "UILocalizedIndexCollation"
 exports.UILocalizedIndexCollation = class UILocalizedIndexCollation extends foundation.NSObject
-  @register()
-
   # Getting the Shared Instance
-  @currentCollation: objc.invokeSelector "currentCollation"
+  @currentCollation:    @nativeSelector "currentCollation"
 
   # Preparing the for Sections and Section Indexes
-  sectionForObject: objc.invokeSelector "sectionForObject:collationStringSelector:"
-  sortedArrayFromArray: objc.invokeSelector "sortedArrayFromArray:collationStringSelector:"
+  sectionForObject:     @nativeSelector "sectionForObject:collationStringSelector:"
+  sortedArrayFromArray: @nativeSelector "sortedArrayFromArray:collationStringSelector:"
 
   # Providing Section Index Data to the Table View
-  ck.instanceProperty @, "sectionTitles"
-  ck.instanceProperty @, "sectionIndexTitles"
-  sectionForSectionIndexTitleAtIndex: objc.invokeSelector "sectionForSectionIndexTitleAtIndex:"
+  @instanceProperty "sectionTitles"
+  @instanceProperty "sectionIndexTitles"
+  sectionForSectionIndexTitleAtIndex: @nativeSelector "sectionForSectionIndexTitleAtIndex:"
+
+  @register()

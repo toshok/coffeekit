@@ -4,7 +4,7 @@
 Protocol = foundation.Protocol
 
 exports.SKProductsRequestDelegate = class SKProductsRequestDelegate extends SKRequestDelegate
-  @register()
-
   # Receiving the Response
   didReceiveResponse: Protocol.requiredMethod ("productsRequest:didReceiveResponse:")
+
+  @register()

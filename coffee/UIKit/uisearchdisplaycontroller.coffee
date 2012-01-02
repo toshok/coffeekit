@@ -2,20 +2,20 @@
 
 #console.log "UISearchDisplayController"
 exports.UISearchDisplayController = class UISearchDisplayController extends foundation.NSObject
-  @register()
-
   # Initialization
-  initWithSearchBar: objc.invokeSelector "initWithSearchBar:contentsController:"
+  initWithSearchBar: @nativeSelector "initWithSearchBar:contentsController:"
 
   # Displaying the Search Interface
-  ck.instanceProperty @, "active", { set: (v) -> @setActive v, false }
-  setActive: objc.invokeSelector "setActive:animated:"
+  @instanceProperty "active", { set: (v) -> @setActive v, false }
+  setActive: @nativeSelector "setActive:animated:"
 
   # Configuration
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UISearchDisplayControllerDelegate) }
-  ck.instanceProperty @, "searchBar"
-  ck.instanceProperty @, "searchContentsController"
-  ck.instanceProperty @, "searchResultsTableView"
-  ck.instanceProperty @, "searchResultsDataSource"
-  ck.instanceProperty @, "searchResultsDelegate"
-  ck.instanceProperty @, "searchResultsTitle"
+  @autoboxProperty "delegate", UISearchDisplayDelegate
+  @instanceProperty "searchBar"
+  @instanceProperty "searchContentsController"
+  @instanceProperty "searchResultsTableView"
+  @instanceProperty "searchResultsDataSource"
+  @instanceProperty "searchResultsDelegate"
+  @instanceProperty "searchResultsTitle"
+
+  @register()

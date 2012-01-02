@@ -2,11 +2,9 @@
 
 
 exports.NSButton = class NSButton extends NSControl
-  @register()
-
-  ck.instanceProperty @, "title"
-  ck.instanceProperty @, "bezelStyle"
-  ck.instanceProperty @, "buttonType"
+  @instanceProperty "title"
+  @instanceProperty "bezelStyle"
+  @instanceProperty "buttonType"
 
   @::__defineSetter__ "clicked", (v) ->
                                    if v
@@ -17,3 +15,5 @@ exports.NSButton = class NSButton extends NSControl
                                      @proxy = null
                                      @target = null
                                      @action = null
+
+  @register()

@@ -2,45 +2,45 @@
 
 #console.log "UIImage"
 exports.UIImage = class UIImage extends foundation.NSObject
-  @register()
-
   # Cached Image Loading Routines
-  @imageNamed: objc.invokeSelector "imageNamed:"
+  @imageNamed: @nativeSelector "imageNamed:"
 
   # Creating New Images
-  @imageWithContentsOfFile: objc.invokeSelector "imageWithContentsOfFile:"
-  @imageWithData: objc.invokeSelector "imageWithData:"
-  @imageWithCGImage: objc.invokeSelector "imageWithCGImage:"
-  @imageWithCGImageScaleOrientation: objc.invokeSelector "imageWithCGImage:scale:orientation:"
-  @imageWithCIImage: objc.invokeSelector "imageWithCIImage:"
-  @animatedImageNamed: objc.invokeSelector "animatedImageNamed:duration:"
-  @animatedImageWithImages: objc.invokeSelector "animatedImageWithImages:duration:"
-  @animatedResizableImageNamed: objc.invokeSelector "animatedResizableImageNamed:capInsets:duration:"
-  resizableImage: objc.invokeSelector "resizableImageWithCapInsets:"
-  stretchableImage: objc.invokeSelector "stretchableImageWithLeftCapWidth:topCapHeight:" # Deprecated in iOS 5.0
+  @imageWithContentsOfFile:          @nativeSelector "imageWithContentsOfFile:"
+  @imageWithData:                    @nativeSelector "imageWithData:"
+  @imageWithCGImage:                 @nativeSelector "imageWithCGImage:"
+  @imageWithCGImageScaleOrientation: @nativeSelector "imageWithCGImage:scale:orientation:"
+  @imageWithCIImage:                 @nativeSelector "imageWithCIImage:"
+  @animatedImageNamed:               @nativeSelector "animatedImageNamed:duration:"
+  @animatedImageWithImages:          @nativeSelector "animatedImageWithImages:duration:"
+  @animatedResizableImageNamed:      @nativeSelector "animatedResizableImageNamed:capInsets:duration:"
+  resizableImage:                    @nativeSelector "resizableImageWithCapInsets:"
+  stretchableImage:                  @nativeSelector "stretchableImageWithLeftCapWidth:topCapHeight:" # Deprecated in iOS 5.0
 
   # Initializing Images
-  initWithContentsOfFile: objc.invokeSelector "initWithContentsOfFile:"
-  initWithData: objc.invokeSelector "initWithData:"
-  initWithCGImage: objc.invokeSelector "initWithCGImage:"
-  initWithCGImageScaleOrientation: objc.invokeSelector "initWithCGImage:scale:orientation:"
-  initWithCIImage: objc.invokeSelector "initWithCIImage:"
+  initWithContentsOfFile:          @nativeSelector "initWithContentsOfFile:"
+  initWithData:                    @nativeSelector "initWithData:"
+  initWithCGImage:                 @nativeSelector "initWithCGImage:"
+  initWithCGImageScaleOrientation: @nativeSelector "initWithCGImage:scale:orientation:"
+  initWithCIImage:                 @nativeSelector "initWithCIImage:"
 
   # Image Attributes
-  ck.instanceProperty @, "imageOrientation"
-  ck.instanceProperty @, "size"
-  ck.instanceProperty @, "scale"
-  ck.instanceProperty @, "CGImage"
-  ck.instanceProperty @, "CIImage"
-  ck.instanceProperty @, "images"
-  ck.instanceProperty @, "duration"
-  ck.instanceProperty @, "capInsets"
-  ck.instanceProperty @, "leftCapWidth" # Deprecated in iOS 5.0
-  ck.instanceProperty @, "topCapHeight" # Deprecated in iOS 5.0
+  @instanceProperty "imageOrientation"
+  @instanceProperty "size"
+  @instanceProperty "scale"
+  @instanceProperty "CGImage"
+  @instanceProperty "CIImage"
+  @instanceProperty "images"
+  @instanceProperty "duration"
+  @instanceProperty "capInsets"
+  @instanceProperty "leftCapWidth" # Deprecated in iOS 5.0
+  @instanceProperty "topCapHeight" # Deprecated in iOS 5.0
 
   # Drawing Images
-  drawAtPoint: objc.invokeSelector "drawAtPoint:"
-  drawAtPointWithBlend: objc.invokeSelector "drawAtPoint:blendMode:alpha:"
-  drawInRect: objc.invokeSelector "drawInRect:"
-  drawInRectWithBlend: objc.invokeSelector "drawInRect:blendMode:alpha:"
-  drawAsPatternInRect: objc.invokeSelector "drawAsPatternInRect:"
+  drawAtPoint:          @nativeSelector "drawAtPoint:"
+  drawAtPointWithBlend: @nativeSelector "drawAtPoint:blendMode:alpha:"
+  drawInRect:           @nativeSelector "drawInRect:"
+  drawInRectWithBlend:  @nativeSelector "drawInRect:blendMode:alpha:"
+  drawAsPatternInRect:  @nativeSelector "drawAsPatternInRect:"
+
+  @register()

@@ -2,52 +2,52 @@
 
 #console.log "UIDocument"
 exports.UIDocument = class UIDocument extends foundation.NSObject
-  @register()
-
   # Initializing a Document Object
-  initWithFileURL: objc.invokeSelector "initWithFileURL:"
+  initWithFileURL: @nativeSelector "initWithFileURL:"
 
   # Accessing Document Attributes
-  ck.instanceProperty @, "fileURL"
-  ck.instanceProperty @, "localizedName"
-  ck.instanceProperty @, "fileType"
-  ck.instanceProperty @, "fileModificationDate"
-  ck.instanceProperty @, "documentState"
+  @instanceProperty "fileURL"
+  @instanceProperty "localizedName"
+  @instanceProperty "fileType"
+  @instanceProperty "fileModificationDate"
+  @instanceProperty "documentState"
 
   # Writing Document Data
-  closeWithCompletionHandler: objc.invokeSelector "closeWithCompletionHandler:"
-  contents: objc.invokeSelector "contentsForType:error:"
-  saveToURL: objc.invokeSelector "saveToURL:forSaveOperation:completionHandler:"
-  writeContentsSafelyToURL: objc.invokeSelector "writeContents:andAttributes:safelyToURL:forSaveOperation:error:"
-  writeContentsToURL: objc.invokeSelector "writeContents:toURL:forSaveOperation:originalContentsURL:error:"
-  savingFileType: objc.invokeSelector "savingFileType"
-  fileAttributesToWriteToURL: objc.invokeSelector "fileAttributesToWriteToURL:forSaveOperation:error:"
-  fileNameExtensionForType: objc.invokeSelector "fileNameExtensionForType:saveOperation:"
+  closeWithCompletionHandler: @nativeSelector "closeWithCompletionHandler:"
+  contents:                   @nativeSelector "contentsForType:error:"
+  saveToURL:                  @nativeSelector "saveToURL:forSaveOperation:completionHandler:"
+  writeContentsSafelyToURL:   @nativeSelector "writeContents:andAttributes:safelyToURL:forSaveOperation:error:"
+  writeContentsToURL:         @nativeSelector "writeContents:toURL:forSaveOperation:originalContentsURL:error:"
+  savingFileType:             @nativeSelector "savingFileType"
+  fileAttributesToWriteToURL: @nativeSelector "fileAttributesToWriteToURL:forSaveOperation:error:"
+  fileNameExtensionForType:   @nativeSelector "fileNameExtensionForType:saveOperation:"
 
   # Reading Document Data
-  openWithCompletionHandler: objc.invokeSelector "openWithCompletionHandler:"
-  loadFromContents: objc.invokeSelector "loadFromContents:ofType:error:"
-  readFromURL: objc.invokeSelector "readFromURL:error:"
+  openWithCompletionHandler: @nativeSelector "openWithCompletionHandler:"
+  loadFromContents:          @nativeSelector "loadFromContents:ofType:error:"
+  readFromURL:               @nativeSelector "readFromURL:error:"
 
   # Accessing Document Files Asynchronously
-  performAsynchronousFileAccessUsingBlock: objc.invokeSelector "performAsynchronousFileAccessUsingBlock:"
+  performAsynchronousFileAccessUsingBlock: @nativeSelector "performAsynchronousFileAccessUsingBlock:"
 
   # Reverting a Document
-  revertToContentsOfURL: objc.invokeSelector "revertToContentsOfURL:completionHandler:"
+  revertToContentsOfURL:     @nativeSelector "revertToContentsOfURL:completionHandler:"
 
   # Disabling and Enabling Editing
-  disableEditing: objc.invokeSelector "disableEditing"
-  enableEditing: objc.invokeSelector "enableEditing"
+  disableEditing:            @nativeSelector "disableEditing"
+  enableEditing:             @nativeSelector "enableEditing"
 
   # Tracking Changes and Autosaving
-  hasUnsavedChanges: objc.invokeSelector "hasUnsavedChanges"
-  updateChangeCount: objc.invokeSelector "updateChangeCount:"
-  ck.instanceProperty @, "undoManager"
-  changeCountToken: objc.invokeSelector "changeCountTokenForSaveOperation:"
-  updateChangeCountWithToken: objc.invokeSelector "updateChangeCountWithToken:forSaveOperation:"
-  autosaveWithCompletionHandler: objc.invokeSelector "autosaveWithCompletionHandler:"
+  @instanceProperty              "undoManager"
+  hasUnsavedChanges:             @nativeSelector "hasUnsavedChanges"
+  updateChangeCount:             @nativeSelector "updateChangeCount:"
+  changeCountToken:              @nativeSelector "changeCountTokenForSaveOperation:"
+  updateChangeCountWithToken:    @nativeSelector "updateChangeCountWithToken:forSaveOperation:"
+  autosaveWithCompletionHandler: @nativeSelector "autosaveWithCompletionHandler:"
 
   # Resolving Conflicts and Handling Errors
-  handleError: objc.invokeSelector "handleError:userInteractionPermitted:"
-  finishedHandlingError: objc.invokeSelector "finishedHandlingError:recovered:"
-  userInteractionNoLongerPermitted: objc.invokeSelector "userInteractionNoLongerPermittedForError:"
+  handleError:                      @nativeSelector "handleError:userInteractionPermitted:"
+  finishedHandlingError:            @nativeSelector "finishedHandlingError:recovered:"
+  userInteractionNoLongerPermitted: @nativeSelector "userInteractionNoLongerPermittedForError:"
+
+  @register()

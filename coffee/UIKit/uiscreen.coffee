@@ -2,29 +2,29 @@
 
 #console.log "UIScreen"
 exports.UIScreen = class UIScreen extends foundation.NSObject
-  @register()
-
   # Getting the Available Screens
-  ck.staticProperty @, "mainScreen", { set: null } # readonly class property
-  ck.staticProperty @, "screens", { set: null } # readonly class property
-  ck.instanceProperty @, "mirroredScreen"
+  @staticProperty   "mainScreen", { set: null } # readonly class property
+  @staticProperty   "screens", { set: null } # readonly class property
+  @instanceProperty "mirroredScreen"
 
   # Getting the Bounds Information
-  ck.instanceProperty @, "bounds"
-  ck.instanceProperty @, "applicationFrame"
-  ck.instanceProperty @, "scale"
+  @instanceProperty "bounds"
+  @instanceProperty "applicationFrame"
+  @instanceProperty "scale"
 
   # Accessing the Screen Modes
-  ck.instanceProperty @, "preferredMode"
-  ck.instanceProperty @, "availableModes"
-  ck.instanceProperty @, "currentMode"
+  @instanceProperty "preferredMode"
+  @instanceProperty "availableModes"
+  @instanceProperty "currentMode"
 
   # Getting a Display Link
-  displayLink: objc.invokeSelector "displayLinkWithTarget:selector:"
+  displayLink: @nativeSelector "displayLinkWithTarget:selector:"
 
   # Setting a Display’s Brightness
-  ck.instanceProperty @, "brightness"
-  ck.instanceProperty @, "wantsSoftwareDimming"
+  @instanceProperty "brightness"
+  @instanceProperty "wantsSoftwareDimming"
 
   # Setting a Display’s Overscan Compensation.
-  ck.instanceProperty @, "overscanCompensation"
+  @instanceProperty "overscanCompensation"
+
+  @register()

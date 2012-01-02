@@ -2,36 +2,36 @@
 
 #console.log "UIFont"
 exports.UIFont = class UIFont extends foundation.NSObject
-  @register()
-
   # Creating Arbitrary Fonts
-  @fontWithName: objc.invokeSelector "fontWithName:size:"
-  fontWithSize: objc.invokeSelector "fontWithSize:"
+  @fontWithName: @nativeSelector "fontWithName:size:"
+  fontWithSize:  @nativeSelector "fontWithSize:"
 
   # Creating System Fonts
-  @systemFontOfSize: objc.invokeSelector "systemFontOfSize:"
-  @boldSystemFontOfSize: objc.invokeSelector "boldSystemFontOfSize:"
-  @italicSystemFontOfSize: objc.invokeSelector "italicSystemFontOfSize:"
+  @systemFontOfSize:       @nativeSelector "systemFontOfSize:"
+  @boldSystemFontOfSize:   @nativeSelector "boldSystemFontOfSize:"
+  @italicSystemFontOfSize: @nativeSelector "italicSystemFontOfSize:"
 
   # Getting the Available Font Names
-  familyNames: objc.invokeSelector "familyNames"
-  fontNamesForFamilyName: objc.invokeSelector "fontNamesForFamilyName:"
+  familyNames:            @nativeSelector "familyNames"
+  fontNamesForFamilyName: @nativeSelector "fontNamesForFamilyName:"
 
   # Getting Font Name Attributes
-  ck.instanceProperty @, "familyName"
-  ck.instanceProperty @, "fontName"
+  @instanceProperty "familyName"
+  @instanceProperty "fontName"
 
   # Getting Font Metrics
-  ck.instanceProperty @, "pointSize"
-  ck.instanceProperty @, "ascender"
-  ck.instanceProperty @, "descender"
-  ck.instanceProperty @, "capHeight"
-  ck.instanceProperty @, "xHeight"
-  ck.instanceProperty @, "lineHeight"
-  ck.instanceProperty @, "leading" # Deprecated in iOS 4.0
+  @instanceProperty "pointSize"
+  @instanceProperty "ascender"
+  @instanceProperty "descender"
+  @instanceProperty "capHeight"
+  @instanceProperty "xHeight"
+  @instanceProperty "lineHeight"
+  @instanceProperty "leading" # Deprecated in iOS 4.0
 
   # Getting System Font Information
-  @labelFontSize: objc.invokeSelector "labelFontSize"
-  @buttonFontSize: objc.invokeSelector "buttonFontSize"
-  @smallSystemFontSize: objc.invokeSelector "smallSystemFontSize"
-  @systemFontSize: objc.invokeSelector "systemFontSize"
+  @labelFontSize:       @nativeSelector "labelFontSize"
+  @buttonFontSize:      @nativeSelector "buttonFontSize"
+  @smallSystemFontSize: @nativeSelector "smallSystemFontSize"
+  @systemFontSize:      @nativeSelector "systemFontSize"
+
+  @register()

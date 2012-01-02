@@ -2,11 +2,11 @@
 
 #console.log "UIAccelerometer"
 exports.UIAccelerometer = class UIAccelerometer extends foundation.NSObject
-  @register()
-
   # Getting the Shared Accelerometer Object
-  sharedAccelerometer: objc.invokeSelector "sharedAccelerometer"
+  sharedAccelerometer: @nativeSelector "sharedAccelerometer"
 
   # Accessing the Accelerometer Properties
-  ck.instanceProperty @, "updateInterval"
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIAccelerometerDelegate) }
+  @instanceProperty "updateInterval"
+  @autoboxProperty  "delegate", UIAccelerometerDelegate
+
+  @register()

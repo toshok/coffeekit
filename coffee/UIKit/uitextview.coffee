@@ -2,37 +2,38 @@
 
 #console.log "UITextView"
 exports.UITextView = class UITextView extends UIScrollView
-  @register()
   @mixinProtocol UITextInput
 
   # Configuring the Text Attributes
-  ck.instanceProperty @, "text"
-  ck.instanceProperty @, "font"
-  ck.instanceProperty @, "textColor"
-  ck.instanceProperty @, "editable"
-  ck.instanceProperty @, "dataDetectorTypes"
-  ck.instanceProperty @, "textAlignment"
-  hasText: objc.invokeSelector "hasText"
+  @instanceProperty "text"
+  @instanceProperty "font"
+  @instanceProperty "textColor"
+  @instanceProperty "editable"
+  @instanceProperty "dataDetectorTypes"
+  @instanceProperty "textAlignment"
+  hasText: @nativeSelector "hasText"
 
   # Working with the Selection
-  ck.instanceProperty @, "selectedRange"
-  scrollRangeToVisible: objc.invokeSelector "scrollRangeToVisible:"
+  @instanceProperty "selectedRange"
+  scrollRangeToVisible: @nativeSelector "scrollRangeToVisible:"
 
   # Accessing the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITextViewDelegate) }
+  @autoboxProperty "delegate", UITextViewDelegate
 
   # Replacing the System Input Views
-  ck.instanceProperty @, "inputView"
-  ck.instanceProperty @, "inputAccessoryView"
+  @instanceProperty "inputView"
+  @instanceProperty "inputAccessoryView"
 
   # UITextInputTraits Protocol
   # Managing the Keyboard Behavior
-  ck.instanceProperty @, "autocapitalizationType"
-  ck.instanceProperty @, "autocorrectionType"
-  ck.instanceProperty @, "spellCheckingType"
-  ck.instanceProperty @, "enablesReturnKeyAutomatically"
-  ck.instanceProperty @, "keyboardAppearance"
-  ck.instanceProperty @, "keyboardType"
-  ck.instanceProperty @, "returnKeyType"
-  ck.instanceProperty @, "secureTextEntry"
+  @instanceProperty "autocapitalizationType"
+  @instanceProperty "autocorrectionType"
+  @instanceProperty "spellCheckingType"
+  @instanceProperty "enablesReturnKeyAutomatically"
+  @instanceProperty "keyboardAppearance"
+  @instanceProperty "keyboardType"
+  @instanceProperty "returnKeyType"
+  @instanceProperty "secureTextEntry"
   # end UITextInputTraits Protocol
+
+  @register()

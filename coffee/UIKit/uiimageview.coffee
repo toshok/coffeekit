@@ -2,25 +2,25 @@
 
 #console.log "UIImageView"
 exports.UIImageView = class UIImageView extends UIView
-  @register()
-
   # Initializing a UIImageView Object
-  initWithImage: objc.invokeSelector "initWithImage:"
-  initWithImageAndHighlightedImage: objc.invokeSelector "initWithImage:highlightedImage:"
+  initWithImage:                    @nativeSelector "initWithImage:"
+  initWithImageAndHighlightedImage: @nativeSelector "initWithImage:highlightedImage:"
 
   # Image Data
-  ck.instanceProperty @, "image"
-  ck.instanceProperty @, "highlightedImage"
+  @instanceProperty "image"
+  @instanceProperty "highlightedImage"
 
   # Animating Images
-  ck.instanceProperty @, "animationImages"
-  ck.instanceProperty @, "highlightedAnimationImages"
-  ck.instanceProperty @, "animationDuration"
-  ck.instanceProperty @, "animationRepeatCount"
-  startAnimating: objc.invokeSelector "startAnimating"
-  stopAnimating: objc.invokeSelector "stopAnimating"
-  isAnimating: objc.invokeSelector "isAnimating"
+  @instanceProperty "animationImages"
+  @instanceProperty "highlightedAnimationImages"
+  @instanceProperty "animationDuration"
+  @instanceProperty "animationRepeatCount"
+  startAnimating:   @nativeSelector "startAnimating"
+  stopAnimating:    @nativeSelector "stopAnimating"
+  isAnimating:      @nativeSelector "isAnimating"
 
   # Setting and Getting Attributes
-  ck.instanceProperty @, "userInteractionEnabled"
-  ck.instanceProperty @, "highlighted"
+  @instanceProperty "userInteractionEnabled"
+  @instanceProperty "highlighted"
+
+  @register()

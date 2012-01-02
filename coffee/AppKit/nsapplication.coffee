@@ -1,8 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.NSApplication = class NSApplication extends foundation.NSResponder
-  @register()
-
   # Getting the Application
   # FIXME we need better syntax for this...
   this.__defineGetter__ "sharedApplication", ->
@@ -10,175 +8,177 @@ exports.NSApplication = class NSApplication extends foundation.NSResponder
 
 
   # Configuring Applications
-  applicationIconImage: objc.invokeSelector "applicationIconImage"
-  setApplicationIconImage: objc.invokeSelector "setApplicationIconImage:"
+  applicationIconImage: @nativeSelector "applicationIconImage"
+  setApplicationIconImage: @nativeSelector "setApplicationIconImage:"
 
-  ck.instanceProperty @, "delegate"
+  @instanceProperty "delegate"
 
   # Launching Applications
-  finishLaunching: objc.invokeSelector "finishLaunching"
+  finishLaunching: @nativeSelector "finishLaunching"
 
   # Terminating Applications
-  terminate: objc.invokeSelector "terminate:"
-  replyToApplicationShouldTerminate: objc.invokeSelector "replyToApplicationShouldTerminate:"
+  terminate: @nativeSelector "terminate:"
+  replyToApplicationShouldTerminate: @nativeSelector "replyToApplicationShouldTerminate:"
 
   # Managing Active Status
-  isActive: objc.invokeSelector "isActive"
-  activateIgnoringOtherApps: objc.invokeSelector "activateIgnoringOtherApps:"
-  deactivate: objc.invokeSelector "deactivate"
+  isActive: @nativeSelector "isActive"
+  activateIgnoringOtherApps: @nativeSelector "activateIgnoringOtherApps:"
+  deactivate: @nativeSelector "deactivate"
 
   # Hiding Applications
-  hideOtherApplications: objc.invokeSelector "hideOtherApplications:"
-  unhideAllApplications: objc.invokeSelector "unhideAllApplications:"
+  hideOtherApplications: @nativeSelector "hideOtherApplications:"
+  unhideAllApplications: @nativeSelector "unhideAllApplications:"
 
   # Managing the Event Loop
-  isRunning: objc.invokeSelector "isRunning"
-  run: objc.invokeSelector "run"
-  stop: objc.invokeSelector "stop:"
-  runModalForWindow: objc.invokeSelector "runModalForWindow:"
-  stopModal: objc.invokeSelector "stopModal"
-  stopModalWithCode: objc.invokeSelector "stopModalWithCode:"
-  abortModal: objc.invokeSelector "abortModal"
-  beginModalSessionForWindow: objc.invokeSelector "beginModalSessionForWindow:"
-  runModalSession: objc.invokeSelector "runModalSession:"
-  modalWindow: objc.invokeSelector "modalWindow"
-  endModalSession: objc.invokeSelector "endModalSession:"
-  sendEvent: objc.invokeSelector "sendEvent:"
+  isRunning: @nativeSelector "isRunning"
+  run: @nativeSelector "run"
+  stop: @nativeSelector "stop:"
+  runModalForWindow: @nativeSelector "runModalForWindow:"
+  stopModal: @nativeSelector "stopModal"
+  stopModalWithCode: @nativeSelector "stopModalWithCode:"
+  abortModal: @nativeSelector "abortModal"
+  beginModalSessionForWindow: @nativeSelector "beginModalSessionForWindow:"
+  runModalSession: @nativeSelector "runModalSession:"
+  modalWindow: @nativeSelector "modalWindow"
+  endModalSession: @nativeSelector "endModalSession:"
+  sendEvent: @nativeSelector "sendEvent:"
 
   # Handling Events
-  currentEvent: objc.invokeSelector "currentEvent"
-  nextEvent: objc.invokeSelector "nextEventMatchingMask:untilDate:inMode:dequeue:"
-  discardEvents: objc.invokeSelector "discardEventsMatchingMask:beforeEvent:"
+  currentEvent: @nativeSelector "currentEvent"
+  nextEvent: @nativeSelector "nextEventMatchingMask:untilDate:inMode:dequeue:"
+  discardEvents: @nativeSelector "discardEventsMatchingMask:beforeEvent:"
 
   # Posting Events
-  postEvent: objc.invokeSelector "postEvent:atStart:"
+  postEvent: @nativeSelector "postEvent:atStart:"
 
   # Managing Sheets
-  beginSheet: objc.invokeSelector "beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:"
-  endSheet: objc.invokeSelector "endSheet:"
-  endSheetWithReturnCode: objc.invokeSelector "endSheet:returnCode:"
+  beginSheet: @nativeSelector "beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:"
+  endSheet: @nativeSelector "endSheet:"
+  endSheetWithReturnCode: @nativeSelector "endSheet:returnCode:"
 
   # Managing Windows
-  keyWindow: objc.invokeSelector "keyWindow"
-  mainWindow: objc.invokeSelector "mainWindow"
-  windowWithWindowNumber: objc.invokeSelector "windowWithWindowNumber:"
-  windows: objc.invokeSelector "windows"
-  makeWindowsPerform: objc.invokeSelector "makeWindowsPerform:inOrder:"
+  keyWindow: @nativeSelector "keyWindow"
+  mainWindow: @nativeSelector "mainWindow"
+  windowWithWindowNumber: @nativeSelector "windowWithWindowNumber:"
+  windows: @nativeSelector "windows"
+  makeWindowsPerform: @nativeSelector "makeWindowsPerform:inOrder:"
 
   # Minimizing Windows
-  miniaturizeAll: objc.invokeSelector "miniaturizeAll:"
+  miniaturizeAll: @nativeSelector "miniaturizeAll:"
 
   # User Interface Layout Direction
-  userInterfaceLayoutDirection: objc.invokeSelector "userInterfaceLayoutDirection"
+  userInterfaceLayoutDirection: @nativeSelector "userInterfaceLayoutDirection"
 
   # Hiding Windows
-  isHidden: objc.invokeSelector "isHidden"
-  hide: objc.invokeSelector "hide:"
-  unhide: objc.invokeSelector "unhide:"
-  unhideWithoutActivation: objc.invokeSelector "unhideWithoutActivation"
+  isHidden: @nativeSelector "isHidden"
+  hide: @nativeSelector "hide:"
+  unhide: @nativeSelector "unhide:"
+  unhideWithoutActivation: @nativeSelector "unhideWithoutActivation"
 
   # Updating Windows
-  updateWindows: objc.invokeSelector "updateWindows"
-  setWindowsNeedUpdate: objc.invokeSelector "setWindowsNeedUpdate:"
+  updateWindows: @nativeSelector "updateWindows"
+  setWindowsNeedUpdate: @nativeSelector "setWindowsNeedUpdate:"
 
   # Managing Window Layers
-  preventWindowOrdering: objc.invokeSelector "preventWindowOrdering"
-  arrangeInFront: objc.invokeSelector "arrangeInFront:"
+  preventWindowOrdering: @nativeSelector "preventWindowOrdering"
+  arrangeInFront: @nativeSelector "arrangeInFront:"
 
   # Accessing the Main Menu
-  mainMenu: objc.invokeSelector "mainMenu"
-  setMainMenu: objc.invokeSelector "setMainMenu:"
+  mainMenu: @nativeSelector "mainMenu"
+  setMainMenu: @nativeSelector "setMainMenu:"
 
   # Managing the Window Menu
-  windowsMenu: objc.invokeSelector "windowsMenu"
-  setWindowsMenu: objc.invokeSelector "setWindowsMenu:"
-  addWindowsItem: objc.invokeSelector "addWindowsItem:title:filename:"
-  changeWindowsItem: objc.invokeSelector "changeWindowsItem:title:filename:"
-  removeWindowsItem: objc.invokeSelector "removeWindowsItem:"
-  updateWindowsItem: objc.invokeSelector "updateWindowsItem:"
+  windowsMenu: @nativeSelector "windowsMenu"
+  setWindowsMenu: @nativeSelector "setWindowsMenu:"
+  addWindowsItem: @nativeSelector "addWindowsItem:title:filename:"
+  changeWindowsItem: @nativeSelector "changeWindowsItem:title:filename:"
+  removeWindowsItem: @nativeSelector "removeWindowsItem:"
+  updateWindowsItem: @nativeSelector "updateWindowsItem:"
 
   # Accessing the Dock Tile
-  dockTile: objc.invokeSelector "dockTile"
+  dockTile: @nativeSelector "dockTile"
 
   # Managing the Services Menu
-  registerServicesMenu: objc.invokeSelector "registerServicesMenuSendTypes:returnTypes:"
-  servicesMenu: objc.invokeSelector "servicesMenu"
-  setServicesMenu: objc.invokeSelector "setServicesMenu:"
+  registerServicesMenu: @nativeSelector "registerServicesMenuSendTypes:returnTypes:"
+  servicesMenu: @nativeSelector "servicesMenu"
+  setServicesMenu: @nativeSelector "setServicesMenu:"
 
   # Providing Services
-  validRequestor: objc.invokeSelector "validRequestorForSendType:returnType:"
-  servicesProvider: objc.invokeSelector "servicesProvider"
-  setServicesProvider: objc.invokeSelector "setServicesProvider:"
+  validRequestor: @nativeSelector "validRequestorForSendType:returnType:"
+  servicesProvider: @nativeSelector "servicesProvider"
+  setServicesProvider: @nativeSelector "setServicesProvider:"
 
   # Managing Panels
-  orderFrontColorPanel: objc.invokeSelector "orderFrontColorPanel:"
-  orderFrontStandardAboutPanel: objc.invokeSelector "orderFrontStandardAboutPanel:"
-  orderFrontStandardAboutPanelWithOptions: objc.invokeSelector "orderFrontStandardAboutPanelWithOptions:"
-  orderFrontCharacterPalette: objc.invokeSelector "orderFrontCharacterPalette:"
-  runPageLayout: objc.invokeSelector "runPageLayout:"
+  orderFrontColorPanel: @nativeSelector "orderFrontColorPanel:"
+  orderFrontStandardAboutPanel: @nativeSelector "orderFrontStandardAboutPanel:"
+  orderFrontStandardAboutPanelWithOptions: @nativeSelector "orderFrontStandardAboutPanelWithOptions:"
+  orderFrontCharacterPalette: @nativeSelector "orderFrontCharacterPalette:"
+  runPageLayout: @nativeSelector "runPageLayout:"
 
   # Displaying Help
-  showHelp: objc.invokeSelector "showHelp:"
-  activateContextHelpMode: objc.invokeSelector "activateContextHelpMode:"
-  helpMenu: objc.invokeSelector "helpMenu"
-  setHelpMenu: objc.invokeSelector "setHelpMenu:"
+  showHelp: @nativeSelector "showHelp:"
+  activateContextHelpMode: @nativeSelector "activateContextHelpMode:"
+  helpMenu: @nativeSelector "helpMenu"
+  setHelpMenu: @nativeSelector "setHelpMenu:"
 
   # Managing Threads
-  detachDrawingThread: objc.invokeSelector "detachDrawingThread:toTarget:withObject:"
+  detachDrawingThread: @nativeSelector "detachDrawingThread:toTarget:withObject:"
 
   # Posting Actions
-  tryToPerform: objc.invokeSelector "tryToPerform:with:"
-  sendAction: objc.invokeSelector "sendAction:to:from:"
-  targetForAction: objc.invokeSelector "targetForAction:"
-  targetForActionToFrom: objc.invokeSelector "targetForAction:to:from:"
+  tryToPerform: @nativeSelector "tryToPerform:with:"
+  sendAction: @nativeSelector "sendAction:to:from:"
+  targetForAction: @nativeSelector "targetForAction:"
+  targetForActionToFrom: @nativeSelector "targetForAction:to:from:"
 
   # Drawing Windows
-  context: objc.invokeSelector "context"
+  context: @nativeSelector "context"
 
   # Logging Exceptions
-  reportException: objc.invokeSelector "reportException:"
+  reportException: @nativeSelector "reportException:"
 
   # Scripting
-  # FIXME application:delegateHandlesKey:: objc.invokeSelector "application:delegateHandlesKey:" # delegate method
-  orderedDocuments: objc.invokeSelector "orderedDocuments"
-  orderedWindows: objc.invokeSelector "orderedWindows"
+  # FIXME application:delegateHandlesKey:: @nativeSelector "application:delegateHandlesKey:" # delegate method
+  orderedDocuments: @nativeSelector "orderedDocuments"
+  orderedWindows: @nativeSelector "orderedWindows"
 
   # Managing User Attention Requests
-  requestUserAttention: objc.invokeSelector "requestUserAttention:"
-  cancelUserAttentionRequest: objc.invokeSelector "cancelUserAttentionRequest:"
-  replyToOpenOrPrint: objc.invokeSelector "replyToOpenOrPrint:"
+  requestUserAttention: @nativeSelector "requestUserAttention:"
+  cancelUserAttentionRequest: @nativeSelector "cancelUserAttentionRequest:"
+  replyToOpenOrPrint: @nativeSelector "replyToOpenOrPrint:"
 
   # Keyboard Accessibility
-  isFullKeyboardAccessEnabled: objc.invokeSelector "isFullKeyboardAccessEnabled"
+  isFullKeyboardAccessEnabled: @nativeSelector "isFullKeyboardAccessEnabled"
 
   # Presentation Options
-  currentSystemPresentationOptions: objc.invokeSelector "currentSystemPresentationOptions"
-  presentationOptions: objc.invokeSelector "presentationOptions"
-  setPresentationOptions: objc.invokeSelector "setPresentationOptions:"
+  currentSystemPresentationOptions: @nativeSelector "currentSystemPresentationOptions"
+  presentationOptions: @nativeSelector "presentationOptions"
+  setPresentationOptions: @nativeSelector "setPresentationOptions:"
 
   # Activation Policy
-  activationPolicy: objc.invokeSelector "activationPolicy"
-  setActivationPolicy: objc.invokeSelector "setActivationPolicy:"
+  activationPolicy: @nativeSelector "activationPolicy"
+  setActivationPolicy: @nativeSelector "setActivationPolicy:"
 
   # Deprecated
   # FIXME
-  #application:printFiles:: objc.invokeSelector "application:printFiles:"  # delegate method Available in Mac OS X v10.3 through Mac OS X v10.5
-  #beginModalSessionForWindow:relativeToWindow:: objc.invokeSelector "beginModalSessionForWindow:relativeToWindow:" # Deprecated in Mac OS X v10.0
-  #runModalForWindow:relativeToWindow:: objc.invokeSelector "runModalForWindow:relativeToWindow:" # Deprecated in Mac OS X v10.0
+  #application:printFiles:: @nativeSelector "application:printFiles:"  # delegate method Available in Mac OS X v10.3 through Mac OS X v10.5
+  #beginModalSessionForWindow:relativeToWindow:: @nativeSelector "beginModalSessionForWindow:relativeToWindow:" # Deprecated in Mac OS X v10.0
+  #runModalForWindow:relativeToWindow:: @nativeSelector "runModalForWindow:relativeToWindow:" # Deprecated in Mac OS X v10.0
 
   # Spotlight for Help
-  registerUserInterfaceItemSearchHandler: objc.invokeSelector "registerUserInterfaceItemSearchHandler:"
-  unregisterUserInterfaceItemSearchHandler: objc.invokeSelector "unregisterUserInterfaceItemSearchHandler:"
-  searchString: objc.invokeSelector "searchString:inUserInterfaceItemString:searchRange:foundRange:"
+  registerUserInterfaceItemSearchHandler: @nativeSelector "registerUserInterfaceItemSearchHandler:"
+  unregisterUserInterfaceItemSearchHandler: @nativeSelector "unregisterUserInterfaceItemSearchHandler:"
+  searchString: @nativeSelector "searchString:inUserInterfaceItemString:searchRange:foundRange:"
 
   # Managing Relaunch on Login
-  disableRelaunchOnLogin: objc.invokeSelector "disableRelaunchOnLogin"
-  enableRelaunchOnLogin: objc.invokeSelector "enableRelaunchOnLogin"
+  disableRelaunchOnLogin: @nativeSelector "disableRelaunchOnLogin"
+  enableRelaunchOnLogin: @nativeSelector "enableRelaunchOnLogin"
 
   # Managing Remote Notifications
-  enabledRemoteNotificationTypes: objc.invokeSelector "enabledRemoteNotificationTypes"
-  registerForRemoteNotificationTypes: objc.invokeSelector "registerForRemoteNotificationTypes:"
-  unregisterForRemoteNotifications: objc.invokeSelector "unregisterForRemoteNotifications"
+  enabledRemoteNotificationTypes: @nativeSelector "enabledRemoteNotificationTypes"
+  registerForRemoteNotificationTypes: @nativeSelector "registerForRemoteNotificationTypes:"
+  unregisterForRemoteNotifications: @nativeSelector "unregisterForRemoteNotifications"
 
   # use this instead of NSApplicationMain
   @main: (args) -> objc.NSApplicationMain (args)
+
+  @register()

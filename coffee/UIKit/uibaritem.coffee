@@ -2,17 +2,17 @@
 
 #console.log "UIBarItem"
 exports.UIBarItem = class UIBarItem extends UIView
-  @register()
-
   # Getting and Setting Properties
-  ck.instanceProperty @, "enabled"
-  ck.instanceProperty @, "image"
-  ck.instanceProperty @, "landscapeImagePhone"
-  ck.instanceProperty @, "imageInsets"
-  ck.instanceProperty @, "landscapeImagePhoneInsets"
-  ck.instanceProperty @, "title"
-  ck.instanceProperty @, "tag"
+  @instanceProperty "enabled"
+  @instanceProperty "image"
+  @instanceProperty "landscapeImagePhone"
+  @instanceProperty "imageInsets"
+  @instanceProperty "landscapeImagePhoneInsets"
+  @instanceProperty "title"
+  @instanceProperty "tag"
 
   # Customizing Appearance
-  setTitleTextAttributes: objc.invokeSelector "setTitleTextAttributes:forState:"
-  getTitleTextAttributes: objc.invokeSelector "titleTextAttributesForState:"
+  setTitleTextAttributes: @nativeSelector "setTitleTextAttributes:forState:"
+  getTitleTextAttributes: @nativeSelector "titleTextAttributesForState:"
+
+  @register()

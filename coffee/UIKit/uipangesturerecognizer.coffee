@@ -2,13 +2,13 @@
 
 #console.log "UIPanGestureRecognizer"
 exports.UIPanGestureRecognizer = class UIPanGestureRecognizer extends UIGestureRecognizer
-  @register()
-
   # Configuring the Gesture Recognizer
-  ck.instanceProperty @, "maximumNumberOfTouches"
-  ck.instanceProperty @, "minimumNumberOfTouches"
+  @instanceProperty "maximumNumberOfTouches"
+  @instanceProperty "minimumNumberOfTouches"
 
   # Tracking the Location and Velocity of the Gesture
-  translationInView: objc.invokeSelector "translationInView:"
-  setTranslationInView: objc.invokeSelector "setTranslation:inView:"
-  velocityInView: objc.invokeSelector "velocityInView:"
+  translationInView:    @nativeSelector "translationInView:"
+  setTranslationInView: @nativeSelector "setTranslation:inView:"
+  velocityInView:       @nativeSelector "velocityInView:"
+
+  @register()

@@ -1,17 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GKFriendRequestComposeViewController = class GKFriendRequestComposeViewController extends ui.UINavigationController
-  @register()
-
   # Determining the Maximum Number of Recipients
-  @maxNumberOfRecipients: objc.invokeSelector "maxNumberOfRecipients"
+  @maxNumberOfRecipients: @nativeSelector "maxNumberOfRecipients"
 
   # Delegate
-  ck.instanceProperty @, "composeViewDelegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, GKFriendRequestComposeViewControllerDelegate) }
+  @autoboxProperty "composeViewDelegate", GKFriendRequestComposeViewControllerDelegate
 
   # Adding Recipients
-  addRecipientsWithEmailAddresses:: objc.invokeSelector "addRecipientsWithEmailAddresses:"
-  addRecipientsWithPlayerIDs:: objc.invokeSelector "addRecipientsWithPlayerIDs:"
+  addRecipientsWithEmailAddresses:: @nativeSelector "addRecipientsWithEmailAddresses:"
+  addRecipientsWithPlayerIDs:: @nativeSelector "addRecipientsWithPlayerIDs:"
 
   # Setting an Invitation Message
-  setMessage:: objc.invokeSelector "setMessage:"
+  setMessage:: @nativeSelector "setMessage:"
+
+  @register()

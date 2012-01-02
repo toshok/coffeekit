@@ -2,20 +2,20 @@
 
 #console.log "UIAccessibilityElement"
 exports.UIAccessibilityElement = class UIAccessibilityElement extends foundation.NSObject
-  @register()
-
   # Creating an Accessibility Element
-  initWithAccessibilityContainer: objc.invokeSelector "initWithAccessibilityContainer:"
+  initWithAccessibilityContainer: @nativeSelector "initWithAccessibilityContainer:"
 
   # Accessing the Containing View
-  ck.instanceProperty @, "accessibilityContainer"
+  @instanceProperty "accessibilityContainer"
 
   # Determining Accessibility
-  ck.instanceProperty @, "isAccessibilityElement"
+  @instanceProperty "isAccessibilityElement"
 
   # Accessing the Attributes of an Accessibility Element
-  ck.instanceProperty @, "accessibilityLabel"
-  ck.instanceProperty @, "accessibilityHint"
-  ck.instanceProperty @, "accessibilityValue"
-  ck.instanceProperty @, "accessibilityFrame"
-  ck.instanceProperty @, "accessibilityTraits"
+  @instanceProperty "accessibilityLabel"
+  @instanceProperty "accessibilityHint"
+  @instanceProperty "accessibilityValue"
+  @instanceProperty "accessibilityFrame"
+  @instanceProperty "accessibilityTraits"
+
+  @register()

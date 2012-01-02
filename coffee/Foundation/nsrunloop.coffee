@@ -1,29 +1,33 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSRunLoop = class NSRunLoop extends NSObject
-  @register()
+console.log "NSRunLoop"
 
+exports.NSRunLoop = class NSRunLoop extends NSObject
   # Accessing Run Loops and Modes
-  ck.staticProperty @, "currentRunLoop", set: null
-  ck.instanceProperty @, "currentMode", set: null
-  limitDate: objc.invokeSelector "limitDateForMode:"
-  ck.staticProperty @, "mainRunLoop", set: null
-  getCFRunLoop: objc.invokeSelector "getCFRunLoop"
+  @staticProperty "currentRunLoop", set: null
+  @instanceProperty "currentMode", set: null
+  limitDate: @nativeSelector "limitDateForMode:"
+  @staticProperty "mainRunLoop", set: null
+  getCFRunLoop: @nativeSelector "getCFRunLoop"
 
   # Managing Timers
-  addTimer: objc.invokeSelector "addTimer:forMode:"
+  addTimer: @nativeSelector "addTimer:forMode:"
 
   # Managing Ports
-  addPort: objc.invokeSelector "addPort:forMode:"
-  removePort: objc.invokeSelector "removePort:forMode:"
+  addPort: @nativeSelector "addPort:forMode:"
+  removePort: @nativeSelector "removePort:forMode:"
 
   # Running a Loop
-  run: objc.invokeSelector "run"
-  runMode: objc.invokeSelector "runMode:beforeDate:"
-  runUntilDate: objc.invokeSelector "runUntilDate:"
-  acceptInputForMode: objc.invokeSelector "acceptInputForMode:beforeDate:"
+  run: @nativeSelector "run"
+  runMode: @nativeSelector "runMode:beforeDate:"
+  runUntilDate: @nativeSelector "runUntilDate:"
+  acceptInputForMode: @nativeSelector "acceptInputForMode:beforeDate:"
 
   # Scheduling and Canceling Messages
-  performSelector: objc.invokeSelector "performSelector:target:argument:order:modes:"
-  cancelPerformSelector: objc.invokeSelector "cancelPerformSelector:target:argument:"
-  cancelPerformSelectors: objc.invokeSelector "cancelPerformSelectorsWithTarget:"
+  performSelector: @nativeSelector "performSelector:target:argument:order:modes:"
+  cancelPerformSelector: @nativeSelector "cancelPerformSelector:target:argument:"
+  cancelPerformSelectors: @nativeSelector "cancelPerformSelectorsWithTarget:"
+
+  @register()
+
+console.log "done with NSRunLoop"

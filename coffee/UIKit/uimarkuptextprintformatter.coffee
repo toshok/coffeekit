@@ -2,10 +2,10 @@
 
 #console.log "UIMarkupTextPrintFormatter"
 exports.UIMarkupTextPrintFormatter = class UIMarkupTextPrintFormatter extends UIPrintFormatter
-  @register()
-
   # Creating a Markup-Text Print Formatter
-  initWithMarkupText: objc.invokeSelector "initWithMarkupText:"
+  initWithMarkupText: @nativeSelector "initWithMarkupText:"
 
   # Getting and Setting the Markup Text
-  ck.instanceProperty @, "markupText"
+  @instanceProperty "markupText"
+
+  @register()

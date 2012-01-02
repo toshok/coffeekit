@@ -1,33 +1,33 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GLKTextureLoader = class GLKTextureLoader extends foundation.NSObject
-  @register()
-
   # Initialization
-  initWithSharegroup: objc.invokeSelector "initWithSharegroup:"
+  initWithSharegroup: @nativeSelector "initWithSharegroup:"
 
   # Loading Textures from Files
-  @textureWithContentsOfFile: objc.invokeSelector "textureWithContentsOfFile:options:error:"
-  textureWithContentsOfFile: objc.invokeSelector "textureWithContentsOfFile:options:queue:completionHandler:"
+  @textureWithContentsOfFile: @nativeSelector "textureWithContentsOfFile:options:error:"
+  textureWithContentsOfFile: @nativeSelector "textureWithContentsOfFile:options:queue:completionHandler:"
 
   # Loading a Texture From a URL
-  @textureWithContentsOfURL: objc.invokeSelector "textureWithContentsOfURL:options:error:"
-  textureWithContentsOfURL: objc.invokeSelector "textureWithContentsOfURL:options:queue:completionHandler:"
+  @textureWithContentsOfURL: @nativeSelector "textureWithContentsOfURL:options:error:"
+  textureWithContentsOfURL: @nativeSelector "textureWithContentsOfURL:options:queue:completionHandler:"
 
   # Creating Textures from In-Memory Representations
-  @textureWithContentsOfData: objc.invokeSelector "textureWithContentsOfData:options:error:"
-  textureWithContentsOfData: objc.invokeSelector "textureWithContentsOfData:options:queue:completionHandler:"
+  @textureWithContentsOfData: @nativeSelector "textureWithContentsOfData:options:error:"
+  textureWithContentsOfData: @nativeSelector "textureWithContentsOfData:options:queue:completionHandler:"
 
   # Creating Textures from CGImages
-  @textureWithCGImage: objc.invokeSelector "textureWithCGImage:options:error:"
-  textureWithCGImage: objc.invokeSelector "textureWithCGImage:options:queue:completionHandler:"
+  @textureWithCGImage: @nativeSelector "textureWithCGImage:options:error:"
+  textureWithCGImage: @nativeSelector "textureWithCGImage:options:queue:completionHandler:"
 
   # Loading Cube Maps from Files
-  @cubeMapWithContentsOfFile: objc.invokeSelector "cubeMapWithContentsOfFile:options:error:"
-  cubeMapWithContentsOfFile: objc.invokeSelector "cubeMapWithContentsOfFile:options:queue:completionHandler:"
-  @cubeMapWithContentsOfFiles: objc.invokeSelector "cubeMapWithContentsOfFiles:options:error:"
-  cubeMapWithContentsOfFiles: objc.invokeSelector "cubeMapWithContentsOfFiles:options:queue:completionHandler:"
+  @cubeMapWithContentsOfFile: @nativeSelector "cubeMapWithContentsOfFile:options:error:"
+  cubeMapWithContentsOfFile: @nativeSelector "cubeMapWithContentsOfFile:options:queue:completionHandler:"
+  @cubeMapWithContentsOfFiles: @nativeSelector "cubeMapWithContentsOfFiles:options:error:"
+  cubeMapWithContentsOfFiles: @nativeSelector "cubeMapWithContentsOfFiles:options:queue:completionHandler:"
 
   # Loading Cube Maps from URLs
-  @cubeMapWithContentsOfURL: objc.invokeSelector "cubeMapWithContentsOfURL:options:error:"
-  cubeMapWithContentsOfURL: objc.invokeSelector "cubeMapWithContentsOfURL:options:queue:completionHandler:"
+  @cubeMapWithContentsOfURL: @nativeSelector "cubeMapWithContentsOfURL:options:error:"
+  cubeMapWithContentsOfURL: @nativeSelector "cubeMapWithContentsOfURL:options:queue:completionHandler:"
+
+  @register()

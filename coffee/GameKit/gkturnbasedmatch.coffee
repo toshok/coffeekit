@@ -1,35 +1,35 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.GKTurnBasedMatch = class GKTurnBasedMatch extends foundation.NSObject
-  @register()
-
   # Retrieving Existing Matches
-  @loadMatches: objc.invokeSelector "loadMatchesWithCompletionHandler:"
+  @loadMatches: @nativeSelector "loadMatchesWithCompletionHandler:"
 
   # Creating a New Match
-  @findMatchForRequest: objc.invokeSelector "findMatchForRequest:withCompletionHandler:"
+  @findMatchForRequest: @nativeSelector "findMatchForRequest:withCompletionHandler:"
 
   # Retrieving Information About the Match
-  ck.instanceProperty @, "creationDate"
-  ck.instanceProperty @, "currentParticipant"
-  ck.instanceProperty @, "matchID"
-  ck.instanceProperty @, "message"
-  ck.instanceProperty @, "participants"
-  ck.instanceProperty @, "status"
-  ck.instanceProperty @, "matchData"
+  @instanceProperty "creationDate"
+  @instanceProperty "currentParticipant"
+  @instanceProperty "matchID"
+  @instanceProperty "message"
+  @instanceProperty "participants"
+  @instanceProperty "status"
+  @instanceProperty "matchData"
 
   # Retrieving the Match’s Custom Data
-  loadMatchData: objc.invokeSelector "loadMatchDataWithCompletionHandler:"
+  loadMatchData: @nativeSelector "loadMatchDataWithCompletionHandler:"
 
   # Handling the Current Player’s Turn
-  endTurn: objc.invokeSelector "endTurnWithNextParticipant:matchData:completionHandler:"
+  endTurn: @nativeSelector "endTurnWithNextParticipant:matchData:completionHandler:"
 
   # Leaving a Match
-  participantQuitInTurnWithOutcome: objc.invokeSelector "participantQuitInTurnWithOutcome:nextParticipant:matchData:completionHandler:"
-  participantQuitOutOfTurnWithOutcome: objc.invokeSelector "participantQuitOutOfTurnWithOutcome:withCompletionHandler:"
+  participantQuitInTurnWithOutcome: @nativeSelector "participantQuitInTurnWithOutcome:nextParticipant:matchData:completionHandler:"
+  participantQuitOutOfTurnWithOutcome: @nativeSelector "participantQuitOutOfTurnWithOutcome:withCompletionHandler:"
 
   # Ending a Match
-  endMatchInTurn: objc.invokeSelector "endMatchInTurnWithMatchData:completionHandler:"
+  endMatchInTurn: @nativeSelector "endMatchInTurnWithMatchData:completionHandler:"
 
   # Deleting a Match From Game Center
-  remove: objc.invokeSelector "removeWithCompletionHandler:"
+  remove: @nativeSelector "removeWithCompletionHandler:"
+
+  @register()

@@ -2,7 +2,7 @@
 
 #console.log "UIViewPrintFormatter"
 exports.UIViewPrintFormatter = class UIViewPrintFormatter extends UIPrintFormatter
-  @register()
-
   # Accessing the View
-  ck.instanceProperty @, "view"
+  @instanceProperty "view"
+
+  @register()

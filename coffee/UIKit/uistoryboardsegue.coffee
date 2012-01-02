@@ -2,15 +2,15 @@
 
 #console.log "UIStoryboardSegue"
 exports.UIStoryboardSegue = class UIStoryboardSegue extends foundation.NSObject
-  @register()
-
   # Initializing a Storyboard Segue
-  initWithIdentifier: objc.invokeSelector "initWithIdentifier:source:destination:"
+  initWithIdentifier: @nativeSelector "initWithIdentifier:source:destination:"
 
   # Accessing the Segue Attributes
-  ck.instanceProperty @, "sourceViewController"
-  ck.instanceProperty @, "destinationViewController"
-  ck.instanceProperty @, "identifier"
+  @instanceProperty "sourceViewController"
+  @instanceProperty "destinationViewController"
+  @instanceProperty "identifier"
 
   # Performing the Segue
-  perform: objc.invokeSelector "perform"
+  perform: @nativeSelector "perform"
+
+  @register()

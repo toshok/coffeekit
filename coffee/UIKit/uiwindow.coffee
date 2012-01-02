@@ -2,25 +2,25 @@
 
 #console.log "UIWindow"
 exports.UIWindow = class UIWindow extends UIView
-  @register()
-
   # Configuring Windows
-  ck.instanceProperty @, "windowLevel"
-  ck.instanceProperty @, "screen"
-  ck.instanceProperty @, "rootViewController"
+  @instanceProperty "windowLevel"
+  @instanceProperty "screen"
+  @instanceProperty "rootViewController"
 
   # Making Windows Key
-  ck.instanceProperty @, "keyWindow"
-  makeKeyAndVisible: objc.invokeSelector "makeKeyAndVisible"
-  becomeKeyWindow: objc.invokeSelector "becomeKeyWindow"
-  makeKeyWindow: objc.invokeSelector "makeKeyWindow"
-  resignKeyWindow: objc.invokeSelector "resignKeyWindow"
+  @instanceProperty "keyWindow"
+  makeKeyAndVisible: @nativeSelector "makeKeyAndVisible"
+  becomeKeyWindow:   @nativeSelector "becomeKeyWindow"
+  makeKeyWindow:     @nativeSelector "makeKeyWindow"
+  resignKeyWindow:   @nativeSelector "resignKeyWindow"
 
   # Converting Coordinates
-  convertPointToWindow: objc.invokeSelector "convertPoint:toWindow:"
-  convertPointFromWindow: objc.invokeSelector "convertPoint:fromWindow:"
-  convertRectToWindow: objc.invokeSelector "convertRect:toWindow:"
-  convertRectFromWindow: objc.invokeSelector "convertRect:fromWindow:"
+  convertPointToWindow:   @nativeSelector "convertPoint:toWindow:"
+  convertPointFromWindow: @nativeSelector "convertPoint:fromWindow:"
+  convertRectToWindow:    @nativeSelector "convertRect:toWindow:"
+  convertRectFromWindow:  @nativeSelector "convertRect:fromWindow:"
 
   # Sending Events
-  sendEvent: objc.invokeSelector "sendEvent:"
+  sendEvent:              @nativeSelector "sendEvent:"
+
+  @register()

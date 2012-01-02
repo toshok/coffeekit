@@ -2,77 +2,77 @@
 
 #console.log "UITableView"
 exports.UITableView = class UITableView extends UIScrollView
-  @register()
-
   # Initializing a UITableView Object
-  initWithFrame: objc.invokeSelector "initWithFrame:style:"
+  initWithFrame: @nativeSelector "initWithFrame:style:"
 
   # Configuring a Table View
-  dequeueReusableCellWithIdentifier: objc.invokeSelector "dequeueReusableCellWithIdentifier:"
-  ck.instanceProperty @, "style"
-  numberOfRowsInSection: objc.invokeSelector "numberOfRowsInSection:"
-  numberOfSections: objc.invokeSelector "numberOfSections"
-  ck.instanceProperty @, "rowHeight"
-  ck.instanceProperty @, "separatorStyle"
-  ck.instanceProperty @, "separatorColor"
-  ck.instanceProperty @, "backgroundView"
-  ck.instanceProperty @, "tableHeaderView"
-  ck.instanceProperty @, "tableFooterView"
-  ck.instanceProperty @, "sectionHeaderHeight"
-  ck.instanceProperty @, "sectionFooterHeight"
-  ck.instanceProperty @, "sectionIndexMinimumDisplayRowCount"
+  dequeueReusableCellWithIdentifier: @nativeSelector "dequeueReusableCellWithIdentifier:"
+  numberOfRowsInSection:             @nativeSelector "numberOfRowsInSection:"
+  numberOfSections:                  @nativeSelector "numberOfSections"
+  @instanceProperty "style"
+  @instanceProperty "rowHeight"
+  @instanceProperty "separatorStyle"
+  @instanceProperty "separatorColor"
+  @instanceProperty "backgroundView"
+  @instanceProperty "tableHeaderView"
+  @instanceProperty "tableFooterView"
+  @instanceProperty "sectionHeaderHeight"
+  @instanceProperty "sectionFooterHeight"
+  @instanceProperty "sectionIndexMinimumDisplayRowCount"
 
   # Accessing Cells and Sections
-  cellForRowAtIndexPath: objc.invokeSelector "cellForRowAtIndexPath:"
-  indexPathForCell: objc.invokeSelector "indexPathForCell:"
-  indexPathForRowAtPoint: objc.invokeSelector "indexPathForRowAtPoint:"
-  indexPathsForRowsInRect: objc.invokeSelector "indexPathsForRowsInRect:"
-  visibleCells: objc.invokeSelector "visibleCells"
-  indexPathsForVisibleRows: objc.invokeSelector "indexPathsForVisibleRows"
+  cellForRowAtIndexPath:    @nativeSelector "cellForRowAtIndexPath:"
+  indexPathForCell:         @nativeSelector "indexPathForCell:"
+  indexPathForRowAtPoint:   @nativeSelector "indexPathForRowAtPoint:"
+  indexPathsForRowsInRect:  @nativeSelector "indexPathsForRowsInRect:"
+  visibleCells:             @nativeSelector "visibleCells"
+  indexPathsForVisibleRows: @nativeSelector "indexPathsForVisibleRows"
 
   # Scrolling the Table View
-  scrollToRowAtIndexPath: objc.invokeSelector "scrollToRowAtIndexPath:atScrollPosition:animated:"
-  scrollToNearestSelectedRowAtScrollPosition: objc.invokeSelector "scrollToNearestSelectedRowAtScrollPosition:animated:"
+  scrollToRowAtIndexPath:                     @nativeSelector "scrollToRowAtIndexPath:atScrollPosition:animated:"
+  scrollToNearestSelectedRowAtScrollPosition: @nativeSelector "scrollToNearestSelectedRowAtScrollPosition:animated:"
 
   # Managing Selections
-  indexPathForSelectedRow: objc.invokeSelector "indexPathForSelectedRow"
-  indexPathsForSelectedRows: objc.invokeSelector "indexPathsForSelectedRows"
-  selectRowAtIndexPath: objc.invokeSelector "selectRowAtIndexPath:animated:scrollPosition:"
-  deselectRowAtIndexPath: objc.invokeSelector "deselectRowAtIndexPath:animated:"
-  ck.instanceProperty @, "allowsSelection"
-  ck.instanceProperty @, "allowsMultipleSelection"
-  ck.instanceProperty @, "allowsSelectionDuringEditing"
-  ck.instanceProperty @, "allowsMultipleSelectionDuringEditing"
+  indexPathForSelectedRow:   @nativeSelector "indexPathForSelectedRow"
+  indexPathsForSelectedRows: @nativeSelector "indexPathsForSelectedRows"
+  selectRowAtIndexPath:      @nativeSelector "selectRowAtIndexPath:animated:scrollPosition:"
+  deselectRowAtIndexPath:    @nativeSelector "deselectRowAtIndexPath:animated:"
+  @instanceProperty "allowsSelection"
+  @instanceProperty "allowsMultipleSelection"
+  @instanceProperty "allowsSelectionDuringEditing"
+  @instanceProperty "allowsMultipleSelectionDuringEditing"
 
   # Inserting, Deleting, and Moving Rows and Sections
-  beginUpdates: objc.invokeSelector "beginUpdates"
-  endUpdates: objc.invokeSelector "endUpdates"
-  insertRowsAtIndexPaths: objc.invokeSelector "insertRowsAtIndexPaths:withRowAnimation:"
-  deleteRowsAtIndexPaths: objc.invokeSelector "deleteRowsAtIndexPaths:withRowAnimation:"
-  moveRowAtIndexPath: objc.invokeSelector "moveRowAtIndexPath:toIndexPath:"
-  insertSections: objc.invokeSelector "insertSections:withRowAnimation:"
-  deleteSections: objc.invokeSelector "deleteSections:withRowAnimation:"
-  moveSection: objc.invokeSelector "moveSection:toSection:"
+  beginUpdates:           @nativeSelector "beginUpdates"
+  endUpdates:             @nativeSelector "endUpdates"
+  insertRowsAtIndexPaths: @nativeSelector "insertRowsAtIndexPaths:withRowAnimation:"
+  deleteRowsAtIndexPaths: @nativeSelector "deleteRowsAtIndexPaths:withRowAnimation:"
+  moveRowAtIndexPath:     @nativeSelector "moveRowAtIndexPath:toIndexPath:"
+  insertSections:         @nativeSelector "insertSections:withRowAnimation:"
+  deleteSections:         @nativeSelector "deleteSections:withRowAnimation:"
+  moveSection:            @nativeSelector "moveSection:toSection:"
 
   # Managing the Editing of Table Cells
-  ck.instanceProperty @, "editing", { set: (v) -> @setEditing v, false }
-  setEditing: objc.invokeSelector "setEditing:animated:"
+  @instanceProperty "editing", { set: (v) -> @setEditing v, false }
+  setEditing: @nativeSelector "setEditing:animated:"
 
   # Reloading the Table View
-  reloadData: objc.invokeSelector "reloadData"
-  reloadRowsAtIndexPaths: objc.invokeSelector "reloadRowsAtIndexPaths:withRowAnimation:"
-  reloadSections: objc.invokeSelector "reloadSections:withRowAnimation:"
-  reloadSectionIndexTitles: objc.invokeSelector "reloadSectionIndexTitles"
+  reloadData:               @nativeSelector "reloadData"
+  reloadRowsAtIndexPaths:   @nativeSelector "reloadRowsAtIndexPaths:withRowAnimation:"
+  reloadSections:           @nativeSelector "reloadSections:withRowAnimation:"
+  reloadSectionIndexTitles: @nativeSelector "reloadSectionIndexTitles"
 
   # Accessing Drawing Areas of the Table View
-  rectForSection: objc.invokeSelector "rectForSection:"
-  rectForRowAtIndexPath: objc.invokeSelector "rectForRowAtIndexPath:"
-  rectForFooterInSection: objc.invokeSelector "rectForFooterInSection:"
-  rectForHeaderInSection: objc.invokeSelector "rectForHeaderInSection:"
+  rectForSection:         @nativeSelector "rectForSection:"
+  rectForRowAtIndexPath:  @nativeSelector "rectForRowAtIndexPath:"
+  rectForFooterInSection: @nativeSelector "rectForFooterInSection:"
+  rectForHeaderInSection: @nativeSelector "rectForHeaderInSection:"
 
   # Registering Nib Objects for Cell Reuse
-  registerNibForCellReuseIdentifier: objc.invokeSelector "registerNib:forCellReuseIdentifier:"
+  registerNibForCellReuseIdentifier: @nativeSelector "registerNib:forCellReuseIdentifier:"
 
   # Managing the Delegate and the Data Source
-  ck.instanceProperty @, "dataSource", { set: (v) -> objc.invokeSelector("setDataSource:").call this, (ck.autobox v, UITableViewDataSource) }
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UITableViewDelegate) }
+  @autoboxProperty "dataSource", UITableViewDataSource
+  @autoboxProperty "delegate", UITableViewDelegate
+
+  @register()

@@ -1,17 +1,17 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.CATextLayer = class CATextLayer extends CALayer
-  @register()
-
   # Getting and Setting the Text
-  ck.instanceProperty @, "string"
+  @instanceProperty "string"
 
   # Text Visual Properties
-  ck.instanceProperty @, "font"
-  ck.instanceProperty @, "fontSize"
-  ck.instanceProperty @, "foregroundColor"
+  @instanceProperty "font"
+  @instanceProperty "fontSize"
+  @instanceProperty "foregroundColor"
 
   # Text Alignment and Truncation
-  ck.instanceProperty @, "wrapped"
-  ck.instanceProperty @, "alignmentMode"
-  ck.instanceProperty @, "truncationMode"
+  @instanceProperty "wrapped"
+  @instanceProperty "alignmentMode"
+  @instanceProperty "truncationMode"
+
+  @register()

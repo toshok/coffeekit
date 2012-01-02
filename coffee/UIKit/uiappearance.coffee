@@ -1,7 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UIAppearance"
-Protocol = foundation.Protocol
 
 appearances = {}
 
@@ -44,10 +43,9 @@ makeAppearance = (sel, o, args...) ->
 
 
 exports.UIAppearance = class UIAppearance extends foundation.Protocol
-  @register()
-
   # Appearance Methods
-  @appearance:                Protocol.requiredMethod("appearance", { tramp: -> makeAppearance "appearance", @ })
-  @appearanceWhenContainedIn: Protocol.requiredMethod("appearanceWhenContainedIn:", {tramp: (args...) -> makeAppearance "appearanceWhenContainedIn", @, args...} )
+  @appearance:                @requiredMethod("appearance", { tramp: -> makeAppearance "appearance", @ })
+  @appearanceWhenContainedIn: @requiredMethod("appearanceWhenContainedIn:", {tramp: (args...) -> makeAppearance "appearanceWhenContainedIn", @, args...} )
 
+  @register()
 

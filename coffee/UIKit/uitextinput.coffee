@@ -1,58 +1,58 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 #console.log "UITextInput"
-Protocol = foundation.Protocol
 
 exports.UITextInput = class UITextInput extends foundation.Protocol
-  @register()
   @mixinProtocol UIKeyInput
 
   # Replacing and Returning Text
-  textInRange:  Protocol.requiredMethod "textInRange:"
-  replaceRange: Protocol.requiredMethod "replaceRange:withText:"
+  textInRange:  @requiredMethod "textInRange:"
+  replaceRange: @requiredMethod "replaceRange:withText:"
 
   # Working with Marked and Selected Text
-  selectedTextRange:          Protocol.requiredProperty "selectedTextRange"
-  markedTextRange:            Protocol.requiredProperty "markedTextRange"
-  markedTextStyle:            Protocol.requiredProperty "markedTextStyle"
-  setMarkedTextSelectedRange: Protocol.requiredMethod "setMarkedText:selectedRange:"
-  unmarkText:                 Protocol.requiredMethod "unmarkText"
-  selectionAffinity:          Protocol.optionalMethod "selectionAffinity"
+  selectedTextRange:          @requiredProperty "selectedTextRange"
+  markedTextRange:            @requiredProperty "markedTextRange"
+  markedTextStyle:            @requiredProperty "markedTextStyle"
+  setMarkedTextSelectedRange: @requiredMethod "setMarkedText:selectedRange:"
+  unmarkText:                 @requiredMethod "unmarkText"
+  selectionAffinity:          @optionalMethod "selectionAffinity"
 
   # Computing Text Ranges and Text Positions
-  textRangeFromPosition:           Protocol.requiredMethod "textRangeFromPosition:toPosition:"
-  positionFromPosition:            Protocol.requiredMethod "positionFromPosition:offset:"
-  positionFromPositionInDirection: Protocol.requiredMethod "positionFromPosition:inDirection:offset:"
-  beginningOfDocument:             Protocol.requiredProperty "beginningOfDocument"
-  endOfDocument:                   Protocol.requiredProperty "endOfDocument"
+  textRangeFromPosition:           @requiredMethod "textRangeFromPosition:toPosition:"
+  positionFromPosition:            @requiredMethod "positionFromPosition:offset:"
+  positionFromPositionInDirection: @requiredMethod "positionFromPosition:inDirection:offset:"
+  beginningOfDocument:             @requiredProperty "beginningOfDocument"
+  endOfDocument:                   @requiredProperty "endOfDocument"
 
   # Evaluating Text Positions
-  comparePosition:    Protocol.requiredMethod "comparePosition:toPosition:"
-  offsetFromPosition: Protocol.requiredMethod "offsetFromPosition:toPosition:"
+  comparePosition:    @requiredMethod "comparePosition:toPosition:"
+  offsetFromPosition: @requiredMethod "offsetFromPosition:toPosition:"
 
   # Determining Layout and Writing Direction
-  positionWithinRange:               Protocol.optionalMethod "positionWithinRange:farthestInDirection:"
-  characterRangeByExtendingPosition: Protocol.requiredMethod "characterRangeByExtendingPosition:inDirection:"
-  baseWritingDirectionForPosition:   Protocol.requiredMethod "baseWritingDirectionForPosition:inDirection:"
-  setBaseWritingDirection:           Protocol.requiredMethod "setBaseWritingDirection:forRange:"
+  positionWithinRange:               @optionalMethod "positionWithinRange:farthestInDirection:"
+  characterRangeByExtendingPosition: @requiredMethod "characterRangeByExtendingPosition:inDirection:"
+  baseWritingDirectionForPosition:   @requiredMethod "baseWritingDirectionForPosition:inDirection:"
+  setBaseWritingDirection:           @requiredMethod "setBaseWritingDirection:forRange:"
 
   # Geometry and Hit-Testing Methods
-  firstRectForRange:                 Protocol.requiredMethod "firstRectForRange:"
-  caretRectForPosition:              Protocol.requiredMethod "caretRectForPosition:"
-  closestPositionToPoint:            Protocol.requiredMethod "closestPositionToPoint:"
-  closestPositionToPointWithinRange: Protocol.requiredMethod "closestPositionToPoint:withinRange:"
-  characterRangeAtPoint:             Protocol.requiredMethod "characterRangeAtPoint:"
+  firstRectForRange:                 @requiredMethod "firstRectForRange:"
+  caretRectForPosition:              @requiredMethod "caretRectForPosition:"
+  closestPositionToPoint:            @requiredMethod "closestPositionToPoint:"
+  closestPositionToPointWithinRange: @requiredMethod "closestPositionToPoint:withinRange:"
+  characterRangeAtPoint:             @requiredMethod "characterRangeAtPoint:"
 
   # Text Input Delegate and Text Input Tokenizer
-  inputDelegate: Protocol.requiredProperty "inputDelegate"
-  tokenizer:     Protocol.requiredProperty "tokenizer"
+  inputDelegate: @requiredProperty "inputDelegate"
+  tokenizer:     @requiredProperty "tokenizer"
 
   # Returning Text Styling Information
-  textStylingAtPosition: Protocol.optionalMethod "textStylingAtPosition:inDirection:"
+  textStylingAtPosition: @optionalMethod "textStylingAtPosition:inDirection:"
 
   # Reconciling Text Position and Character Offset
-  positionWithinRange:       Protocol.optionalMethod "positionWithinRange:atCharacterOffset:"
-  characterOffsetOfPosition: Protocol.optionalMethod "characterOffsetOfPosition:withinRange:"
+  positionWithinRange:       @optionalMethod "positionWithinRange:atCharacterOffset:"
+  characterOffsetOfPosition: @optionalMethod "characterOffsetOfPosition:withinRange:"
 
   # Returning the Text Input View
-  textInputView: Protocol.optionalMethod "textInputView"
+  textInputView: @optionalMethod "textInputView"
+
+  @register()

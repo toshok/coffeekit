@@ -2,39 +2,39 @@
 
 #console.log "UIWebView"
 exports.UIWebView = class UIWebView extends UIView
-  @register()
-
   # Setting the Delegate
-  ck.instanceProperty @, "delegate", { set: (v) -> objc.invokeSelector("setDelegate:").call this, (ck.autobox v, UIWebViewDelegate) }
+  @autoboxProperty "delegate", UIWebViewDelegate
 
   # Loading Content
-  loadData: objc.invokeSelector "loadData:MIMEType:textEncodingName:baseURL:"
-  loadHTMLString: objc.invokeSelector "loadHTMLString:baseURL:"
-  loadRequest: objc.invokeSelector "loadRequest:"
-  ck.instanceProperty @, "request"
-  ck.instanceProperty @, "loading"
-  stopLoading: objc.invokeSelector "stopLoading"
-  reload: objc.invokeSelector "reload"
+  loadData:       @nativeSelector "loadData:MIMEType:textEncodingName:baseURL:"
+  loadHTMLString: @nativeSelector "loadHTMLString:baseURL:"
+  loadRequest:    @nativeSelector "loadRequest:"
+  stopLoading:    @nativeSelector "stopLoading"
+  reload:         @nativeSelector "reload"
+  @instanceProperty "loading"
+  @instanceProperty "request"
 
   # Moving Back and Forward
-  ck.instanceProperty @, "canGoBack"
-  ck.instanceProperty @, "canGoForward"
-  goBack: objc.invokeSelector "goBack"
-  goForward: objc.invokeSelector "goForward"
+  goBack:    @nativeSelector "goBack"
+  goForward: @nativeSelector "goForward"
+  @instanceProperty "canGoBack"
+  @instanceProperty "canGoForward"
 
   # Setting Web Content Properties
-  ck.instanceProperty @, "scalesPageToFit"
-  ck.instanceProperty @, "scrollView"
-  ck.instanceProperty @, "detectsPhoneNumbers" # Deprecated in iOS 3.0
+  @instanceProperty "scalesPageToFit"
+  @instanceProperty "scrollView"
+  @instanceProperty "detectsPhoneNumbers" # Deprecated in iOS 3.0
 
   # Running JavaScript
-  stringByEvaluatingJavaScriptFromString: objc.invokeSelector "stringByEvaluatingJavaScriptFromString:"
+  stringByEvaluatingJavaScriptFromString: @nativeSelector "stringByEvaluatingJavaScriptFromString:"
 
   # Detecting Types of Data
-  ck.instanceProperty @, "dataDetectorTypes"
+  @instanceProperty "dataDetectorTypes"
 
   # Managing Media Playback
-  ck.instanceProperty @, "allowsInlineMediaPlayback"
-  ck.instanceProperty @, "mediaPlaybackRequiresUserAction"
-  ck.instanceProperty @, "mediaPlaybackAllowsAirPlay"
+  @instanceProperty "allowsInlineMediaPlayback"
+  @instanceProperty "mediaPlaybackRequiresUserAction"
+  @instanceProperty "mediaPlaybackAllowsAirPlay"
+
+  @register()
 
