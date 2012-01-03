@@ -3,7 +3,9 @@
 #console.log "UIView"
 exports.UIView = class UIView extends UIResponder
   # Initializing a View Object
-  initWithFrame:    @nativeSelector "initWithFrame:"
+  initWithFrame:    @nativeSelector("initWithFrame:").
+                         returnType( -> UIView).
+                         paramTypes( -> [ foundation.NSRect ])
 
   # Configuring a View’s Visual Appearance
   @layerClass:      @nativeSelector "layerClass"
