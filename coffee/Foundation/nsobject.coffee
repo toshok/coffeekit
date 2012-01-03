@@ -2,46 +2,70 @@
 
 console.log "NSObject"
 
+registerMembers = (o, c) ->
+    for name of o
+      # skip properties
+      if (o.__lookupGetter__ name) or (o.__lookupSetter__ name)
+        continue
+      # XXX for some reason NSResponder's constructor is coming up with a _ck_register = NSObject.  wtf?
+      if name is 'constructor'
+        continue
+      impl = o[name]
+      if impl?._ck_register?
+        o[name] = impl._ck_register c, name
+
 exports.NSObject = class NSObject extends CoffeeKitObject
   @getTypeSignature: -> "@"
 
   @alloc: () -> objc.allocInstance @.name
   @mixinProtocol: (p) -> new ck.MixinProtocolAttribute @, p
   @conformsToProtocol: (p) -> new ck.ConformsToProtocolAttribute @, p
+
   @register: (n = @.name) ->
-    for name of @::
-      # skip properties
-      if (@::__lookupGetter__ name) or (@::__lookupSetter__ name)
-        continue
-      # XXX for some reason NSResponder's constructor is coming up with a _ck_register = NSObject.  wtf?
-      if name is 'constructor'
-        continue
-      impl = @::[name]
-      if impl._ck_register?
-        @::[name] = impl._ck_register @, name
+    # prepare the instance methods
+    registerMembers @::, @
+
+    # prepare static methods
+    registerMembers @, @
+
+    # register the class with objective-c
     new ck.RegisterAttribute @, n
 
-  @nativeSelector: (sel, body) ->
-    if body?
-      f = body
-      f._ck_register = (c, name) ->
-        if f._ckInfo.returnTypeGetter?
-          paramTypes = if f._ckInfo.paramTypesGetter? then f._ckInfo.paramTypesGetter() else []
-          sig = ck.typeSignature([f._ckInfo.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
+  @nativeSelector: (sel) ->
+    info = sel: sel
+
+    info.returnType = (fn) ->
+      info.returnTypeGetter = fn
+      info
+    info.paramTypes = (fn) ->
+      info.paramTypesGetter = fn
+      info
+    info.makeUIAppearance = (fn) ->
+      info._ck_appearance = true
+      info
+    info.impl = (fn) ->
+      info.body = fn
+      info
+    info._ck_register = (c, name) ->
+        console.log "registering #{c.name}.#{name}"
+
+        if not info.body?
+          f = objc.invokeSelector info.sel
         else
-          sig = "@@:" # is this a reasonable thing to default to?
-        new ck.SelectorAttribute f, sel, sig
+          f = info.body
+
+          if info.returnTypeGetter?
+            paramTypes = if info.paramTypesGetter? then info.paramTypesGetter() else []
+            sig = ck.typeSignature([info.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
+          else
+            sig = "@@:" # is this a reasonable thing to default to?
+          new ck.SelectorAttribute f, sel, sig
+
+        f._ck_appearance = info._ck_appearance
+        f._ckInfo = info
+        delete info._ck_register
         f
-    else
-      f = objc.invokeSelector (sel)
-    f._ckInfo = sel: sel
-    f.returnType = (fn) ->
-      f._ckInfo.returnTypeGetter = fn
-      f
-    f.paramTypes = (fn) ->
-      f._ckInfo.paramTypesGetter = fn
-      f
-    f
+    info
 
   @override: (fn) ->
     fn._ck_register = (c, name) ->
@@ -52,6 +76,7 @@ exports.NSObject = class NSObject extends CoffeeKitObject
 
       if fn._ckProtocolInfo
         new ck.SelectorAttribute fn, fn._ckProtocolInfo.sel, fn._ckProtocolInfo.sig
+        fn._ck_appearance = fn._ckProtocolInfo._ck_appearance
       else
         fn._ckInfo = proto[name]._ckInfo
 
@@ -61,6 +86,8 @@ exports.NSObject = class NSObject extends CoffeeKitObject
         else
           sig = "@@:" # is this a reasonable thing to default to?
         new ck.SelectorAttribute fn, fn._ckInfo.sel, sig
+        fn._ck_appearance = fn._ckInfo._ck_appearance
+      delete fn._ck_register
       fn
     fn
 
