@@ -37,8 +37,9 @@ class UIControlProxy extends foundation.NSObject
                  super()
                  @fn = fn
 
-  proxyAction: @nativeSelector("action", -> @fn()).
-                    returnType(-> ck.sig.Void)
+  proxyAction: @nativeSelector("action").
+                    returnType(-> ck.sig.Void).
+                          impl -> @fn()
 
   @register()
 
@@ -47,9 +48,10 @@ class UIControlProxy1 extends foundation.NSObject
                  super()
                  @fn = fn
 
-  proxyAction: @nativeSelector("action", (v)-> @fn(v)).
+  proxyAction: @nativeSelector("action").
                     returnType(-> ck.sig.Void).
-                    paramTypes(-> [foundation.NSObject])
+                    paramTypes(-> [foundation.NSObject]).
+                          impl (v) -> @fn(v)
 
   @register()
 
