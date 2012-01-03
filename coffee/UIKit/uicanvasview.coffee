@@ -2,9 +2,9 @@
 
 #console.log "UICanvasView"
 exports.UICanvasView = class UICanvasView extends UIView
-  @layerClass: @nativeSelector("layerClass", -> coreAnimation.CAEAGLLayer).
-                    returnType(-> ck.sig.Class)
-
+  @layerClass: @nativeSelector("layerClass").
+                    returnType(-> ck.sig.Class).
+                          impl -> coreAnimation.CAEAGLLayer
   getContext: (name, args) ->
     if name is "2d"
       throw "UICanvasView doesn't support 2d rendering"
