@@ -3,7 +3,9 @@
 #console.log "UITableViewController"
 exports.UITableViewController = class UITableViewController extends UIViewController
   # Initializing the UITableViewController Object
-  initWithStyle: @nativeSelector "initWithStyle:"
+  initWithStyle: @nativeSelector("initWithStyle:").
+                      returnType( -> UITableViewController).
+                      paramTypes( -> [ ck.sig.Int ])
 
   # Getting the Table View
   @instanceProperty "tableView"
