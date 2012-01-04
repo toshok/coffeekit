@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-console.log "NSObject"
+# console.log "NSObject"
 
 registerMembers = (o, c) ->
     for name of o
@@ -47,19 +47,26 @@ exports.NSObject = class NSObject extends CoffeeKitObject
       info.body = fn
       info
     info._ck_register = (c, name) ->
-        console.log "registering #{c.name}.#{name}"
+        info.declaringType = c
+
+        install_selector_attribute = no
 
         if not info.body?
           f = objc.invokeSelector info.sel
         else
           f = info.body
+          install_selector_attribute = yes
 
-          if info.returnTypeGetter?
-            paramTypes = if info.paramTypesGetter? then info.paramTypesGetter() else []
-            sig = ck.typeSignature([info.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
-          else
-            sig = "@@:" # is this a reasonable thing to default to?
+        if info.returnTypeGetter?
+          paramTypes = if info.paramTypesGetter? then info.paramTypesGetter() else []
+          sig = ck.typeSignature([info.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
+        else
+          sig = "@@:" # is this a reasonable thing to default to?
+
+        if install_selector_attribute
           new ck.SelectorAttribute f, sel, sig
+        else
+          f._typeSig = sig
 
         f._ck_appearance = info._ck_appearance
         f._ckInfo = info

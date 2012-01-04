@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-console.log "NSRunLoop"
+#console.log "NSRunLoop"
 
 exports.NSRunLoop = class NSRunLoop extends NSObject
   # Accessing Run Loops and Modes
@@ -29,5 +29,3 @@ exports.NSRunLoop = class NSRunLoop extends NSObject
   cancelPerformSelectors: @nativeSelector "cancelPerformSelectorsWithTarget:"
 
   @register()
-
-console.log "done with NSRunLoop"
