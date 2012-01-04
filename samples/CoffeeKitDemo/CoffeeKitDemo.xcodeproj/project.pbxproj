@@ -115,6 +115,7 @@
 		EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */; };
 		EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */; };
 		EDDF86DB149D2FB5003FFC5E /* CoffeeKitDemo.coffee in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */; };
+		EDEE630D14B2AE16005BC13D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDEE630C14B2AE16005BC13D /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -509,6 +510,7 @@
 		EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoffeeKitDemo.coffee; sourceTree = "<group>"; };
 		EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoffeeKit.a; path = CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib/libCoffeeKit.a; sourceTree = DEVELOPER_DIR; };
 		EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EDEE630C14B2AE16005BC13D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +518,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEE630D14B2AE16005BC13D /* QuartzCore.framework in Frameworks */,
 				EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */,
 				EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */,
 				EDDF86AB149D218B003FFC5E /* UIKit.framework in Frameworks */,
@@ -800,7 +803,6 @@
 		EDDF869A149D218B003FFC5E = {
 			isa = PBXGroup;
 			children = (
-				ED21C84214A3C2140062D53A /* GLKit.framework */,
 				EDDF86B6149D218B003FFC5E /* CoffeeKitDemo */,
 				EDDF86A9149D218B003FFC5E /* Frameworks */,
 				EDDF86A7149D218B003FFC5E /* Products */,
@@ -819,6 +821,8 @@
 			isa = PBXGroup;
 			children = (
 				EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */,
+				EDEE630C14B2AE16005BC13D /* QuartzCore.framework */,
+				ED21C84214A3C2140062D53A /* GLKit.framework */,
 				EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */,
 				EDDF86AA149D218B003FFC5E /* UIKit.framework */,
 				EDDF86AC149D218B003FFC5E /* Foundation.framework */,
