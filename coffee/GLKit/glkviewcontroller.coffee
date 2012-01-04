@@ -9,7 +9,7 @@ exports.GLKViewController = class GLKViewController extends uikit.UIViewControll
   @autoboxProperty "delegate", GLKViewControllerDelegate
 
   # Controlling Frame Updates
-  @instanceProperty "paused"
+  @instanceProperty "paused", { get: "isPaused" }
   @instanceProperty "pauseOnWillResignActive"
   @instanceProperty "resumeOnDidBecomeActive"
 
