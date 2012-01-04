@@ -10,7 +10,7 @@ class Attribute
     if !obj._ck_attributes
       obj._ck_attributes = []
 
-    obj._ck_attributes.unshift this
+    obj._ck_attributes.unshift attr
 
   @find: (obj, attrType) ->
     attrs = if obj._ck_attributes? then obj._ck_attributes else []
@@ -23,8 +23,9 @@ class RegisterAttribute extends Attribute
     super obj
     obj._ck_register = name
 
-    console.log "registering #{obj._ck_register}, subclass of #{if obj.__super__ then obj.__super__.constructor._ck_register else ''}"
-    objc.internalRegisterJSType obj.prototype, obj._ck_register, if obj.__super__ then obj.__super__.constructor._ck_register else ''
+    #console.log "registering #{obj._ck_register}, subclass of #{if obj.__super__ then obj.__super__.constructor._ck_register else ''}"
+    objc.registerJSClass obj.prototype, obj._ck_register, if obj.__super__?.constructor?._ck_register? then obj.__super__.constructor._ck_register else ''
+
 exports.RegisterAttribute = RegisterAttribute
 
 class SelectorAttribute extends Attribute
@@ -33,7 +34,6 @@ class SelectorAttribute extends Attribute
     obj._ck_exported = true
     obj._ck_sel = sel_name
     obj._ck_typeSig = type_sig ? "@@:"
-    console.log "exposing function for selector #{obj._ck_sel}/#{obj._ck_typeSig}"
 exports.SelectorAttribute = SelectorAttribute
 
 exports.exposeSelector = (sel_name, rest...) ->
@@ -140,31 +140,32 @@ autobox = (obj, protocol) ->
           if value.property and !obj[key]
             throw "#{obj} is missing required property #{key} from protocol #{protocol}"
 
+  addProxyMethod = (k, v) ->
+    console.log "adding proxy method for #{k}, number of arguments to method = #{v.length}"
+    switch v.length
+      when 0 then ProtocolProxy::[k] = () -> v.call obj
+      when 1 then ProtocolProxy::[k] = (a1) -> v.call obj, a1
+      when 2 then ProtocolProxy::[k] = (a1,a2) -> v.call obj, a1, a2
+      when 3 then ProtocolProxy::[k] = (a1,a2,a3) -> v.call obj, a1, a2, a3
+      when 4 then ProtocolProxy::[k] = (a1,a2,a3,a4) -> v.call obj, a1, a2, a3, a4
+      when 5 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5) -> v.call obj, a1, a2, a3, a4, a5
+      when 6 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6) -> v.call obj, a1, a2, a3, a4, a5, a6
+      when 7 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7) -> v.call obj, a1, a2, a3, a4, a5, a6, a7
+      when 8 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8
+      when 9 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9
+      when 10 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
+      else throw "addProxyMethod doesn't support methods with #{v.length} arguments."
+    new SelectorAttribute ProtocolProxy::[k], pv.method, pv.sig
+        
   # now loop over the items that are in obj and match up the names to those in the protocol
   for key, value of obj
     if pv = protocol::[key]
       if pv.method
-        addProxyMethod = (k, v) ->
-          console.log "adding proxy method for #{k}, v.length = #{v.length}"
-          switch v.length
-            when 0 then ProtocolProxy::[k] = () -> v.call obj
-            when 1 then ProtocolProxy::[k] = (a1) -> v.call obj, a1
-            when 2 then ProtocolProxy::[k] = (a1,a2) -> v.call obj, a1, a2
-            when 3 then ProtocolProxy::[k] = (a1,a2,a3) -> v.call obj, a1, a2, a3
-            when 4 then ProtocolProxy::[k] = (a1,a2,a3,a4) -> v.call obj, a1, a2, a3, a4
-            when 5 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5) -> v.call obj, a1, a2, a3, a4, a5
-            when 6 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6) -> v.call obj, a1, a2, a3, a4, a5, a6
-            when 7 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7) -> v.call obj, a1, a2, a3, a4, a5, a6, a7
-            when 8 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8
-            when 9 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9
-            when 10 then ProtocolProxy::[k] = (a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) -> v.call obj, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
-            else throw "addProxyMethod doesn't support methods with #{v.length} arguments."
-          new SelectorAttribute ProtocolProxy::[k], pv.method, pv.sig
-        
         addProxyMethod key, value
       else
         throw "unhandled case:  property #{key} overriding from a protocol #{protocol}"
 
+  new ConformsToProtocolAttribute ProtocolProxy, protocol
   new RegisterAttribute ProtocolProxy, "CKProtocolProxy#{autoboxCount++}"
 
   return new ProtocolProxy
