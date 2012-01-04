@@ -26,9 +26,10 @@ class TargetActionProxy1 extends foundation.NSObject
                  super()
                  @fn = fn
 
-  proxyAction: @nativeSelector("action", (a1) -> @fn a1).
+  proxyAction: @nativeSelector("action").
                     returnType(-> ck.sig.Void).
-                    paramTypes(-> [foundation.NSObject])
+                    paramTypes(-> [foundation.NSObject]).
+                          impl (a1) -> @fn a1
 
   @register()
 
@@ -50,9 +51,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
     canvas = controller.view
 
     controller.delegate =
-        update: =>
-          if demo.update?
-            demo.update()
+        update: -> demo.update?()
 
     canvas.delegate =
       drawInRect: ->
