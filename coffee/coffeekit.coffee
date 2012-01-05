@@ -260,6 +260,7 @@ exports.sig =
   Ptr:      -> "^"
   CharStar: -> "*"
   NSString: -> "@"
+  PointerTo: (s) -> (-> "^#{exports.typeSignature [s]}")
 
 exports.typeSignature = (types) ->
   getTypeSignature = (t) ->
