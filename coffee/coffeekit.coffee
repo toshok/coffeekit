@@ -255,7 +255,7 @@ exports.sig =
   ULongLong: -> "Q"
   Float:    -> "f"
   Double:   -> "d"
-  Bool:     -> "B"
+  Bool:     -> "c"  # objective c's type signatures permit a 'B' which is BOOL, but it looks like the bindings all use 'c' for bool instead. :/
   Void:     -> "v"
   Ptr:      -> "^"
   CharStar: -> "*"
