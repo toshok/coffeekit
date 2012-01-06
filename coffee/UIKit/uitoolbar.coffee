@@ -9,8 +9,8 @@ exports.UIToolbar = class UIToolbar extends UIView
   # Configuring Toolbar Items
   @instanceProperty "items", { set: (v) -> @setItems v, false }
   setItems: @nativeSelector("setItems:animated:").
-                 returnType(-> ck.sig.Void).
-                 paramTypes(-> [ foundation.NSObject, ck.sig.Bool ]) # XXX param 1 is actually an array, we should have a ck.sig.NSArray for that
+                    returns(-> ck.sig.Void).
+                     params(-> [ foundation.NSObject, ck.sig.Bool ]) # XXX param 1 is actually an array, we should have a ck.sig.NSArray for that
 
   # Customizing Appearance
   backgroundImage:    @nativeSelector "backgroundImageForToolbarPosition:barMetrics:"

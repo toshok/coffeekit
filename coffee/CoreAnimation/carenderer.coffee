@@ -12,20 +12,20 @@ exports.CARenderer = class CARenderer extends foundation.NSObject
 
   # Render a Frame
   beginFrameAtTime: @nativeSelector("beginFrameAtTime:timeStamp:").
-                         returnType( -> ck.sig.Void ).
-                         paramTypes( -> [ ck.sig.Double, (ck.sig.PointerTo ck.sig.CVTimeStamp) ] ) # XXX arg1 should be CFTimeInterval
+                            returns( -> ck.sig.Void ).
+                             params( -> [ ck.sig.Double, (ck.sig.PointerTo ck.sig.CVTimeStamp) ] ) # XXX arg1 should be CFTimeInterval
 
   updateBounds: @nativeSelector("updateBounds").
-                     returnType( -> foundation.NSRect )
+                        returns( -> foundation.NSRect )
   addUpdateRect: @nativeSelector("addUpdateRect:").
-                      returnType( -> ck.sig.Void ).
-                      paramTypes( -> [ foundation.NSRect ] )
+                         returns( -> ck.sig.Void ).
+                          params( -> [ foundation.NSRect ] )
 
   render: @nativeSelector("render").
-               returnType( -> ck.sig.Void )
+                  returns( -> ck.sig.Void )
   nextFrameTime: @nativeSelector("nextFrameTime").
-                      returnType( -> ck.sig.Double ) # XXX CFTimeInterval
+                         returns( -> ck.sig.Double ) # XXX CFTimeInterval
   endFrame: @nativeSelector("endFrame").
-                 returnType( -> ck.sig.Void )
+                    returns( -> ck.sig.Void )
 
   @register()

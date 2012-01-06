@@ -5,29 +5,29 @@ exports.NSIndexPath = class NSIndexPath extends NSObject
   @indexPathWithIndex: @nativeSelector "indexPathWithIndex:"
   @indexPathWithIndexes: @nativeSelector "indexPathWithIndexes:length:"
   initWithIndex: @nativeSelector("initWithIndex:").
-                      returnType( -> NSIndexPath ).
-                      paramTypes( -> [ ck.sig.UInt ])
+                         returns( -> NSIndexPath ).
+                          params( -> [ ck.sig.UInt ])
   initWithIndexes: @nativeSelector("initWithIndexes:length:").
-                        returnType( -> NSIndexPath ).
-                        paramTypes( -> [ (ck.sig.PointerTo ck.sig.UInt), ck.sig.UInt ])
+                           returns( -> NSIndexPath ).
+                            params( -> [ (ck.sig.PointerTo ck.sig.UInt), ck.sig.UInt ])
 
   # Querying Index Paths
   indexAtPosition: @nativeSelector("indexAtPosition:").
-                        returnType( -> ck.sig.UInt ).
-                        paramTypes( -> [ ck.sig.UInt ] )
+                           returns( -> ck.sig.UInt ).
+                            params( -> [ ck.sig.UInt ] )
 
   indexPathByAddingIndex: @nativeSelector("indexPathByAddingIndex:").
-                               returnType( -> NSIndexPath ).
-                               paramTypes( -> [ ck.sig.UInt ])
+                                  returns( -> NSIndexPath ).
+                                   params( -> [ ck.sig.UInt ])
   indexPathByRemovingLastIndex: @nativeSelector("indexPathByRemovingLastIndex").
-                                     returnType( -> NSIndexPath )
+                                        returns( -> NSIndexPath )
   
   @instanceProperty "length", { set: null }
   @instanceProperty "indexes", { set: null }
 
   # Comparing Index Paths
   compare: @nativeSelector("compare:").
-                returnType( -> NSComparisonResult ).
-                paramTypes( -> [ NSIndexPath ] )
+                   returns( -> NSComparisonResult ).
+                    params( -> [ NSIndexPath ] )
 
   @register()

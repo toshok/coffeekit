@@ -4,17 +4,17 @@ exports.CALayer = class CALayer extends foundation.NSObject
   # Creating a Layer
   @layer: @nativeSelector "layer"
   init: @nativeSelector("init").
-             returnType( -> CALayer )
+                returns( -> CALayer )
   initWithLayer: @nativeSelector("initWithLayer:").
-                      returnType( -> CALayer ).
-                      paramTypes( -> [ CALayer ] )
+                         returns( -> CALayer ).
+                          params( -> [ CALayer ] )
 
 
   # Accessing the Presentation Layer
   presentationLayer: @nativeSelector("presentationLayer").
-                          returnType( -> CALayer )
+                             returns( -> CALayer )
   modelLayer: @nativeSelector("modelLayer").
-                   returnType( -> CALayer )
+                      returns( -> CALayer )
 
   # Modifying the Layer Geometry
   @instanceProperty "frame"
@@ -33,14 +33,14 @@ exports.CALayer = class CALayer extends foundation.NSObject
   @instanceProperty "contentsRect"
   @instanceProperty "contentsCenter"
   display: @nativeSelector("display").
-                returnType( -> ck.sig.Void )
+                   returns( -> ck.sig.Void )
   drawInContext: @nativeSelector("drawInContext:").
-                      returnType( -> ck.sig.Void ).
-                      paramTypes( -> [ ck.sig.PointerTo ck.sig.CGContext ] )
+                         returns( -> ck.sig.Void ).
+                          params( -> [ ck.sig.PointerTo ck.sig.CGContext ] )
   @instanceProperty "opaque"
   @instanceProperty "edgeAntialiasingMask"
   contentsAreFlipped: @nativeSelector("contentsAreFlipped").
-                           returnType( -> ck.sig.Bool )
+                              returns( -> ck.sig.Bool )
   @instanceProperty "geometryFlipped"
 
   # Style Attributes
@@ -71,50 +71,50 @@ exports.CALayer = class CALayer extends foundation.NSObject
   @instanceProperty "sublayers"
   @instanceProperty "superlayer"
   addSublayer: @nativeSelector("addSublayer:").
-                    returnType( -> ck.sig.Void ).
-                    paramTypes( -> [ CALayer ] )
+                       returns( -> ck.sig.Void ).
+                        params( -> [ CALayer ] )
 
   removeFromSuperlayer: @nativeSelector("removeFromSuperlayer").
-                             returnType( -> ck.sig.Void )
+                                returns( -> ck.sig.Void )
 
   insertSublayerAtIndex: @nativeSelector("insertSublayer:atIndex:").
-                              returnType( -> ck.sig.Void ).
-                              paramTypes( -> [ CALayer, ck.sig.UInt ] )
+                                 returns( -> ck.sig.Void ).
+                                  params( -> [ CALayer, ck.sig.UInt ] )
   insertSublayerBelow: @nativeSelector("insertSublayer:below:").
-                              returnType( -> ck.sig.Void ).
-                              paramTypes( -> [ CALayer, CALayer ] )
+                                 returns( -> ck.sig.Void ).
+                                  params( -> [ CALayer, CALayer ] )
   insertSublayerAbove: @nativeSelector("insertSublayer:above:").
-                              returnType( -> ck.sig.Void ).
-                              paramTypes( -> [ CALayer, CALayer ] )
+                                 returns( -> ck.sig.Void ).
+                                  params( -> [ CALayer, CALayer ] )
   replaceSublayerWith: @nativeSelector("replaceSublayer:with:").
-                              returnType( -> ck.sig.Void ).
-                              paramTypes( -> [ CALayer, CALayer ] )
+                                 returns( -> ck.sig.Void ).
+                                  params( -> [ CALayer, CALayer ] )
 
   # Updating Layer Display
   @instanceProperty "needsDisplay"
   @instanceProperty "needsDisplayOnBoundsChange"
   @needsDisplayForKey: @nativeSelector "needsDisplayForKey:"
   setNeedsDisplayInRect: @nativeSelector("setNeedsDisplayInRect:").
-                              returnType( -> ck.sig.Void ).
-                              paramTypes( -> [ foundation.NSRect ] )
+                                 returns( -> ck.sig.Void ).
+                                  params( -> [ foundation.NSRect ] )
   displayIfNeeded: @nativeSelector("displayIfNeeded").
-                        returnType( -> ck.sig.Void )
+                           returns( -> ck.sig.Void )
 
   # Layer Animations
   addAnimation: @nativeSelector("addAnimation:forKey:").
-                     returnType( -> ck.sig.Void ).
-                     paramTypes( -> [ CAAnimation, ck.sig.NSString ] )
+                        returns( -> ck.sig.Void ).
+                         params( -> [ CAAnimation, ck.sig.NSString ] )
 
   animation: @nativeSelector("animationForKey:").
-                  returnType( -> CAAnimation ).
-                  paramTypes( -> [ ck.sig.NSString ] )
+                     returns( -> CAAnimation ).
+                      params( -> [ ck.sig.NSString ] )
 
   removeAllAnimations: @nativeSelector("removeAllAnimations").
-                            returnType( -> ck.sig.Void )
+                               returns( -> ck.sig.Void )
 
   removeAnimation: @nativeSelector("removeAnimationForKey:").
-                        returnType( -> ck.sig.Void ).
-                        paramTypes( -> [ ck.sig.NSString ] )
+                           returns( -> ck.sig.Void ).
+                            params( -> [ ck.sig.NSString ] )
 
   @instanceProperty "animationKeys", { set: null }
 
@@ -128,59 +128,59 @@ exports.CALayer = class CALayer extends foundation.NSObject
   #resizeWithOldSuperlayerSize: @nativeSelector "resizeWithOldSuperlayerSize:"  XXX osx only
   #resizeSublayersWithOldSize: @nativeSelector "resizeSublayersWithOldSize:"    XXX osx only
   preferredFrameSize: @nativeSelector("preferredFrameSize").
-                           returnType( -> foundation.NSSize )
+                              returns( -> foundation.NSSize )
   layoutIfNeeded: @nativeSelector("layoutIfNeeded").
-                       returnType( -> ck.sig.Void )
+                          returns( -> ck.sig.Void )
   layoutSublayers: @nativeSelector("layoutSublayers").
-                        returnType( -> ck.sig.Void )
+                           returns( -> ck.sig.Void )
 
   # Actions
   @instanceProperty "actions"
   @defaultActionForKey: @nativeSelector "defaultActionForKey:"
   actionForKey: @nativeSelector("actionForKey:").
-                     returnType( -> CAAction ).
-                     paramTypes( -> [ ck.sig.NSString ] )
+                        returns( -> CAAction ).
+                         params( -> [ ck.sig.NSString ] )
 
   # Mapping Between Coordinate and Time Spaces
   convertPointFromLayer: @nativeSelector("convertPoint:fromLayer:").
-                              returnType( -> foundation.NSPoint ).
-                              paramTypes( -> [ foundation.NSPoint, CALayer ])
+                                 returns( -> foundation.NSPoint ).
+                                  params( -> [ foundation.NSPoint, CALayer ])
   convertPointToLayer: @nativeSelector("convertPoint:toLayer:").
-                            returnType( -> foundation.NSPoint ).
-                            paramTypes( -> [ foundation.NSPoint, CALayer ])
+                               returns( -> foundation.NSPoint ).
+                                params( -> [ foundation.NSPoint, CALayer ])
   convertRectFromLayer: @nativeSelector("convertRect:fromLayer:").
-                             returnType( -> foundation.NSRect ).
-                             paramTypes( -> [ foundation.NSRect, CALayer ])
+                                returns( -> foundation.NSRect ).
+                                 params( -> [ foundation.NSRect, CALayer ])
   convertRectToLayer: @nativeSelector("convertRect:toLayer:").
-                          returnType( -> foundation.NSRect ).
-                          paramTypes( -> [ foundation.NSRect, CALayer ])
+                             returns( -> foundation.NSRect ).
+                              params( -> [ foundation.NSRect, CALayer ])
   convertTimeFromLayer: @nativeSelector("convertTime:fromLayer:").
-                          returnType( -> ck.sig.Double ).    # these Double's should be CFTimeInverval
-                          paramTypes( -> [ ck.sig.Double, CALayer ])
+                             returns( -> ck.sig.Double ).    # these Double's should be CFTimeInverval
+                              params( -> [ ck.sig.Double, CALayer ])
   convertTimeToLayer: @nativeSelector("convertTime:toLayer:").
-                           returnType( -> ck.sig.Double ).    # these Double's should be CFTimeInverval
-                           paramTypes( -> [ ck.sig.Double, CALayer ])
+                              returns( -> ck.sig.Double ).    # these Double's should be CFTimeInverval
+                               params( -> [ ck.sig.Double, CALayer ])
 
   # Hit Testing
   hitTest: @nativeSelector("hitTest:").
-                returnType( -> CALayer ).
-                paramTypes( -> [ foundation.NSPoint ] )
+                   returns( -> CALayer ).
+                    params( -> [ foundation.NSPoint ] )
   containsPoint: @nativeSelector("containsPoint:").
-                      returnType( -> ck.sig.Bool ).
-                      paramTypes( -> [ foundation.NSPoint ] )
+                         returns( -> ck.sig.Bool ).
+                          params( -> [ foundation.NSPoint ] )
 
   # Rendering
   renderInContext: @nativeSelector("renderInContext:").
-                        returnType( -> ck.sig.Void ).
-                        paramTypes( -> [ ck.sig.PointerTo ck.sig.CGContext ] )
+                           returns( -> ck.sig.Void ).
+                            params( -> [ ck.sig.PointerTo ck.sig.CGContext ] )
   @instanceProperty "shouldRasterize"
   @instanceProperty "rasterizationScale"
 
   # Scrolling
   @instanceProperty "visibleRect"
   scrollPoint: @nativeSelector("scrollPoint:").
-                    returnType( -> ck.sig.Void ).
-                    paramTypes( -> [ foundation.NSPoint ] )
+                       returns( -> ck.sig.Void ).
+                        params( -> [ foundation.NSPoint ] )
   scrollRectToVisible: @nativeSelector "scrollRectToVisible:"
 
   # Modifying the Delegate
@@ -188,8 +188,8 @@ exports.CALayer = class CALayer extends foundation.NSObject
 
   # Key-Value Coding Extensions
   shouldArchiveValueForKey: @nativeSelector("shouldArchiveValueForKey:").
-                                 returnType( -> ck.sig.Bool ).
-                                 paramTypes( -> [ ck.sig.NSString ] )
+                                    returns( -> ck.sig.Bool ).
+                                     params( -> [ ck.sig.NSString ] )
   @defaultValueForKey: @nativeSelector "defaultValueForKey:"
 
   @register()

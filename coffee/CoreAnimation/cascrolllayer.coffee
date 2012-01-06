@@ -6,10 +6,10 @@ exports.CAScrollLayer = class CAScrollLayer extends CALayer
 
   # Scrolling the Layer
   scrollToPoint: @nativeSelector("scrollToPoint:").
-                      returnType( -> ck.sig.Void ).
-                      paramTypes( -> [ foundation.NSPoint ] )
+                         returns( -> ck.sig.Void ).
+                          params( -> [ foundation.NSPoint ] )
   scrollToRect: @nativeSelector("scrollToRect:").
-                     returnType( -> ck.sig.Void ).
-                     paramTypes( -> [ foundation.NSRect ] )
+                        returns( -> ck.sig.Void ).
+                         params( -> [ foundation.NSRect ] )
 
   @register()

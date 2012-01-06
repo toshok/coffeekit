@@ -34,10 +34,10 @@ exports.NSObject = class NSObject extends CoffeeKitObject
   @nativeSelector: (sel) ->
     info = sel: sel
 
-    info.returnType = (fn) ->
+    info.returns = (fn) ->
       info.returnTypeGetter = fn
       info
-    info.paramTypes = (fn) ->
+    info.params = (fn) ->
       info.paramTypesGetter = fn
       info
     info.makeUIAppearance = (fn) ->

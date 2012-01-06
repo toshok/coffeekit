@@ -24,7 +24,7 @@ class RegisterAttribute extends Attribute
     obj._ck_register = name
 
     #console.log "registering #{obj._ck_register}, subclass of #{if obj.__super__ then obj.__super__.constructor._ck_register else ''}"
-    objc.registerJSClass obj.prototype, obj._ck_register, if obj.__super__?.constructor?._ck_register? then obj.__super__.constructor._ck_register else ''
+    objc.registerJSClass obj, obj.prototype, obj._ck_register, if obj.__super__?.constructor?._ck_register? then obj.__super__.constructor._ck_register else ''
 
 exports.RegisterAttribute = RegisterAttribute
 

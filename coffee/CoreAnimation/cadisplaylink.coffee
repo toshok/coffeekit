@@ -8,13 +8,13 @@ exports.CADisplayLink = class CADisplayLink extends foundation.NSObject
 
   # Scheduling the Display Link to Send Notifications
   addToRunLoop: @nativeSelector("addToRunLoop:forMode:").
-                     returnType( -> ck.sig.Void ).
-                     paramTypes( -> [ foundation.NSRunLoop, ck.sig.NSString ] )
+                        returns( -> ck.sig.Void ).
+                         params( -> [ foundation.NSRunLoop, ck.sig.NSString ] )
   removeFromRunLoop: @nativeSelector("removeFromRunLoop:forMode:").
-                          returnType( -> ck.sig.Void ).
-                          paramTypes( -> [ foundation.NSRunLoop, ck.sig.NSString ] )
+                             returns( -> ck.sig.Void ).
+                              params( -> [ foundation.NSRunLoop, ck.sig.NSString ] )
   invalidate: @nativeSelector("invalidate").
-                   returnType( -> ck.sig.Void )
+                      returns( -> ck.sig.Void )
 
   # Configuring the Display Link
   @instanceProperty "duration"

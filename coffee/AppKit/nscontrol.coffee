@@ -92,7 +92,7 @@ class NSControlProxy extends foundation.NSObject
                  @fn = fn
 
   proxyAction: @nativeSelector("action").
-                    returnType(-> ck.sig.Void).
+                       returns(-> ck.sig.Void).
                           impl -> @fn()
 
   @register()

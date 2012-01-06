@@ -7,8 +7,8 @@ exports.NSRunLoop = class NSRunLoop extends NSObject
   @staticProperty "currentRunLoop", { set: null }
   @instanceProperty "currentMode", { set: null }
   limitDate: @nativeSelector("limitDateForMode:").
-                  returnType(-> ck.sig.Void).
-                  paramTypes( -> [ ck.sig.NSString ])
+                     returns(-> ck.sig.Void).
+                      params( -> [ ck.sig.NSString ])
   @staticProperty "mainRunLoop", set: null
   getCFRunLoop: @nativeSelector "getCFRunLoop"
 

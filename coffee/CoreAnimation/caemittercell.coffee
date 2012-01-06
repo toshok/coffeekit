@@ -49,7 +49,7 @@ exports.CAEmitterCell = class CAEmitterCell extends foundation.NSObject
   # Key-Value Coding Extensions
   @defaultValueForKey: @nativeSelector "defaultValueForKey:"
   shouldArchiveValueForKey: @nativeSelector("shouldArchiveValueForKey:").
-                                 returnType( -> ck.sig.Bool ).
-                                 paramTypes( -> [ ck.sig.NSString ] )
+                                    returns( -> ck.sig.Bool ).
+                                     params( -> [ ck.sig.NSString ] )
 
   @register()

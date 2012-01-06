@@ -15,7 +15,7 @@ exports.UIViewController = class UIViewController extends UIResponder
   @instanceProperty "nibBundle"
 
   # Managing the View
-  loadView:       @nativeSelector("loadView").returnType(-> ck.sig.Void)
+  loadView:       @nativeSelector("loadView").returns(-> ck.sig.Void)
   viewDidLoad:    @nativeSelector "viewDidLoad"
   viewWillUnload: @nativeSelector "viewWillUnload"
   viewDidUnload:  @nativeSelector "viewDidUnload"

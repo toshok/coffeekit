@@ -3,7 +3,7 @@
 #console.log "UICanvasView"
 exports.UICanvasView = class UICanvasView extends UIView
   @layerClass: @nativeSelector("layerClass").
-                    returnType(-> ck.sig.Class).
+                       returns(-> ck.sig.Class).
                           impl -> coreAnimation.CAEAGLLayer
   getContext: (name, args) ->
     if name is "2d"

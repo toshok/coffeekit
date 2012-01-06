@@ -4,8 +4,8 @@
 exports.UITableViewController = class UITableViewController extends UIViewController
   # Initializing the UITableViewController Object
   initWithStyle: @nativeSelector("initWithStyle:").
-                      returnType( -> UITableViewController).
-                      paramTypes( -> [ ck.sig.Int ])
+                         returns( -> UITableViewController).
+                          params( -> [ ck.sig.Int ])
 
   # Getting the Table View
   @instanceProperty "tableView"
