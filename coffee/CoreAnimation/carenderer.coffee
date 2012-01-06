@@ -8,14 +8,24 @@ exports.CARenderer = class CARenderer extends foundation.NSObject
   @instanceProperty "bounds"
 
   # Create a New Renderer
-  rendererWithCGLContext: @nativeSelector "rendererWithCGLContext:options:"
+  @rendererWithCGLContext: @nativeSelector "rendererWithCGLContext:options:"
 
   # Render a Frame
-  beginFrameAtTime: @nativeSelector "beginFrameAtTime:timeStamp:"
-  updateBounds: @nativeSelector "updateBounds"
-  addUpdateRect: @nativeSelector "addUpdateRect:"
-  render: @nativeSelector "render"
-  nextFrameTime: @nativeSelector "nextFrameTime"
-  endFrame: @nativeSelector "endFrame"
+  beginFrameAtTime: @nativeSelector("beginFrameAtTime:timeStamp:").
+                         returnType( -> ck.sig.Void ).
+                         paramTypes( -> [ ck.sig.Double, (ck.sig.PointerTo ck.sig.CVTimeStamp) ] ) # XXX arg1 should be CFTimeInterval
+
+  updateBounds: @nativeSelector("updateBounds").
+                     returnType( -> foundation.NSRect )
+  addUpdateRect: @nativeSelector("addUpdateRect:").
+                      returnType( -> ck.sig.Void ).
+                      paramTypes( -> [ foundation.NSRect ] )
+
+  render: @nativeSelector("render").
+               returnType( -> ck.sig.Void )
+  nextFrameTime: @nativeSelector("nextFrameTime").
+                      returnType( -> ck.sig.Double ) # XXX CFTimeInterval
+  endFrame: @nativeSelector("endFrame").
+                 returnType( -> ck.sig.Void )
 
   @register()

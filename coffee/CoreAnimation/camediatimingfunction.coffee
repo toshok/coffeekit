@@ -4,9 +4,13 @@ exports.CAMediaTimingFunction = class CAMediaTimingFunction extends foundation.N
   # Creating Timing Functions
   @functionWithName: @nativeSelector "functionWithName:"
   @functionWithControlPoints: @nativeSelector "functionWithControlPoints::::"
-  initWithControlPoints: @nativeSelector "initWithControlPoints::::"
+  initWithControlPoints: @nativeSelector("initWithControlPoints::::").
+                              returnType( -> CAMediaTimingFunction ).
+                              paramTypes( -> [ ck.sig.Float, ck.sig.Float, ck.sig.Float, ck.sig.Float ] )
 
   # Accessing the Control Points
-  getControlPointAtIndex: @nativeSelector "getControlPointAtIndex:values:"
+  getControlPointAtIndex: @nativeSelector("getControlPointAtIndex:values:").
+                              returnType( -> ck.sig.Void ).
+                              paramTypes( -> [ ck.sig.ULong, (ck.sig.ArrayOf ck.sig.Float) ] )
 
   @register()

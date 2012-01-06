@@ -59,7 +59,10 @@ exports.NSObject = class NSObject extends CoffeeKitObject
 
         if info.returnTypeGetter?
           paramTypes = if info.paramTypesGetter? then info.paramTypesGetter() else []
-          sig = ck.typeSignature([info.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
+          try
+            sig = ck.typeSignature([info.returnTypeGetter(), NSObject, ck.sig.Selector].concat paramTypes)
+          catch error
+            console.log "error in type specification for #{c.name} #{sel}: #{error}"
         else
           sig = "@@:" # is this a reasonable thing to default to?
 

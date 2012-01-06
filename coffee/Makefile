@@ -15,7 +15,9 @@ EXTRA_COFFEE_FILES= coffeekit.coffee
 
 FRAMEWORK_SOURCES_Foundation= \
 	Foundation/Protocol.coffee \
+	Foundation/nspoint.coffee \
 	Foundation/nsrect.coffee \
+	Foundation/nssize.coffee \
 	Foundation/nsobject.coffee \
 	Foundation/nsresponder.coffee \
 	Foundation/nsrunloop.coffee \
@@ -54,6 +56,7 @@ FRAMEWORK_SOURCES_AppKit= \
 	AppKit/nsapplication.coffee
 
 FRAMEWORK_SOURCES_CoreAnimation= \
+	CoreAnimation/caaction.coffee \
 	CoreAnimation/caanimationdelegate.coffee \
 	CoreAnimation/calayerdelegate.coffee \
 	CoreAnimation/caconstraint.coffee \

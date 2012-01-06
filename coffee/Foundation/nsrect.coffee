@@ -1,7 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-class NSRect
+exports.NSRect = class NSRect
   @getTypeSignature: -> "{CGRect={CGPoint=ff}{CGSize=ff}}"
 
   constructor: (@x, @y, @width, @height) ->
-exports.NSRect = NSRect

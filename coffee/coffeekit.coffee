@@ -260,7 +260,13 @@ exports.sig =
   Ptr:      -> "^"
   CharStar: -> "*"
   NSString: -> "@"
+  ArrayOf: (s) -> (-> "[#{exports.typeSignature [s]}]")
   PointerTo: (s) -> (-> "^#{exports.typeSignature [s]}")
+  # some things we're hardcoding here until/unless we move them into their respective bindings
+  CVTimeStamp: -> "{?=IiqQdq{CVSMPTETime=ssIIIssss}QQ}"
+  CGAffineTransform: -> "{CGAffineTransform=ffffff}"
+  CGContext: -> "{CGContext=}"
+
 
 exports.typeSignature = (types) ->
   getTypeSignature = (t) ->
