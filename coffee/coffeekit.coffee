@@ -159,7 +159,8 @@ autobox = (obj, protocol) ->
         
   # now loop over the items that are in obj and match up the names to those in the protocol
   for key, value of obj
-    if pv = protocol::[key]
+    pv = protocol::[key]
+    if pv?
       if pv.method
         addProxyMethod key, value
       else
@@ -175,9 +176,12 @@ addProperty = (obj, jsprop, opts) ->
   # if opts are left off, and jsprop = 'foo',
   # we assume the getter is 'foo' and the setter is
   # 'setFoo'
+  getter = null
+  setter = null
+
   if typeof opts is "undefined"
-    obj.__defineGetter__ jsprop, getter = objc.invokeSelector (jsprop)
-    obj.__defineSetter__ jsprop, setter = objc.invokeSelector ("set" + jsprop[0].toUpperCase() + (jsprop.slice 1) + ":")
+    getter = objc.invokeSelector (jsprop)
+    setter = objc.invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
   else
     # the value for the set/get members of opts overrides this above behavior.
     # 
@@ -187,30 +191,39 @@ addProperty = (obj, jsprop, opts) ->
     if "get" of opts
       if opts.get
         if typeof opts.get is 'string'
-          obj.__defineGetter__ jsprop, getter = objc.invokeSelector (opts.get)
+          getter = objc.invokeSelector (opts.get)
         else if typeof opts.get is 'function'
-          obj.__defineGetter__ jsprop, getter = opts.get
+          getter = opts.get
         else
           throw "you can only use a string or a function for get:"
     else
-      obj.__defineGetter__ jsprop, getter = objc.invokeSelector (jsprop)
+      getter = objc.invokeSelector (jsprop)
 
     if "set" of opts
       if opts.set
         if typeof opts.set is 'string'
-          obj.__defineSetter__ jsprop, setter = objc.invokeSelector (opts.set)
+          setter = objc.invokeSelector (opts.set)
         else if typeof opts.set is 'function'
-          obj.__defineSetter__ jsprop, setter = opts.set
+          setter = opts.set
         else
           throw "you can only use a string or a function for set:"
     else
-      obj.__defineSetter__ jsprop, setter = objc.invokeSelector ("set" + jsprop[0].toUpperCase() + (jsprop.slice 1) + ":")
+      setter = objc.invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
+
+  descriptor = enumerable: true
+  if setter?
+    descriptor.set = setter
+  if getter?
+    descriptor.get = getter
+  
+  Object.defineProperty obj, jsprop, descriptor
 
   return getter: getter, setter: setter, makeUIAppearance: ->
                                            if setter
                                              setter._ck_appearance = true
                                            if getter
                                              getter._ck_appearance = true
+                                           return
 
 exports.addProperty = addProperty
 
@@ -235,8 +248,7 @@ objcIBOutlet = (obj, jsprop, ctor) ->
   getter = -> new ctor (objc.getInstanceVariable this, jsprop)
   getter._ck_ivar = jsprop
 
-  obj.__defineGetter__ jsprop, getter
-  obj.__defineSetter__ jsprop, (v) -> objc.setInstanceVariable this, jsprop, v
+  Object.defineProperty obj, jsprop, { get: getter, set: ((v) -> objc.setInstanceVariable this, jsprop, v), enumerable: true  }
 
 exports.objcIBOutlet = objcIBOutlet
 
