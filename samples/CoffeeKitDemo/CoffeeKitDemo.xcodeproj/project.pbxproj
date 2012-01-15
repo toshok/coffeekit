@@ -105,15 +105,15 @@
 		ED21C8B314A3C66E0062D53A /* glUtils.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C82714A3BF170062D53A /* glUtils.js */; };
 		ED21C8B414A3C6730062D53A /* sylvester.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED21C83414A3BF170062D53A /* sylvester.js */; };
 		ED324E5114A3CA66006C94AD /* prime-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = ED324E4F14A3CA34006C94AD /* prime-worker.js */; };
+		ED5380F914C20BA7002DDDBD /* libCoffeeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5380F714C20BA7002DDDBD /* libCoffeeKit.a */; };
+		ED5380FA14C20BA7002DDDBD /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5380F814C20BA7002DDDBD /* libjs_static.a */; };
 		EDDF86AB149D218B003FFC5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AA149D218B003FFC5E /* UIKit.framework */; };
 		EDDF86AD149D218B003FFC5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AC149D218B003FFC5E /* Foundation.framework */; };
 		EDDF86AF149D218B003FFC5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86AE149D218B003FFC5E /* CoreGraphics.framework */; };
 		EDDF86B1149D218B003FFC5E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86B0149D218B003FFC5E /* OpenGLES.framework */; };
 		EDDF86BB149D218B003FFC5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDDF86B9149D218B003FFC5E /* InfoPlist.strings */; };
-		EDDF86BD149D218B003FFC5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86BC149D218B003FFC5E /* main.m */; };
+		EDDF86BD149D218B003FFC5E /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86BC149D218B003FFC5E /* main.mm */; };
 		EDDF86C2149D218B003FFC5E /* CoffeeKitDemo.coffee in Resources */ = {isa = PBXBuildFile; fileRef = EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */; };
-		EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */; };
-		EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */; };
 		EDDF86DB149D2FB5003FFC5E /* CoffeeKitDemo.coffee in Sources */ = {isa = PBXBuildFile; fileRef = EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */; };
 		EDEE630D14B2AE16005BC13D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDEE630C14B2AE16005BC13D /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -498,6 +498,8 @@
 		ED21C83F14A3BFD70062D53A /* HelloIOSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelloIOSViewController.xib; sourceTree = "<group>"; };
 		ED21C84214A3C2140062D53A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		ED324E4F14A3CA34006C94AD /* prime-worker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "prime-worker.js"; sourceTree = "<group>"; };
+		ED5380F714C20BA7002DDDBD /* libCoffeeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoffeeKit.a; path = CoffeeKit/usr/lib/libCoffeeKit.a; sourceTree = DEVELOPER_DIR; };
+		ED5380F814C20BA7002DDDBD /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = CoffeeKit/usr/lib/libjs_static.a; sourceTree = DEVELOPER_DIR; };
 		EDDF86A6149D218B003FFC5E /* CoffeeKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDF86AA149D218B003FFC5E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDDF86AC149D218B003FFC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -505,11 +507,9 @@
 		EDDF86B0149D218B003FFC5E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EDDF86B8149D218B003FFC5E /* CoffeeKitDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeKitDemo-Info.plist"; sourceTree = "<group>"; };
 		EDDF86BA149D218B003FFC5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EDDF86BC149D218B003FFC5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDDF86BC149D218B003FFC5E /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		EDDF86BE149D218B003FFC5E /* CoffeeKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CoffeeKitDemo-Prefix.pch"; sourceTree = "<group>"; };
 		EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoffeeKitDemo.coffee; sourceTree = "<group>"; };
-		EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoffeeKit.a; path = CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib/libCoffeeKit.a; sourceTree = DEVELOPER_DIR; };
-		EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EDEE630C14B2AE16005BC13D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -518,9 +518,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED5380F914C20BA7002DDDBD /* libCoffeeKit.a in Frameworks */,
+				ED5380FA14C20BA7002DDDBD /* libjs_static.a in Frameworks */,
 				EDEE630D14B2AE16005BC13D /* QuartzCore.framework in Frameworks */,
-				EDDF86D3149D2BC2003FFC5E /* libCoffeeKit.a in Frameworks */,
-				EDDF86D5149D2C2A003FFC5E /* JavaScriptCore.framework in Frameworks */,
 				EDDF86AB149D218B003FFC5E /* UIKit.framework in Frameworks */,
 				EDDF86AD149D218B003FFC5E /* Foundation.framework in Frameworks */,
 				EDDF86AF149D218B003FFC5E /* CoreGraphics.framework in Frameworks */,
@@ -820,10 +820,10 @@
 		EDDF86A9149D218B003FFC5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EDDF86D2149D2BC2003FFC5E /* libCoffeeKit.a */,
+				ED5380F714C20BA7002DDDBD /* libCoffeeKit.a */,
+				ED5380F814C20BA7002DDDBD /* libjs_static.a */,
 				EDEE630C14B2AE16005BC13D /* QuartzCore.framework */,
 				ED21C84214A3C2140062D53A /* GLKit.framework */,
-				EDDF86D4149D2C2A003FFC5E /* JavaScriptCore.framework */,
 				EDDF86AA149D218B003FFC5E /* UIKit.framework */,
 				EDDF86AC149D218B003FFC5E /* Foundation.framework */,
 				EDDF86AE149D218B003FFC5E /* CoreGraphics.framework */,
@@ -851,7 +851,7 @@
 				EDDF86C1149D218B003FFC5E /* CoffeeKitDemo.coffee */,
 				EDDF86B8149D218B003FFC5E /* CoffeeKitDemo-Info.plist */,
 				EDDF86B9149D218B003FFC5E /* InfoPlist.strings */,
-				EDDF86BC149D218B003FFC5E /* main.m */,
+				EDDF86BC149D218B003FFC5E /* main.mm */,
 				EDDF86BE149D218B003FFC5E /* CoffeeKitDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -962,7 +962,7 @@
 			files = (
 				ED21C84114A3C01C0062D53A /* helloiostableview.coffee in Sources */,
 				EDDF86DB149D2FB5003FFC5E /* CoffeeKitDemo.coffee in Sources */,
-				EDDF86BD149D218B003FFC5E /* main.m in Sources */,
+				EDDF86BD149D218B003FFC5E /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +986,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1011,6 +1012,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1030,16 +1032,15 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)/Developer/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeKitDemo/CoffeeKitDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+					"\"$(DEVELOPER_DIR)/CoffeeKit/usr/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1051,16 +1052,14 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)/Developer/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
-					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/PrivateFrameworks\"",
 				);
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeKitDemo/CoffeeKitDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
+					"\"$(DEVELOPER_DIR)/CoffeeKit/usr/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

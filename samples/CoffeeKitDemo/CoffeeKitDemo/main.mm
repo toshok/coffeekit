@@ -6,8 +6,10 @@
 
 #import <UIKit/UIKit.h>
 
-extern void coffeekit_init (int argc, char **argv);
-extern void coffeekit_evaluate (NSString *script_path);
+extern "C" {
+    extern void coffeekit_init (int argc, char **argv);
+    extern void coffeekit_evaluate (NSString *script_path);
+};
 
 int
 main(int argc, char **argv)
