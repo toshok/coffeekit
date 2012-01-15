@@ -6,11 +6,11 @@ exports.UICanvasView = class UICanvasView extends UIView
                        returns(-> ck.sig.Class).
                           impl -> coreAnimation.CAEAGLLayer
   getContext: (name, args) ->
-    if name is "2d"
-      throw "UICanvasView doesn't support 2d rendering"
-    else if name is "experimental-webgl" or name is "webgl"
+    if name is "experimental-webgl" or name is "webgl"
       if !@context
         @context = objc.allocateGLContext @layer, args
       @context
+    else
+      throw "UICanvasView only supports webgl rendering"
 
   @register()
