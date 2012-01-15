@@ -224,6 +224,7 @@ $(eval FRAMEWORK_SOURCES_$(1) ?= $(wildcard $(1)/*.coffee))
 
 $(DEST_DIR)/$(FRAMEWORK_JS_FILE_$(1)): $(FRAMEWORK_FILE_$(1)) $(FRAMEWORK_SOURCES_$(1))
 # the extra $(1) here is so that the coffeescript compiler still tries to compile the $(FRAMEWORK_FILE_$(1)).
+	@mkdir -p $(DEST_DIR)
 	$(COFFEE) -c -p -j $(1) $(FRAMEWORK_FILE_$(1)) $(FRAMEWORK_SOURCES_$(1)) > $(DEST_DIR)/$(FRAMEWORK_JS_FILE_$(1))
 
 all:: $(DEST_DIR)/$(FRAMEWORK_JS_FILE_$(1))
