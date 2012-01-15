@@ -12,8 +12,7 @@ class GLKCanvasViewController extends glk.GLKViewController
   constructor: (handle) ->
     super handle
     if not handle?
-      return @initWithNibNameAndBundle null, null
-    @handle
+      @initWithNibNameAndBundle null, null
 
   loadView: @override ->
     @view = new glk.GLKCanvasView().initWithFrame ui.UIScreen.mainScreen.bounds
@@ -27,8 +26,8 @@ class TargetActionProxy1 extends foundation.NSObject
                  @fn = fn
 
   proxyAction: @nativeSelector("action").
-                    returnType(-> ck.sig.Void).
-                    paramTypes(-> [foundation.NSObject]).
+                       returns(-> ck.sig.Void).
+                        params(-> [foundation.NSObject]).
                           impl (a1) -> @fn a1
 
   @register()
@@ -80,7 +79,6 @@ class HelloIOSAppDelegate extends foundation.NSObject
         saveAndClose = =>
           @sourceViewPopover.dismissPopover yes
           @sourceViewPopover = null
-          console.log "exporting"
           exportScript demoPath, sourceView.text
           demoValid = @uiAlertOnException -> demo = require demoPath
           if demoValid
