@@ -161,7 +161,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
 
   xhrDemo: ->
     newcontroller = new HelloIOSViewController "HelloIOSViewController", null
-    newcontroller.title = "XmlHttpRequest"
+    newcontroller.title = "XMLHttpRequest"
 
     screenBounds = ui.UIScreen.mainScreen.bounds
     
@@ -170,12 +170,15 @@ class HelloIOSAppDelegate extends foundation.NSObject
     
     @xhrButton.frame = new foundation.NSRect (screenBounds.width/2-100), (screenBounds.height/2 - 50), 250, 50
 
+    @xhrTextField = new ui.UITextField().initWithFrame new foundation.NSRect 0, screenBounds.height/2+50, screenBounds.width, 50
+    @xhrTextField.textAlignment = ui.UITextAlignment.center
+
     @xhrButton.clicked = =>
-      xhr = new XmlHttpRequest
+      xhr = new XMLHttpRequest
       xhr.open "GET", "http://home.mcom.com/"
-      xhr.readystatechanged = ->
+      xhr.readystatechanged = =>
         if xhr.readyState is 4
-          console.log "response = #{xhr.responseText}"
+          @xhrTextField.text = "response = #{xhr.responseText}"
       xhr.send()
       
     newcontroller.view.addSubview @xhrButton
@@ -195,7 +198,7 @@ class HelloIOSAppDelegate extends foundation.NSObject
         {title: "Web Workers", rows: [
             { title: "Primes in a button", clicked: => @workerDemo() }
         ]}
-        {title: "XmlHttpRequest", rows: [
+        {title: "XMLHttpRequest", rows: [
             { title: "Simple fetch", clicked: => @xhrDemo() }
         ]}
         {title: "WebGL", rows: [
