@@ -1030,10 +1030,7 @@
 		EDDF86CE149D218B003FFC5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)/Developer/CoffeeKit/Platforms/iPhoneSimulator.platform/usr/lib\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
@@ -1050,9 +1047,7 @@
 		EDDF86CF149D218B003FFC5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeKitDemo/CoffeeKitDemo-Prefix.pch";
