@@ -4,9 +4,9 @@ exports.NSWindow = class NSWindow extends foundation.NSResponder
   @instanceProperty "title"
   @instanceProperty "contentView"
 
-  makeKeyAndOrderFront: objc.invokeSelector "makeKeyAndOrderFront:"
-  initWithCoder: objc.invokeSelector "initWithCoder:"
-  setFrame: objc.invokeSelector "setFrame:display:"
+  makeKeyAndOrderFront: @nativeSelector "makeKeyAndOrderFront:"
+  initWithCoder: @nativeSelector "initWithCoder:"
+  setFrame: @nativeSelector "setFrame:display:"
 
 
   @register()

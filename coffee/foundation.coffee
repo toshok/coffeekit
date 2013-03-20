@@ -1,8 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
+ck = require "coffeekit"
+objc = require "objc"
+
 objc.requireFramework "Foundation"
 
-ck = require "./coffeekit"
+console.log "Foundation"
 
 exports.NSComparisonResult = NSComparisonResult = ck.makeEnum
    getTypeSignature: -> "i"

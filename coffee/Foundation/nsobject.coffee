@@ -4,8 +4,11 @@
 
 registerMembers = (o, c) ->
     for name of o
+      desc = Object.getOwnPropertyDescriptor o, name
+      if not desc?
+        continue
       # skip properties
-      if (o.__lookupGetter__ name) or (o.__lookupSetter__ name)
+      if desc.set? or desc.get?
         continue
       # XXX for some reason NSResponder's constructor is coming up with a _ck_register = NSObject.  wtf?
       if name is 'constructor'
@@ -14,14 +17,17 @@ registerMembers = (o, c) ->
       if impl?._ck_register?
         o[name] = impl._ck_register c, name
 
-exports.NSObject = class NSObject extends CoffeeKitObject
+exports.NSObject = class NSObject extends objc.CoffeeKitObject
   @getTypeSignature: -> "@"
 
-  @alloc: () -> objc.allocInstance @.name
+  @alloc: () -> objc.allocInstance @name
   @mixinProtocol: (p) -> new ck.MixinProtocolAttribute @, p
   @conformsToProtocol: (p) -> new ck.ConformsToProtocolAttribute @, p
 
-  @register: (n = @.name) ->
+  @outlet: (name, type) -> ck.objcIBOutlet @::, name, type
+        
+  @register: (n = @name) ->
+    console.log "registering #{n}"
     # prepare the instance methods
     registerMembers @::, @
 
@@ -52,7 +58,7 @@ exports.NSObject = class NSObject extends CoffeeKitObject
         install_selector_attribute = no
 
         if not info.body?
-          f = objc.invokeSelector info.sel
+          f = ck.invokeSelector info.sel
         else
           f = info.body
           install_selector_attribute = yes
@@ -78,6 +84,7 @@ exports.NSObject = class NSObject extends CoffeeKitObject
     info
 
   @override: (fn) ->
+    console.log "setting override _ck_register"
     fn._ck_register = (c, name) ->
 
       proto = c.__super__?.constructor.prototype
@@ -85,6 +92,7 @@ exports.NSObject = class NSObject extends CoffeeKitObject
         throw "native selector '#{name}' not found in prototype chain for type '#{c.name}'"
 
       if fn._ckProtocolInfo
+        console.log "@overriding a protocol method!!!"
         new ck.SelectorAttribute fn, fn._ckProtocolInfo.sel, fn._ckProtocolInfo.sig
         fn._ck_appearance = fn._ckProtocolInfo._ck_appearance
       else
@@ -105,27 +113,27 @@ exports.NSObject = class NSObject extends CoffeeKitObject
 
   @staticProperty: (jsprop, opts) -> ck.staticProperty @, jsprop, opts
 
-  @autoboxProperty: (jsprop, type) -> @instanceProperty jsprop, { set: (v) -> objc.invokeSelector("set" + jsprop[0].toUpperCase() + (jsprop.slice 1) + ":").call this, (ck.autobox v, type) }
+  @autoboxProperty: (jsprop, type) -> @instanceProperty jsprop, { set: (v) -> ck.invokeSelector("set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:").call this, (ck.autobox v, type) }
 
   @newWith: (newInfo) ->
-    info = for method of newInfo
-      method
-
-    if info.length isnt 1
-      throw "NSObject.newWith can only be passed 1 element in the hash"
-
-    meth = @::["init#{method}"];
+    meth = @::["initWith#{newInfo.initWith}"];
     if (typeof meth) isnt 'function'
-      throw "no method 'init#{method}' defined in #{@.name}.prototype"
+      console.log "no method 'initWith#{newInfo.initWith}' defined in #{@name}.prototype"
+      throw "no method 'initWith#{newInfo.initWith}' defined in #{@name}.prototype"
 
-    instance = new global[@.constructor.name]
+    console.log "constructor = #{@::constructor.toString()}"
+    instance = new @::constructor
 
-    meth.call instance, args
+    meth.apply instance, newInfo.args
 
     instance
 
-  constructor: (@handle = @constructor.alloc()) ->
-    CoffeeKitObject.setHandle.call this, @handle
+  constructor: (@handle) ->
+        if not @handle?
+                console.log "calling @constructor.alloc()!"
+                @handle = @constructor.alloc()
+        console.log "calling objc.CoffeeKitObject.setHandle.call @ == #{@}, @handle = #{@handle}"
+        objc.CoffeeKitObject.setHandle.call @, @handle
 
   toString: -> "[#{@constructor._ck_register} #{@handle}]"
 

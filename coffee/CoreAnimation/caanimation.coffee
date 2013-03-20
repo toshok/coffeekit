@@ -2,17 +2,17 @@
 
 exports.CAAnimation = class CAAnimation extends foundation.NSObject
   # Archiving Properties
-  shouldArchiveValueForKey: objc.invokeSelector "shouldArchiveValueForKey:"
+  shouldArchiveValueForKey: @nativeSelector "shouldArchiveValueForKey:"
 
   # Providing Default Values for Properties
-  @defaultValueForKey: objc.invokeSelector "defaultValueForKey:"
+  @defaultValueForKey: @nativeSelector "defaultValueForKey:"
 
   # Creating an Animation
-  @animation: objc.invokeSelector "animation"
+  @animation: @nativeSelector "animation"
 
   # Animation Attributes
   @instanceProperty "removedOnCompletion"
-  isRemovedOnCompletion: objc.invokeSelector "isRemovedOnCompletion"
+  isRemovedOnCompletion: @nativeSelector "isRemovedOnCompletion"
   @instanceProperty "timingFunction"
 
   # Getting and Setting the Delegate

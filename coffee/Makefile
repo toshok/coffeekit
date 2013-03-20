@@ -53,7 +53,8 @@ FRAMEWORK_SOURCES_AppKit= \
 	AppKit/nsbutton.coffee \
 	AppKit/nswindow.coffee \
 	AppKit/nswindowcontroller.coffee \
-	AppKit/nsapplication.coffee
+	AppKit/nsapplication.coffee \
+	AppKit/nsapplicationdelegate.coffee
 
 FRAMEWORK_SOURCES_CoreAnimation= \
 	CoreAnimation/caaction.coffee \

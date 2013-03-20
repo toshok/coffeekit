@@ -1,10 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-foundation = require "./foundation"
+objc = require "objc"
+foundation = require "foundation"
 
-class Attribute
+console.log "coffeekit"
+
+exports.Attribute = class Attribute
   constructor: (@obj) ->
-    Attribute.add obj, this
+    Attribute.add obj, @
 
   @add: (obj, attr) ->
     if !obj._ck_attributes
@@ -16,25 +19,22 @@ class Attribute
     attrs = if obj._ck_attributes? then obj._ck_attributes else []
     attr for attr in attrs when attr instanceof attrType
 
-exports.Attribute = Attribute
+exports.register = (obj) -> new RegisterAttribute obj
 
-class RegisterAttribute extends Attribute
-  constructor: (obj, name) ->
+exports.RegisterAttribute = class RegisterAttribute extends Attribute
+  constructor: (obj, name = obj.name) ->
     super obj
     obj._ck_register = name
 
     #console.log "registering #{obj._ck_register}, subclass of #{if obj.__super__ then obj.__super__.constructor._ck_register else ''}"
     objc.registerJSClass obj, obj.prototype, obj._ck_register, if obj.__super__?.constructor?._ck_register? then obj.__super__.constructor._ck_register else ''
 
-exports.RegisterAttribute = RegisterAttribute
-
-class SelectorAttribute extends Attribute
+exports.SelectorAttribute = class SelectorAttribute extends Attribute
   constructor: (obj, sel_name, type_sig) ->
     super obj
     obj._ck_exported = true
     obj._ck_sel = sel_name
     obj._ck_typeSig = type_sig ? "@@:"
-exports.SelectorAttribute = SelectorAttribute
 
 exports.exposeSelector = (sel_name, rest...) ->
   if rest.length > 1
@@ -49,7 +49,13 @@ exports.exposeSelector = (sel_name, rest...) ->
   new SelectorAttribute fn, sel_name, type_sig
   fn
 
-class MixinProtocolAttribute extends Attribute
+invokeSelector = (sel) ->
+  sel_invoke = objc.invokeSelector sel
+  () ->
+    console.log "invoking selector #{sel} on object #{@}"
+    sel_invoke.apply @, [sel].concat Array::slice.call(arguments)
+
+exports.MixinProtocolAttribute = class MixinProtocolAttribute extends Attribute
   constructor: (obj, protocol) ->
     super obj
 
@@ -62,7 +68,7 @@ class MixinProtocolAttribute extends Attribute
             if value.tramp?
               obj[key] = value.tramp
             else
-              obj[key] = objc.invokeSelector value.method
+              obj[key] = invokeSelector value.method
             obj[key]._ck_typeSig = value.sig ? "@@:"
           else if value.property
             console.log "adding class protocol property #{key}"
@@ -80,27 +86,33 @@ class MixinProtocolAttribute extends Attribute
             if value.tramp
               obj::[key] = value.tramp
             else
-              obj::[key] = objc.invokeSelector value.method
+              obj::[key] = invokeSelector value.method
             obj::[key]._ck_typeSig = value.sig ? "@@:"
           else if value.property
             console.log "adding instance protocol property #{key}"
             addProperty obj::, value.property
 
-exports.MixinProtocolAttribute = MixinProtocolAttribute
-
-class ConformsToProtocolAttribute extends Attribute
+exports.ConformsToProtocolAttribute = class ConformsToProtocolAttribute extends Attribute
   constructor: (obj, @protocol) ->
     super obj
 
-    for key, value of protocol::
+    console.log "ConformsToProtocolAttribute obj = #{obj}, protocol = #{@protocol}"
+
+    for key, value of @protocol::
+      console.log "protocol key = #{key}: #{value}"
       if key is 'constructor'
         continue
-      if protocol.hasOwnProperty key
+      if @protocol.hasOwnProperty key
         # class/static
       else
         # instance
-        if obj::[key]?
-          obj::[key]._ckProtocolInfo = sel: value.method, sig: value.sig
+        fn = obj::[key]
+        if fn?
+          console.log "  found it!"
+          fn._ckProtocolInfo = sel: value.method, sig: value.sig
+          new SelectorAttribute fn, value.method, value.sig
+        else
+          console.log "  didn't find it!"
 
     # FIXME
     #   there's not much more that's necessary here..  if the attribute is present
@@ -114,13 +126,11 @@ class ConformsToProtocolAttribute extends Attribute
   @doesObjectConformTo: (obj, protocol) ->
     return (conforms for conforms in (Attribute.find obj, ConformsToProtocolAttribute) when conforms.protocol is protocol).length > 0
 
-exports.ConformsToProtocolAttribute = ConformsToProtocolAttribute
-
 
 autoboxCount = 0
-autobox = (obj, protocol) ->
+exports.autobox = (obj, protocol) ->
   class ProtocolProxy extends foundation.NSObject
-    constructor: () -> super (objc.allocInstance @.constructor._ck_register)
+    constructor: () -> super (objc.allocInstance @constructor._ck_register)
 
   # check if the object (or its constructor) conforms to the protocol.  if it does
   # then we can just use the object, without the proxy
@@ -170,7 +180,6 @@ autobox = (obj, protocol) ->
   new RegisterAttribute ProtocolProxy, "CKProtocolProxy#{autoboxCount++}"
 
   return new ProtocolProxy
-exports.autobox = autobox  
 
 addProperty = (obj, jsprop, opts) ->
   # if opts are left off, and jsprop = 'foo',
@@ -180,8 +189,8 @@ addProperty = (obj, jsprop, opts) ->
   setter = null
 
   if typeof opts is "undefined"
-    getter = objc.invokeSelector (jsprop)
-    setter = objc.invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
+    getter = invokeSelector jsprop
+    setter = invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
   else
     # the value for the set/get members of opts overrides this above behavior.
     # 
@@ -191,18 +200,18 @@ addProperty = (obj, jsprop, opts) ->
     if "get" of opts
       if opts.get
         if typeof opts.get is 'string'
-          getter = objc.invokeSelector (opts.get)
+          getter = invokeSelector opts.get
         else if typeof opts.get is 'function'
           getter = opts.get
         else
           throw "you can only use a string or a function for get:"
     else
-      getter = objc.invokeSelector (jsprop)
+      getter = invokeSelector jsprop
 
     if "set" of opts
       if opts.set
         if typeof opts.set is 'string'
-          setter = objc.invokeSelector (opts.set)
+          setter = invokeSelector opts.set
         else if typeof opts.set is 'function'
           setter = opts.set
         else
@@ -211,10 +220,8 @@ addProperty = (obj, jsprop, opts) ->
       setter = objc.invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
 
   descriptor = enumerable: true
-  if setter?
-    descriptor.set = setter
-  if getter?
-    descriptor.get = getter
+  descriptor.set = setter if setter?
+  descriptor.get = getter if getter?
   
   Object.defineProperty obj, jsprop, descriptor
 
@@ -227,6 +234,8 @@ addProperty = (obj, jsprop, opts) ->
 
 exports.addProperty = addProperty
 
+exports.invokeSelector = invokeSelector
+        
 exports.instanceProperty = (cls, jsprop, opts) ->
   addProperty cls::, jsprop, opts
 
@@ -234,7 +243,7 @@ exports.staticProperty = (cls, jsprop, opts) ->
   addProperty cls, jsprop, opts
 
 exports.makeEnum = (spec) ->
-  rv = {}
+  rv = Object.create null
   addConstant = (obj, jsprop, v) ->
     Object.defineProperty obj, jsprop, value: v, enumerable: true
   for name, value of spec
@@ -245,10 +254,10 @@ objcIBOutlet = (obj, jsprop, ctor) ->
   # this needs to define the ivar at class registration time.  we add
   # the ivar attribute to the getter since it has the proper name
 
-  getter = -> new ctor (objc.getInstanceVariable this, jsprop)
+  getter = -> new ctor (objc.getInstanceVariable @, jsprop)
   getter._ck_ivar = jsprop
 
-  Object.defineProperty obj, jsprop, { get: getter, set: ((v) -> objc.setInstanceVariable this, jsprop, v), enumerable: true  }
+  Object.defineProperty obj, jsprop, { get: getter, set: ((v) -> objc.setInstanceVariable @, jsprop, v), enumerable: true  }
 
 exports.objcIBOutlet = objcIBOutlet
 

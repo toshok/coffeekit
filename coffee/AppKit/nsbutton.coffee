@@ -1,19 +1,55 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-
 exports.NSButton = class NSButton extends NSControl
-  @instanceProperty "title"
-  @instanceProperty "bezelStyle"
-  @instanceProperty "buttonType"
 
-  @::__defineSetter__ "clicked", (v) ->
-                                   if v
-                                     @proxy = new NSControlProxy v
-                                     @target = @proxy
-                                     @action = @proxy.proxyAction
-                                   else
-                                     @proxy = null
-                                     @target = null
-                                     @action = null
+        @newWithFrame: (frame) -> @newWith initWith: "Frame", args: [frame]
+                
+        # Configuring Buttons
+        @instanceProperty "buttonType"
 
-  @register()
+        getPeriodicDelay: @nativeSelector "getPeriodicDelay:interval:"
+        setPeriodicDelay: @nativeSelector "setPeriodicDelay:interval:"
+
+        @instanceProperty "attributedTitle"
+        @instanceProperty "attributedAlternateTitle"
+        @instanceProperty "title"
+        @instanceProperty "alternateTitle"
+        @instanceProperty "sound"        
+
+        setTitleWithMnemonic: @nativeSelector "setTitleWithMnemonic:" # Deprecated in OS X v10.8
+
+        # Configuring Button Images
+        @instanceProperty "image"
+        @instanceProperty "alternateImage"
+        @instanceProperty "imagePosition"
+        @instanceProperty "isBordered", set: "setBordered:"
+        @instanceProperty "isTransparent", set: "setTransparent:"
+        @instanceProperty "bezelStyle"
+        @instanceProperty "showsBorderOnlyWhileMouseInside"
+
+        # Managing Button State
+        @instanceProperty "allowsMixedState"
+        @instanceProperty "state"
+
+        setNextState: @nativeSelector "setNextState"
+        highlight: @nativeSelector "highlight:"
+
+        # Accessing Key Equivalents
+        @instanceProperty "keyEquivalent"
+        @instanceProperty "keyEquivalentModifierMask"
+
+        # Handling Keyboard Events
+        performKeyEquivalent: @nativeSelector "performKeyEquivalent:"
+
+
+        Object.defineProperty @::, "clicked", set: (v) ->
+                if v
+                        @proxy = new NSControlProxy v
+                        @target = @proxy
+                        @action = @proxy.proxyAction
+                else
+                        @proxy = null
+                        @target = null
+                        @action = null
+
+        @register()

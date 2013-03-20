@@ -2,16 +2,14 @@
 
 exports.NSApplication = class NSApplication extends foundation.NSResponder
   # Getting the Application
-  # FIXME we need better syntax for this...
-  this.__defineGetter__ "sharedApplication", ->
-                             new NSApplication (objc.staticCall "NSApplication", "sharedApplication")
 
+  Object.defineProperty @, "sharedApplication", get: -> new NSApplication (objc.staticCall "NSApplication", "sharedApplication")
 
   # Configuring Applications
   applicationIconImage: @nativeSelector "applicationIconImage"
   setApplicationIconImage: @nativeSelector "setApplicationIconImage:"
 
-  @instanceProperty "delegate"
+  @autoboxProperty "delegate", NSApplicationDelegate
 
   # Launching Applications
   finishLaunching: @nativeSelector "finishLaunching"

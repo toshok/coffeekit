@@ -8,8 +8,8 @@ exports.NSIndexPath = class NSIndexPath extends NSObject
                          returns( -> NSIndexPath ).
                           params( -> [ ck.sig.UInt ])
   initWithIndexes: @nativeSelector("initWithIndexes:length:").
-                           returns( -> NSIndexPath ).
-                            params( -> [ (ck.sig.PointerTo ck.sig.UInt), ck.sig.UInt ])
+                           returns( -> NSIndexPath )#.
+                            #params( -> [ (ck.sig.PointerTo ck.sig.UInt), ck.sig.UInt ])
 
   # Querying Index Paths
   indexAtPosition: @nativeSelector("indexAtPosition:").
