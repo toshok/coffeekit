@@ -47,7 +47,7 @@ exports.UIViewController = class UIViewController extends UIResponder
   rotatingFooterView:                     @nativeSelector "rotatingFooterView"
 
   # Responding to View Rotation Events
-  willRotateToInterfaceOrientation:duration:               @nativeSelector "willRotateToInterfaceOrientation:duration:"
+  willRotateToInterfaceOrientation:                        @nativeSelector "willRotateToInterfaceOrientation:duration:"
   willAnimateRotationToInterfaceOrientation:               @nativeSelector "willAnimateRotationToInterfaceOrientation:duration:"
   didRotateFromInterfaceOrientation:                       @nativeSelector "didRotateFromInterfaceOrientation:"
   didAnimateFirstHalfOfRotationToInterfaceOrientation:     @nativeSelector "didAnimateFirstHalfOfRotationToInterfaceOrientation:" # Deprecated in iOS 5.0
