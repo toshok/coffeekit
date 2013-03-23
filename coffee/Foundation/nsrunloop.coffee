@@ -3,6 +3,8 @@
 #console.log "NSRunLoop"
 
 exports.NSRunLoop = class NSRunLoop extends NSObject
+  constructor: ->
+        super
   # Accessing Run Loops and Modes
   @staticProperty "currentRunLoop", { set: null }
   @instanceProperty "currentMode", { set: null }

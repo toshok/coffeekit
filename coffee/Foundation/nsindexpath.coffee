@@ -1,6 +1,8 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 exports.NSIndexPath = class NSIndexPath extends NSObject
+  constructor: ->
+        super
   # Creating Index Paths
   @indexPathWithIndex: @nativeSelector "indexPathWithIndex:"
   @indexPathWithIndexes: @nativeSelector "indexPathWithIndexes:length:"
