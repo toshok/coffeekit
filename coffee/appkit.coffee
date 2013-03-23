@@ -1,9 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
+objc = require 'objc'
+
 objc.requireFramework "AppKit"
 
-foundation = require "./foundation"
-ck = require "./coffeekit"
+foundation = require "foundation"
+ck = require "coffeekit"
 
 exports.NSButtonType = NSButtonType = ck.makeEnum
    MomentaryLightButton   : 0,

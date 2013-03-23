@@ -1,9 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
+objc = require 'objc'
+
 objc.requireFramework "OpenGLES"
 
-foundation = require './foundation'
-ck = require './coffeekit'
+foundation = require 'foundation'
+ck = require 'coffeekit'
 
 exports.EAGLRenderingAPI = EAGLRenderingAPI = ck.makeEnum
    OpenGLES1         : 1
