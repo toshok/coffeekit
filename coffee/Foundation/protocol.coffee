@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.Protocol = class Protocol
+ck.register exports.Protocol = class Protocol
   @getTypeSignature: -> "@"
 
   @register: (n = @name) ->

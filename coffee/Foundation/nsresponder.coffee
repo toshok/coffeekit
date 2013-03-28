@@ -3,6 +3,7 @@
 #console.log "NSResponder"
 
 exports.NSResponder = class NSResponder extends NSObject
-  constructor: ->
-        super
-  @register()
+        constructor: ->
+                super
+
+ck.register NSResponder

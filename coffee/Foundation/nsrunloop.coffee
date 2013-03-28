@@ -6,8 +6,8 @@ exports.NSRunLoop = class NSRunLoop extends NSObject
   constructor: ->
         super
   # Accessing Run Loops and Modes
-  @staticProperty "currentRunLoop", { set: null }
-  @instanceProperty "currentMode", { set: null }
+  @staticProperty "currentRunLoop", set: null
+  @instanceProperty "currentMode", set: null
   limitDate: @nativeSelector("limitDateForMode:").
                      returns(-> ck.sig.Void).
                       params( -> [ ck.sig.NSString ])
@@ -32,4 +32,4 @@ exports.NSRunLoop = class NSRunLoop extends NSObject
   cancelPerformSelector: @nativeSelector "cancelPerformSelector:target:argument:"
   cancelPerformSelectors: @nativeSelector "cancelPerformSelectorsWithTarget:"
 
-  @register()
+ck.register NSRunLoop
