@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSContext = class NSControl extends NSView
+exports.NSControl = class NSControl extends NSView
   # Initializing an NSControl
   initWithFrame: @nativeSelector "initWithFrame:"
 
@@ -83,8 +83,7 @@ exports.NSContext = class NSControl extends NSView
   # Supporting Constraint-Based Layout
   invalidateIntrinsicContentSizeForCell: @nativeSelector "invalidateIntrinsicContentSizeForCell:"
 
-  @register()
-
+ck.register NSControl
 
 class NSControlProxy extends foundation.NSObject
   constructor: (fn) ->
@@ -93,6 +92,7 @@ class NSControlProxy extends foundation.NSObject
 
   proxyAction: @nativeSelector("action").
                        returns(-> ck.sig.Void).
-                          impl -> @fn()
+                       params(-> [foundation.NSObject]).
+                       impl -> @fn()
 
-  @register()
+ck.register NSControlProxy

@@ -1,9 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSApplication = class NSApplication extends foundation.NSResponder
+ck.register exports.NSApplication = class NSApplication extends foundation.NSResponder
   # Getting the Application
 
-  Object.defineProperty @, "sharedApplication", get: -> new NSApplication (objc.staticCall "NSApplication", "sharedApplication")
+  @staticProperty "sharedApplication", get: -> new NSApplication (objc.staticCall "NSApplication", "sharedApplication")
 
   # Configuring Applications
   applicationIconImage: @nativeSelector "applicationIconImage"
@@ -178,5 +178,3 @@ exports.NSApplication = class NSApplication extends foundation.NSResponder
 
   # use this instead of NSApplicationMain
   @main: (args) -> objc.NSApplicationMain (args)
-
-  @register()

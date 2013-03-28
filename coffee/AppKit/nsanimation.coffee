@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSAnimation = class NSAnimation extends foundation.NSObject
+ck.register exports.NSAnimation = class NSAnimation extends foundation.NSObject
   # Initializing an NSAnimation Object
   initWithDuration:animationCurve: @nativeSelector "initWithDuration:animationCurve:"
 
@@ -38,5 +38,3 @@ exports.NSAnimation = class NSAnimation extends foundation.NSObject
   stopWhenAnimationReachesProgress: @nativeSelector "stopWhenAnimation:reachesProgress:"
   clearStartAnimation: @nativeSelector "clearStartAnimation"
   clearStopAnimation: @nativeSelector "clearStopAnimation"
-
-  @register()

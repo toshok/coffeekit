@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSAnimationContext = class NSAnimationContext extends foundation.NSObject
+ck.register exports.NSAnimationContext = class NSAnimationContext extends foundation.NSObject
   # Grouping Transactions
   beginGrouping: @nativeSelector "beginGrouping"
   endGrouping: @nativeSelector "endGrouping"
@@ -16,5 +16,3 @@ exports.NSAnimationContext = class NSAnimationContext extends foundation.NSObjec
   # Modifying the Animation Duration
   @instanceProperty "duration"
   @instanceProperty "timingFunction"
-
-  @register()

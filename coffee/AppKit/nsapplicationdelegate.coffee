@@ -5,8 +5,8 @@
 exports.NSApplicationDelegate = class NSApplicationDelegate extends foundation.Protocol
 
   # Launching Applications
-  willFinishLaunching: @optionalMethod("applicationWillFinishLaunching:", sig: "v@:@")
-  didFinishLaunching: @optionalMethod "applicationDidFinishLaunching:"
+  willFinishLaunching: @optionalMethod "applicationWillFinishLaunching:", sig: "v@:@"
+  didFinishLaunching: @optionalMethod "applicationDidFinishLaunching:", sig: "v@:@"
 
   # Terminating Applications
   shouldTerminate: @optionalMethod "applicationShouldTerminate:"

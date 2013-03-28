@@ -1,7 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
 
-exports.NSAlert = class NSAlert extends foundation.NSObject
+ck.register exports.NSAlert = class NSAlert extends foundation.NSObject
   init: @nativeSelector "init"
   @alertWithError: @nativeSelector "alertWithError:"
   @alertWithMessageText: @nativeSelector "alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:"
@@ -38,5 +38,3 @@ exports.NSAlert = class NSAlert extends foundation.NSObject
 
   # Getting Alert Panels
   @instanceProperty "window", { set: null} # read-only
-
-  @register()

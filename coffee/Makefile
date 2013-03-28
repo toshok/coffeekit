@@ -51,6 +51,12 @@ FRAMEWORK_SOURCES_AppKit= \
 	AppKit/nscontrol.coffee \
 	AppKit/nscontroller.coffee \
 	AppKit/nsbutton.coffee \
+	AppKit/nstablecellview.coffee \
+	AppKit/nstablecolumn.coffee \
+	AppKit/nstableviewdelegate.coffee \
+	AppKit/nstableviewdatasource.coffee \
+	AppKit/nstableview.coffee \
+	AppKit/nstablerowview.coffee \
 	AppKit/nswindow.coffee \
 	AppKit/nswindowcontroller.coffee \
 	AppKit/nsapplication.coffee \

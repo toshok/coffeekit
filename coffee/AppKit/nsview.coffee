@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSView = class NSView extends foundation.NSResponder
+ck.register exports.NSView = class NSView extends foundation.NSResponder
   # Creating Instances
   initWithFrame: @nativeSelector "initWithFrame:"
 
@@ -31,16 +31,14 @@ exports.NSView = class NSView extends foundation.NSResponder
   tag: @nativeSelector "tag"
 
   # Modifying the Frame Rectangle
-  setFrame: @nativeSelector "setFrame:"
-  frame: @nativeSelector "frame"
+  @instanceProperty "frame"
   setFrameOrigin: @nativeSelector "setFrameOrigin:"
   setFrameSize: @nativeSelector "setFrameSize:"
   setFrameRotation: @nativeSelector "setFrameRotation:"
   frameRotation: @nativeSelector "frameRotation"
 
   # Modifying the Bounds Rectangle
-  setBounds: @nativeSelector "setBounds:"
-  bounds: @nativeSelector "bounds"
+  @instanceProperty "bounds"
   setBoundsOrigin: @nativeSelector "setBoundsOrigin:"
   setBoundsSize: @nativeSelector "setBoundsSize:"
   setBoundsRotation: @nativeSelector "setBoundsRotation:"
@@ -344,5 +342,3 @@ exports.NSView = class NSView extends foundation.NSResponder
   constraintsAffectingLayoutForOrientation: @nativeSelector "constraintsAffectingLayoutForOrientation:"
   hasAmbiguousLayout: @nativeSelector "hasAmbiguousLayout"
   exerciseAmbiguityInLayout: @nativeSelector "exerciseAmbiguityInLayout"
-
-  @register()

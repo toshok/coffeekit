@@ -8,5 +8,4 @@ exports.NSWindow = class NSWindow extends foundation.NSResponder
   initWithCoder: @nativeSelector "initWithCoder:"
   setFrame: @nativeSelector "setFrame:display:"
 
-
-  @register()
+ck.register NSWindow

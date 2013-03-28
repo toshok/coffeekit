@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSWindowController = class NSWindowController extends foundation.NSResponder
+ck.register exports.NSWindowController = class NSWindowController extends foundation.NSResponder
   constructor: (handle, arg2) ->
     if typeof (handle) == 'string'
       super()
@@ -12,5 +12,3 @@ exports.NSWindowController = class NSWindowController extends foundation.NSRespo
 
   initWithWindow: @nativeSelector "initWithWindow:"
   initWithWindowNibName: @nativeSelector "initWithWindowNibName:"
-
-  @register()

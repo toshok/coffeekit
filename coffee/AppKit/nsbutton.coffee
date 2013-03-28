@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-exports.NSButton = class NSButton extends NSControl
+ck.register exports.NSButton = class NSButton extends NSControl
 
         @newWithFrame: (frame) -> @newWith initWith: "Frame", args: [frame]
                 
@@ -42,14 +42,16 @@ exports.NSButton = class NSButton extends NSControl
         performKeyEquivalent: @nativeSelector "performKeyEquivalent:"
 
 
-        Object.defineProperty @::, "clicked", set: (v) ->
-                if v
-                        @proxy = new NSControlProxy v
-                        @target = @proxy
-                        @action = @proxy.proxyAction
-                else
-                        @proxy = null
-                        @target = null
-                        @action = null
-
-        @register()
+        @instanceProperty "clicked", {
+                set: (v) ->
+                        if v
+                                @proxy = new NSControlProxy v
+                                @target = @proxy
+                                @action = @proxy.proxyAction
+                        else
+                                @proxy = null
+                                @target = null
+                                @action = null
+                        undefined
+                get: null # this should really be an actual getter that returns the callback...
+        }
