@@ -2,10 +2,7 @@
 
 #console.log "CAAnimationDelegate"
 
-exports.CAAnimationDelegate = class CAAnimationDelegate extends foundation.Protocol
-  # Animation Progress
-  animationDidStart: @optionalMethod "animationDidStart"
-  animationDidStop:  @optionalMethod "animationDidStop"
-
-
-  @register()
+ck.register exports.CAAnimationDelegate = class CAAnimationDelegate extends foundation.Protocol
+        # Animation Progress
+        animationDidStart: @optionalMethod "animationDidStart"
+        animationDidStop:  @optionalMethod "animationDidStop"
