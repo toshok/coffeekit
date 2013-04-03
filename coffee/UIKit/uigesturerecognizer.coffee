@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIGestureRecognizer"
+console.log "UIGestureRecognizer"
 exports.UIGestureRecognizer = class UIGestureRecognizer extends foundation.NSObject
   # Initializing a Gesture Recognizer
   initWithTarget: @nativeSelector "initWithTarget:action:"

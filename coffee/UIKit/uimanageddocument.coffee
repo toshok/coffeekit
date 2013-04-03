@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIManagedDocument"
+console.log "UIManagedDocument"
 exports.UIManagedDocument = class UIManagedDocument extends UIDocument
   # Managing the Core Data Stack
   configurePersistentStoreCoordinator: @nativeSelector "configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"

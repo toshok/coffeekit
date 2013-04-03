@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UINavigationController"
+console.log "UINavigationController"
 exports.UINavigationController = class UINavigationController extends UIViewController
   # Creating Navigation Controllers
   initWithRootViewController: @nativeSelector "initWithRootViewController:"

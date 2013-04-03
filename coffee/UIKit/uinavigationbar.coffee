@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UINavigationBar"
+console.log "UINavigationBar"
 exports.UINavigationBar = class UINavigationBar extends UIView
   # Configuring Navigation Bars
   @instanceProperty "barStyle"

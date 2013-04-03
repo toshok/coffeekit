@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIDatePicker"
+console.log "UIDatePicker"
 exports.UIDatePicker = class UIDatePicker extends UIControl
   # Managing the Date and Calendar
   @instanceProperty  "calendar"

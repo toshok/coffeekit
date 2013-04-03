@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIEvent"
+console.log "UIEvent"
 exports.UIEvent = class UIEvent extends foundation.NSObject 
   # Getting the Touches for an Event
   allTouches:       @nativeSelector "allTouches"

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIFont"
+console.log "UIFont"
 exports.UIFont = class UIFont extends foundation.NSObject
   # Creating Arbitrary Fonts
   @fontWithName: @nativeSelector "fontWithName:size:"

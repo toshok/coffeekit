@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPageControl"
+console.log "UIPageControl"
 exports.UIPageControl = class UIPageControl extends UIControl
   # Managing the Page Navigation
   @instanceProperty "currentPage"

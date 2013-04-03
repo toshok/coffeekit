@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIBarItem"
+console.log "UIBarItem"
 exports.UIBarItem = class UIBarItem extends UIView
   # Getting and Setting Properties
   @instanceProperty "enabled"

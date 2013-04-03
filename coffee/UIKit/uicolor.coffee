@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIColor"
+console.log "UIColor"
 exports.UIColor = class UIColor extends foundation.NSObject
   # Creating a UIColor Object from Component Values
   @colorWithWhite:          @nativeSelector "colorWithWhite:alpha:"

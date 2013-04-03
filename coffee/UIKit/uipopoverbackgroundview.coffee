@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPopoverBackgroundView"
+console.log "UIPopoverBackgroundView"
 exports.UIPopoverBackgroundView = class UIPopoverBackgroundView extends UIView
   # Returning the Content View Insets
   @contentViewInsets: @nativeSelector "contentViewInsets"

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIDocument"
+console.log "UIDocument"
 exports.UIDocument = class UIDocument extends foundation.NSObject
   # Initializing a Document Object
   initWithFileURL: @nativeSelector "initWithFileURL:"

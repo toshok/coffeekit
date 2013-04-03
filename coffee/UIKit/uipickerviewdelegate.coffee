@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPickerViewDelegate"
+console.log "UIPickerViewDelegate"
 
 exports.UIPickerViewDelegate = class UIPickerViewDelegate extends foundation.Protocol
 

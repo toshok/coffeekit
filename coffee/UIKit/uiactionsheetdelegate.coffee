@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIActionSheetDelegate"
+console.log "UIActionSheetDelegate"
 
 exports.UIActionSheetDelegate = class UIActionSheetDelegate extends foundation.Protocol
   # Responding to Actions

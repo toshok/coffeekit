@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIImage"
+console.log "UIImage"
 exports.UIImage = class UIImage extends foundation.NSObject
   # Cached Image Loading Routines
   @imageNamed: @nativeSelector "imageNamed:"

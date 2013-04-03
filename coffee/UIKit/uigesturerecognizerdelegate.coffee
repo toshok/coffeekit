@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIGestureRecognizerDelegate"
+console.log "UIGestureRecognizerDelegate"
 
 exports.UIGestureRecognizerDelegate = class UIGestureRecognizerDelegate extends foundation.Protocol
 

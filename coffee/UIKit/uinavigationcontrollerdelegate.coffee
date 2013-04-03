@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UINavigationControllerDelegate"
+console.log "UINavigationControllerDelegate"
 
 exports.UINavigationControllerDelegate = class UINavigationControllerDelegate extends foundation.Protocol
 

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPageViewControllerDelegate"
+console.log "UIPageViewControllerDelegate"
 
 exports.UIPageViewControllerDelegate = class UIPageViewControllerDelegate extends foundation.Protocol
 

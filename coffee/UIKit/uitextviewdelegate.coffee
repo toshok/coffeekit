@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UITextViewDelegate"
+console.log "UITextViewDelegate"
 
 exports.UITextViewDelegate = class UITextViewDelegate extends foundation.Protocol
   # Responding to Editing Notifications

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIAccessibilityElement"
+console.log "UIAccessibilityElement"
 exports.UIAccessibilityElement = class UIAccessibilityElement extends foundation.NSObject
   # Creating an Accessibility Element
   initWithAccessibilityContainer: @nativeSelector "initWithAccessibilityContainer:"

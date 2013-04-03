@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIApplicationDelegate"
+console.log "UIApplicationDelegate"
 
 exports.UIApplicationDelegate = class UIApplicationDelegate extends foundation.Protocol
   # Monitoring Application State Changes

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIButton"
+console.log "UIButton"
 exports.UIButton = class UIButton extends UIControl
   # Creating Buttons
   @buttonWithType:     @nativeSelector "buttonWithType:"
@@ -49,8 +49,15 @@ exports.UIButton = class UIButton extends UIControl
   titleRectForContentRect: @nativeSelector "titleRectForContentRect:"
   imageRectForContentRect: @nativeSelector "imageRectForContentRect:"
 
-  @::__defineSetter__ "clicked", (v) ->
-                                     @proxy = new UIControlProxy v
-                                     @addTarget @proxy, @proxy.proxyAction, UIControlEvent.TouchUpInside
+  @instanceProperty "clicked",
+        set: (v) ->
+                if v
+                        @proxy = new UIControlProxy v
+                        @addTarget @proxy, @proxy.proxyAction, UIControlEvent.TouchUpInside
+                else
+                        @proxy = null
+
+                undefined
+        get: null # this should really be an actual getter that returns the callback...
 
   @register()

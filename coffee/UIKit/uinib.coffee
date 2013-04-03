@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UINib"
+console.log "UINib"
 exports.UINib = class UINib extends foundation.NSObject
   # Creating a Nib Object
   @nibWithNibName: @nativeSelector "nibWithNibName:bundle:"

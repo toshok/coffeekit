@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPrintInteractionControllerDelegte"
+console.log "UIPrintInteractionControllerDelegte"
 
 exports.UIPrintInteractionControllerDelegate = class UIPrintInteractionControllerDelegate extends foundation.Protocol
 

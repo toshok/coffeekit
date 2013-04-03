@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UILabel"
+console.log "UILabel"
 exports.UILabel = class UILabel extends UIView
   # Accessing the Text Attributes
   @instanceProperty "text"

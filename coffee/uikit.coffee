@@ -1,10 +1,11 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
+objc = require 'objc'
+
 objc.requireFramework "UIKit"
 
-foundation = require "./foundation"
-ck = require "./coffeekit"
-coreanimation = require "./coreanimation"
+foundation = require "foundation"
+ck = require "coffeekit"
 
 exports.UITableViewStyle = UITableViewStyle = ck.makeEnum
    plain: 0,

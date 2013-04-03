@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIActivityIndicatorView"
+console.log "UIActivityIndicatorView"
 exports.UIActivityIndicatorView = class UIActivityIndicatorView extends UIView
   # Initializing an Activity Indicator
   initWithActivityIndicatorStyle: @nativeSelector "initWithActivityIndicatorStyle:"

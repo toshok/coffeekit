@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPrintInfo"
+console.log "UIPrintInfo"
 exports.UIPrintInfo = class UIPrintInfo extends foundation.NSObject
   # Creating a UIPrintInfo Object
   @printInfo:               @nativeSelector "printInfo"

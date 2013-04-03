@@ -9,7 +9,6 @@ registerMembers = (o, c) ->
         for name in Object.getOwnPropertyNames o
                 desc = Object.getOwnPropertyDescriptor o, name
 
-                console.log "o[#{name}] = #{desc}"
                 # skip properties
                 continue if desc.set? or desc.get?
 
@@ -79,7 +78,7 @@ exports.exposeSelector = (sel_name, rest...) ->
 invokeSelector = (sel) ->
         sel_invoke = objc.invokeSelector sel
         () ->
-                console.log "invoking selector #{sel} on object #{@}"
+                console.log "invoking selector #{sel} on object of type #{@.constructor.name}"
                 sel_invoke.apply @, [sel].concat Array::slice.call(arguments)
 
 exports.MixinProtocolAttribute = class MixinProtocolAttribute extends Attribute
@@ -91,12 +90,10 @@ exports.MixinProtocolAttribute = class MixinProtocolAttribute extends Attribute
                         # class/static
                         if value.required
                                 if value.method
-                                        console.log "adding class protocol method #{key}"
                                         obj[key] = if value.tramp? then value.tramp else invokeSelector value.method
                                         obj[key]._ck_typeSig = value.sig ? "@@:"
                                 else if value.property
-                                        console.log "adding class protocol property #{key}"
-                                        accessors = {}
+                                        accessors = Object.create null
                                         accessors.get = value.get if value.get?
                                         accessors.set = value.set if value.set?
                                         addProperty obj, value.property, accessors
@@ -104,21 +101,16 @@ exports.MixinProtocolAttribute = class MixinProtocolAttribute extends Attribute
                         # instance
                         if value.required
                                 if value.method
-                                        console.log "adding instance protocol method #{key}"
                                         obj::[key] = if value.tramp? then value.tramp else invokeSelector value.method
                                         obj::[key]._ck_typeSig = value.sig ? "@@:"
                                 else if value.property
-                                        console.log "adding instance protocol property #{key}"
                                         addProperty obj::, value.property
 
 exports.ConformsToProtocolAttribute = class ConformsToProtocolAttribute extends Attribute
         constructor: (obj, @protocol) ->
                 super obj
 
-                console.log "ConformsToProtocolAttribute obj = #{obj}, protocol = #{@protocol}"
-
                 for key, value of @protocol::
-                        console.log "protocol key = #{key}: #{JSON.stringify value}"
                         if key is 'constructor'
                                 continue
                         if @protocol.hasOwnProperty key
@@ -127,10 +119,7 @@ exports.ConformsToProtocolAttribute = class ConformsToProtocolAttribute extends 
                                 # instance
                                 fn = obj::[key]
                                 if fn?
-                                        console.log "  found it!"
                                         fn._ckProtocolInfo = sel: value.method, sig: value.sig
-                                #else
-                                #        console.log "  didn't find it!"
 
                 # FIXME
                 #   there's not much more that's necessary here..  if the attribute is present
@@ -149,16 +138,13 @@ does_not_conform_to = (o, p) -> ConformsToProtocolAttribute.doesObjectConformTo 
         
 autoboxCount = 0
 exports.autobox = (obj, protocol) ->
-        console.log 1000
         class ProtocolProxy extends foundation.NSObject
                 constructor: () -> super (objc.allocInstance @constructor._ck_register)
 
-        console.log 1001
         # check if the object (or its constructor) conforms to the protocol.  if it does
         # then we can just use the object, without the proxy
         return obj if (does_not_conform_to obj, protocol) or (does_not_conform_to obj.constructor, protocol)
 
-        console.log 1002
         # first check for required methods.  if obj doesn't implement them, error out.
         for key, value of protocol
                 if protocol.hasOwnProperty key
@@ -170,9 +156,6 @@ exports.autobox = (obj, protocol) ->
                                 throw "#{obj} is missing required method #{key} from protocol #{protocol}" if value.method?
                                 throw "#{obj} is missing required property #{key} from protocol #{protocol}" if value.property?
                   
-        console.log 1003
-
-        console.log 1004
         # now loop over the items that are in obj and match up the names to those in the protocol
         for key, value of obj
                 pv = protocol::[key]
@@ -185,17 +168,14 @@ exports.autobox = (obj, protocol) ->
                 else
                         throw "unhandled case:  property #{key} overriding from a protocol #{protocol}"
 
-        console.log 1005
         new ConformsToProtocolAttribute ProtocolProxy, protocol
         new RegisterAttribute ProtocolProxy, "CKProtocolProxy#{autoboxCount++}"
 
-        console.log 1006
         return new ProtocolProxy
 
 addProperty = (obj, jsprop, opts) ->
-        info = {}
+        info = Object.create null
         info._ck_registerProp = ->
-                console.log "addProperty for #{jsprop}"
                 # if opts are left off, and jsprop = 'foo',
                 # we assume the getter is 'foo' and the setter is
                 # 'setFoo:'
@@ -203,9 +183,7 @@ addProperty = (obj, jsprop, opts) ->
                 setter = null
 
                 if opts is undefined
-                        console.log "no opts for #{jsprop}"
                         getter = invokeSelector jsprop
-                        console.log "getter = #{getter.toString()}"
                         setter = invokeSelector "set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:"
                 else
                         # the value for the set/get members of opts overrides this above behavior.
@@ -239,19 +217,21 @@ addProperty = (obj, jsprop, opts) ->
                                 setter._ck_ivar = opts.ivar if setter?
                                 getter._ck_ivar = opts.ivar if getter?
 
-                descriptor = enumerable: yes
+                setter._ck_appearance = yes if info._ck_appearance and setter?
+                getter._ck_appearance = yes if info._ck_appearance and getter?
+                
+                descriptor = enumerable: yes, configurable: yes
                 descriptor.set = setter if setter?
                 descriptor.get = getter if getter?
-
-                console.log "getter for obj = #{obj.constructor?.name} #{jsprop} = #{getter}" if getter?
 
                 Object.defineProperty obj, jsprop, descriptor
 
         info.makeUIAppearance = ->
-                setter._ck_appearance = yes if setter?
-                getter._ck_appearance = yes if getter?
+                info._ck_appearance = yes if setter?
+                info
 
-        obj[jsprop] = info
+        Object.defineProperty obj, jsprop, value: info, configurable: yes
+        info
         
 exports.addProperty = addProperty
 
@@ -262,14 +242,13 @@ exports.instanceProperty = (cls, jsprop, opts) -> addProperty cls::, jsprop, opt
 exports.staticProperty = (cls, jsprop, opts) -> addProperty cls, jsprop, opts
 
 exports.makeEnum = (spec) ->
-        addConstant = (obj, jsprop, v) -> Object.defineProperty obj, jsprop, value: v, enumerable: yes
+        addConstant = (obj, jsprop, v) -> Object.defineProperty obj, jsprop, value: v, enumerable: yes, configurable: no, writable: no
 
         rv = Object.create null
         addConstant rv, name, value for name, value of spec
         rv
 
 exports.outlet = outlet = (obj, jsprop, outletType) ->
-        console.log "outlet #{jsprop} has ctor = #{outletType.name}"
         propinfo = 
         addProperty obj, jsprop, {
                 get: ->

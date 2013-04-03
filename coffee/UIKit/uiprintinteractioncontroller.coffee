@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPrintInteractionController"
+console.log "UIPrintInteractionController"
 exports.UIPrintInteractionController = class UIPrintInteractionController extends foundation.NSObject
   # Getting the Shared Controller Instance
   @sharedPrintController: @nativeSelector "sharedPrintController"

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIControl"
+console.log "UIControl"
 exports.UIControl = class UIControl extends UIView
   # Preparing and Sending Action Messages
   sendAction:                  @nativeSelector "sendAction:to:forEvent:"

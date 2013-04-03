@@ -1,11 +1,13 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
+objc = require 'objc'
+
 objc.requireFramework "GLKit"
 
-foundation = require "./foundation"
-uikit = require "./uikit"
-gles = require "./opengles"
-ck = require "./coffeekit"
+foundation = require "foundation"
+uikit = require "uikit"
+gles = require "opengles"
+ck = require "coffeekit"
 
 exports.GLKViewDrawableColorFormat = GLKViewDrawableColorFormat = ck.makeEnum
    rgba8888 : 0,

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UILocalizedIndexCollation"
+console.log "UILocalizedIndexCollation"
 exports.UILocalizedIndexCollation = class UILocalizedIndexCollation extends foundation.NSObject
   # Getting the Shared Instance
   @currentCollation:    @nativeSelector "currentCollation"

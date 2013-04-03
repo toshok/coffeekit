@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIImagePickerController"
+console.log "UIImagePickerController"
 exports.UIImagePickerController = class UIImagePickerController extends UINavigationController
   # Setting the Picker Source
   @availableMediaTypes:   @nativeSelector "availableMediaTypesForSourceType:"

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIMenuController"
+console.log "UIMenuController"
 exports.UIMenuController = class UIMenuController extends foundation.NSObject
   # Getting the Menu Controller Instance
   @sharedMenuController: @nativeSelector "sharedMenuController"

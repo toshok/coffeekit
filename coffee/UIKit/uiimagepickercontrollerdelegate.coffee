@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIImagePickerControllerDelegate"
+console.log "UIImagePickerControllerDelegate"
 
 exports.UIImagePickerControllerDelegate = class UIImagePickerControllerDelegate extends foundation.Protocol
 

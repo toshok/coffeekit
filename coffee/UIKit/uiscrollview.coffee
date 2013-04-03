@@ -1,7 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIScrollView"
-exports.UIScrollView = class UIScrollView extends UIView
+console.log ">UIScrollView"
+ck.register exports.UIScrollView = class UIScrollView extends UIView
   # Managing the Display of Content
   setContentOffset: @nativeSelector "setContentOffset:animated:"
   @instanceProperty "contentOffset", { set: (v) -> @setContentOffset v, false }
@@ -48,4 +48,4 @@ exports.UIScrollView = class UIScrollView extends UIView
   # Managing the Delegate
   @autoboxProperty  "delegate", UIScrollViewDelegate
 
-  @register()
+console.log "<UIScrollView"

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UILocalNotification"
+console.log "UILocalNotification"
 exports.UILocalNotification = class UILocalNotification extends foundation.NSObject
   # Scheduling a Local Notification
   @instanceProperty "fireDate"

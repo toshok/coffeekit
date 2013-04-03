@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPickerView"
+console.log "UIPickerView"
 exports.UIPickerView = class UIPickerView extends UIView
   # Getting the Dimensions of the View Picker
   numberOfRowsInComponent: @nativeSelector "numberOfRowsInComponent:"

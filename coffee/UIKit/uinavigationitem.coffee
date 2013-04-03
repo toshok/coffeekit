@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UINavigationItem"
+console.log "UINavigationItem"
 exports.UINavigationItem = class UINavigationItem extends foundation.NSObject
   # Initializing an Item
   initWithTitle: @nativeSelector "initWithTitle:"

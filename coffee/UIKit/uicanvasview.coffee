@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UICanvasView"
+console.log "UICanvasView"
 exports.UICanvasView = class UICanvasView extends UIView
   @layerClass: @nativeSelector("layerClass").
                        returns(-> ck.sig.Class).

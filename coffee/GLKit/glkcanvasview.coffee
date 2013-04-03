@@ -12,7 +12,7 @@ exports.GLKCanvasView = class GLKCanvasView extends GLKView
       throw "GLKCanvasView only supports webgl rendering"
 
 
-  @::__defineGetter__ "width", -> return @frame.width
-  @::__defineGetter__ "height", -> return @frame.height
+  @instanceProperty "width", get: (-> return @frame.width), set: null
+  @instanceProperty "height", get: (-> return @frame.height), set: null
 
   @register()

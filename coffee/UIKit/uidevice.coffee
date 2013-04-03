@@ -1,9 +1,9 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIDevice"
+console.log "UIDevice"
 exports.UIDevice = class UIDevice extends foundation.NSObject
   # Getting the Shared Device Instance
-  @staticProperty                                "currentDevice", set: null, get: -> objc.invokeSelector("currentDevice").call UIDevice
+  @staticProperty                                "currentDevice", set: null
 
   # Determining the Available Features
   @instanceProperty                              "multitaskingSupported"

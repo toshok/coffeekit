@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPageViewController"
+console.log "UIPageViewController"
 exports.UIPageViewController = class UIPageViewController extends UIViewController
   # Creating Page View Controllers
   initWithTransitionStyle: @nativeSelector "initWithTransitionStyle:navigationOrientation:options:"

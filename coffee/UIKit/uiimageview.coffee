@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIImageView"
+console.log "UIImageView"
 exports.UIImageView = class UIImageView extends UIView
   # Initializing a UIImageView Object
   initWithImage:                    @nativeSelector "initWithImage:"

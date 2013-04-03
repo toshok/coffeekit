@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIApplication"
+console.log "UIApplication"
 exports.UIApplication = class UIApplication extends UIResponder
   # Getting the Application Instance
 
@@ -81,6 +81,6 @@ exports.UIApplication = class UIApplication extends UIResponder
   # Setting the Icon of a Newsstand Application
   setNewsstandIconImage: @nativeSelector "setNewsstandIconImage:"
 
-  @main: (args, delegateClassName) -> objc.UIApplicationMain args, delegateClassName
+  @main: (args, principalClassName, delegateClassName) -> objc.UIApplicationMain args, principalClassName, delegateClassName
 
   @register()

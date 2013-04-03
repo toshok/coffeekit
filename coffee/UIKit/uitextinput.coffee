@@ -3,8 +3,6 @@
 #console.log "UITextInput"
 
 exports.UITextInput = class UITextInput extends foundation.Protocol
-  @mixinProtocol UIKeyInput
-
   # Replacing and Returning Text
   textInRange:  @requiredMethod "textInRange:"
   replaceRange: @requiredMethod "replaceRange:withText:"
@@ -55,4 +53,5 @@ exports.UITextInput = class UITextInput extends foundation.Protocol
   # Returning the Text Input View
   textInputView: @optionalMethod "textInputView"
 
+  @mixinProtocol UIKeyInput
   @register()

@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPrintFormatter"
+console.log "UIPrintFormatter"
 exports.UIPrintFormatter = class UIPrintFormatter extends foundation.NSObject
   # Laying Out the Content
   @instanceProperty "contentInsets"

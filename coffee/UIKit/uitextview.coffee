@@ -1,8 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UITextView"
-exports.UITextView = class UITextView extends UIScrollView
-  @mixinProtocol UITextInput
+console.log ">UITextView"
+ck.register exports.UITextView = class UITextView extends UIScrollView
 
   # Configuring the Text Attributes
   @instanceProperty "text"
@@ -18,7 +17,7 @@ exports.UITextView = class UITextView extends UIScrollView
   scrollRangeToVisible: @nativeSelector "scrollRangeToVisible:"
 
   # Accessing the Delegate
-  @autoboxProperty "delegate", UITextViewDelegate
+  #@autoboxProperty "delegate", UITextViewDelegate
 
   # Replacing the System Input Views
   @instanceProperty "inputView"
@@ -36,4 +35,6 @@ exports.UITextView = class UITextView extends UIScrollView
   @instanceProperty "secureTextEntry"
   # end UITextInputTraits Protocol
 
-  @register()
+  @conformsToProtocol UITextInput
+
+console.log "<UITextView"

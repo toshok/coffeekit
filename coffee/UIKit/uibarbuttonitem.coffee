@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIBarButtonItem"
+console.log "UIBarButtonItem"
 exports.UIBarButtonItem = class UIBarButtonItem extends UIBarItem
   # Initializing an Item
   initWithCustomView:          @nativeSelector "initWithCustomView:"
@@ -42,10 +42,18 @@ exports.UIBarButtonItem = class UIBarButtonItem extends UIBarItem
   getTitlePositionAdjustment:                        @nativeSelector("titlePositionAdjustmentForBarMetrics:").makeUIAppearance()
   setTitlePositionAdjustment:                        @nativeSelector("setTitlePositionAdjustment:forBarMetrics:").makeUIAppearance()
 
-  @::__defineSetter__ "clicked", (v) ->
-                                     @proxy = new UIControlProxy1 v
-                                     @target = @proxy
-                                     @action = @proxy.proxyAction
+  @instanceProperty "clicked",
+        set: (v) ->
+                if v
+                        @proxy = new UIControlProxy1 v
+                        @target = @proxy
+                        @action = @proxy.proxyAction
+                else
+                        @proxy = null
+                        @target = null
+                        @action = null
+                undefined
+        get: null # this should really be an actual getter that returns the callback...
 
   @register()
 

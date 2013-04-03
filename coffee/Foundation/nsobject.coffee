@@ -60,7 +60,6 @@ exports.NSObject = class NSObject extends objc.CoffeeKitObject
                 info
 
         @override: (fn) ->
-                console.log "setting override _ck_register"
                 fn._ck_register = (c, name) ->
 
                         proto = c.__super__?.constructor.prototype
@@ -68,9 +67,7 @@ exports.NSObject = class NSObject extends objc.CoffeeKitObject
                                 throw "native selector '#{name}' not found in prototype chain for type '#{c.name}'"
 
                         if fn._ckProtocolInfo
-                                console.log "@overriding a protocol method, sel = #{fn._ckProtocolInfo.sel}, sig = #{fn._ckProtocolInfo.sig}!!!"
                                 new ck.SelectorAttribute fn, fn._ckProtocolInfo.sel, fn._ckProtocolInfo.sig
-                                console.log "exported?  #{fn._ck_exported}"
                                 fn._ck_appearance = fn._ckProtocolInfo._ck_appearance
                         else
                                 fn._ckInfo = proto[name]._ckInfo
@@ -92,17 +89,13 @@ exports.NSObject = class NSObject extends objc.CoffeeKitObject
 
         @autoboxProperty: (jsprop, autotype) ->
                 sel_invoke = ck.invokeSelector("set#{jsprop[0].toUpperCase()}#{jsprop.slice 1}:")
-                console.log "jsprop = #{jsprop}"
-                console.log "autotype = #{autotype}"
                 
                 ck.instanceProperty @, jsprop, {
                         set: (v) ->
                                 console.log "in an autobox'ed property setter!!!!"
-                                console.log "in an autobox'ed property setter!!!!"
-                                console.log "in an autobox'ed property setter!!!!"
-                                console.log "in an autobox'ed property setter!!!!"
                                 console.log "autotype = #{autotype.name}"
                                 sel_invoke.call @, (ck.autobox v, autotype)
+                        get: null
                 }
 
         @newWith: (newInfo) ->
@@ -111,7 +104,6 @@ exports.NSObject = class NSObject extends objc.CoffeeKitObject
                         console.log "no method 'initWith#{newInfo.initWith}' defined in #{@name}.prototype"
                         throw "no method 'initWith#{newInfo.initWith}' defined in #{@name}.prototype"
 
-                console.log "constructor = #{@::constructor.toString()}"
                 instance = new @::constructor
 
                 meth.apply instance, newInfo.args
@@ -122,7 +114,6 @@ exports.NSObject = class NSObject extends objc.CoffeeKitObject
                 if not @handle?
                         console.log "calling @constructor.alloc()!"
                         @handle = @constructor.alloc()
-                console.log "calling objc.CoffeeKitObject.setHandle.call @ == #{@}, @handle = #{@handle}"
                 objc.CoffeeKitObject.setHandle.call @, @handle
 
         toString: -> "[#{@constructor._ck_register} #{@handle}]"

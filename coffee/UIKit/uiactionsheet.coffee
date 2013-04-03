@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIActionSheet"
+console.log "UIActionSheet"
 exports.UIActionSheet = class UIActionSheet extends UIView
   # Creating Action Sheets
   init: @nativeSelector "initWithTitle:delegate:cancelButtonTitle:destructiveButtonTitle:otherButtonTitles:";

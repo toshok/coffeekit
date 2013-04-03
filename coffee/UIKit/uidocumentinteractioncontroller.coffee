@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIDocumentInteractionController"
+console.log "UIDocumentInteractionController"
 exports.UIDocumentInteractionController = class UIDocumentInteractionController extends foundation.NSObject
   # Creating the Document Interaction Controller
   @interactionControllerWithURL:       @nativeSelector "interactionControllerWithURL:"

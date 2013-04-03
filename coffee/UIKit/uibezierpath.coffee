@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIBezierPath"
+console.log "UIBezierPath"
 exports.UIBezierPath = class UIBezierPath extends foundation.NSObject
   # Creating a UIBezierPath Object
   bezierPath:                                 @nativeSelector "bezierPath"

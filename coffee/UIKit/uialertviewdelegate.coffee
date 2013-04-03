@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIAlertViewDelegate"
+console.log "UIAlertViewDelegate"
 
 exports.UIAlertViewDelegate = class UIAlertViewDelegate extends foundation.Protocol
   # Responding to Actions

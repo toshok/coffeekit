@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIAppearance"
+console.log "UIAppearance"
 
 appearances = {}
 

@@ -1,7 +1,7 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UITableView"
-exports.UITableView = class UITableView extends UIScrollView
+console.log ">UITableView"
+ck.register exports.UITableView = class UITableView extends UIScrollView
   # Initializing a UITableView Object
   initWithFrame: @nativeSelector "initWithFrame:style:"
 
@@ -75,4 +75,4 @@ exports.UITableView = class UITableView extends UIScrollView
   @autoboxProperty "dataSource", UITableViewDataSource
   @autoboxProperty "delegate", UITableViewDelegate
 
-  @register()
+console.log "<UITableView"

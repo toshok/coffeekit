@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIKeyInput"
+console.log "UIKeyInput"
 
 exports.UIKeyInput = class UIKeyInput extends foundation.Protocol
   @mixinProtocol UITextInputTraits

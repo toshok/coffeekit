@@ -1,6 +1,6 @@
 # This file is part of coffeekit.  for licensing information, see the LICENSE file
 
-#console.log "UIPopoverController"
+console.log "UIPopoverController"
 exports.UIPopoverController = class UIPopoverController extends foundation.NSObject
   # Initializing the Popover
   initWithContentViewController: @nativeSelector "initWithContentViewController:"
